@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKServer", "SKProject\SKServer.csproj", "{82C95E63-FFAF-4AB1-BF22-3D846D56CA94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKOffice", "SKOffice\SKOffice.csproj", "{1D21CE21-7B7E-4064-97B7-AFD38FD42E38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82C95E63-FFAF-4AB1-BF22-3D846D56CA94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C95E63-FFAF-4AB1-BF22-3D846D56CA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C95E63-FFAF-4AB1-BF22-3D846D56CA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C95E63-FFAF-4AB1-BF22-3D846D56CA94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D21CE21-7B7E-4064-97B7-AFD38FD42E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D21CE21-7B7E-4064-97B7-AFD38FD42E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D21CE21-7B7E-4064-97B7-AFD38FD42E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D21CE21-7B7E-4064-97B7-AFD38FD42E38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
