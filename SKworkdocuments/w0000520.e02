@@ -1,0 +1,1403 @@
+0;2;2;9;10/05/2016;13:57:03;Winner;11.0a3 
+100;;;;;;;;;;;;
+101;Sønderborg Køkkenindustri A/S;;Ellegårdvej 23B;6400;Sønderborg;74429220;;;74429221;;;;;;;;;;;Sønderborg Køkkenindustri A/S;;;;DK;Danmark;;;;;www.sonderborg-kokken.dk
+102;Sønderborg Køkkenindustri A/S;;Ellegårdvej 23B;6400;Sønderborg;74429220;;;74429221;;;;;;;;;;;Sønderborg Køkkenindustri A/S;;;;DK;Danmark;;;;;www.sonderborg-kokken.dk
+200;4390;Nordborgvej 25;01/03/2016;10/05/2016;;;;;;;;;;;;;;0;;;;;
+210;2002203188;;;;
+211;Nordborg Andelsboligforening;;Mads Clausensvej 45;6430;Nordborg;;;;;;;;;;;;;;;Nordborg Andelsboligforening;;;;DK;Danmark;;;;;
+212;Ingen beboer;;Nordborgvej 25;6430;Nordborg;;;;;;Att. Jørn;;;;;;;;AB;Ingen beboer;;;;DK;Danmark;;Att. Jørn;;;
+213;Nordborg Andelsboligforening;;Mads Clausensvej 45;6430;Nordborg;;;;;;Att. Jørn;;;;;;;;;Nordborg Andelsboligforening;;;;DK;Danmark;;Att. Jørn;;;
+220;;;;;;;;;;;;;;;;;;;-;;;;;;;;;;;
+221;;;;;;;;;;;;;;;;;;;-;;;;;;;;;;;
+300;4390/1/2;4390/1/2;Køkken/Alternativ - 2;20/03/2016;20/03/2016;20/03/2016;16/2016;16/2016;;;2;20/03/2016;1
+301;25.00;0.00;0.00;0.00;0.00;DKK;1;1;1;-1;Danske kroner;7.44;Kr;0;2;0;0;0;0
+302;80672.91;64538.33;64538.33;0.00;0.00;0.00;16134.58;0.00;0.00;0.00;0.00;0.00;0.0;0.00;0.00;0.00;80672.91;0.00;0.00;0.00;0.00
+303;Nordborg Andelsboligforening;;;;;;;NAB;Nordborg Andelsboligforening;;
+304;Birgit Carlsen;;;;;;;BC;Carlsen;Birgit;
+305;Ingen beboer;;Nordborgvej 25;6430;Nordborg;;;;;;Att. Jørn;;;;;;;;AB;Ingen beboer;;;;DK;Danmark;;Att. Jørn;;;
+320;Køkken/Alternativ - 2;4390/1/2;;16/2016;;;16/2016;;;-1
+321;SONDERBO;;;;;16/2016;;16/2016;SONDERBO;;;0.00;-1;2;4390/1/2.1
+322;1/2;Køkken/Alternativ - 2;1
+401;NAB;Nordborg Andelsboligforening;;;;;;;;;0.00;;;;;;0.00;0.00;;;0.00;0.00;;0.00;0.00;0.00;0.00;;;;0.00;0.00
+402;Ingen beboer;;Nordborgvej 25;6430;Nordborg;;;;;;Att. Jørn;;;;;;;;AB;Ingen beboer;;;;DK;Danmark;;Att. Jørn;;;
+403;25.00;0.00;0.00;0.00;0.00;DKK;1;1;1;-1;Danske kroner;7.44;Kr;0;2;0;0;0;0
+404;80672.91;64538.33;64538.33;0.00;0.00;0.00;16134.58;0.00;0.00;0.00;0.00;0.00;0.0;0.00;0.00;0.00;80672.91;0.00;0.00;0.00;0.00
+405;106.00;0;Sokkelhøjde
+405;40.00;1;Sokkelindrykning
+405;16.00;2;Sokkeltykkelse
+405;0.00;4;Sokkel, indrykning ved endekant
+405;29.00;20;Bordpladetykkelse
+405;40.00;21;Bordpladeoverhæng
+405;20.00;22;Bordplade, overhæng ved endekant
+405;75.00;30;Lysliste, højde
+405;0.00;31;Lysliste, indryk
+405;10.00;32;Lysliste, tykkelse
+405;0.00;34;Lysliste, indryk ved ende
+405;55.00;40;Topliste, højde
+405;0.00;41;Topliste, indryk
+405;0.00;45;Topliste, indryk ved ende
+405;0.00;51;Loftstilpasning, indryk
+405;0.00;54;Loftstilpasning, indryk på siden
+405;30.00;60;Himmel/Baldakin, tykkelse
+405;30.00;61;Himmel/baldakin, udhæng
+405;20.00;62;Himmel/Baldakin, udhæng endekanter
+405;0.00;63;Himmel/baldakin, ekstra overhæng
+405;-1.00;64;Himmel/baldakin, udhæng øverst
+405;720.00;100;Underskab, højde
+405;580.00;101;Underskab, dybde
+405;280.00;111;Overskab, dybde
+405;600.00;155;Højskabsopbygning (CH), dybde
+405;0.00;156;Afstand fra væg niveau 1
+405;0.00;157;Afstand fra væg niveau 2
+405;0.00;170;Afstand før knæk til overgangsskab
+405;0.00;171;Afstand efter knæk til overgangsskab
+405;0.00;190;Planlægningsdybde 1
+405;0.00;191;Planlægningsdybde 2
+405;0.00;192;Planlægningsdybde 3
+405;0.00;193;Planlægningsdybde 4
+405;0.00;194;Planlægningsdybde 5
+406;Nordborg Andelsboligforening;;;;;;;NAB;Nordborg Andelsboligforening;;
+407;5;0.00;0;På gulv
+407;10;106.00;0;På sokkel
+407;30;826.00;1;Under bordplade
+407;35;826.00;0;Bordplade
+407;40;855.00;0;På bordplade
+407;50;1322.00;1;Under overskab
+407;60;1322.00;0;Overskab
+407;70;2042.00;1;Topskab
+407;80;2042.00;0;Over overskab
+407;90;2106.00;1;Højskab fuld længde (1)
+407;91;2106.00;0;Højskab fuld længde (1)
+407;250;2416.00;1;Loft
+408;0;1000.00;1000.00
+408;1;0;1;1000.00;1000.00;0.00;270.00;3266.00;2416.00;125.00;1;90.00
+408;1;0;2;1000.00;-2266.00;0.00;0.00;693.00;2416.00;300.00;1;90.00
+408;1;0;;1693.00;-2266.00;0.00;270.00;180.00;2416.00;300.00;1;90.00
+408;1;0;3;1693.00;-2446.00;0.00;0.00;1204.00;2416.00;300.00;1;90.00
+408;5;0;3;60;7;1693.00;-2446.00;855.00;0.00
+408;6;1;3;Bredde;br;1204.00;1;1;0
+408;6;1;4;Højde;h;1292.00;1;1;1
+408;6;1;5;Dybde;d;300.00;1;1;2
+408;6;1;180;Bredde, liste;lb;50.00;1;-1;-1
+408;6;1;181;Tykkelse, liste;lt;12.00;1;-1;-1
+408;6;1;199;Bredde på vinduesramme;tyvra;50.00;1;-1;-1
+408;6;1;200;Tykkelse på vinduesramme;tykvin;25.00;1;-1;-1
+408;6;1;185;Gardin;gar;10;4;-1;-1
+408;6;1;217;Gardinnedstik;garder;50;2;-1;-1
+408;6;1;186;Persienne;pers;0;4;-1;-1
+408;6;1;187;Højde på persienne i procent;hope;100;2;-1;-1
+408;6;1;20;Antal;a;20;2;-1;-1
+408;6;1;429;Vinkelåbning;viap;40.00;1;-1;-1
+408;6;1;235;Udstik;uk;150.00;1;-1;-1
+408;6;1;393;Procentvis åbning;pop;60;2;-1;-1
+408;6;1;1153;Højde, gardiner over vindue;hcurt;0.00;1;-1;-1
+408;6;253;24;Bordplade;GsCou;0;5;2;2
+408;6;253;161;Himmel/baldakin;GsCP;0;5;2;12
+408;1;0;;2897.00;-2446.00;0.00;90.00;180.00;2416.00;300.00;1;90.00
+408;1;0;4;2897.00;-2266.00;0.00;0.00;1350.00;2416.00;300.00;1;90.00
+408;1;0;5;4247.00;-2266.00;0.00;90.00;3266.00;2416.00;125.00;1;90.00
+408;5;1;5;60;8;4247.00;-1429.00;0.00;90.00
+408;6;1;3;Bredde;br;980.00;1;1;0
+408;6;1;4;Højde;h;2100.00;1;1;1
+408;6;1;5;Dybde;d;125.00;1;1;2
+408;6;1;180;Bredde, liste;lb;50.00;1;-1;-1
+408;6;1;181;Tykkelse, liste;lt;10.00;1;-1;-1
+408;6;1;205;Bredde på dørramme;brdra;50.00;1;-1;-1
+408;6;1;206;Dybde på dørramme;dydra;40.00;1;-1;-1
+408;6;1;40;Hængsling;he;2;4;4;0
+408;6;1;38;Dørtype;dt;0;4;-1;-1
+408;6;1;429;Vinkelåbning;viap;65.00;1;-1;-1
+408;6;1;471;Symbol;sym;1;4;-1;-1
+408;6;1;150;Greb;hdl;0;4;-1;-1
+408;6;1;1526;Dørtærskel;dst;0;4;-1;-1
+408;6;1;1527;Højde på dørtærskel;hdst;5.00;1;-1;-1
+408;1;0;6;4247.00;1000.00;0.00;180.00;3247.00;2416.00;125.00;1;90.00
+408;5;1;6;60;8;3216.00;1000.00;0.00;180.00
+408;6;1;3;Bredde;br;1000.00;1;1;0
+408;6;1;4;Højde;h;2100.00;1;1;1
+408;6;1;5;Dybde;d;125.00;1;1;2
+408;6;1;180;Bredde, liste;lb;50.00;1;-1;-1
+408;6;1;181;Tykkelse, liste;lt;10.00;1;-1;-1
+408;6;1;205;Bredde på dørramme;brdra;50.00;1;-1;-1
+408;6;1;206;Dybde på dørramme;dydra;40.00;1;-1;-1
+408;6;1;40;Hængsling;he;2;4;4;0
+408;6;1;38;Dørtype;dt;1;4;-1;-1
+408;6;1;429;Vinkelåbning;viap;65.00;1;-1;-1
+408;6;1;471;Symbol;sym;1;4;-1;-1
+408;6;1;150;Greb;hdl;0;4;-1;-1
+408;6;1;1526;Dørtærskel;dst;0;4;-1;-1
+408;6;1;1527;Højde på dørtærskel;hdst;5.00;1;-1;-1
+408;1;1;;4247.00;1000.00;0.00;270.00;362.00;2416.00;364.00;1;90.00
+408;1;1;;3883.00;1000.00;0.00;0.00;364.00;2416.00;362.00;1;90.00
+408;1;1;;3883.00;638.00;0.00;90.00;362.00;2416.00;364.00;1;90.00
+408;1;1;;4247.00;638.00;0.00;180.00;364.00;2416.00;362.00;1;90.00
+408;1;1;;2897.00;-2446.00;0.00;180.00;1204.00;826.00;180.00;1;90.00
+408;1;1;;2897.00;-2266.00;0.00;270.00;180.00;826.00;20.00;1;90.00
+408;1;1;7;1693.00;-2266.00;0.00;0.00;1204.00;826.00;180.00;1;90.00
+408;1;1;;1693.00;-2446.00;0.00;90.00;180.00;826.00;20.00;1;90.00
+410;;SONDERBO;;
+411;SONDERBO;;;;;;;;;;;;;;;;;;;SONDERBO;;;;;;;;;;
+412;Ingen beboer;;Nordborgvej 25;6430;Nordborg;;;;;;Att. Jørn;;;;;;;;AB;Ingen beboer;;;;DK;Danmark;;Att. Jørn;;;
+420;Sønderborg Køkkenet 2015-1 DK;Sønderborg Køkkenet;0.00;100.00;0;SOND3151;0
+422;;;;;
+423;;Køkken;19;1;1;0
+424;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+425;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+425;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+423;;Generelle produkter;;0;2;0
+424;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+423;;Sokkel;;1;5;0
+424;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;169;0.00;0.00;0.00;1;
+425;Udførelse;Udførelse sokkel;Hvid;Hvid melamin;;;1;499;8;
+423;;Reoler/Dækplader/tilpasninger;;1;9;0
+424;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+425;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+410;;SONDERBO;;
+411;SONDERBO;;;;;;;;;;;;;;;;;;;SONDERBO;;;;;;;;;;
+412;Ingen beboer;;Nordborgvej 25;6430;Nordborg;;;;;;Att. Jørn;;;;;;;;AB;Ingen beboer;;;;DK;Danmark;;Att. Jørn;;;
+420;Sønderborg Køkkenet 2014-1 DK;Sønderborg Køkkenet;0.00;100.00;0;SOND3141;0
+422;;;;;
+423;;Køkken;;1;1;0
+424;16;16 mm melamin med ABS kanter;;1;1.00;1.00;0.00;;;0;16 mm melamin med ABS kanter;0;131;0.00;0.00;0.00;1;
+425;Udførelse;Udførelse;Platin;Platin hvid ( 09 );;;1;303;5;
+425;Type;Type greb;G-19;G-19 Greb D, 160mm mat bøjlegreb;;;1;332;7;
+423;;Generelle produkter;;0;2;0
+424;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+430;1;Elementer;0.00;Elementer
+430;4;Tilbehør;0.00;Tilbehør
+430;10;Belysning;0.00;Belysning
+430;35;Glas;0.00;Glas
+430;6;Bordplader;0.00;Bordplader
+450;0;G-08;topgreb til folielåge TOPGREB SQUARE STÅL;0;Sønderborg Køkkenet 2015-1 DK
+450;1;G-08;topgreb til folielåge TOPGREB SQUARE STÅL;0;Sønderborg Køkkenet 2015-1 DK
+450;2;G-08;topgreb til folielåge TOPGREB SQUARE STÅL;0;Sønderborg Køkkenet 2015-1 DK
+450;3;G-08;topgreb til folielåge TOPGREB SQUARE STÅL;0;Sønderborg Køkkenet 2015-1 DK
+500;2;0;HX2;;2;1;1;speciel tomt korpus i hvid melamin, forberedes for køl  -  63,2/193,6/58, type på køl bedes oplyst. ;1.00000;stk;;1;1040.00;1040.00;1040.00;0.00;0.00;0.00;0.00;0.00;0.00;1040.00;25.0;260.00;1300.00;0;1;0.00;0.00;0.00;160;0.58;44.00;0.00;;;;;;1040.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;0;0.00
+501;0;0;0;0;1;3;0;;;Højre
+502;Ændrede farver
+503;0;Ændrede farver;;;
+503;5;Ændrede farver;;;
+505;1;0;;1040.00;1040.00;1040.00;1;Køkken;0;
+510;50;1;632.00;;;1936.00;;;580.00;;;0;0;0
+511;106.00;1000.00;920.00;106.00;270.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;632.00;1;1;0
+513;1;1;4;Højde;h;1936.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;632.00
+513;2;h;1936.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2014-1 DK;;Køkken;SOND3141
+524;16;16 mm melamin med ABS kanter;;1;1.00;1.00;0.00;;;0;16 mm melamin med ABS kanter;0;131;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse;Platin;Platin hvid ( 09 );;;1;303;5;
+525;Type;Type greb;G-19;G-19 Greb D, 160mm mat bøjlegreb;;;1;332;7;
+500;3;0;U18SM-60;;2;1;0;OBS SKAL STÅ INDE I HX2. Skuffe element  - 1 skufe/metal  -  60/36/60;1.00000;stk;;1;1481.00;1481.00;1481.00;0.00;0.00;0.00;0.00;0.00;0.00;1481.00;25.0;370.25;1851.25;0;1;0.00;0.00;0.00;159;0.26;28.00;0.00;;;;;;1481.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;1;0;0;1;1;0;N;1;0.00
+501;0;0;0;0;1;3;0;;;Højre
+502;
+505;1;0;;1481.00;1481.00;1481.00;1;Køkken;0;
+510;50;1;600.00;;;360.00;;;580.00;;;0;0;0
+511;106.00;1000.00;904.00;106.00;270.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;600.00;1;1;0
+513;1;1;4;Højde;h;360.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;600.00
+513;2;h;360.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2014-1 DK;;Køkken;SOND3141
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;308;7;
+500;4;0;H13MEP-60;;1;1;1;Ovn/microovnskab  1 låge/2 rulletræk/metal  /1 parrallellåge for micro -  60/193,6/60;1.00000;stk;;1;6955.00;6955.00;6955.00;0.00;0.00;0.00;0.00;0.00;0.00;6955.00;25.0;1738.75;8693.75;0;1;0.00;0.00;0.00;163;0.69;52.00;0.00;;;;;;6955.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;2;0.00
+501;0;0;0;0;1;3;0;;;Højre
+502;
+505;1;0;;6955.00;6955.00;6955.00;1;Køkken;0;
+510;50;1;600.00;;;1936.00;;;580.00;;;0;0;0
+511;106.00;1000.00;288.00;106.00;270.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;600.00;1;1;0
+513;1;1;4;Højde;h;1936.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;600.00
+513;2;h;1936.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+500;5;0;U3-50;;1;1;1;Hyldeskab 1 låge 1 hylde  -  50/72/60;1.00000;stk;;1;1780.00;1780.00;1780.00;0.00;0.00;0.00;0.00;0.00;0.00;1780.00;25.0;445.00;2225.00;0;1;0.00;0.00;0.00;540;0.22;25.00;0.00;;;;;;1780.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;3;0.00
+501;2;0;0;0;1;3;0;Højre;;Højre
+502;
+505;1;0;;1780.00;1780.00;1780.00;1;Køkken;0;
+510;50;1;500.00;;;720.00;;;580.00;;;0;0;0
+511;106.00;3687.00;380.00;106.00;180.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;500.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;2;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;500.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+535;S-1000;Sokkelkassette standard;3.00000;stk;Sønderborg Køkkenet 2015-1 DK;Melamin;588;5;1;540
+536;22;;;;;
+535;S-1500HM;Sokkel   -  10,6/250 HVID MELAMIN;2.00000;stk;Sønderborg Køkkenet 2015-1 DK;Melamin;589;5;2;540
+536;22;;;;;
+535;S-3000HM;sokkelendestykke 54/10,6 HVID MELAMIN;1.00000;stk;Sønderborg Køkkenet 2015-1 DK;Melamin;590;5;3;540
+536;22;;;;;
+500;7;0;U3-50;;1;1;1;Hyldeskab 1 låge 1 hylde  -  50/72/60;1.00000;stk;;1;1780.00;1780.00;1780.00;0.00;0.00;0.00;0.00;0.00;0.00;1780.00;25.0;445.00;2225.00;0;1;0.00;0.00;0.00;537;0.22;25.00;0.00;;;;;;1780.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;4;0.00
+501;1;0;0;0;1;3;0;Venstre;;Højre
+502;
+505;1;0;;1780.00;1780.00;1780.00;1;Køkken;0;
+510;50;1;500.00;;;720.00;;;580.00;;;0;0;0
+511;106.00;4187.00;380.00;106.00;180.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;500.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;1;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;500.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+500;11;0;U3-50;;1;1;1;Hyldeskab 1 låge 1 hylde  -  50/72/60;1.00000;stk;;1;1780.00;1780.00;1780.00;0.00;0.00;0.00;0.00;0.00;0.00;1780.00;25.0;445.00;2225.00;0;1;0.00;0.00;0.00;467;0.22;25.00;0.00;;;;;;1780.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;5;0.00
+501;2;0;0;0;1;3;0;Højre;;Højre
+502;
+505;1;0;;1780.00;1780.00;1780.00;1;Køkken;0;
+510;50;1;500.00;;;720.00;;;580.00;;;0;0;0
+511;106.00;1000.00;-1112.00;106.00;270.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;500.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;2;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;500.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+500;14;0;U5-60;;2;1;1;OBS: med dobbelt affalds udtræk! Vaskeskab 1 låge m/aquabund  -  60/72/60;1.00000;stk;;1;2152.00;2152.00;2152.00;0.00;0.00;0.00;0.00;0.00;0.00;2152.00;25.0;538.00;2690.00;0;1;0.00;0.00;0.00;35;0.26;28.00;0.00;;;;;;2152.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;6;0.00
+501;1;0;0;0;1;3;0;Venstre;;Højre
+502;
+505;1;0;;2152.00;2152.00;2152.00;1;Køkken;0;
+510;50;1;600.00;;;720.00;;;580.00;;;0;0;0
+511;106.00;2287.00;-2261.00;106.00;0.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;600.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;1;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;1;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;600.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+535;D1004;dobbelt affalds udtræk;1.00000;stk;Sønderborg Køkkenet 2015-1 DK;Standard;473;14;1;35
+536;22;;;;;
+500;14;1;D1004;;1;1;1;dobbelt affalds udtræk;1.00000;stk;;1;745.00;745.00;745.00;0.00;0.00;0.00;0.00;0.00;0.00;745.00;25.0;186.25;931.25;0;0;0.00;0.00;0.00;473;0.00;0.00;0.00;;;;;;745.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;;7;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;745.00;745.00;745.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+500;15;0;U16SM-40;;1;1;1;2 frontudtræk i metal 1 skuffe/metal øverst  -  40/72/60;1.00000;stk;;1;4414.00;4414.00;4414.00;0.00;0.00;0.00;0.00;0.00;0.00;4414.00;25.0;1103.50;5517.50;0;1;0.00;0.00;0.00;433;0.17;33.00;0.00;;;;;;4414.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;8;0.00
+501;0;0;0;0;1;3;0;;;Højre
+502;
+505;1;0;;4414.00;4414.00;4414.00;1;Køkken;0;
+510;50;1;400.00;;;720.00;;;580.00;;;0;0;0
+511;106.00;2887.00;-2261.00;106.00;0.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;400.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;400.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+535;D1013;Bestikindsats grå plast 40 cm;1.00000;stk;Sønderborg Køkkenet 2015-1 DK;Standard;483;15;1;433
+536;22;;;;;
+500;15;1;D1013;;1;1;1;Bestikindsats grå plast 40 cm;1.00000;stk;;1;274.00;274.00;274.00;0.00;0.00;0.00;0.00;0.00;0.00;274.00;25.0;68.50;342.50;0;0;0.00;0.00;0.00;483;0.00;0.00;0.00;;;;;;274.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;;9;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;274.00;274.00;274.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+500;16;0;U16SM-60;;2;1;1;Under kogepladen: 2 frontudtræk i metal 1 skuffe/metal øverst  -  60/72/60;1.00000;stk;;1;3631.00;3631.00;3631.00;0.00;0.00;0.00;0.00;0.00;0.00;3631.00;25.0;907.75;4538.75;0;1;0.00;0.00;0.00;22;0.26;38.00;0.00;;;;;;3631.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;10;0.00
+501;0;0;0;0;1;3;0;;;Højre
+502;
+505;1;0;;3631.00;3631.00;3631.00;1;Køkken;0;
+510;50;1;600.00;;;720.00;;;580.00;;;0;0;0
+511;106.00;3287.00;-2261.00;106.00;0.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;600.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;600.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+500;17;0;U3-30;;1;1;1;Hyldeskab 1 låge 1 hylde  -  30/72/60;1.00000;stk;;1;1351.00;1351.00;1351.00;0.00;0.00;0.00;0.00;0.00;0.00;1351.00;25.0;337.75;1688.75;0;1;0.00;0.00;0.00;418;0.13;20.00;0.00;;;;;;1351.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;11;0.00
+501;2;0;0;0;1;3;0;Højre;;Højre
+502;
+505;1;0;;1351.00;1351.00;1351.00;1;Køkken;0;
+510;50;1;300.00;;;720.00;;;580.00;;;0;0;0
+511;106.00;3887.00;-2266.00;106.00;0.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;300.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;2;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;300.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+500;21;0;O1A-60;;1;1;1;Overskab 1låge  sidehængt, 2 hylder  -  60/72/33;1.00000;stk;;1;1932.00;1932.00;1932.00;0.00;0.00;0.00;0.00;0.00;0.00;1932.00;25.0;483.00;2415.00;0;1;0.00;0.00;0.00;444;0.13;18.00;0.00;;;;;;1932.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;12;0.00
+501;2;0;0;0;1;3;0;Højre;;Højre
+502;
+505;1;0;;1932.00;1932.00;1932.00;1;Køkken;0;
+510;50;1;600.00;;;720.00;;;310.00;;;0;0;0
+511;;1000.00;-1112.00;1322.00;270.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;600.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;310.00;1;1;2
+513;1;1;40;Hængsling;he;2;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;1;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;600.00
+513;2;h;720.00
+513;2;t;310.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+535;H2021;LED spot inkl udfræsning;1.00000;stk;Sønderborg Køkkenet 2015-1 DK;Standard;425;21;1;444
+536;22;;;;;
+500;21;1;H2021;;1;1;1;LED spot inkl udfræsning;1.00000;stk;;1;435.00;435.00;435.00;0.00;0.00;0.00;0.00;0.00;0.00;435.00;25.0;108.75;543.75;0;0;0.00;0.00;0.00;425;0.00;0.00;0.00;;;;;;435.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;;13;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;435.00;435.00;435.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+500;24;0;U16SM-80;;1;1;1;2 frontudtræk i metal 1 skuffe/metal øverst -  80/72/60;1.00000;stk;;1;5893.00;5893.00;5893.00;0.00;0.00;0.00;0.00;0.00;0.00;5893.00;25.0;1473.25;7366.25;0;1;0.00;0.00;0.00;336;0.35;47.00;0.00;;;;;;5893.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;14;0.00
+501;0;0;0;0;1;3;0;;;Højre
+502;
+505;1;0;;5893.00;5893.00;5893.00;1;Køkken;0;
+510;50;1;800.00;;;720.00;;;580.00;;;0;0;0
+511;106.00;1000.00;-312.00;106.00;270.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;800.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;0;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;800.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+500;25;0;O1A-80;;1;1;1;Overskab m 2 låger  sidehængt, 2 hylder  -  80/72/33;1.00000;stk;;1;2688.00;2688.00;2688.00;0.00;0.00;0.00;0.00;0.00;0.00;2688.00;25.0;672.00;3360.00;0;1;0.00;0.00;0.00;306;0.19;25.00;0.00;;;;;;2688.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;N;15;0.00
+501;0;0;0;0;1;3;0;;;Højre
+502;
+505;1;0;;2688.00;2688.00;2688.00;1;Køkken;0;
+510;50;1;800.00;;;720.00;;;310.00;;;0;0;0
+511;;1000.00;-312.00;1322.00;270.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;800.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;310.00;1;1;2
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;146;Greb, dør;dhdl;0;5;3;0
+513;1;1;147;Greb, glasdør;dghdl;0;5;3;1
+513;1;1;148;Greb, skuffe;drhdl;0;5;3;2
+513;1;1;149;Greb, lille skuffe;sdrhdl;0;5;3;3
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;265;Panel;pa;0;4;-1;-1
+513;1;1;991;Panel på finerede sider;paout;0;4;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;2;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;2224;Spot / type top;spotLTop;0;4;-1;-1
+513;1;1;2225;Spot, afstand fra front på top;spotdistTop;0.00;1;-1;-1
+513;1;1;1318;Vask, udskæring;scut;0;4;-1;-1
+513;1;1;1952;Type vaskeudskæring;tscut;1;4;-1;-1
+513;1;1;1558;Forlængelse;proLong;0;4;-1;-1
+513;1;1;1559;Længde på forlængelse;proLongLen;0.00;1;-1;-1
+513;1;1;719;Type kogeplade;tcook;0;4;4;7
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;800.00
+513;2;h;720.00
+513;2;t;310.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Køkken;SOND3151
+524;19;19 mm Folie med top greb;;3;1.00;1.00;0.00;;;0;19 mm Folie med top greb;0;112;0.00;0.00;0.00;3;
+525;Udførelse;Udførelse;Hvid;Hvid folie blank;;;1;244;5;
+525;Type;Type greb;WAVE;WAVE topgreb ;;;1;309;7;
+535;H2021;LED spot inkl udfræsning;2.00000;stk;Sønderborg Køkkenet 2015-1 DK;Standard;424;25;1;306
+536;22;;;;;
+500;25;1;H2021;;1;1;1;LED spot inkl udfræsning;2.00000;stk;;1;435.00;870.00;870.00;0.00;0.00;0.00;0.00;0.00;0.00;870.00;25.0;217.50;1087.50;0;0;0.00;0.00;0.00;424;0.00;0.00;0.00;;;;;;870.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;;16;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;870.00;870.00;870.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+500;36;0;G-08;;1;1;1;topgreb til folielåge TOPGREB SQUARE STÅL;22.00000;stk;;1;200.00;4400.00;4400.00;0.00;0.00;0.00;0.00;0.00;0.00;4400.00;25.0;1100.00;5500.00;0;3;0.00;0.00;0.00;485;0.00;0.00;0.00;;;;;;4400.00;0;4;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;6;0;0;0;1;1;0;;17;0.00
+501;;;;;;10;0;;;
+502;
+505;1;0;;4400.00;4400.00;4400.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;;;;
+512;;;0;0;-1
+520;SONDERBO;Sønderborg Køkkenet 2014-1 DK;;Generelle produkter;SOND3141
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+500;1;0;TM4010HM;;1;1;1;Tilpasninger med kanter  (2 korte og 1 lang )   i HVID MELAMIN-  10/193,6;1.00000;stk;;4;220.00;220.00;220.00;0.00;0.00;0.00;0.00;0.00;0.00;220.00;25.0;55.00;275.00;0;1;0.00;0.00;0.00;152;0.01;2.00;0.00;;;;;;220.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;N;18;0.00
+501;0;;0;0;1;3;0;;;Højre
+502;
+503;0;Bredde = 80.00, Dybde = 580.00;;;
+503;1;Bredde;1;0;80.00
+503;2;Dybde;1;2;580.00
+505;1;0;;220.00;220.00;220.00;9;Reoler/Dækplader/tilpasninger;0;
+510;42;2;80.00;;;1936.00;;;580.00;;;1;1;0
+511;106.00;1000.00;1000.00;106.00;270.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;80.00;1;1;0
+513;1;1;4;Højde;h;1936.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;102;Farve;farge;1;4;-1;-1
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;586;Dybde på synlig tilpasning;d_syn;0.00;1;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;1000;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;1676;Indlagt spotlys;inspot;0;4;-1;-1
+513;1;1;568;Kanttype;kt;0;4;-1;-1
+513;1;1;352;Højde på dekor;hode;30.00;1;-1;-1
+513;1;1;1544;Bordplade med overhæng som forkant overhæng;wofo;1;4;-1;-1
+513;1;1;1852;Skabside;cs;0;4;-1;-1
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;1;1;1836;Automatisk udskæring for vask;aSinkC;1;4;4;8
+513;2;b;80.00
+513;2;h;1936.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;5;1;S-1000;;1;1;1;Sokkelkassette standard;3.00000;stk;;4;41.00;123.00;123.00;0.00;0.00;0.00;0.00;0.00;0.00;123.00;25.0;30.75;153.75;0;0;0.00;0.00;0.00;588;0.01;1.00;0.00;;;;;;123.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;19;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;123.00;123.00;123.00;5;Sokkel;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Sokkel;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;169;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse sokkel;Hvid;Hvid melamin;;;1;499;8;
+500;5;2;S-1500HM;;2;1;1;Sokkel   -  10,6/250 HVID MELAMIN;2.00000;stk;;4;129.00;258.00;258.00;0.00;0.00;0.00;0.00;0.00;0.00;258.00;25.0;64.50;322.50;0;2;0.00;0.00;0.00;589;0.25;6.00;0.00;;;;;;258.00;0;3;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;20;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;258.00;258.00;258.00;5;Sokkel;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Sokkel;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;169;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse sokkel;Hvid;Hvid melamin;;;1;499;8;
+500;5;3;S-3000HM;;2;1;1;sokkelendestykke 54/10,6 HVID MELAMIN;1.00000;stk;;4;52.00;52.00;52.00;0.00;0.00;0.00;0.00;0.00;0.00;52.00;25.0;13.00;65.00;0;2;0.00;0.00;0.00;590;0.01;0.00;0.00;;;;;;52.00;0;3;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;21;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;52.00;52.00;52.00;5;Sokkel;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Sokkel;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;169;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse sokkel;Hvid;Hvid melamin;;;1;499;8;
+500;6;0;H2001M;;2;1;1;16 mm hvid dækplade på bagsiden af skabene melamin med kanter,1 stk. 106 cm x 72 cm kantet på alle sider;0.76000;m²;;4;1139.00;865.64;865.64;0.00;0.00;0.00;0.00;0.00;0.00;865.64;25.0;216.41;1082.05;19;1;0.00;0.00;0.00;584;0.00;0.00;0.00;;;;;;865.64;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;22;0.00
+501;;0;0;0;;515;1;;;
+502;
+503;0;Højde = 720.00;;;
+503;1;Højde;1;1;720.00
+505;1;0;;865.64;865.64;865.64;9;Reoler/Dækplader/tilpasninger;0;
+510;0;-1;;;;720.00;;;;;;0;0;1
+511;106.00;3187.00;380.00;106.00;0.00
+512;;;0;997;-1
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;102;Farve;farge;0;4;4;1
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;1;1011;Spot / type af bund;spotL;0;5;2;17
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;1060.00
+513;2;h;720.00
+513;2;t;16.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;8;0;TM1010HM;;1;1;1;Tilpasninger med kanter  (2 korte og 1 lang ) i HVID MELAMIN -  10/72/;1.00000;stk;;4;150.00;150.00;150.00;0.00;0.00;0.00;0.00;0.00;0.00;150.00;25.0;37.50;187.50;0;1;0.00;0.00;0.00;488;0.01;2.00;0.00;;;;;;150.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;N;23;0.00
+501;0;;0;0;1;3;0;;;Højre
+502;
+503;0;Bredde = 60.00, Dybde = 580.00;;;
+503;1;Bredde;1;0;60.00
+503;2;Dybde;1;2;580.00
+505;1;0;;150.00;150.00;150.00;9;Reoler/Dækplader/tilpasninger;0;
+510;42;2;60.00;;;720.00;;;580.00;;;1;1;0
+511;106.00;4247.00;380.00;106.00;180.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;60.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;102;Farve;farge;1;4;-1;-1
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;586;Dybde på synlig tilpasning;d_syn;0.00;1;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;1000;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;1676;Indlagt spotlys;inspot;0;4;-1;-1
+513;1;1;568;Kanttype;kt;0;4;-1;-1
+513;1;1;352;Højde på dekor;hode;30.00;1;-1;-1
+513;1;1;1544;Bordplade med overhæng som forkant overhæng;wofo;1;4;-1;-1
+513;1;1;1852;Skabside;cs;0;4;-1;-1
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;1;1;1836;Automatisk udskæring for vask;aSinkC;1;4;4;8
+513;2;b;60.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;9;0;H2001M;;2;1;1;Aflukning til faldstamm, 16 mm hvid hylde i melamin med kanter, \r1 stk. 252 cm x 55 cm kantet på en lang og en venstre side,\r1 stk. 252 cm x 29 cm kantet på en lang og højre side;2.12000;m²;;4;2630.77;5577.23;2415.00;0.00;0.00;0.00;0.00;0.00;0.00;2415.00;25.0;603.75;3018.75;19;1;0.00;0.00;0.00;443;0.00;0.00;0.00;;;;;;5577.23;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;24;0.00
+501;;0;0;0;;515;1;;;
+502;Højde = 2416.00
+503;0;Højde = 2416.00;;;
+503;1;Højde;1;1;2416.00
+505;1;0;;5577.23;5577.23;2415.00;9;Reoler/Dækplader/tilpasninger;0;
+510;0;-1;;;;2416.00;;;;;;0;0;1
+511;0.00;1260.00;-2266.00;0.00;90.00
+512;;;0;997;-1
+513;1;1;4;Højde;h;2416.00;1;1;1
+513;1;1;102;Farve;farge;0;4;4;1
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;1;1011;Spot / type af bund;spotL;0;5;2;17
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;2;b;500.00
+513;2;h;2416.00
+513;2;t;260.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;10;0;TM1015HM;;1;1;1;Tilpasninger med kanter  (2 korte og 1 lang )  i HVID MELAMIN-  15/72;1.00000;stk;;4;226.00;226.00;226.00;0.00;0.00;0.00;0.00;0.00;0.00;226.00;25.0;56.50;282.50;0;1;0.00;0.00;0.00;456;0.01;2.00;0.00;;;;;;226.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;N;25;0.00
+501;0;;0;0;1;3;0;;;Højre
+502;Dybde = 580.00
+503;0;Dybde = 580.00;;;
+503;2;Dybde;1;2;580.00
+505;1;0;;226.00;226.00;226.00;9;Reoler/Dækplader/tilpasninger;0;
+510;42;2;150.00;;;720.00;;;580.00;;;0;1;0
+511;106.00;1000.00;-1612.00;106.00;270.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;150.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;102;Farve;farge;1;4;-1;-1
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;586;Dybde på synlig tilpasning;d_syn;0.00;1;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;1000;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;1676;Indlagt spotlys;inspot;0;4;-1;-1
+513;1;1;568;Kanttype;kt;0;4;-1;-1
+513;1;1;352;Højde på dekor;hode;30.00;1;-1;-1
+513;1;1;1544;Bordplade med overhæng som forkant overhæng;wofo;1;4;-1;-1
+513;1;1;1852;Skabside;cs;0;4;-1;-1
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;1;1;1836;Automatisk udskæring for vask;aSinkC;1;4;4;8
+513;2;b;150.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;12;0;TM1015HM;;1;1;1;Tilpasninger med kanter  (2 korte og 1 lang )  i HVID MELAMIN-  15/72;1.00000;stk;;4;226.00;226.00;226.00;0.00;0.00;0.00;0.00;0.00;0.00;226.00;25.0;56.50;282.50;0;1;0.00;0.00;0.00;460;0.01;2.00;0.00;;;;;;226.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;N;26;0.00
+501;0;;0;0;1;3;0;;;Højre
+502;Dybde = 580.00
+503;0;Dybde = 580.00;;;
+503;2;Dybde;1;2;580.00
+505;1;0;;226.00;226.00;226.00;9;Reoler/Dækplader/tilpasninger;0;
+510;42;2;150.00;;;720.00;;;580.00;;;0;1;0
+511;106.00;1531.00;-2266.00;106.00;0.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;150.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;102;Farve;farge;1;4;-1;-1
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;586;Dybde på synlig tilpasning;d_syn;0.00;1;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;1000;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;1676;Indlagt spotlys;inspot;0;4;-1;-1
+513;1;1;568;Kanttype;kt;0;4;-1;-1
+513;1;1;352;Højde på dekor;hode;30.00;1;-1;-1
+513;1;1;1544;Bordplade med overhæng som forkant overhæng;wofo;1;4;-1;-1
+513;1;1;1852;Skabside;cs;0;4;-1;-1
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;1;1;1836;Automatisk udskæring for vask;aSinkC;1;4;4;8
+513;2;b;150.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;13;0;D2011;;2;1;1;Dækplade på 10,5 cm sokkel  -  60/87;1.00000;stk;;4;735.00;735.00;735.00;0.00;0.00;0.00;0.00;0.00;0.00;735.00;25.0;183.75;918.75;0;1;0.00;0.00;0.00;208;0.01;5.00;0.00;;;;;;735.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;27;0.00
+501;;0;0;0;1;3;0;;;Højre
+502;
+505;1;0;;735.00;735.00;735.00;9;Reoler/Dækplader/tilpasninger;0;
+510;42;133;16.00;;;;;;600.00;;;0;0;0
+511;0.00;1677.00;-2266.00;0.00;0.00
+512;;;0;997;-1
+513;1;1;3;Bredde;br;16.00;1;1;0
+513;1;1;84;Højde på øverste del;hød;720.00;1;-1;-1
+513;1;1;5;Dybde;d;600.00;1;1;2
+513;1;1;17;Højde på fast sokkel;fh;105.00;1;-1;-1
+513;1;1;115;Indryk sokkel;irs;60.00;1;-1;-1
+513;1;1;618;Type underdel;ty_low;0;4;-1;-1
+513;1;1;51;Indrykning på siden;ins;0.00;1;-1;-1
+513;1;1;260;Finering;fin;0;4;4;1
+513;1;1;1021;Ekstra udhæng ved bordplade;exovr;0.00;1;-1;-1
+513;1;1;428;Forkant;foli;1;4;-1;-1
+513;1;1;2041;Fast sokkel;fixp;0;4;-1;-1
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;1;1;1836;Automatisk udskæring for vask;aSinkC;1;4;4;8
+513;2;b;16.00
+513;2;h;825.00
+513;2;t;600.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;18;0;TM1010HM;;1;1;1;Tilpasninger med kanter  (2 korte og 1 lang ) i HVID MELAMIN -  10/72/;1.00000;stk;;4;150.00;150.00;150.00;0.00;0.00;0.00;0.00;0.00;0.00;150.00;25.0;37.50;187.50;0;1;0.00;0.00;0.00;18;0.01;2.00;0.00;;;;;;150.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;N;28;0.00
+501;0;;0;0;1;3;0;;;Højre
+502;Bredde = 60.00, Dybde = 580.00
+503;0;Bredde = 60.00, Dybde = 580.00;;;
+503;1;Bredde;1;0;60.00
+503;2;Dybde;1;2;580.00
+505;1;0;;150.00;150.00;150.00;9;Reoler/Dækplader/tilpasninger;0;
+510;42;2;60.00;;;720.00;;;580.00;;;1;1;0
+511;106.00;4187.00;-2266.00;106.00;0.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;60.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;580.00;1;1;2
+513;1;1;102;Farve;farge;1;4;-1;-1
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;586;Dybde på synlig tilpasning;d_syn;0.00;1;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;1000;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;1676;Indlagt spotlys;inspot;0;4;-1;-1
+513;1;1;568;Kanttype;kt;0;4;-1;-1
+513;1;1;352;Højde på dekor;hode;30.00;1;-1;-1
+513;1;1;1544;Bordplade med overhæng som forkant overhæng;wofo;1;4;-1;-1
+513;1;1;1852;Skabside;cs;0;4;-1;-1
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;1;1;1836;Automatisk udskæring for vask;aSinkC;1;4;4;8
+513;2;b;60.00
+513;2;h;720.00
+513;2;t;580.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;20;0;TM1010HM;;1;1;1;Tilpasninger med kanter  (2 korte og 1 lang ) i HVID MELAMIN -  10/72/;1.00000;stk;;4;150.00;150.00;150.00;0.00;0.00;0.00;0.00;0.00;0.00;150.00;25.0;37.50;187.50;0;1;0.00;0.00;0.00;358;0.01;2.00;0.00;;;;;;150.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;N;29;0.00
+501;0;;0;0;1;3;0;;;Højre
+502;Bredde = 54.00, Dybde = 310.00
+503;0;Bredde = 54.00, Dybde = 310.00;;;
+503;1;Bredde;1;0;54.00
+503;2;Dybde;1;2;310.00
+505;1;0;;150.00;150.00;150.00;9;Reoler/Dækplader/tilpasninger;0;
+510;42;2;54.00;;;720.00;;;310.00;;;1;1;0
+511;;1310.00;-1766.00;1322.00;90.00
+512;;;0;1;-1
+513;1;1;3;Bredde;br;54.00;1;1;0
+513;1;1;4;Højde;h;720.00;1;1;1
+513;1;1;5;Dybde;d;310.00;1;1;2
+513;1;1;102;Farve;farge;1;4;-1;-1
+513;1;1;90;Retning;ret;1;4;4;3
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;586;Dybde på synlig tilpasning;d_syn;0.00;1;-1;-1
+513;1;1;1011;Spot / type af bund;spotL;1000;4;-1;-1
+513;1;1;1109;Spotlight, afstand fra front;spotdist;0.00;1;-1;-1
+513;1;1;1676;Indlagt spotlys;inspot;0;4;-1;-1
+513;1;1;568;Kanttype;kt;0;4;-1;-1
+513;1;1;352;Højde på dekor;hode;30.00;1;-1;-1
+513;1;1;1544;Bordplade med overhæng som forkant overhæng;wofo;1;4;-1;-1
+513;1;1;1852;Skabside;cs;0;4;-1;-1
+513;1;253;22;Sokkel;GsPli;0;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;0;5;2;1
+513;1;253;24;Bordplade;GsCou;0;5;2;2
+513;1;253;25;Lysliste;GsLiSc;0;5;2;3
+513;1;253;26;Topliste;GsCor;0;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;0;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;0;5;2;7
+513;1;253;33;Dekorliste;;0;5;2;11
+513;1;253;161;Himmel/baldakin;GsCP;0;5;2;12
+513;1;1;1836;Automatisk udskæring for vask;aSinkC;1;4;4;8
+513;2;b;54.00
+513;2;h;720.00
+513;2;t;310.00
+513;2;Construction_ID;-1.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;22;0;H2001M;;2;1;1;Afluknung mod loft, 16 mm hvid hylde i melamin med kanter, 1 stk. 175 cm x 49 cm kantet på en lang og en højre side;0.86000;m²;;4;1139.00;979.54;979.54;0.00;0.00;0.00;0.00;0.00;0.00;979.54;25.0;244.88;1224.43;19;1;0.00;0.00;0.00;481;0.00;0.00;0.00;;;;;;979.54;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;30;0.00
+501;;;0;0;;3;1;;;
+502;Højde = 1700.00, Dybde = 310.00, Bredde = 374.00
+503;0;Højde = 1700.00, Dybde = 310.00, Bredde = 374.00;;;
+503;1;Højde;1;1;1700.00
+503;2;Dybde;1;2;310.00
+503;2;Bredde;1;0;374.00
+505;1;0;;979.54;979.54;979.54;9;Reoler/Dækplader/tilpasninger;0;
+510;0;-1;374.00;;;1700.00;;;310.00;;;1;1;1
+511;;1000.00;1000.00;2042.00;270.00
+512;;;0;997;-1
+513;1;1;5;Dybde;d;310.00;1;1;2
+513;1;1;102;Farve;farge;1;4;-1;-1
+513;1;1;3;Bredde;br;374.00;1;1;0
+513;1;1;4;Højde;h;1700.00;1;1;1
+513;1;1;819;Træretning;wood;1;4;-1;-1
+513;2;b;374.00
+513;2;h;1700.00
+513;2;t;310.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;23;0;H2001M;;2;1;1;Aflukning mod loft, 16 mm hvid hylde i melamin med kanter, 1 stk. 112 cm x 49 cm kantet på en lang og to korte sider, 1 stk. 12 cm x 49 cm kantet på to lange og en kort side;0.85000;m²;;4;1139.00;968.15;968.15;0.00;0.00;0.00;0.00;0.00;0.00;968.15;25.0;242.04;1210.19;19;1;0.00;0.00;0.00;482;0.00;0.00;0.00;;;;;;968.15;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;31;0.00
+501;;;0;0;;3;1;;;
+502;Højde = 374.00, Dybde = 310.00, Bredde = 1066.00
+503;0;Højde = 374.00, Dybde = 310.00, Bredde = 1066.00;;;
+503;1;Højde;1;1;374.00
+503;2;Dybde;1;2;310.00
+503;2;Bredde;1;0;1066.00
+505;1;0;;968.15;968.15;968.15;9;Reoler/Dækplader/tilpasninger;0;
+510;0;-1;1066.00;;;374.00;;;310.00;;;1;1;1
+511;;1000.00;-700.00;2042.00;270.00
+512;;;0;997;-1
+513;1;1;5;Dybde;d;310.00;1;1;2
+513;1;1;102;Farve;farge;1;4;-1;-1
+513;1;1;3;Bredde;br;1066.00;1;1;0
+513;1;1;4;Højde;h;374.00;1;1;1
+513;1;1;819;Træretning;wood;1;4;-1;-1
+513;2;b;1066.00
+513;2;h;374.00
+513;2;t;310.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Reoler/Dækplader/tilpasninger;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;180;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse dækplader/tilpasninger;Hvid;Hvid melamin;;;1;573;10;
+500;28;0;S-1100HM;;2;1;1;Sokkel   -  10,6/250 HVID MELAMIN;3.00000;stk;;4;129.00;387.00;387.00;0.00;0.00;0.00;0.00;0.00;0.00;387.00;25.0;96.75;483.75;0;2;0.00;0.00;0.00;91;0.25;6.00;0.00;;;;;;387.00;0;3;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;32;0.00
+501;;;;;;2;0;;;
+502;
+505;1;0;;387.00;387.00;387.00;5;Sokkel;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;;;;
+512;;;0;0;-1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Sokkel;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;169;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse sokkel;Hvid;Hvid melamin;;;1;499;8;
+500;32;0;S-1000;;1;1;1;Sokkelkassette standard;12.00000;stk;;4;41.00;492.00;492.00;0.00;0.00;0.00;0.00;0.00;0.00;492.00;25.0;123.00;615.00;0;0;0.00;0.00;0.00;477;0.01;1.00;0.00;;;;;;492.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;33;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;492.00;492.00;492.00;5;Sokkel;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Sokkel;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;169;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse sokkel;Hvid;Hvid melamin;;;1;499;8;
+500;33;0;S-1501;;2;1;0;Umalet Sokkel  -  10,6/250;3.00000;stk;;4;50.00;150.00;150.00;0.00;0.00;0.00;0.00;0.00;0.00;150.00;25.0;37.50;187.50;0;2;0.00;0.00;0.00;478;0.00;0.00;0.00;;;;;;150.00;0;3;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;1;0;0;1;1;0;;34;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;150.00;150.00;150.00;5;Sokkel;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Sokkel;SOND3151
+524;Umalet;Umalet;;1;1.00;1.00;0.00;;;0;Umalet;0;172;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse sokkel;Umalet;Umalet;;;1;516;8;
+500;34;0;S-3000HM;;2;1;1;sokkelendestykke 54/10,6 HVID MELAMIN;2.00000;stk;;4;52.00;104.00;104.00;0.00;0.00;0.00;0.00;0.00;0.00;104.00;25.0;26.00;130.00;0;2;0.00;0.00;0.00;479;0.01;0.00;0.00;;;;;;104.00;0;3;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;35;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;104.00;104.00;104.00;5;Sokkel;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Sokkel;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;169;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse sokkel;Hvid;Hvid melamin;;;1;499;8;
+500;35;0;S-1560;;2;1;1;sokkel til foran opvaskemaskine 60/9,1 HVID MELAMIN;1.00000;stk;;4;52.00;52.00;52.00;0.00;0.00;0.00;0.00;0.00;0.00;52.00;25.0;13.00;65.00;0;1;0.00;0.00;0.00;480;0.01;0.00;0.00;;;;;;52.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;8;0;0;0;1;1;0;;36;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;52.00;52.00;52.00;5;Sokkel;0;
+510;0;0;600.00;;;135.00;;;16.00;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;3;Bredde;br;600.00;1;-1;-1
+513;1;1;4;Højde;h;135.00;1;-1;-1
+513;1;1;5;Dybde;d;16.00;1;-1;-1
+513;1;1;650;Lysende flade;emiss;0;4;-1;-1
+513;1;1;1836;Automatisk udskæring for vask;aSinkC;1;4;4;8
+513;1;253;22;Sokkel;GsPli;1;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;1;5;2;1
+513;1;253;24;Bordplade;GsCou;1;5;2;2
+513;1;253;25;Lysliste;GsLiSc;1;5;2;3
+513;1;253;26;Topliste;GsCor;1;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;1;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;1;5;2;7
+513;1;253;161;Himmel/baldakin;GsCP;1;5;2;12
+513;1;1;1011;Spot / type af bund;spotL;1000;4;-1;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Sokkel;SOND3151
+524;Melamin;Melamin;;1;1.00;1.00;0.00;;;0;Melamin;0;169;0.00;0.00;0.00;1;
+525;Udførelse;Udførelse sokkel;Hvid;Hvid melamin;;;1;499;8;
+500;26;0;H2030;;2;1;1;LED spot i alt;3.00000;stk;;10;0.00;0.00;0.00;0.00;0.00;0.00;0.00;0.00;0.00;0.00;25.0;0.00;0.00;0;0;0.00;0.00;0.00;428;0.00;0.00;0.00;;;;;;0.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;9;0;0;0;1;1;0;;37;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;0.00;0.00;0.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+500;27;0;H2022;;1;1;1;trafo til LED spot 1-6 spot;1.00000;stk;;10;419.00;419.00;419.00;0.00;0.00;0.00;0.00;0.00;0.00;419.00;25.0;104.75;523.75;0;0;0.00;0.00;0.00;429;0.00;0.00;0.00;;;;;;419.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;9;0;0;0;1;1;0;;38;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;419.00;419.00;419.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+500;19;0;H2028;;1;1;1;Stænkplade firkantet i 6 mm hvid glas 80 x 40 cm;1.00000;stk;;35;564.00;564.00;564.00;0.00;0.00;0.00;0.00;0.00;0.00;564.00;25.0;141.00;705.00;0;1;0.00;0.00;0.00;93;0.00;0.00;0.00;;;;;;564.00;0;2;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;10;0;0;0;1;1;0;;39;0.00
+501;;;0;0;;3;0;;;
+502;
+505;1;0;;564.00;564.00;564.00;2;Generelle produkter;0;
+510;1;55;800.00;;;400.00;;;5.00;;;0;0;0
+511;;3187.00;-2266.00;855.00;0.00
+512;;;0;997;-1
+513;1;1;3;Bredde;br;800.00;1;-1;-1
+513;1;1;4;Højde;h;400.00;1;-1;-1
+513;1;1;5;Dybde;d;5.00;1;-1;-1
+513;1;1;650;Lysende flade;emiss;0;4;-1;-1
+513;1;1;1836;Automatisk udskæring for vask;aSinkC;1;4;4;8
+513;1;253;22;Sokkel;GsPli;1;5;2;0
+513;1;253;23;Sokkelliste;GsPliL;1;5;2;1
+513;1;253;24;Bordplade;GsCou;1;5;2;2
+513;1;253;25;Lysliste;GsLiSc;1;5;2;3
+513;1;253;26;Topliste;GsCor;1;5;2;4
+513;1;253;27;Loftsafslutning;GsCeil;1;5;2;5
+513;1;253;29;Fliser over bordplade;GsTile;1;5;2;7
+513;1;253;161;Himmel/baldakin;GsCP;1;5;2;12
+513;1;1;1011;Spot / type af bund;spotL;1000;4;-1;-1
+513;2;b;800.00
+513;2;h;400.00
+513;2;t;5.00
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+535;H2026T;tillæg for 2 stk glasholdere;1.00000;stk;Sønderborg Køkkenet 2015-1 DK;Standard;96;19;1;93
+536;22;;;;;
+500;19;1;H2026T;;1;1;1;tillæg for 2 stk glasholdere;1.00000;stk;;35;119.00;119.00;119.00;0.00;0.00;0.00;0.00;0.00;0.00;119.00;25.0;29.75;148.75;0;0;0.00;0.00;0.00;96;0.00;0.00;0.00;;;;;;119.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;10;0;0;0;1;1;0;;40;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;119.00;119.00;119.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+500;29;0;;;2;0;1;1 sæt 29 mm retkant laminat bordplade i farve 0752 black pearl med 1 samling, \r1 stk. 196,6 cm x 62 cm kantet på venstre side, \r1 stk. 262,7 cm x 90 cm kantet på højre side - skal tilpasses i vinduesbænken -\r1 stk. 107 cm x 65 cm kantet på højre side og bagkant;1.00000;;;6;7415.00;7415.00;9811.00;0.00;0.00;0.00;0.00;0.00;0.00;9811.00;25.0;2452.75;12263.75;0;0;0.00;0.00;0.00;474;0.00;0.00;0.00;;;;;;7415.00;0;0;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;12;0;0;0;1;1;0;;41;0.00
+501;0;0;0;0;;2;0;;;
+502;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;_WINNER_;Ingen producent;;Default group;NO_SUPPL
+524; ; ;;1;1.00;1.00;0.00;;;0; ;0;1;0.00;0.00;0.00;1;
+500;30;0;LB-SERVICE;;2;1;1;Servicepakke til laminat bordplade ;1.00000;stk;;6;493.00;493.00;493.00;0.00;0.00;0.00;0.00;0.00;0.00;493.00;25.0;123.25;616.25;0;0;0.00;0.00;0.00;475;0.01;2.00;0.00;;;;;;493.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;12;0;0;0;1;1;0;;42;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;493.00;493.00;493.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
+500;31;0;B10;;2;1;1;Skureliste i pvc hele længder af 300 cm - Farve alu - ;3.00000;stk;;6;276.00;828.00;828.00;0.00;0.00;0.00;0.00;0.00;0.00;828.00;25.0;207.00;1035.00;0;0;0.00;0.00;0.00;476;0.01;1.00;0.00;;;;;;828.00;0;1;0;;-1;0;0.00;0.00;0.00;0.00;0.00;0;25.00;0;0;12;0;0;0;1;1;0;;43;0.00
+501;0;0;0;0;;2;0;;;
+502;
+505;1;0;;828.00;828.00;828.00;2;Generelle produkter;0;
+510;0;0;;;;;;;;;;0;0;0
+511;;0.00;0.00;0.00;
+512;;;0;0;-1
+513;1;1;40;Hængsling;he;0;4;4;0
+513;1;1;260;Finering;fin;0;4;4;1
+520;SONDERBO;Sønderborg Køkkenet 2015-1 DK;;Generelle produkter;SOND3151
+524;Standard;Standard;;1;1.00;1.00;0.00;;;0;Standard;0;11;0.00;0.00;0.00;1;
