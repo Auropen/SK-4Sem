@@ -9,11 +9,18 @@ namespace SKOffice.domain.order
     public class OrderConfirmation
     {
         public DateTime Date { get; set; }
-        public string CompanyInfo { get; set; }
-        public string CustomerInfo { get; set; }
-        public string AltDeliveryInfo { get; set; }
+        public List<string> CompanyInfo { get; set; }
+        public List<string> CustomerInfo { get; set; }
+        public List<string> AltDeliveryInfo { get; set; }
         public List<OrderElement> Elements { get; private set; }
 
-
+        public OrderConfirmation()
+        {
+            Date = new DateTime();
+            CompanyInfo = new List<string>();
+            CustomerInfo = new List<string>();
+            AltDeliveryInfo = new List<string>();
+            Elements = new List<OrderElement>();
+        }
     }
 }

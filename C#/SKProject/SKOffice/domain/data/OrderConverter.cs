@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using SKOffice.domain.order;
+using SKOffice.domain.utility;
 
 namespace SKOffice
 {
@@ -68,11 +69,50 @@ namespace SKOffice
                 switch (lineSplit[0])
                 {
                     case "0": // Program header + creation date
+                        string[] date = lineSplit[4].Split('/');
+                        string[] time = lineSplit[5].Split(':');
+
+                        DateTime dateTime = new DateTime(
+                            ConversionUtil.stringToInt(date[2]), 
+                            ConversionUtil.stringToInt(date[1]), 
+                            ConversionUtil.stringToInt(date[0]),
+                            ConversionUtil.stringToInt(time[0]),
+                            ConversionUtil.stringToInt(time[1]),
+                            ConversionUtil.stringToInt(time[2]));
+
+                        result.Date = dateTime;
+                        break;
+                    case "101": // Company Info
+                        result.CompanyInfo.Add(lineSplit[1]);
+                        result.CompanyInfo.Add(lineSplit[3]);
+                        result.CompanyInfo.Add(lineSplit[4]);
+                        result.CompanyInfo.Add(lineSplit[5]);
+                        result.CompanyInfo.Add(lineSplit[20]);
+                        result.CompanyInfo.Add(lineSplit[24]);
+                        result.CompanyInfo.Add(lineSplit[25]);
+                        result.CompanyInfo.Add(lineSplit[30]);
 
                         break;
-                    case "100": // Company Info
+                    case "211": // Customer Info
+                        result.CustomerInfo.Add(lineSplit[1]);
+                        result.CustomerInfo.Add(lineSplit[3]);
+                        result.CustomerInfo.Add(lineSplit[4]);
+                        result.CustomerInfo.Add(lineSplit[5]);
+                        result.CustomerInfo.Add(lineSplit[20]);
+                        result.CustomerInfo.Add(lineSplit[24]);
+                        result.CustomerInfo.Add(lineSplit[25]);
                         break;
-                    case "200": // Customer Info
+                    case "212": // Customers Alternative Delivery Address
+                        result.AltDeliveryInfo.Add(lineSplit[1]);
+                        result.AltDeliveryInfo.Add(lineSplit[3]);
+                        result.AltDeliveryInfo.Add(lineSplit[4]);
+                        result.AltDeliveryInfo.Add(lineSplit[5]);
+                        result.AltDeliveryInfo.Add(lineSplit[11]);
+                        result.AltDeliveryInfo.Add(lineSplit[19]);
+                        result.AltDeliveryInfo.Add(lineSplit[20]);
+                        result.AltDeliveryInfo.Add(lineSplit[24]);
+                        result.AltDeliveryInfo.Add(lineSplit[25]);
+                        result.AltDeliveryInfo.Add(lineSplit[26]);
                         break;
                     case "300": // Alternative Nr
                         break;
