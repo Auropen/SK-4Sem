@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SKOffice.domain.enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,9 @@ namespace SKOffice.domain.order
         public string Finish { get; set; }
         public string Amount { get; set; }
         public string Unit { get; set; }
+        public OrderType Type { get; set; }
 
-        public OrderElement(string position, string text, string hinge, string finish, string amount, string unit)
+        public OrderElement(string position, string text, string hinge, string finish, string amount, string unit, OrderType type)
         {
             Position = position;
             Text = text;
@@ -23,6 +25,7 @@ namespace SKOffice.domain.order
             Finish = finish;
             Amount = amount;
             Unit = unit;
+            Type = type;
         }
     }
 }
