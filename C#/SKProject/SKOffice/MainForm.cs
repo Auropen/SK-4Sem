@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace SKOffice
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            OrderConverter OCon = OrderConverter.Instance;
+            Console.Write(OCon.readOrder("C:\\School\\SKøkken\\w0000520.e02"));
         }
     }
 }
