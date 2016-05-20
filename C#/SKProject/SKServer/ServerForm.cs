@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SKServer
 {
-    public partial class Form1 : Form
+    public partial class ServerForm : Form
     {
-        public Form1()
+        public ServerForm()
         {
             InitializeComponent();
         }

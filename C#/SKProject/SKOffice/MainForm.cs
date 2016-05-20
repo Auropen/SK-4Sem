@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SKOffice.domain.order;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,8 @@ namespace SKOffice
         private void MainForm_Load(object sender, EventArgs e)
         {
             OrderConverter OCon = OrderConverter.Instance;
-            Console.Write(OCon.readOrder("C:\\School\\SKøkken\\w0000520.e02"));
+            OrderConfirmation oc = OCon.readOrder("C:\\School\\SKøkken\\w0000520.e02");
+            Console.WriteLine("Done..");
         }
     }
 }

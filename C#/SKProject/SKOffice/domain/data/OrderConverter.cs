@@ -55,12 +55,14 @@ namespace SKOffice
 
             StreamReader stream = new StreamReader(filePath);
             OrderConfirmation result = new OrderConfirmation();
-            
+
+            int kitchenInfoNumber = 0;
+
             while (stream.Peek() > -1)
             {
                 string line = stream.ReadLine();
                 string[] lineSplit = line.Split(';');
-                
+                string[] date;
 
                 if (lineSplit.Length == 0)
                     continue;
@@ -69,7 +71,7 @@ namespace SKOffice
                 switch (lineSplit[0])
                 {
                     case "0": // Program header + creation date
-                        string[] date = lineSplit[4].Split('/');
+                        date = lineSplit[4].Split('/');
                         string[] time = lineSplit[5].Split(':');
 
                         DateTime dateTime = new DateTime(
@@ -80,7 +82,7 @@ namespace SKOffice
                             ConversionUtil.stringToInt(time[1]),
                             ConversionUtil.stringToInt(time[2]));
 
-                        result.Date = dateTime;
+                        result.ProducedDate = dateTime;
                         break;
                     case "101": // Company Info
                         result.CompanyInfo.Add(lineSplit[1]);
@@ -114,13 +116,40 @@ namespace SKOffice
                         result.AltDeliveryInfo.Add(lineSplit[25]);
                         result.AltDeliveryInfo.Add(lineSplit[26]);
                         break;
-                    case "300": // Alternative Nr
+                    case "300": // Rightside Info
+                        result.OrderNumber = lineSplit[1];
+                        result.OrderName = lineSplit[3];
+                        date = lineSplit[4].Split('/');
+                        result.OrderDate = new DateTime(
+                            ConversionUtil.stringToInt(date[2]),
+                            ConversionUtil.stringToInt(date[1]),
+                            ConversionUtil.stringToInt(date[0]),12,0,0);
+                        result.Week = lineSplit[7];
+                        
+                        string[] splitName = result.OrderName.Split('/');
+                        result.AlternativeNumber =
+                            splitName[0] + " " +
+                            result.Week + " " +
+                            splitName[1];
                         break;
-                    case "400": // Order Info
+                    case "410": // Start of kitchen info
+                        result.kitchenInfo.Add("KInfo-" + kitchenInfoNumber);
+                        kitchenInfoNumber++;
+                        break;
+                    case "423": // Title of the order part
+                        result.kitchenInfo.Add(lineSplit[2]);
+                        break;
+                    case "424": // Text for the order part (423)
+                        result.kitchenInfo.Add(lineSplit[2]);
+                        break;
+                    case "425": // Finish of the order part
+                        result.kitchenInfo.Add(lineSplit[2]); // Title
+                        result.kitchenInfo.Add(lineSplit[4]); // Description
                         break;
                     case "430": // Order Container Info
+                         
                         break;
-                    case "500": // Order Block
+                    case "500": // Order Block  
                         break;
                     default:
                         break;
