@@ -9,15 +9,15 @@ using SKOffice.domain.utility;
 
 namespace SKOffice
 {
-    public class OrderConverter
+    public class OrderParser
     {
-        private static OrderConverter instance;
+        private static OrderParser instance;
 
-        public static OrderConverter Instance
+        public static OrderParser Instance
         {
             get
             {
-                if (instance == null) instance = new OrderConverter();
+                if (instance == null) instance = new OrderParser();
                 return instance;
             }
             private set
@@ -29,7 +29,7 @@ namespace SKOffice
         /// <summary>
         /// Singleton constructor. This class can only be created from within.
         /// </summary>
-        private OrderConverter()
+        private OrderParser()
         {
 
         }
@@ -57,6 +57,7 @@ namespace SKOffice
             OrderConfirmation result = new OrderConfirmation();
 
             int kitchenInfoNumber = 0;
+            OrderElement lastElement = null;
 
             while (stream.Peek() > -1)
             {
@@ -70,7 +71,7 @@ namespace SKOffice
 
                 switch (lineSplit[0])
                 {
-                    case "0": // Program header + creation date
+                    case "0": // Program header + produced date
                         date = lineSplit[4].Split('/');
                         string[] time = lineSplit[5].Split(':');
 
@@ -93,7 +94,6 @@ namespace SKOffice
                         result.CompanyInfo.Add(lineSplit[24]);
                         result.CompanyInfo.Add(lineSplit[25]);
                         result.CompanyInfo.Add(lineSplit[30]);
-
                         break;
                     case "211": // Customer Info
                         result.CustomerInfo.Add(lineSplit[1]);
@@ -129,7 +129,7 @@ namespace SKOffice
                         string[] splitName = result.OrderName.Split('/');
                         result.AlternativeNumber =
                             splitName[0] + " " +
-                            result.Week + " " +
+                            result.OrderNumber + " " +
                             splitName[1];
                         break;
                     case "410": // Start of kitchen info
@@ -146,10 +146,26 @@ namespace SKOffice
                         result.kitchenInfo.Add(lineSplit[2]); // Title
                         result.kitchenInfo.Add(lineSplit[4]); // Description
                         break;
-                    case "430": // Order Container Info
-                         
+                    case "430": // Order Category Info
+                        result.Categories.Add(new OrderCategory(lineSplit[2], ConversionUtil.stringToInt(lineSplit[1])));
                         break;
-                    case "500": // Order Block  
+                    case "500": // Order Element
+                        lastElement = new OrderElement(lineSplit[1],"", "", lineSplit[9], lineSplit[10]);
+
+                        int metaPos = ConversionUtil.stringToInt(lineSplit[2]);
+                        if (metaPos > 0)
+                            lastElement.Position += "." + metaPos;
+
+                        lastElement.ElementInfo.Add(lineSplit[3]);
+                        lastElement.ElementInfo.Add(lineSplit[8]);
+                        result.findByID(ConversionUtil.stringToInt(lineSplit[12])).Elements.Add(lastElement);
+                        break;
+                    case "501": // Order Element
+                        Console.WriteLine(line);
+                        lastElement.Hinge = lineSplit[8];
+                        break;
+                    case "502": // Order Element
+                        lastElement.ElementInfo.Add(lineSplit[1]);
                         break;
                     default:
                         break;

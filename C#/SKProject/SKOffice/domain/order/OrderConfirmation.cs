@@ -19,7 +19,7 @@ namespace SKOffice.domain.order
         public List<string> AltDeliveryInfo { get; private set; }
         public List<string> kitchenInfo { get; private set; }
         public List<string> elementInfo { get; private set; }
-        public List<OrderElement> Elements { get; private set; }
+        public List<OrderCategory> Categories { get; private set; }
 
 
         public OrderConfirmation()
@@ -33,8 +33,19 @@ namespace SKOffice.domain.order
             CompanyInfo = new List<string>();
             CustomerInfo = new List<string>();
             AltDeliveryInfo = new List<string>();
-            Elements = new List<OrderElement>();
+            Categories = new List<OrderCategory>();
             kitchenInfo = new List<string>();
+            elementInfo = new List<string>();
+        }
+
+        public OrderCategory findByID(int id)
+        {
+            foreach (OrderCategory category in Categories)
+            {
+                if (category.ID == id)
+                    return category;
+            }
+            return null;
         }
     }
 }

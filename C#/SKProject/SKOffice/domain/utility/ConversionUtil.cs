@@ -21,7 +21,7 @@ namespace SKOffice.domain.utility
             }
             catch (FormatException ex)
             {
-                Console.Error.WriteLine("Error: Couldn't convert " + s + " to int.");
+                Console.Error.WriteLine("Error: Couldn't convert " + s + " to int./n" + ex.Message);
             }
             return Int32.MinValue;
         }

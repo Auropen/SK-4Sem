@@ -20,8 +20,8 @@ namespace SKOffice
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            OrderConverter OCon = OrderConverter.Instance;
-            OrderConfirmation oc = OCon.readOrder("C:\\School\\SKøkken\\w0000520.e02");
+            OrderParser OP = OrderParser.Instance;
+            OrderConfirmation oc = OP.readOrder("C:\\School\\SKøkken\\w0000520.e02");
             Console.WriteLine("Done..");
         }
     }

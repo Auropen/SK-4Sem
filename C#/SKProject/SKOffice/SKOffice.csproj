@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="domain\enums\OrderType.cs" />
+    <Compile Include="domain\order\OrderCategory.cs" />
     <Compile Include="domain\order\OrderConfirmation.cs" />
     <Compile Include="domain\order\OrderElement.cs" />
     <Compile Include="domain\utility\ConversionUtil.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="domain\data\OrderConverter.cs" />
+    <Compile Include="domain\data\OrderParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
