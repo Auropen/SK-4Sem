@@ -1,5 +1,5 @@
 USE master
-IF EXISTS(Select * from sys.database where name = 'SKDB')
+IF EXISTS(Select * from sys.databases where name = 'SKDB')
 DROP DATABASE SKDB
 GO
 
@@ -87,23 +87,3 @@ AS
 END
 GO
 
-CREATE PROCEDURE createCompany(@CompanyName VARCHAR(64),
-							   @Address VARCHAR(64),
-							   @TelefoneNumber VARCHAR(64),
-							   @Email VARCHAR(64),
-							   @ZipCode VARCHAR(64))
-
-
-
-
-
-
-
-
-
-CREATE TABLE TblCompany       (fldCompanyID int IDENTITY(1,1) PRIMARY KEY,
-							   fldCompanyName VARCHAR(64) NOT NULL,
-							   fldAddress VARCHAR(64) NOT NULL,
-							   fldTelefoneNumber VARCHAR(64)NOT NULL,
-							   fldEmail VARCHAR(64)NOT NULL,
-							   fldZipCode INT FOREIGN KEY REFERENCES TblZipCodes(fldZipCode))
