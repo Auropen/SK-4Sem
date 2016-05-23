@@ -158,7 +158,7 @@ namespace SKOffice
 
                         lastElement.ElementInfo.Add(lineSplit[3]);
                         lastElement.ElementInfo.Add(lineSplit[8]);
-                        result.findByID(ConversionUtil.stringToInt(lineSplit[12])).Elements.Add(lastElement);
+                        result.findCategoryByID(ConversionUtil.stringToInt(lineSplit[12])).Elements.Add(lastElement);
                         break;
                     case "501": // Order Element
                         Console.WriteLine(line);

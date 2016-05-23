@@ -38,7 +38,7 @@ namespace SKOffice.domain.order
             elementInfo = new List<string>();
         }
 
-        public OrderCategory findByID(int id)
+        public OrderCategory findCategoryByID(int id)
         {
             foreach (OrderCategory category in Categories)
             {
