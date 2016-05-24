@@ -11,17 +11,17 @@ GO
 
 -- Creating tables
 
-CREATE TABLE TblZipCodes      (fldZipCode int IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE TblZipCodes      (fldZipCode int PRIMARY KEY,
 							   fldTown VARCHAR(64) NOT NULL,)
 
-CREATE TABLE TblCompany       (fldCompanyID int IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE TblCompany       (fldCompanyID int PRIMARY KEY,
 							   fldCompanyName VARCHAR(64) NOT NULL,
 							   fldAddress VARCHAR(64) NOT NULL,
 							   fldTelefoneNumber VARCHAR(64)NOT NULL,
 							   fldEmail VARCHAR(64)NOT NULL,
 							   fldZipCode INT FOREIGN KEY REFERENCES TblZipCodes(fldZipCode))
 
-CREATE TABLE TblCustomer	  (fldCustomerID int IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE TblCustomer	  (fldCustomerID int PRIMARY KEY,
 							   fldFirstName VARCHAR(64) NOT NULL,
 							   fldLastName VARCHAR(64) NOT NULL,
 							   fldTelefoneNumber VARCHAR(64),
@@ -29,7 +29,7 @@ CREATE TABLE TblCustomer	  (fldCustomerID int IDENTITY(1,1) PRIMARY KEY,
 							   fldAddrress VARCHAR(64) NOT NULL,
 							   fldZipCode INT FOREIGN KEY REFERENCES TblZipCodes(fldZipCode))
 
-CREATE TABLE TblOrder		  (fldOrderID int IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE TblOrder		  (fldOrderID int PRIMARY KEY,
 							   fldAltDelivery VARCHAR(64), 
 							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldCompanyID),
 							   fldCustomerID INT FOREIGN KEY REFERENCES TblCustomer(fldCustomerID))
