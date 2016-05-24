@@ -11,7 +11,7 @@ namespace Server.domain
          
         public SKServer()
         {
-            Properties prop = new Properties("config/connection.ini");
+            Properties prop = new Properties("connection.ini");
             prop.set("ip", "10.176.164.183");
             prop.set("port", "9000");
             prop.Save();

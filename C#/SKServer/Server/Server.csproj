@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="domain\protocol\Protocol.cs" />
     <Compile Include="domain\Properties.cs" />
     <Compile Include="domain\SKServer.cs" />
     <Compile Include="Program.cs" />

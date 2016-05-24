@@ -9,9 +9,12 @@ namespace Server.domain
     {
         private Dictionary<String, String> list;
         private String filename;
+        private const String DIR = "config";
 
         public Properties(String file)
         {
+            if (!Directory.Exists(DIR))
+                Directory.CreateDirectory(DIR);
             reload(file);
         }
 
@@ -40,7 +43,7 @@ namespace Server.domain
 
         public void Save(String filename)
         {
-            this.filename = filename;
+            this.filename = DIR + "/" + filename;
 
             if (!File.Exists(filename))
                 File.Create(filename);
@@ -63,17 +66,13 @@ namespace Server.domain
 
         public void reload(String filename)
         {
-            this.filename = filename;
+            this.filename = DIR + "/" + filename;
             list = new Dictionary<String, String>();
 
             if (File.Exists(filename))
                 loadFromFile(filename);
             else
-            {
-                if (!Directory.Exists("config"))
-                    Directory.CreateDirectory("config");
                 File.Create(filename);
-            }
         }
 
         private void loadFromFile(String file)
