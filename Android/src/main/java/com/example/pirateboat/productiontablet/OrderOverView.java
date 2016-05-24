@@ -1,6 +1,7 @@
 package com.example.pirateboat.productiontablet;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 
 public class OrderOverView extends Activity {
     TableLayout table_layout;
-
+    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class OrderOverView extends Activity {
         table_layout = (TableLayout) findViewById(R.id.tableLayout1);
         ArrayList<String> data = new ArrayList<String>();
         BuildTable(13,data);
+
 
 
     }
@@ -83,6 +85,13 @@ public class OrderOverView extends Activity {
                                 LayoutParams.WRAP_CONTENT));
                         btn.setBackgroundResource(R.drawable.cell_shape);
                         btn.setPadding(5, 5, 5, 5);
+                        btn.setOnClickListener(new OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent myIntent = new Intent(OrderOverView.this,NotesView.class);
+                                startActivity(myIntent);
+                            }
+                        });
 
                         btn.setText("Notes");//hardcode knapper og links og labels
                         row.addView(btn);
