@@ -15,8 +15,8 @@ namespace Server.domain
             prop.set("ip", "10.176.164.183");
             prop.set("port", "9000");
             prop.Save();
-            string ip = Properties.Settings.Default.ip;
-            string port = Properties.Settings.Default.port;
+            string ip = prop.get("ip");
+            string port = prop.get("port");
             Console.WriteLine(ip + ":" + port);
             
         }

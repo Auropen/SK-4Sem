@@ -45,11 +45,13 @@ namespace Server.domain
             if (!File.Exists(filename))
                 File.Create(filename);
 
-            StreamWriter file = new System.IO.StreamWriter(filename);
+            StreamWriter file = new StreamWriter(filename);
 
             foreach (String prop in list.Keys.ToArray())
+            {
                 if (!String.IsNullOrWhiteSpace(list[prop]))
                     file.WriteLine(prop + "=" + list[prop]);
+            }
 
             file.Close();
         }
@@ -67,12 +69,16 @@ namespace Server.domain
             if (File.Exists(filename))
                 loadFromFile(filename);
             else
+            {
+                if (!Directory.Exists("config"))
+                    Directory.CreateDirectory("config");
                 File.Create(filename);
+            }
         }
 
         private void loadFromFile(String file)
         {
-            foreach (String line in System.IO.File.ReadAllLines(file))
+            foreach (String line in File.ReadAllLines(file))
             {
                 if ((!String.IsNullOrEmpty(line)) &&
                     (!line.StartsWith(";")) &&
