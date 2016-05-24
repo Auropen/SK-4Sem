@@ -18,7 +18,6 @@ namespace SKOffice.domain.order
         public List<string> CustomerInfo { get; private set; }
         public List<string> AltDeliveryInfo { get; private set; }
         public List<string> kitchenInfo { get; private set; }
-        public List<string> elementInfo { get; private set; }
         public List<OrderCategory> Categories { get; private set; }
 
 
@@ -35,7 +34,6 @@ namespace SKOffice.domain.order
             AltDeliveryInfo = new List<string>();
             Categories = new List<OrderCategory>();
             kitchenInfo = new List<string>();
-            elementInfo = new List<string>();
         }
 
         public OrderCategory findCategoryByID(int id)
