@@ -22,29 +22,5 @@ namespace Server.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10.176.164.230")]
-        public string ip {
-            get {
-                return ((string)(this["ip"]));
-            }
-            set {
-                this["ip"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9000")]
-        public int port {
-            get {
-                return ((int)(this["port"]));
-            }
-            set {
-                this["port"] = value;
-            }
-        }
     }
 }
