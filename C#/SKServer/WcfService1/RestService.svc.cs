@@ -13,9 +13,10 @@ namespace WcfService1
     // NOTE: In order to launch WCF Test Client for testing this service, please select RestService.svc or RestService.svc.cs at the Solution Explorer and start debugging.
     public class RestService : IRestService
     {
-        OrderConfirmation IRestService.json(string fileDir)
+        OrderConfirmation IRestService.json(string fileName)
         {
-            return OrderParser.Instance.readOrder(fileDir);
+            Console.WriteLine("Got RESTFul connection.");
+            return OrderParser.Instance.readOrder("C:\\School\\SKøkken\\" + fileName + ".e02");
         }
     }
 }

@@ -18,6 +18,6 @@ namespace WcfService1
             ResponseFormat = WebMessageFormat.Json, 
             BodyStyle = WebMessageBodyStyle.Wrapped, 
             UriTemplate = "json/{fileDir}")]
-        OrderConfirmation json(string fileDir);
+        OrderConfirmation json(string fileName);
     }
 }
