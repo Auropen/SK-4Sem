@@ -6,9 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -46,7 +44,7 @@ public class NotesView extends Activity {
     }
     public void postComment(String text){
         comments.add(text);
-
+        et.setText("");
         updateComments(comments);
     }
 }
