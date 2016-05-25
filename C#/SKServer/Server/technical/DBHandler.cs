@@ -36,7 +36,7 @@ namespace Server.technical
             }
         }
 
-        static void createCustomer(int custId, String Fname, String LName, String fone, String email, String adr, int zip)
+        static void createCustomer(int custId, String Fname, String LName, String fone, String email, String custAdr, int zip)
         {
 
             try
@@ -45,7 +45,7 @@ namespace Server.technical
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblCustomer VALUES(" + custId + ", '" + Fname + "', '" + LName + "', '" + fone + "', '" + email + "', '" + adr + "', " + zip + ")", connection))
+                    using (SqlCommand command = new SqlCommand("INSERT INTO TblCustomer VALUES(" + custId + ", '" + Fname + "', '" + LName + "', '" + fone + "', '" + email + "', '" + custAdr + "', " + zip + ")", connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " customers");
                     connection.Close();
                 }
@@ -91,7 +91,7 @@ namespace Server.technical
         }
 
 
-        static void createCompany(int compId, String Fname, String adr, String fone, String email, int zip)
+        static void createCompany(int compId, String compName, String compAdr, String fone, String email, int zip)
         {
 
             try
@@ -100,7 +100,7 @@ namespace Server.technical
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblCompany VALUES(" + compId + ", '" + Fname + "','" + adr + "', '" + fone + "', '" + email + "', " + zip + ")", connection))
+                    using (SqlCommand command = new SqlCommand("INSERT INTO TblCompany VALUES(" + compId + ", '" + compName + "','" + compAdr + "', '" + fone + "', '" + email + "', " + zip + ")", connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " company");
                     connection.Close();
                 }
@@ -112,7 +112,7 @@ namespace Server.technical
 
         }
 
-        static void createOrder(int orderId, String altDelivery, int compId, int custId)
+        static void createOrder(int orderId, String altDelivery, String startDate, String deliveryDate, int compId, int custId)
         {
 
             try
@@ -121,7 +121,7 @@ namespace Server.technical
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrder VALUES(" + orderId + ", '" + altDelivery + "', " + compId + ", " + custId + ")", connection))
+                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrder VALUES(" + orderId + ", '" + altDelivery + "', '" + startDate + "', '" + deliveryDate + "', " + compId + ", " + custId + ")", connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " Order");
                     connection.Close();
                 }
