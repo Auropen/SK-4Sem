@@ -17,14 +17,14 @@ CREATE TABLE TblZipCodes      (fldZipCode int PRIMARY KEY,
 CREATE TABLE TblCompany       (fldCompanyID int PRIMARY KEY,
 							   fldCompanyName VARCHAR(64) NOT NULL,
 							   fldCompanyAdr VARCHAR(64) NOT NULL,
-							   fldCompanyFone VARCHAR(64)NOT NULL,
+							   fldCompanyPhone VARCHAR(64)NOT NULL,
 							   fldCompanyEmail VARCHAR(64)NOT NULL,
 							   fldZipCode INT FOREIGN KEY REFERENCES TblZipCodes(fldZipCode))
 
 CREATE TABLE TblCustomer	  (fldCustomerID int PRIMARY KEY,
 							   fldFirstName VARCHAR(64) NOT NULL,
 							   fldLastName VARCHAR(64) NOT NULL,
-							   fldCustomerFone VARCHAR(64),
+							   fldCustomerPhone VARCHAR(64),
 							   fldCustomerEmail VARCHAR(64),
 							   fldCustomerAdr VARCHAR(64) NOT NULL,
 							   fldZipCode INT FOREIGN KEY REFERENCES TblZipCodes(fldZipCode))
@@ -60,7 +60,7 @@ GO
 CREATE PROCEDURE createCustomer(@CustomerID int,
 								@FirstName VARCHAR(64),
 								@LastName VARCHAR(64),
-								@CustomerFone VARCHAR(64),
+								@CustomerPhone VARCHAR(64),
 								@CustomerEmail VARCHAR(64),
 								@CustomerAdr VARCHAR(64),
 								@ZipCode VARCHAR(64))
@@ -72,7 +72,7 @@ AS
 					fldCustomerID,
 					fldFirstName,
 					fldLastName,
-					fldCustomerFone,
+					fldCustomerPhone,
 					fldCustomerEmail,
 					fldCustomerAdr,
 					fldZipCode
@@ -82,9 +82,9 @@ AS
 					@CustomerID,
 					@FirstName,
 					@LastName,
-					@TelefoneNumber,
-					@Email,
-					@Address,
+					@CustomerPhone,
+					@CustomerEmail,
+					@CustomerAdr,
 					@ZipCode
 				)
 				
@@ -94,7 +94,7 @@ GO
 CREATE PROCEDURE createCompany(@CompanyID int,
 							   @CompanyName VARCHAR(64),
 							   @CompanyAdr VARCHAR(64),
-							   @CompanyFone VARCHAR(64),
+							   @CompanyPhone VARCHAR(64),
 							   @CompanyEmail VARCHAR(64),
 							   @ZipCode int)
 
@@ -105,7 +105,7 @@ AS
 					fldCompanyID,
 					fldCompanyName,
 					fldCompanyAdr,
-					fldCompanyFone,
+					fldCompanyPhone,
 					fldCompanyEmail,
 					fldZipCode
 				)
@@ -114,7 +114,7 @@ AS
 					@CompanyID,
 					@CompanyName,
 					@companyAdr,
-					@CompanyFone,
+					@CompanyPhone,
 					@CompanyEmail,
 					@ZipCode
 				)
@@ -231,7 +231,7 @@ CREATE PROCEDURE getOrder (@OrderID int)
 	BEGIN
 		SELECT * FROM TblOrder 
 		INNER JOIN TblCompany on TblOrder.fldCompanyID = @OrderID
-		INNER JOIN TblCustomer on TblOrder.fldCustomerID = @OrderID 
+		INNER JOIN TblCustomer on TblOrder.fldCustomerID = @OrderID 		
 		WHERE fldOrderID = @OrderID
 END
 GO
@@ -247,5 +247,26 @@ CREATE PROCEDURE getOrderElements(@CategoryID int)
 	AS
 	BEGIN
 		SELECT * FROM TblOrderElements WHERE TblOrderElements.fldCatagoryID = @CategoryID
+END
+GO
+
+CREATE PROCEDURE getNotes(@OrderID int)
+	AS
+	BEGIN
+		SELECT * FROM TblNotes WHERE TblNotes.fldOrderID = @OrderID
+END
+GO
+
+CREATE PROCEDURE getCustomerZipCode(@CustZip int)
+	AS
+	BEGIN
+		SELECT * FROM TblZipCodes where fldZipCode = @CustZip
+END
+GO
+
+CREATE PROCEDURE getCompanyZipCode(@CompZip int)
+	AS
+	BEGIN
+		SELECT * FROM TblZipCodes where fldZipCode = @CompZip
 END
 GO

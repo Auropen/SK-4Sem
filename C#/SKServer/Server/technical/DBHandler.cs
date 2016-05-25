@@ -91,7 +91,7 @@ namespace Server.technical
         }
 
 
-        static void createCompany(int compId, String compName, String compAdr, String fone, String email, int zip)
+        static void createCompany(int compId, String compName, String compAdr, String compFone, String compEmail, int zip)
         {
 
             try
@@ -100,7 +100,7 @@ namespace Server.technical
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblCompany VALUES(" + compId + ", '" + compName + "','" + compAdr + "', '" + fone + "', '" + email + "', " + zip + ")", connection))
+                    using (SqlCommand command = new SqlCommand("INSERT INTO TblCompany VALUES(" + compId + ", '" + compName + "','" + compAdr + "', '" + compFone + "', '" + compEmail + "', " + zip + ")", connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " company");
                     connection.Close();
                 }
