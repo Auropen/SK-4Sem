@@ -53,7 +53,7 @@ namespace SKOffice
             }
             
 
-            StreamReader stream = new StreamReader(filePath);
+            StreamReader stream = new StreamReader(filePath, Encoding.Default);
             OrderConfirmation result = new OrderConfirmation();
 
             int kitchenInfoNumber = 0;

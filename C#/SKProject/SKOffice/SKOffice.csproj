@@ -46,17 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="domain\order\OrderCategory.cs" />
-    <Compile Include="domain\order\OrderConfirmation.cs" />
-    <Compile Include="domain\order\OrderElement.cs" />
-    <Compile Include="domain\utility\ConversionUtil.cs" />
     <Compile Include="gui\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="domain\data\OrderParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="gui\MainForm.resx">
@@ -85,6 +80,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="domain\data\" />
     <Folder Include="technical\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
