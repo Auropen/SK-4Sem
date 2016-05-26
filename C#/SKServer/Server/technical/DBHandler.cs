@@ -1,9 +1,7 @@
-﻿using System;
+﻿using SKOffice.domain.order;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Server.technical
 {
@@ -80,7 +78,7 @@ namespace Server.technical
 
         }
 
-        static void createOrder(int orderId, String altDelivery, String startDate, String deliveryDate, int compId, int custId)
+        static void createOrder(int orderId, String altDelivery, String startDate, String deliveryDate, String deliveryWeek, String bluePrinkLink, int compId, int custId)
         {
 
             try
@@ -89,7 +87,7 @@ namespace Server.technical
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrder VALUES(" + orderId + ", '" + altDelivery + "', '" + startDate + "', '" + deliveryDate + "', " + compId + ", " + custId + ")", connection))
+                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrder VALUES(" + orderId + ", '" + altDelivery + "', '" + startDate + "', '" + deliveryDate + "', '" + deliveryWeek + "','" + bluePrinkLink + "'," + compId + ", " + custId + ")", connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " Order");
                     connection.Close();
                 }
@@ -187,7 +185,7 @@ namespace Server.technical
                             {
                                 //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
                                 Console.WriteLine(dr.GetInt32(0) + " "
-                                               + dr.GetString(1));
+                                               + dr.GetString(1) + " This is Town & Zip ");
                             }
                         }
                     }
@@ -225,7 +223,7 @@ namespace Server.technical
                                                + dr.GetString(2) + " "
                                                + dr.GetString(3) + " "
                                                + dr.GetString(4) + " "
-                                               + dr.GetInt32(5));
+                                               + dr.GetInt32(5) + " This is Customer ");
                             }
                         }
                     }
@@ -262,7 +260,7 @@ namespace Server.technical
                                                 + dr.GetString(2) + " " 
                                                 + dr.GetString(3) + " " 
                                                 + dr.GetString(4) + " " 
-                                                + dr.GetInt32(5));
+                                                + dr.GetInt32(5) + " This is Company ");
                             }
                         }
                     }
@@ -298,8 +296,10 @@ namespace Server.technical
                                                 + dr.GetString(1)   + " "
                                                 + dr.GetDateTime(2) + " "
                                                 + dr.GetDateTime(3) + " "
-                                                + dr.GetInt32(4)    + " "
-                                                + dr.GetInt32(5));
+                                                + dr.GetString(4) + " "
+                                                + dr.GetString(5) + " "
+                                                + dr.GetInt32(6)    + " "
+                                                + dr.GetInt32(7) + " This is Order ");
                             }
                         }
                     }
@@ -333,7 +333,7 @@ namespace Server.technical
                                 //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
                                 Console.WriteLine(dr.GetInt32(0) + " "
                                                 + dr.GetString(1) + " "
-                                                + dr.GetInt32(2));
+                                                + dr.GetInt32(2) + " This is Note ");
                             }
                         }
                     }
@@ -348,7 +348,7 @@ namespace Server.technical
         }
 
 
-        static String getOrderCategory()
+        static List<OrderCategory> getOrderCategory()
         {
             //Needs a List for the various Categories
             try
@@ -367,7 +367,7 @@ namespace Server.technical
                                 //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
                                 Console.WriteLine(dr.GetInt32(0) + " "
                                                 + dr.GetString(1) + " "
-                                                + dr.GetInt32(2));
+                                                + dr.GetInt32(2) + " This is Category ");
                             }
                         }
                     }
@@ -382,7 +382,7 @@ namespace Server.technical
         }
 
 
-        static String getOrderElements()
+        static List<OrderElement> getOrderElements(int categoryID)
         {
 
             //Needs a List for all of the Elements
@@ -408,7 +408,7 @@ namespace Server.technical
                                                 + dr.GetString(4) + " "
                                                 + dr.GetString(5) + " "
                                                 + dr.GetString(6) + " "
-                                                + dr.GetInt32(7));
+                                                + dr.GetInt32(7) +" This is Element " );
                             }
                         }
                     }
