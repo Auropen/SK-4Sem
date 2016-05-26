@@ -36,6 +36,8 @@ namespace Server.technical
             }
         }
 
+        // Create Methods
+
         static void createCustomer(int custId, String Fname, String LName, String fone, String email, String custAdr, int zip)
         {
 
@@ -56,40 +58,6 @@ namespace Server.technical
             }
 
         }
-
-
-
-        static String getCustomer()
-        {
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("Select * FROM TblCustomer", connection))
-                    using (SqlDataReader dr = command.ExecuteReader())
-                    {
-                        if (dr.HasRows)
-                        {
-                            while (dr.Read())
-                            {
-                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                Console.WriteLine(dr.GetInt32(0) + " " + dr.GetString(1) + " " + dr.GetString(2) + " " + dr.GetString(3) + " " + dr.GetString(4) + " " + dr.GetString(5) + " " + dr.GetInt32(6));
-                            }
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
-            return "";
-        }
-
 
         static void createCompany(int compId, String compName, String compAdr, String compFone, String compEmail, int zip)
         {
@@ -199,7 +167,260 @@ namespace Server.technical
 
         }
 
+        // Get methods
 
+        static String getZipAndTown()
+        {
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("Select * FROM TblZipCodes", connection))
+                    using (SqlDataReader dr = command.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
+                                Console.WriteLine(dr.GetInt32(0) + " "
+                                               + dr.GetString(1));
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return "";
+        }
+
+
+
+        static String getCustomer()
+        {
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("Select * FROM TblCustomer", connection))
+                    using (SqlDataReader dr = command.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
+                                Console.WriteLine(dr.GetInt32(0) + " "
+                                               + dr.GetString(1) + " "
+                                               + dr.GetString(2) + " "
+                                               + dr.GetString(3) + " "
+                                               + dr.GetString(4) + " "
+                                               + dr.GetInt32(5));
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return "";
+        }
+
+
+        static String getCompany()
+        {
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("Select * FROM TblCompany", connection))
+                    using (SqlDataReader dr = command.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
+                                Console.WriteLine(dr.GetInt32(0)  + " " 
+                                                + dr.GetString(1) + " " 
+                                                + dr.GetString(2) + " " 
+                                                + dr.GetString(3) + " " 
+                                                + dr.GetString(4) + " " 
+                                                + dr.GetInt32(5));
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return "";
+        }
+
+
+        static String getOrder()
+        {
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("Select * FROM TblOrder", connection))
+                    using (SqlDataReader dr = command.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
+                                Console.WriteLine(dr.GetInt32(0)    + " "
+                                                + dr.GetString(1)   + " "
+                                                + dr.GetDateTime(2) + " "
+                                                + dr.GetDateTime(3) + " "
+                                                + dr.GetInt32(4)    + " "
+                                                + dr.GetInt32(5));
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return "";
+        }
+
+
+        static String getNotes()
+        {
+            //Needs a List for the various Notes? 
+            try
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("Select * FROM TblNotes", connection))
+                    using (SqlDataReader dr = command.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
+                                Console.WriteLine(dr.GetInt32(0) + " "
+                                                + dr.GetString(1) + " "
+                                                + dr.GetInt32(2));
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return "";
+        }
+
+
+        static String getOrderCategory()
+        {
+            //Needs a List for the various Categories
+            try
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("Select * FROM TblOrderCategory", connection))
+                    using (SqlDataReader dr = command.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
+                                Console.WriteLine(dr.GetInt32(0) + " "
+                                                + dr.GetString(1) + " "
+                                                + dr.GetInt32(2));
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return "";
+        }
+
+
+        static String getOrderElements()
+        {
+
+            //Needs a List for all of the Elements
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("Select * FROM TblOrder", connection))
+                    using (SqlDataReader dr = command.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
+                                Console.WriteLine(dr.GetInt32(0) + " "
+                                                + dr.GetString(1) + " "
+                                                + dr.GetString(2) + " "
+                                                + dr.GetString(3) + " "
+                                                + dr.GetString(4) + " "
+                                                + dr.GetString(5) + " "
+                                                + dr.GetString(6) + " "
+                                                + dr.GetInt32(7));
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return "";
+        }
 
     }
 }

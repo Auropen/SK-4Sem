@@ -33,6 +33,7 @@ CREATE TABLE TblOrder		  (fldOrderID int PRIMARY KEY,
 							   fldAltDelivery VARCHAR(64),
 							   fldStartDate date NOT NULL,
 							   fldDeliveryDate date NOT NULL,
+							   fldDeliveryWeek VARCHAR(32) NOT NULL,
 							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldCompanyID),
 							   fldCustomerID INT FOREIGN KEY REFERENCES TblCustomer(fldCustomerID))
 
@@ -40,8 +41,8 @@ CREATE TABLE TblNotes		  (fldNoteID int IDENTITY(1,1) PRIMARY KEY,
 							   fldComment VARCHAR(1024),
 							   fldOrderID INT FOREIGN KEY REFERENCES TblOrder(fldOrderID))
 
-CREATE TABLE TblOrderCatagory (fldCatagoryID int IDENTITY(1,1) PRIMARY KEY,
-                               fldCatagoryName VARCHAR(64) NOT NULL,
+CREATE TABLE TblOrderCategory (fldCategoryID int IDENTITY(1,1) PRIMARY KEY,
+                               fldCategoryName VARCHAR(64) NOT NULL,
 							   fldOrderID INT FOREIGN KEY REFERENCES TblOrder(fldOrderID))
 
 CREATE TABLE TblOrderElements (fldOrderElementID int IDENTITY(1,1) PRIMARY KEY,
@@ -51,10 +52,56 @@ CREATE TABLE TblOrderElements (fldOrderElementID int IDENTITY(1,1) PRIMARY KEY,
 							   fldAmount VARCHAR(32) NOT NULL,
 							   fldUnit VARCHAR(32) NOT NULL,
 							   fldText VARCHAR(256) NOT NULL,
-							   fldCatagoryID INT FOREIGN KEY REFERENCES TblOrderCatagory(fldCatagoryID))
+							   fldCategoryID INT FOREIGN KEY REFERENCES TblOrderCategory(fldCategoryID))
 GO
 
+-- Fill Zip and Company
 
+INSERT INTO TblZipCodes (fldZipCode, fldTown) VALUES(6400, 'Sønderborg')
+INSERT INTO TblZipCodes (fldZipCode, fldTown) VALUES(6440, 'Nordborg')
+INSERT INTO TblZipCodes (fldZipCode, fldTown) VALUES(6300, 'Gråsten')
+INSERT INTO TblZipCodes (fldZipCode, fldTown) VALUES(6200, 'Aabenraa')
+INSERT INTO TblZipCodes (fldZipCode, fldTown) VALUES(6230, 'Rødekro')
+
+
+INSERT INTO TblCompany (fldCompanyID,
+						fldCompanyName, 
+						fldCompanyAdr, 
+						fldCompanyPhone, 
+						fldCompanyEmail, 
+						fldZipCode) 
+						
+						VALUES(934185,
+						      'Sønderborg Køkken',
+							  ' Ellegårdvej 23B',
+							  '74 42 92 20',
+							  'info@sonderborg-kokken.dk',
+							   6400)
+
+
+
+
+-- View
+CREATE VIEW OrderView AS
+	SELECT 
+	ord.fldOrderID OrderId,
+	ord.fldStartDate StartDate,
+	ord.fldDeliveryDate DeliveryDate,
+	ord.fldDeliveryWeek DeliveryWeek,
+	ord.fldAltDelivery AlternativeDelivery, 
+	ord.fldCompanyID CompanyId, 
+	ord.fldCustomerID CustomerId,
+	comp.fldCompanyAdr CompanyAddress,
+	comp.fldCompanyEmail CompanyEmail,
+	cust.fldCustomerAdr CustomerAddress,
+	cust.fldCustomerEmail CustomerEmail,
+	custZip.fldTown CustomerCity,
+	compZip.fldTown CompanyCity
+	FROM dbo.TblOrder ord
+	INNER JOIN dbo.TblCompany comp ON ord.fldCompanyID=comp.fldCompanyID
+	INNER JOIN dbo.TblCustomer cust ON ord.fldCustomerID=cust.fldCustomerID
+	INNER JOIN dbo.TblZipCodes custZip ON cust.fldZipCode=custZip.fldZipCode
+	INNER JOIN dbo.TblZipCodes compZip ON comp.fldZipCode=compZip.fldZipCode
 -- Stored Procedure
 
 CREATE PROCEDURE createCustomer(@CustomerID int,
@@ -126,6 +173,7 @@ CREATE PROCEDURE createOrder  (@OrderID int,
 							   @AltDelivery VARCHAR(64),
 							   @StartDate DATE,
 							   @DeliveryDate DATE,
+							   @DeliveryWeek VARCHAR(32),
 							   @CompanyID int,
 							   @CustomerID int)
 
@@ -137,6 +185,7 @@ AS
 					fldAltDelivery,
 					fldStartDate,
 					fldDeliveryDate,
+					fldDeliveryWeek,
 					fldCompanyID,
 					fldCustomerID
 				)
@@ -171,14 +220,14 @@ AS
 END
 GO
 
-CREATE PROCEDURE createOrderCategory(@CategoryName VARCHAR(1024),
+CREATE PROCEDURE createOrderCategory(@CategoryName VARCHAR(64),
 								     @OrderID int)
 
 AS
 	BEGIN
-				INSERT INTO TblOrderCatagory
+				INSERT INTO TblOrderCategory
 				(
-					fldCatagoryName,
+					fldCategoryName,
 					fldOrderID
 				)
 				VALUES
@@ -209,7 +258,7 @@ AS
 					fldAmount,
 					fldUnit,
 					fldText,
-					fldCatagoryID
+					fldCategoryID
 				)
 				VALUES
 				(
@@ -229,24 +278,36 @@ GO
 CREATE PROCEDURE getOrder (@OrderID int)
     AS 
 	BEGIN
-		SELECT * FROM TblOrder 
-		INNER JOIN TblCompany on TblOrder.fldCompanyID = @OrderID
-		INNER JOIN TblCustomer on TblOrder.fldCustomerID = @OrderID 		
-		WHERE fldOrderID = @OrderID
+	SELECT  
+	   [OrderId]
+	  ,[StartDate]
+	  ,[DeliveryDate]	  
+	  ,[DeliveryWeek]
+	  ,[AlternativeDelivery]
+      ,[CompanyId]
+      ,[CustomerId]
+      ,[CompanyAddress]
+      ,[CompanyEmail]
+      ,[CustomerAddress]
+      ,[CustomerEmail]
+      ,[CustomerCity]
+      ,[CompanyCity]
+  FROM [SKDB].[dbo].[OrderView]
+  WHERE OrderId = @OrderID
 END
 GO
 
 CREATE PROCEDURE getCategories(@OrderID int)
 	AS
 	BEGIN
-		SELECT * FROM TblOrderCatagory WHERE TblOrderCatagory.fldOrderID = @OrderID
+		SELECT * FROM TblOrderCategory WHERE TblOrderCategory.fldOrderID = @OrderID
 END
 GO
 
 CREATE PROCEDURE getOrderElements(@CategoryID int)
 	AS
 	BEGIN
-		SELECT * FROM TblOrderElements WHERE TblOrderElements.fldCatagoryID = @CategoryID
+		SELECT * FROM TblOrderElements WHERE TblOrderElements.fldCategoryID = @CategoryID
 END
 GO
 
