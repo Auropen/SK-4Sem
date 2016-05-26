@@ -90,11 +90,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="RestService.svc" />
-    <Content Include="scripts\ai.0.22.9-build00167.js" />
-    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="domain\scripts\ai.0.22.9-build00167.js" />
+    <Content Include="domain\scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="domain\data\FileServer.cs" />
     <Compile Include="domain\data\OrderParser.cs" />
     <Compile Include="domain\order\OrderCategory.cs" />
     <Compile Include="domain\order\OrderConfirmation.cs" />
