@@ -200,7 +200,6 @@ namespace Server.technical
         }
 
 
-
         static String getCustomer()
         {
 
@@ -299,7 +298,7 @@ namespace Server.technical
                                                 + dr.GetString(4) + " "
                                                 + dr.GetString(5) + " "
                                                 + dr.GetInt32(6)    + " "
-                                                + dr.GetInt32(7) + " This is Order ");
+                                                + dr.GetInt32(7) + " This is an Order ");
                             }
                         }
                     }

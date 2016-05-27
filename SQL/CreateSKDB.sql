@@ -75,8 +75,11 @@ INSERT INTO TblCompany (fldCompanyID,
 							  'info@sonderborg-kokken.dk',
 							   6400)
 
+GO
+
 
 -- Stored Procedure
+
 
 CREATE PROCEDURE createCustomer(@CustomerID int,
 								@FirstName VARCHAR(64),
