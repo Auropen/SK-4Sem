@@ -34,8 +34,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.browseRequisitionBtn = new System.Windows.Forms.Button();
+            this.browseBlueprintBtn = new System.Windows.Forms.Button();
             this.tb_Requisition = new System.Windows.Forms.TextBox();
             this.tb_Blueprints = new System.Windows.Forms.TextBox();
             this.browseE02Btn = new System.Windows.Forms.Button();
@@ -66,8 +66,8 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.browseRequisitionBtn);
+            this.groupBox1.Controls.Add(this.browseBlueprintBtn);
             this.groupBox1.Controls.Add(this.tb_Requisition);
             this.groupBox1.Controls.Add(this.tb_Blueprints);
             this.groupBox1.Controls.Add(this.browseE02Btn);
@@ -107,25 +107,25 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Winner Tool file (*.e02)";
             // 
-            // button4
+            // browseRequisitionBtn
             // 
-            this.button4.Location = new System.Drawing.Point(312, 147);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Browse";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.browse_Click);
+            this.browseRequisitionBtn.Location = new System.Drawing.Point(312, 147);
+            this.browseRequisitionBtn.Name = "browseRequisitionBtn";
+            this.browseRequisitionBtn.Size = new System.Drawing.Size(75, 23);
+            this.browseRequisitionBtn.TabIndex = 6;
+            this.browseRequisitionBtn.Text = "Browse";
+            this.browseRequisitionBtn.UseVisualStyleBackColor = true;
+            this.browseRequisitionBtn.Click += new System.EventHandler(this.browse_Click);
             // 
-            // button3
+            // browseBlueprintBtn
             // 
-            this.button3.Location = new System.Drawing.Point(312, 91);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Browse";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.browse_Click);
+            this.browseBlueprintBtn.Location = new System.Drawing.Point(312, 91);
+            this.browseBlueprintBtn.Name = "browseBlueprintBtn";
+            this.browseBlueprintBtn.Size = new System.Drawing.Size(75, 23);
+            this.browseBlueprintBtn.TabIndex = 5;
+            this.browseBlueprintBtn.Text = "Browse";
+            this.browseBlueprintBtn.UseVisualStyleBackColor = true;
+            this.browseBlueprintBtn.Click += new System.EventHandler(this.browse_Click);
             // 
             // tb_Requisition
             // 
@@ -233,8 +233,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button browseRequisitionBtn;
+        private System.Windows.Forms.Button browseBlueprintBtn;
         private System.Windows.Forms.TextBox tb_Requisition;
         private System.Windows.Forms.TextBox tb_Blueprints;
         private System.Windows.Forms.GroupBox groupBox2;
