@@ -99,18 +99,41 @@ namespace WcfService1.domain.data
 
             private void listener()
             {
-                //Socket.SendFile();
-                //ClientSocket.Receive()
-                /*while (!stop)
+                while (!stop)
                 {
-                    if (stream.Peek() > -1)
+                    try
                     {
-                        string filename = stream.ReadLine();
-                        int filesize = ConversionUtil.stringToInt(stream.ReadLine());
-                        byte[] data = stream.rea
+                        if (ClientSocket.Available > 0)
+                        {
+                            int bytesRead;
+                            //Prebuffer, for meta data.
+                            var prebuffer = new byte[128];
+                            ClientSocket.Receive(prebuffer, prebuffer.Length, SocketFlags.None);
+                            string[] metaData = Encoding.UTF8.GetString(prebuffer).Split(';');
+
+                            using (var output = File.Create("result.dat"))
+                            {
+                                Console.WriteLine("Client connected. Starting to receive the file");
+
+                                var buffer = new byte[ClientSocket.ReceiveBufferSize];
+                                //Buffer, the file data
+                                while ((bytesRead = ClientSocket.Receive(buffer, buffer.Length, SocketFlags.None)) > 0)
+                                    output.Write(buffer, 0, bytesRead);
+                            }
+
+                            // Return a success msg.
+                            byte[] msg = Encoding.UTF8.GetBytes("200;OK;File was uploaded");
+                            ClientSocket.Send(msg, msg.Length, SocketFlags.None);
+                        }
                     }
+                    catch (Exception)
+                    {
+                        byte[] msg = Encoding.UTF8.GetBytes("400;OK;Upload was interrupted");
+                        ClientSocket.Send(msg, msg.Length, SocketFlags.None);
+                    }
+                    
                     Thread.Sleep(SHORT_DELAY);
-                }*/
+                }
             }
 
             public void stopClient()
