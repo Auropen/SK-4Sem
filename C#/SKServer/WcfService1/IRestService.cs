@@ -7,7 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace WcfService1
+namespace WcfService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IRestService" in both code and config file together.
     [ServiceContract]
@@ -18,6 +18,6 @@ namespace WcfService1
             ResponseFormat = WebMessageFormat.Json, 
             BodyStyle = WebMessageBodyStyle.Wrapped, 
             UriTemplate = "json/{fileName}")]
-        OrderConfirmation json(string fileName);
+        OrderConfirmation getOrder(string fileName);
     }
 }
