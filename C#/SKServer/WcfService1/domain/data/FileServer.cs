@@ -8,7 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-namespace WcfService1.domain.data
+namespace WcfService.domain.data
 {
     public class FileServer
     {
@@ -56,8 +56,8 @@ namespace WcfService1.domain.data
                 listener.Listen(10);
                 while (!stop)
                 {
-                    Console.WriteLine("Waiting for a connection...");
-                    // Program is suspended while waiting for an incoming connection.
+                    Console.WriteLine("Listening on files.");
+                    // Thread is suspended while waiting for an incoming connection.
                     clients.Add(new Client(listener.Accept()));
                     Thread.Sleep(SHORT_DELAY);
                 }
@@ -111,9 +111,9 @@ namespace WcfService1.domain.data
                             ClientSocket.Receive(prebuffer, prebuffer.Length, SocketFlags.None);
                             string[] metaData = Encoding.UTF8.GetString(prebuffer).Split(';');
 
-                            using (var output = File.Create("result.dat"))
+                            using (var output = File.Create(metaData[1]))
                             {
-                                Console.WriteLine("Client connected. Starting to receive the file");
+                                Console.WriteLine("Client connected. Starting to receive " + metaData[1] + ", size: " + metaData[2] + ", file type: " + metaData[0]);
 
                                 var buffer = new byte[ClientSocket.ReceiveBufferSize];
                                 //Buffer, the file data
