@@ -8,25 +8,43 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import org.json.JSONObject;
+import org.json.JSONException;
 /**
  * Created by Swodah on 25-05-2016.
  */
 public class RestfulHandler {
-    URL url;
+    private URL url;
     InputStream in;
+    OutputStream out;
+    HttpURLConnection urlConnection = null;
+    String response;
+    JSONObject obj;
+    private String outputmessage;
+
     public RestfulHandler() throws MalformedURLException {
-        url = new URL("http://www.android.com/");
-        HttpURLConnection urlConnection = null;
+        if(url == null){
+            url = new URL("http://www.android.com/");
+        }
+
+
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setReadTimeout(10000);
+            urlConnection.setConnectTimeout(15000);
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoInput(true);
+            urlConnection.setDoOutput(true);
+            urlConnection.setChunkedStreamingMode(0);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
            in = new BufferedInputStream(urlConnection.getInputStream());
             try {
-                readStream(in);
+                writeStream("update");
+              readStream();
             } finally {
                 urlConnection.disconnect();
             }
@@ -34,38 +52,47 @@ public class RestfulHandler {
             e.printStackTrace();
         }
     }
-
-    private void readStream(InputStream in) {
-
+    public String getOutputmessage() {
+        return outputmessage;
     }
-    private void sendStream() {
-        HttpURLConnection urlConnection = null;
+
+    public void setOutputmessage(String outputmessage) {
+        this.outputmessage = outputmessage;
+    }
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public void setUrl(URL url) {
+        this.url = url;
+    }
+
+
+    private void readStream() {
+
         try {
+            in = new BufferedInputStream(urlConnection.getInputStream());
+            //obj = new JSONObject(in.read());
+
+            //response = in.read();
+        }catch(IOException e){
+        }
+        finally {
+            urlConnection.disconnect();
+        }
+    }
+
+
+    private void writeStream(String output) {
+        outputmessage=output;
+        try {
+
             urlConnection = (HttpURLConnection) url.openConnection();
+            out.write(outputmessage.getBytes());
+            out.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            urlConnection.setDoOutput(true);
-            urlConnection.setChunkedStreamingMode(0);
-
-            OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
-            writeStream(out);
-
-            in = new BufferedInputStream(urlConnection.getInputStream());
-        }
-            catch(IOException e){
-                e.printStackTrace();
-            }
-            try{
-            readStream(in);
-            }
-            finally {
-                urlConnection.disconnect();
-            }
-        }
-
-    private void writeStream(OutputStream out) {
-
     }
 }
