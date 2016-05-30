@@ -49,9 +49,11 @@ namespace SKOffice.domain
 
             try
             {
-                client.Connect(ipEndPoint);
+                if (!client.Connected)
+                    client.Connect(ipEndPoint);
                 foreach (string path in filePaths)
                 {
+                    
                     // Fetches file info
                     FileInfo finfo = new FileInfo(path);
                     string fileType = finfo.Name.Split('.')[1];
@@ -59,13 +61,41 @@ namespace SKOffice.domain
                     string fileSize = finfo.Length + "";
 
                     // Creates pre and post buffer
+                    Console.WriteLine("Sending metadata for " + path);
+                    byte[] preBufferFilling = Encoding.UTF8.GetBytes(String.Format("{0};{1};{2}", fileType, fileName, fileSize));
                     byte[] preBuffer = new byte[128];
+                    for (int i = 0; i < preBuffer.Length; i++)
+                        preBuffer[i] = Convert.ToByte(';');
+                    Array.Copy(preBufferFilling, preBuffer, preBufferFilling.Length);
+
                     preBuffer = Encoding.UTF8.GetBytes(String.Format("{0};{1};{2}", fileType, fileName, fileSize));
                     byte[] postBuffer = new byte[0];
 
                     // Sends file
+                    Console.WriteLine("Sending file " + path);
                     client.SendFile(path, preBuffer, postBuffer, TransmitFileOptions.UseDefaultWorkerThread);
+
+                    //Waiting on respond
+                    long timeStart = DateTime.Now.Millisecond;
+                    string msg = "";
+                    Console.WriteLine("Waiting on response " + path);
+                    while (!(msg.Length > 0))
+                    {
+                        byte[] buffer = new byte[client.SendBufferSize];
+                        while ((client.Receive(buffer, buffer.Length, SocketFlags.None)) > 0)
+                        {
+                            msg = Encoding.UTF8.GetString(buffer);
+                        }
+
+                        if (DateTime.Now.Millisecond - timeStart > 5000)
+                        {
+                            Console.WriteLine("File was not send.");
+                            goto outOfLoop;
+                        }
+                    }
+                    Console.WriteLine("Got 200-OK");
                 }
+                outOfLoop:;
             }
             catch (Exception)
             {
