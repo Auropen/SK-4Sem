@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SKOffice.domain;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SKOffice
@@ -8,9 +10,12 @@ namespace SKOffice
 
         FolderBrowserDialog fbd;
         OpenFileDialog ofd;
+        public List<string> paths;
+
 
         public MainForm()
         {
+            paths = new List<string>();
             InitializeComponent();
         }
 
@@ -30,7 +35,7 @@ namespace SKOffice
             fbd = new FolderBrowserDialog();
             ofd = new OpenFileDialog();
         
-            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            //fbd.RootFolder = Environment.SpecialFolder.Desktop;
 
             Button btn = (Button)sender;
             switch (btn.Name)
@@ -46,6 +51,8 @@ namespace SKOffice
 
                     tb_e02.Text = ofd.FileName;
 
+                    paths.Add(tb_e02.Text);
+
                     break;
                 case "browseBlueprintBtn":
 
@@ -58,6 +65,8 @@ namespace SKOffice
 
                     tb_Blueprints.Text = ofd.FileName;
 
+                    paths.Add(tb_Blueprints.Text);
+
                     break;
                 case "browseRequisitionBtn":
 
@@ -69,13 +78,19 @@ namespace SKOffice
                     ofd.ShowDialog();
 
                     tb_Requisition.Text = ofd.FileName;
+
+                    paths.Add(tb_Requisition.Text);
+
                     break;
                 default:
                     break;
             }
-            
-            fbd.RootFolder = Environment.SpecialFolder.Desktop;
 
+        }
+
+        private void uploadBtn_Click(object sender, EventArgs e)
+        {
+            FileTransferClient.Instance.sendFile(paths);
         }
     }
 }

@@ -39,7 +39,7 @@
             this.tb_Requisition = new System.Windows.Forms.TextBox();
             this.tb_Blueprints = new System.Windows.Forms.TextBox();
             this.browseE02Btn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.uploadBtn = new System.Windows.Forms.Button();
             this.tpBox = new System.Windows.Forms.TabControl();
             this.tpOrderFiles = new System.Windows.Forms.TabPage();
             this.tpOverview = new System.Windows.Forms.TabPage();
@@ -71,7 +71,7 @@
             this.groupBox1.Controls.Add(this.tb_Requisition);
             this.groupBox1.Controls.Add(this.tb_Blueprints);
             this.groupBox1.Controls.Add(this.browseE02Btn);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.uploadBtn);
             this.groupBox1.Controls.Add(this.tb_e02);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
@@ -151,14 +151,15 @@
             this.browseE02Btn.UseVisualStyleBackColor = true;
             this.browseE02Btn.Click += new System.EventHandler(this.browse_Click);
             // 
-            // button1
+            // uploadBtn
             // 
-            this.button1.Location = new System.Drawing.Point(359, 197);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Upload";
-            this.button1.UseVisualStyleBackColor = true;
+            this.uploadBtn.Location = new System.Drawing.Point(359, 197);
+            this.uploadBtn.Name = "uploadBtn";
+            this.uploadBtn.Size = new System.Drawing.Size(75, 23);
+            this.uploadBtn.TabIndex = 1;
+            this.uploadBtn.Text = "Upload";
+            this.uploadBtn.UseVisualStyleBackColor = true;
+            this.uploadBtn.Click += new System.EventHandler(this.uploadBtn_Click);
             // 
             // tpBox
             // 
@@ -226,7 +227,7 @@
         private System.Windows.Forms.TextBox tb_e02;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button browseE02Btn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button uploadBtn;
         private System.Windows.Forms.TabControl tpBox;
         private System.Windows.Forms.TabPage tpOrderFiles;
         private System.Windows.Forms.TabPage tpOverview;

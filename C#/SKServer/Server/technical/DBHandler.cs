@@ -19,8 +19,6 @@ namespace Server.technical
             prop.get("databaseName");
         }
 
-        private DBHandler() { }
-
         public static DBHandler Instance
         {
             get
@@ -34,6 +32,8 @@ namespace Server.technical
             }
         }
 
+        private DBHandler() { }
+        
         // Create Methods
 
         static void createCustomer(int custId, String Fname, String LName, String fone, String email, String custAdr, int zip)

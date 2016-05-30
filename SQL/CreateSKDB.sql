@@ -12,7 +12,7 @@ GO
 -- Creating tables
 
 CREATE TABLE TblZipCodes      (fldZipCode int PRIMARY KEY,
-							   fldTown VARCHAR(64) NOT NULL,)
+							   fldTown VARCHAR(64) NOT NULL)
 
 CREATE TABLE TblCompany       (fldCompanyID int PRIMARY KEY,
 							   fldCompanyName VARCHAR(64) NOT NULL,
