@@ -1,10 +1,8 @@
 package com.example.pirateboat.productiontablet;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,25 +11,32 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+
+import com.example.pirateboat.productiontablet.data.Ip;
+import com.example.pirateboat.productiontablet.data.Order;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
+
 /**
  * Created by Swodah on 25-05-2016.
  */
 public class RestfulHandler extends AsyncTask<Void, Void, Void> {
+    private static final String TAG = "Production tablet";
     private URL url;
     InputStream in;
     OutputStream out;
     HttpURLConnection urlConnection = null;
     String response;
-    JSONObject obj;
+    private static Gson gson = new GsonBuilder().create();
     private String outputmessage;
     public final Charset charset = Charset.forName("UTF-8");
 
     public RestfulHandler() throws MalformedURLException {
+        Log.i(TAG,"resthandler created");
+
         if(url == null){
-            url = new URL("http://www.android.com/");
+            //url = new URL("http://ip.jsontest.com");
+            url = new URL("http://10.176.164.98:8080/RestService.svc/getOrder/w0000520");
         }
 
 
@@ -39,26 +44,15 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(10000);
             urlConnection.setConnectTimeout(15000);
-            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestMethod("GET");
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
-            urlConnection.setChunkedStreamingMode(0);
-            urlConnection.connect();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-           in = new BufferedInputStream(urlConnection.getInputStream());
+            //urlConnection.setChunkedStreamingMode(0);
 
-            try {
-                writeStream("update");
-              readStream();
-            } finally {
-                urlConnection.disconnect();
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        readStream();
     }
 
     @Override
@@ -83,9 +77,9 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
     }
 
 
-//    // Given a URL, establishes an HttpUrlConnection and retrieves
-//// the web page content as a InputStream, which it returns as
-//// a string.
+    // Given a URL, establishes an HttpUrlConnection and retrieves
+// the web page content as a InputStream, which it returns as
+// a string.
 //    public List<Overview> downloadUrl(String myurl) throws IOException {
 //        InputStream is = null;
 //        // Only display the first 500 characters of the retrieved
@@ -129,10 +123,11 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
             in = urlConnection.getInputStream();
             is = urlConnection.getInputStream();
             InputStreamReader reader = new InputStreamReader(is, charset);
-            obj = new JSONObject(in.toString());
-            reader.read();
+            Log.i(TAG,(gson.fromJson(reader,Order.class).toString()));
+
             //response =
         }catch(Exception ioe){
+            ioe.printStackTrace();
         }
         finally {
             urlConnection.disconnect();
@@ -146,6 +141,12 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
         try {
             urlConnection.connect();
             urlConnection = (HttpURLConnection) url.openConnection();
+            out = urlConnection.getOutputStream();
+            String questionnairesJson = gson.toJson(output);
+            out.write(questionnairesJson.getBytes(Charset.forName("UTF-8")));
+
+            int response = urlConnection.getResponseCode();
+            Log.d(TAG, "Response: " + response);
             out.write(outputmessage.getBytes());
             out.flush();
         } catch (IOException e) {

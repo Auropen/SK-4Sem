@@ -1,22 +1,23 @@
 package com.example.pirateboat.productiontablet;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 public class OrderOverView extends Activity {
     TableLayout table_layout;
-
+    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +25,18 @@ public class OrderOverView extends Activity {
         setContentView(R.layout.activity_order_over_view);
 
         table_layout = (TableLayout) findViewById(R.id.tableLayout1);
-
-        BuildTable(3);
+        ArrayList<String> data = new ArrayList<String>();
+        BuildTable(13,data);
+        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
+        try {
+            RestfulHandler rfh = new RestfulHandler();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
 
     }
-    private void BuildTable(int rows) {
+    private void BuildTable(int rows,ArrayList<String> data) {
 
         int cols = 13;
         // outer for loop
@@ -48,6 +55,13 @@ public class OrderOverView extends Activity {
                         break;
                     case 2:
                         //textlinks
+                        TextView tl = new TextView(this);
+                        tl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+                                LayoutParams.WRAP_CONTENT));
+                        tl.setBackgroundResource(R.drawable.cell_shape);
+                        tl.setPadding(40, 40, 40, 40);
+                        tl.setText("R " + i + ", C" + j);//hardcode knapper og links og labels
+                        row.addView(tl);
                         break;
                     case 3:
                     case 4:
@@ -60,20 +74,37 @@ public class OrderOverView extends Activity {
                     case 11:
                     case 12:
                         //label textviews
+                        TextView tv = new TextView(this);
+                        tv.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+                                LayoutParams.WRAP_CONTENT));
+                        tv.setBackgroundResource(R.drawable.cell_shape);
+                        tv.setPadding(40, 40, 40, 40);
+                        tv.setText("X");//hardcode knapper og links og labels
+                        row.addView(tv);
                         break;
                     case 13:
                         //button
+                        Button btn = new Button(this);
+                        btn.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+                                LayoutParams.WRAP_CONTENT));
+                        btn.setBackgroundResource(R.drawable.cell_shape);
+                        btn.setPadding(5, 5, 5, 5);
+                        btn.setOnClickListener(new OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent myIntent = new Intent(OrderOverView.this,NotesView.class);
+                                startActivity(myIntent);
+                            }
+                        });
+
+                        btn.setText("Notes");//hardcode knapper og links og labels
+                        row.addView(btn);
                         break;
 
                 }
-                TextView tv = new TextView(this);
-                tv.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-                        LayoutParams.WRAP_CONTENT));
-                tv.setBackgroundResource(R.drawable.cell_shape);
-                tv.setPadding(5, 5, 5, 5);
-                tv.setText("R " + i + ", C" + j);//hardcode knapper og links og labels
 
-                row.addView(tv);
+
+
 
             }
 
