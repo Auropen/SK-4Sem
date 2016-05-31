@@ -90,7 +90,8 @@ namespace SKOffice
 
         private void uploadBtn_Click(object sender, EventArgs e)
         {
-            FileTransferClient.Instance.sendFile(paths);
+            //FileTransferClient.Instance.sendFile(paths);
+            FileTransferClient.Instance.HttpPostFiles("http://10.176.164.98:8080/RestService.svc/upload/", "", paths[0]);
         }
     }
 }
