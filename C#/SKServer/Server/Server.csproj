@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="domain\data\FileServer.cs" />
     <Compile Include="domain\data\OrderParser.cs" />
     <Compile Include="domain\order\OrderCategory.cs" />
     <Compile Include="domain\order\OrderConfirmation.cs" />

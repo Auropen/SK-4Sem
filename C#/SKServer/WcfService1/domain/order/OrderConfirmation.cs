@@ -25,10 +25,7 @@ namespace SKOffice.domain.order
             {
                 return OrderDate.ToLongDateString();
             }
-            set
-            {
-
-            }
+            set { }
         }
         [IgnoreDataMember]
         public DateTime OrderDate { get; set; }

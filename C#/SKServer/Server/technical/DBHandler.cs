@@ -349,6 +349,7 @@ namespace Server.technical
 
         static List<OrderCategory> getOrderCategory()
         {
+            List<OrderCategory> categories = new List<OrderCategory>();
             //Needs a List for the various Categories
             try
             {
@@ -367,6 +368,7 @@ namespace Server.technical
                                 Console.WriteLine(dr.GetInt32(0) + " "
                                                 + dr.GetString(1) + " "
                                                 + dr.GetInt32(2) + " This is Category ");
+                                categories.Add(new OrderCategory(dr.GetString(1), dr.GetInt32(0)));
                             }
                         }
                     }
@@ -377,14 +379,14 @@ namespace Server.technical
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            return "";
+            return categories;
         }
 
 
         static List<OrderElement> getOrderElements(int categoryID)
         {
 
-            //Needs a List for all of the Elements
+            List<OrderElement> elements = new List<OrderElement>();
 
             try
             {
@@ -418,7 +420,7 @@ namespace Server.technical
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            return "";
+            return elements;
         }
 
     }

@@ -17,7 +17,7 @@ namespace WcfService
         [WebInvoke(Method = "GET", 
             ResponseFormat = WebMessageFormat.Json, 
             BodyStyle = WebMessageBodyStyle.Wrapped, 
-            UriTemplate = "json/{fileName}")]
+            UriTemplate = "getOrder/{fileName}")]
         OrderConfirmation getOrder(string fileName);
     }
 }

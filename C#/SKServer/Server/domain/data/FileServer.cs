@@ -37,17 +37,15 @@ namespace WcfService.domain.data
 
         private FileServer()
         {
+            clients = new List<Client>();
             MainThread = new Thread(new ThreadStart(threadedLoop));
         }
 
         public void startServer(int port)
         {
-            if (!MainThread.IsAlive)
-            {
-                Port = port;
-                stop = false;
-                MainThread.Start();
-            }
+            Port = port;
+            stop = false;
+            MainThread.Start();
         }
 
         private void threadedLoop()
@@ -61,7 +59,9 @@ namespace WcfService.domain.data
                 {
                     Console.WriteLine("Listening on files.");
                     // Thread is suspended while waiting for an incoming connection.
-                    clients.Add(new Client(listener.Accept()));
+                    Client client = new Client(listener.Accept());
+                    clients.Add(client);
+                    client.startClient();
                     Thread.Sleep(SHORT_DELAY);
                 }
             }
@@ -104,6 +104,7 @@ namespace WcfService.domain.data
             {
                 while (!stop)
                 {
+                    FileStream output = null;
                     try
                     {
                         if (ClientSocket.Available > 0)
@@ -114,15 +115,17 @@ namespace WcfService.domain.data
                             ClientSocket.Receive(prebuffer, prebuffer.Length, SocketFlags.None);
                             string[] metaData = Encoding.UTF8.GetString(prebuffer).Split(';');
 
-                            using (var output = File.Create(metaData[1]))
-                            {
-                                Console.WriteLine("Client connected. Starting to receive " + metaData[1] + ", size: " + metaData[2] + ", file type: " + metaData[0]);
+                            output = File.Create(metaData[1]);
 
-                                var buffer = new byte[ClientSocket.ReceiveBufferSize];
-                                //Buffer, the file data
-                                while ((bytesRead = ClientSocket.Receive(buffer, buffer.Length, SocketFlags.None)) > 0)
-                                    output.Write(buffer, 0, bytesRead);
-                            }
+                            Console.WriteLine("Client connected. Starting to receive " + metaData[1] + ", size: " + metaData[2] + ", file type: " + metaData[0]);
+
+                            var buffer = new byte[ClientSocket.ReceiveBufferSize];
+                            //Buffer, the file data
+                            while ((bytesRead = ClientSocket.Receive(buffer, buffer.Length, SocketFlags.None)) > 0)
+                                output.Write(buffer, 0, bytesRead);
+
+                            FileInfo fi = new FileInfo(metaData[1]);
+                            Console.WriteLine("File uploaded: " + fi.FullName + ", " + metaData[2] + "/" + fi.Length);
 
                             // Return a success msg.
                             byte[] msg = Encoding.UTF8.GetBytes("200;OK;File was uploaded");
@@ -131,8 +134,14 @@ namespace WcfService.domain.data
                     }
                     catch (Exception)
                     {
-                        byte[] msg = Encoding.UTF8.GetBytes("400;OK;Upload was interrupted");
-                        ClientSocket.Send(msg, msg.Length, SocketFlags.None);
+                    }
+                    finally
+                    {
+                        if (output != null)
+                        {
+                            output.Flush();
+                            output.Close();
+                        }
                     }
                     
                     Thread.Sleep(SHORT_DELAY);
