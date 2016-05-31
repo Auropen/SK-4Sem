@@ -18,12 +18,6 @@ namespace WcfService
 {
     public class RestService : IRestService
     {
-        public RestService()
-        {
-            FileServer fs = FileServer.Instance;
-            fs.startServer(9000);
-        }
-
         OrderConfirmation IRestService.getOrder(string fileName)
         {
             Console.WriteLine("Got RESTFul connection.");

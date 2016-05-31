@@ -27,10 +27,8 @@ namespace WcfService
         Stream DownloadFile(string fileName, string fileExtension);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/UploadFile?fileName={fileName}")]
+        [WebInvoke(Method = "POST", UriTemplate = "update/{fileName}")]
         void UploadFile(string fileName, Stream stream);
 
     }
-
-    
 }
