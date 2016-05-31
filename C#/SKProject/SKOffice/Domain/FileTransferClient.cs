@@ -36,7 +36,7 @@ namespace SKOffice.domain
 
         private FileTransferClient()
         {
-            byte[] ipAddress = { 10, 176, 164, 144 };
+            byte[] ipAddress = { 10, 176, 164, 98 };
             ipEndPoint = new IPEndPoint(new IPAddress(ipAddress),9000);
 
             // Create a TCP socket.
@@ -61,16 +61,14 @@ namespace SKOffice.domain
                     string fileSize = finfo.Length + "";
 
                     // Creates pre and post buffer
-                    Console.WriteLine("Sending metadata for " + path);
                     byte[] preBufferFilling = Encoding.UTF8.GetBytes(String.Format("{0};{1};{2}", fileType, fileName, fileSize));
                     byte[] preBuffer = new byte[128];
-                    for (int i = 0; i < preBuffer.Length; i++)
-                        preBuffer[i] = Convert.ToByte(';');
                     Array.Copy(preBufferFilling, preBuffer, preBufferFilling.Length);
-
-                    preBuffer = Encoding.UTF8.GetBytes(String.Format("{0};{1};{2}", fileType, fileName, fileSize));
+                    for (int i = preBufferFilling.Length; i < preBuffer.Length; i++)
+                        preBuffer[i] = Convert.ToByte(';');
                     byte[] postBuffer = new byte[0];
 
+                    Console.WriteLine("Sending metadata for " + path + ", containing: " + Encoding.UTF8.GetString(preBuffer));
                     // Sends file
                     Console.WriteLine("Sending file " + path);
                     client.SendFile(path, preBuffer, postBuffer, TransmitFileOptions.UseDefaultWorkerThread);
