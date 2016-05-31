@@ -109,7 +109,7 @@ namespace WcfService.domain.data
                         if (ClientSocket.Available > 0)
                         {
                             int bytesRead;
-                            //Prebuffer, for meta data.
+                            // Prebuffer, for meta data.
                             var prebuffer = new byte[128];
                             ClientSocket.Receive(prebuffer, prebuffer.Length, SocketFlags.None);
                             string[] metaData = Encoding.UTF8.GetString(prebuffer).Split(';');
@@ -118,21 +118,34 @@ namespace WcfService.domain.data
                             {
                                 Console.WriteLine("Client connected. Starting to receive " + metaData[1] + ", size: " + metaData[2] + ", file type: " + metaData[0]);
 
+                                // Buffer, the file data
                                 var buffer = new byte[ClientSocket.ReceiveBufferSize];
-                                //Buffer, the file data
+                                int totalSize = 0;
+                                // Starts writing from the buffer to the file
                                 while ((bytesRead = ClientSocket.Receive(buffer, buffer.Length, SocketFlags.None)) > 0)
+                                {
                                     output.Write(buffer, 0, bytesRead);
+                                    Console.WriteLine("Reading file: " + (totalSize =+ bytesRead) + "/" + metaData[2]);
+                                }
+
+                                Console.WriteLine("Successfully read the file, cleaning and closing file stream...");
+                                output.Flush();
+                                output.Close();
+                                Console.WriteLine("Stream has been cleaned and closed.");
                             }
 
                             // Return a success msg.
+                            Console.WriteLine("Sending success msg back to the client.");
                             byte[] msg = Encoding.UTF8.GetBytes("200;OK;File was uploaded");
                             ClientSocket.Send(msg, msg.Length, SocketFlags.None);
+                            Console.WriteLine("Client received success msg.");
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        byte[] msg = Encoding.UTF8.GetBytes("400;OK;Upload was interrupted");
-                        ClientSocket.Send(msg, msg.Length, SocketFlags.None);
+                        /*byte[] msg = Encoding.UTF8.GetBytes("400;OK;Upload was interrupted");
+                        ClientSocket.Send(msg, msg.Length, SocketFlags.None);*/
+                        Console.WriteLine("Something went wrong.. " + ex.Message);
                     }
                     
                     Thread.Sleep(SHORT_DELAY);

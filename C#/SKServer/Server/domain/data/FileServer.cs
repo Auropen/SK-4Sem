@@ -89,7 +89,7 @@ namespace WcfService.domain.data
             {
                 stop = true;
                 ClientSocket = socket;
-                Console.WriteLine("Client connected from " + ClientSocket.LocalEndPoint.AddressFamily);
+                Console.WriteLine("Client connected from " + ClientSocket.LocalEndPoint);
 
                 Thread = new Thread(new ThreadStart(listener));
             }
@@ -107,40 +107,66 @@ namespace WcfService.domain.data
                     FileStream output = null;
                     try
                     {
-                        if (ClientSocket.Available > 0)
+                        int bytesRead;
+                        //Prebuffer, for 128byte meta data.
+                        var prebuffer = new byte[128];
+                        ClientSocket.Receive(prebuffer, prebuffer.Length, SocketFlags.None);
+                        string[] metaData = Encoding.UTF8.GetString(prebuffer).Split(';');
+
+                        if (metaData.Length < 2)
+                            break;
+
+                        output = File.Create(metaData[1]);
+
+                        Console.WriteLine("Client connected. Starting to receive " + metaData[1] + ", size: " + metaData[2] + ", file type: " + metaData[0]);
+
+                        var buffer = new byte[ClientSocket.ReceiveBufferSize];
+                        int totalSize = 0;
+                        //Buffer, for file data
+
+                        if (Convert.ToInt32(metaData[2]) >= totalSize && ClientSocket.Available > 0)
                         {
-                            int bytesRead;
-                            //Prebuffer, for meta data.
-                            var prebuffer = new byte[128];
-                            ClientSocket.Receive(prebuffer, prebuffer.Length, SocketFlags.None);
-                            string[] metaData = Encoding.UTF8.GetString(prebuffer).Split(';');
-
-                            output = File.Create(metaData[1]);
-
-                            Console.WriteLine("Client connected. Starting to receive " + metaData[1] + ", size: " + metaData[2] + ", file type: " + metaData[0]);
-
-                            var buffer = new byte[ClientSocket.ReceiveBufferSize];
-                            //Buffer, the file data
                             while ((bytesRead = ClientSocket.Receive(buffer, buffer.Length, SocketFlags.None)) > 0)
+                            {
                                 output.Write(buffer, 0, bytesRead);
-
-                            FileInfo fi = new FileInfo(metaData[1]);
-                            Console.WriteLine("File uploaded: " + fi.FullName + ", " + metaData[2] + "/" + fi.Length);
-
-                            // Return a success msg.
-                            byte[] msg = Encoding.UTF8.GetBytes("200;OK;File was uploaded");
-                            ClientSocket.Send(msg, msg.Length, SocketFlags.None);
+                                Console.WriteLine("Reading file: " + (totalSize += bytesRead) + "/" + metaData[2]);
+                            }
                         }
+
+                        // Return a success msg
+                        Console.WriteLine("Sending success msg back to the client.");
+                        byte[] msg = Encoding.UTF8.GetBytes("200;OK;File was uploaded");
+                        ClientSocket.Send(msg, msg.Length, SocketFlags.None);
+
+                        //Closing up file stream
+                        Console.WriteLine("Successfully read the file, cleaning and closing file stream...");
+                        output.Flush();
+                        output.Close();
+                        output = null;
+                        Console.WriteLine("Stream has been cleaned and closed.");
                     }
-                    catch (Exception)
+                    catch (SocketException socketEx)
                     {
+                        Console.WriteLine("Connection lost.. " + socketEx.Message);
+                        Console.WriteLine(socketEx.StackTrace);
+                        stop = true;
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Something went wrong.. " + ex.Message);
+                        Console.WriteLine(ex.StackTrace);
+                        stop = true;
+                        break;
                     }
                     finally
                     {
                         if (output != null)
                         {
+                            Console.WriteLine("Cleaning and closing file stream...");
                             output.Flush();
                             output.Close();
+                            Console.WriteLine("Stream has been cleaned and closed.");
                         }
                     }
                     
