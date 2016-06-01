@@ -92,17 +92,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\RestService\RestService.wsdl" />
-    <None Include="Service References\RestService\RestService.xsd">
+    <None Include="Service References\RestService\RestService1.wsdl" />
+    <None Include="Service References\RestService\RestService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RestService\RestService2.xsd">
+    <None Include="Service References\RestService\RestService11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RestService\RestService3.xsd">
+    <None Include="Service References\RestService\RestService12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RestService\RestService4.xsd">
+    <None Include="Service References\RestService\RestService13.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\RestService\SKOffice.RestService.OrderConfirmation.datasource">
@@ -123,9 +123,6 @@
     <WCFMetadataStorage Include="Service References\RestService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RestService\RestService.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\RestService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +133,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RestService\RestService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

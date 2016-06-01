@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tb_e02 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,15 +43,14 @@
             this.tpOrderFiles = new System.Windows.Forms.TabPage();
             this.tpOverview = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.feedbackE02 = new System.Windows.Forms.Label();
+            this.feedbackBlueprint = new System.Windows.Forms.Label();
+            this.feedbackRequisition = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tpBox.SuspendLayout();
             this.tpOrderFiles.SuspendLayout();
             this.tpOverview.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // tb_e02
             // 
@@ -66,6 +64,9 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.feedbackRequisition);
+            this.groupBox1.Controls.Add(this.feedbackBlueprint);
+            this.groupBox1.Controls.Add(this.feedbackE02);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -204,10 +205,43 @@
             // 
             this.groupBox2.Location = new System.Drawing.Point(7, 7);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(442, 228);
+            this.groupBox2.Size = new System.Drawing.Size(439, 228);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Overview";
+            // 
+            // feedbackE02
+            // 
+            this.feedbackE02.AutoSize = true;
+            this.feedbackE02.BackColor = System.Drawing.Color.RoyalBlue;
+            this.feedbackE02.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.feedbackE02.Location = new System.Drawing.Point(393, 40);
+            this.feedbackE02.Name = "feedbackE02";
+            this.feedbackE02.Size = new System.Drawing.Size(15, 15);
+            this.feedbackE02.TabIndex = 10;
+            this.feedbackE02.Text = "  ";
+            // 
+            // feedbackBlueprint
+            // 
+            this.feedbackBlueprint.AutoSize = true;
+            this.feedbackBlueprint.BackColor = System.Drawing.Color.RoyalBlue;
+            this.feedbackBlueprint.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.feedbackBlueprint.Location = new System.Drawing.Point(393, 96);
+            this.feedbackBlueprint.Name = "feedbackBlueprint";
+            this.feedbackBlueprint.Size = new System.Drawing.Size(15, 15);
+            this.feedbackBlueprint.TabIndex = 11;
+            this.feedbackBlueprint.Text = "  ";
+            // 
+            // feedbackRequisition
+            // 
+            this.feedbackRequisition.AutoSize = true;
+            this.feedbackRequisition.BackColor = System.Drawing.Color.RoyalBlue;
+            this.feedbackRequisition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.feedbackRequisition.Location = new System.Drawing.Point(393, 152);
+            this.feedbackRequisition.Name = "feedbackRequisition";
+            this.feedbackRequisition.Size = new System.Drawing.Size(15, 15);
+            this.feedbackRequisition.TabIndex = 12;
+            this.feedbackRequisition.Text = "  ";
             // 
             // MainForm
             // 
@@ -228,8 +262,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox tb_e02;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button browseE02Btn;
@@ -245,6 +277,9 @@
         private System.Windows.Forms.TextBox tb_Requisition;
         private System.Windows.Forms.TextBox tb_Blueprints;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label feedbackE02;
+        private System.Windows.Forms.Label feedbackRequisition;
+        private System.Windows.Forms.Label feedbackBlueprint;
     }
 }
 

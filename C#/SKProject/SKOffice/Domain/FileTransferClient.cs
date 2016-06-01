@@ -38,7 +38,7 @@ namespace SKOffice.domain
 
         private FileTransferClient()
         {
-            byte[] ipAddress = { 10, 176, 164, 98 };
+            byte[] ipAddress = { 10, 176, 164, 150 };
             ipEndPoint = new IPEndPoint(new IPAddress(ipAddress),8080);
 
             // Create a TCP socket.
@@ -46,11 +46,18 @@ namespace SKOffice.domain
                     SocketType.Stream, ProtocolType.Tcp);*/
         }
 
-        public string HttpPostFiles(string URI, string Parameters, string filePath)
+        public bool addOrderConfirmation(string filePath)
         {
-            RestService.RestServiceClient rsclient = new RestService.RestServiceClient();
+            RestService.RestServiceClient rsClient = new RestService.RestServiceClient();
+            List<string> fileContent = new List<string>();
 
-            rsclient.addOrderConfirmation();
+            using (StreamReader sReader = new StreamReader(filePath))
+            {
+                fileContent.Add(sReader.ReadLine());
+
+                sReader.Close();
+            }
+            return rsClient.addOrderConfirmation(fileContent.ToArray());
         }
     }
 }

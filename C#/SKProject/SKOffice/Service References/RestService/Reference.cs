@@ -431,10 +431,10 @@ namespace SKOffice.RestService {
         System.Threading.Tasks.Task<SKOffice.RestService.OrderConfirmation> getOrderAsync(string fileName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addOrderConfirmation", ReplyAction="http://tempuri.org/IRestService/addOrderConfirmationResponse")]
-        void addOrderConfirmation(SKOffice.RestService.OrderConfirmation orderConfirmation);
+        bool addOrderConfirmation(string[] fileContent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addOrderConfirmation", ReplyAction="http://tempuri.org/IRestService/addOrderConfirmationResponse")]
-        System.Threading.Tasks.Task addOrderConfirmationAsync(SKOffice.RestService.OrderConfirmation orderConfirmation);
+        System.Threading.Tasks.Task<bool> addOrderConfirmationAsync(string[] fileContent);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -472,12 +472,12 @@ namespace SKOffice.RestService {
             return base.Channel.getOrderAsync(fileName);
         }
         
-        public void addOrderConfirmation(SKOffice.RestService.OrderConfirmation orderConfirmation) {
-            base.Channel.addOrderConfirmation(orderConfirmation);
+        public bool addOrderConfirmation(string[] fileContent) {
+            return base.Channel.addOrderConfirmation(fileContent);
         }
         
-        public System.Threading.Tasks.Task addOrderConfirmationAsync(SKOffice.RestService.OrderConfirmation orderConfirmation) {
-            return base.Channel.addOrderConfirmationAsync(orderConfirmation);
+        public System.Threading.Tasks.Task<bool> addOrderConfirmationAsync(string[] fileContent) {
+            return base.Channel.addOrderConfirmationAsync(fileContent);
         }
     }
 }
