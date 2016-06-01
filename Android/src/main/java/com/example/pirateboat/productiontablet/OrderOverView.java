@@ -12,13 +12,15 @@ import android.widget.Button;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
+import com.example.pirateboat.productiontablet.data.OrderResult;
+
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class OrderOverView extends Activity {
     TableLayout table_layout;
     Button btn;
-
+    OrderResult or;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,17 +28,23 @@ public class OrderOverView extends Activity {
 
         table_layout = (TableLayout) findViewById(R.id.tableLayout1);
         ArrayList<String> data = new ArrayList<String>();
-        BuildTable(13,data);
+
         StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
         try {
             RestfulHandler rfh = new RestfulHandler();
+            or = rfh.readStream();
         } catch (MalformedURLException e) {
             e.printStackTrace();
+
         }
 
+        BuildTable(13,or);
 
     }
-    private void BuildTable(int rows,ArrayList<String> data) {
+
+
+
+    private void BuildTable(int rows,OrderResult data) {
 
         int cols = 13;
         // outer for loop
@@ -52,16 +60,23 @@ public class OrderOverView extends Activity {
                 switch (j){
                     case 1:
                         //knap
-                        break;
-                    case 2:
-                        //textlinks
                         TextView tl = new TextView(this);
                         tl.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
                                 LayoutParams.WRAP_CONTENT));
                         tl.setBackgroundResource(R.drawable.cell_shape);
                         tl.setPadding(40, 40, 40, 40);
-                        tl.setText("R " + i + ", C" + j);//hardcode knapper og links og labels
+                        tl.setText(data.getOrderResult.AlternativeNumber);//hardcode knapper og links og labels
                         row.addView(tl);
+                        break;
+                    case 2:
+                        //textlinks
+                        TextView tl2 = new TextView(this);
+                        tl2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+                                LayoutParams.WRAP_CONTENT));
+                        tl2.setBackgroundResource(R.drawable.cell_shape);
+                        tl2.setPadding(40, 40, 40, 40);
+                        tl2.setText("R " + i + ", C" + j);//hardcode knapper og links og labels
+                        row.addView(tl2);
                         break;
                     case 3:
                     case 4:

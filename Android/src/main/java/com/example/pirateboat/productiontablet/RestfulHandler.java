@@ -28,29 +28,15 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
     HttpURLConnection urlConnection = null;
     private static Gson gson = new GsonBuilder().create();
     public final Charset charset = Charset.forName("UTF-8");
-
+    int attemptcounter = 0;
     public RestfulHandler() throws MalformedURLException {
         Log.i(TAG,"resthandler created");
 
         if(url == null){
             //url = new URL("http://ip.jsontest.com");
-           url = new URL("http://10.176.164.150:8080/RestService.svc/getOrder/w0000520");
+           url = new URL("http://keddebock.dk:8080/RestService.svc/getOrder/w0000520");
         }
 
-
-        try {
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000);
-            urlConnection.setConnectTimeout(20000);
-            urlConnection.setRequestMethod("GET");
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(false);
-            //urlConnection.setChunkedStreamingMode(0);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        readStream();
     }
 
     @Override
@@ -68,17 +54,21 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
     }
 
 
-    private void readStream() {
+    public OrderResult readStream() {
         InputStream is = null;
-
+        OrderResult o = null;
             try {
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(20000);
                 urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                urlConnection.setDoOutput(false);
                 urlConnection.connect();
-
                 is = urlConnection.getInputStream();
                 InputStreamReader reader = new InputStreamReader(is, charset);
-                OrderResult o = gson.fromJson(reader, OrderResult.class);
-                Log.i(TAG,"hej");
+                o = gson.fromJson(reader, OrderResult.class);
+
 
 
             } catch (Exception ioe) {
@@ -88,13 +78,25 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
 
 
             }
-
+        if (o == null){
+            if(attemptcounter<3){
+                attemptcounter++;
+                readStream();
+            }
+        }
+        return o;
     }
 
 
-    private void writeStream(String output) {
+    public void writeStream(OrderResult output) {
 
         try {
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setReadTimeout(10000);
+            urlConnection.setConnectTimeout(20000);
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoInput(false);
+            urlConnection.setDoOutput(true);
             urlConnection.connect();
             urlConnection = (HttpURLConnection) url.openConnection();
             out = urlConnection.getOutputStream();
