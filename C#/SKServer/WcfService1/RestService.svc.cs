@@ -24,11 +24,16 @@ namespace WcfService
             return OrderParser.Instance.readOrder("C:\\School\\SKøkken\\" + fileName + ".e02");
         }
 
-        public void addOrderConfirmation(List<string> fileContent)
+        public bool addOrderConfirmation(List<string> fileContent)
         {
             try
             {
-                using (var output = new StreamWriter(File.Create("testFile.e02")))
+                string fileName = "testfile";
+                string fileExtension = ".e02";
+                FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/FileServer/" + fileName + "/"), fileName + "." + fileExtension));
+
+                fileInfo.Directory.Create();
+                using (var output = new StreamWriter(File.Create(fileInfo.FullName)))
                 {
                     foreach (string line in fileContent)
                     {
@@ -39,9 +44,11 @@ namespace WcfService
                 }
 
             }
-            catch (IOException ex)
+            catch (IOException)
             {
+                return false;
             }
+            return true;
         }
     }
 }
