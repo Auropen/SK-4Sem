@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SKOffice.domain.order" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SKOffice.domain.order" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/RestService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="OrderConfirmation">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AltDeliveryInfo" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="AlternativeNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Categories" nillable="true" type="tns:ArrayOfOrderCategory" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CompanyInfo" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CustomerInfo" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="OrderDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProducedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Week" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="kitchenInfo" nillable="true" type="q4:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderConfirmation" nillable="true" type="tns:OrderConfirmation" />
+  <xs:complexType name="ArrayOfOrderCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderCategory" nillable="true" type="tns:OrderCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderCategory" nillable="true" type="tns:ArrayOfOrderCategory" />
+  <xs:complexType name="OrderCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Elements" nillable="true" type="tns:ArrayOfOrderElement" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderCategory" nillable="true" type="tns:OrderCategory" />
+  <xs:complexType name="ArrayOfOrderElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderElement" nillable="true" type="tns:OrderElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderElement" nillable="true" type="tns:ArrayOfOrderElement" />
+  <xs:complexType name="OrderElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ElementInfo" nillable="true" type="q5:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Finish" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hinge" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderElement" nillable="true" type="tns:OrderElement" />
+</xs:schema>

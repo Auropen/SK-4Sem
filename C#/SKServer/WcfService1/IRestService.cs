@@ -21,14 +21,11 @@ namespace WcfService
             BodyStyle = WebMessageBodyStyle.Wrapped, 
             UriTemplate = "getOrder/{fileName}")]
         OrderConfirmation getOrder(string fileName);
+        
 
         [OperationContract]
-        [WebGet(UriTemplate = "File/{fileName}/{fileExtension}")]
-        Stream DownloadFile(string fileName, string fileExtension);
-
-        [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "update/{fileName}")]
-        void UploadFile(string fileName, Stream stream);
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json ,UriTemplate = "addOrderConfirmation")]
+        void addOrderConfirmation(List<string> fileContent);
 
     }
 }
