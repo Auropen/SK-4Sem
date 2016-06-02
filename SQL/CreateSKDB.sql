@@ -34,7 +34,7 @@ CREATE TABLE TblOrder		  (fldOrderID int PRIMARY KEY,
 							   fldStartDate date NOT NULL,
 							   fldDeliveryDate date NOT NULL,
 							   fldDeliveryWeek VARCHAR(32) NOT NULL,
-							   fldBluePrintLink VARCHAR(256) NOT NULL,
+							   fldBluePrintLink VARCHAR(256),
 							   fldProgressStatus VARCHAR(16) NOT NULL,
 							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldCompanyID),
 							   fldCustomerID INT FOREIGN KEY REFERENCES TblCustomer(fldCustomerID))
