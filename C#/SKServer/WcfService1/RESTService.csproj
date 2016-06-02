@@ -96,20 +96,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="domain\data\FileServer.cs" />
     <Compile Include="domain\data\OrderParser.cs" />
     <Compile Include="domain\order\OrderCategory.cs" />
     <Compile Include="domain\order\OrderConfirmation.cs" />
     <Compile Include="domain\order\OrderElement.cs" />
+    <Compile Include="domain\order\OrderNote.cs" />
     <Compile Include="domain\Properties.cs" />
-    <Compile Include="domain\protocol\protocol.cs" />
-    <Compile Include="domain\SKServer.cs" />
     <Compile Include="domain\utility\ConversionUtil.cs" />
     <Compile Include="IRestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestService.svc.cs">
       <DependentUpon>RestService.svc</DependentUpon>
     </Compile>
+    <Compile Include="technical\DBHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

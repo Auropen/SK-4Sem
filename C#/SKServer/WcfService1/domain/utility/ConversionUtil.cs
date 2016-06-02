@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SKOffice.domain.utility
+namespace WcfService.domain.utility
 {
     public class ConversionUtil
     {

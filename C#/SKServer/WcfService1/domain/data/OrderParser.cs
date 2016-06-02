@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using SKOffice.domain.order;
-using SKOffice.domain.utility;
+using WcfService.domain.order;
+using WcfService.domain.utility;
 
-namespace SKOffice
+namespace WcfService.domain.data
 {
     public class OrderParser
     {

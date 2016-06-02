@@ -1,4 +1,4 @@
-﻿using SKOffice.domain.order;
+﻿using WcfService.domain.order;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,11 +21,26 @@ namespace WcfService
             BodyStyle = WebMessageBodyStyle.Wrapped, 
             UriTemplate = "getOrder/{fileName}")]
         OrderConfirmation getOrder(string fileName);
-        
 
         [OperationContract]
-        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json ,UriTemplate = "addOrderConfirmation")]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "getAllActiveOrders/")]
+        List<OrderConfirmation> getAllActiveOrders();
+
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", 
+            RequestFormat = WebMessageFormat.Json, 
+            UriTemplate = "addOrderConfirmation")]
         bool addOrderConfirmation(List<string> fileContent);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", 
+            RequestFormat = WebMessageFormat.Json, 
+            UriTemplate = "addOrderConfirmation")]
+        bool addNote(string text, string orderNumber);
 
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace SKOffice.domain.order
+namespace WcfService.domain.order
 {
     [DataContract]
     public class OrderConfirmation
@@ -18,6 +18,8 @@ namespace SKOffice.domain.order
         public string OrderName { get; set; }
         [DataMember]
         public string Week { get; set; }
+        [DataMember]
+        public string Status { get; set; }
         [DataMember]
         public DateTime OrderDate { get; set; }
         [DataMember]
@@ -32,6 +34,8 @@ namespace SKOffice.domain.order
         public List<string> kitchenInfo { get; private set; }
         [DataMember]
         public List<OrderCategory> Categories { get; private set; }
+        [DataMember]
+        public List<OrderNote> Notes { get; private set; }
 
 
         public OrderConfirmation()
@@ -46,6 +50,7 @@ namespace SKOffice.domain.order
             CustomerInfo = new List<string>();
             AltDeliveryInfo = new List<string>();
             Categories = new List<OrderCategory>();
+            Notes = new List<OrderNote>();
             kitchenInfo = new List<string>();
         }
 

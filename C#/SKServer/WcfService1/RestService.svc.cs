@@ -4,15 +4,14 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using SKOffice.domain.order;
-using SKOffice;
-using WcfService.domain.data;
+using WcfService.domain.order;
 using System.Net.Http;
 using System.IO;
 using System.Web;
 using System.Net;
 using System.Web.Hosting;
 using System.ServiceModel.Web;
+using WcfService.domain.data;
 
 namespace WcfService
 {
@@ -49,6 +48,16 @@ namespace WcfService
                 return false;
             }
             return true;
+        }
+
+        public OrderConfirmation getAllActiveOrders()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool addNote(string text, string orderNumber)
+        {
+            throw new NotImplementedException();
         }
     }
 }
