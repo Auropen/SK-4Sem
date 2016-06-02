@@ -19,15 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://10.176.164.150:8080/RestService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://10.176.160.145:8080/RestService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RestService1.xsd" MetadataType="Schema" ID="65076db4-0b37-4e00-bbc7-5e96e37e58fe" SourceId="1" SourceUrl="http://10.176.164.150:8080/RestService.svc?xsd=xsd0" />
-    <MetadataFile FileName="RestService11.xsd" MetadataType="Schema" ID="6270c41e-d24c-4151-b46e-355c1aff7316" SourceId="1" SourceUrl="http://10.176.164.150:8080/RestService.svc?xsd=xsd1" />
-    <MetadataFile FileName="RestService1.wsdl" MetadataType="Wsdl" ID="0b7132a2-e403-402d-a6b8-9494d48761f3" SourceId="1" SourceUrl="http://10.176.164.150:8080/RestService.svc?wsdl" />
-    <MetadataFile FileName="RestService12.xsd" MetadataType="Schema" ID="a0443f36-ccb4-4de0-bea9-b9e5db1bc60d" SourceId="1" SourceUrl="http://10.176.164.150:8080/RestService.svc?xsd=xsd2" />
-    <MetadataFile FileName="RestService13.xsd" MetadataType="Schema" ID="ccdcd502-3e39-4c66-97f0-2bf66736e1d9" SourceId="1" SourceUrl="http://10.176.164.150:8080/RestService.svc?xsd=xsd3" />
-    <MetadataFile FileName="RestService1.disco" MetadataType="Disco" ID="f411f8bd-0a59-4cc8-8201-b902621aff62" SourceId="1" SourceUrl="http://10.176.164.150:8080/RestService.svc?disco" />
+    <MetadataFile FileName="RestService.xsd" MetadataType="Schema" ID="f38c7c37-5dcc-4017-b628-c421574884c1" SourceId="1" SourceUrl="http://10.176.160.145:8080/RestService.svc?xsd=xsd2" />
+    <MetadataFile FileName="RestService1.xsd" MetadataType="Schema" ID="67f95509-95e0-47e5-95a3-00a558be9ceb" SourceId="1" SourceUrl="http://10.176.160.145:8080/RestService.svc?xsd=xsd1" />
+    <MetadataFile FileName="RestService.disco" MetadataType="Disco" ID="0615b9bc-07d8-425a-becc-f5af066efc70" SourceId="1" SourceUrl="http://10.176.160.145:8080/RestService.svc?disco" />
+    <MetadataFile FileName="RestService2.xsd" MetadataType="Schema" ID="ff99014c-081e-46d6-933b-567af868b342" SourceId="1" SourceUrl="http://10.176.160.145:8080/RestService.svc?xsd=xsd0" />
+    <MetadataFile FileName="RestService.wsdl" MetadataType="Wsdl" ID="136329f1-0651-4b80-83be-e8c4ef09b2ff" SourceId="1" SourceUrl="http://10.176.160.145:8080/RestService.svc?wsdl" />
+    <MetadataFile FileName="RestService3.xsd" MetadataType="Schema" ID="8bec729a-3f25-4e82-b1c8-79284a84c589" SourceId="1" SourceUrl="http://10.176.160.145:8080/RestService.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

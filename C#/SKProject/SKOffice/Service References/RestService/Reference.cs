@@ -15,7 +15,7 @@ namespace SKOffice.RestService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderConfirmation", Namespace="http://schemas.datacontract.org/2004/07/SKOffice.domain.order")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderConfirmation", Namespace="http://schemas.datacontract.org/2004/07/WcfService.domain.order")]
     [System.SerializableAttribute()]
     public partial class OrderConfirmation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -38,6 +38,9 @@ namespace SKOffice.RestService {
         private string[] CustomerInfoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SKOffice.RestService.OrderNote[] NotesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime OrderDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -48,6 +51,9 @@ namespace SKOffice.RestService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime ProducedDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string WeekField;
@@ -131,6 +137,19 @@ namespace SKOffice.RestService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public SKOffice.RestService.OrderNote[] Notes {
+            get {
+                return this.NotesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NotesField, value) != true)) {
+                    this.NotesField = value;
+                    this.RaisePropertyChanged("Notes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime OrderDate {
             get {
                 return this.OrderDateField;
@@ -183,6 +202,19 @@ namespace SKOffice.RestService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Week {
             get {
                 return this.WeekField;
@@ -220,7 +252,7 @@ namespace SKOffice.RestService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderCategory", Namespace="http://schemas.datacontract.org/2004/07/SKOffice.domain.order")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderCategory", Namespace="http://schemas.datacontract.org/2004/07/WcfService.domain.order")]
     [System.SerializableAttribute()]
     public partial class OrderCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -297,7 +329,52 @@ namespace SKOffice.RestService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderElement", Namespace="http://schemas.datacontract.org/2004/07/SKOffice.domain.order")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderNote", Namespace="http://schemas.datacontract.org/2004/07/WcfService.domain.order")]
+    [System.SerializableAttribute()]
+    public partial class OrderNote : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderElement", Namespace="http://schemas.datacontract.org/2004/07/WcfService.domain.order")]
     [System.SerializableAttribute()]
     public partial class OrderElement : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -430,11 +507,23 @@ namespace SKOffice.RestService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/getOrder", ReplyAction="http://tempuri.org/IRestService/getOrderResponse")]
         System.Threading.Tasks.Task<SKOffice.RestService.OrderConfirmation> getOrderAsync(string fileName);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/getAllActiveOrders", ReplyAction="http://tempuri.org/IRestService/getAllActiveOrdersResponse")]
+        SKOffice.RestService.OrderConfirmation[] getAllActiveOrders();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/getAllActiveOrders", ReplyAction="http://tempuri.org/IRestService/getAllActiveOrdersResponse")]
+        System.Threading.Tasks.Task<SKOffice.RestService.OrderConfirmation[]> getAllActiveOrdersAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addOrderConfirmation", ReplyAction="http://tempuri.org/IRestService/addOrderConfirmationResponse")]
         bool addOrderConfirmation(string[] fileContent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addOrderConfirmation", ReplyAction="http://tempuri.org/IRestService/addOrderConfirmationResponse")]
         System.Threading.Tasks.Task<bool> addOrderConfirmationAsync(string[] fileContent);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addNote", ReplyAction="http://tempuri.org/IRestService/addNoteResponse")]
+        bool addNote(string text, string orderNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addNote", ReplyAction="http://tempuri.org/IRestService/addNoteResponse")]
+        System.Threading.Tasks.Task<bool> addNoteAsync(string text, string orderNumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -472,12 +561,28 @@ namespace SKOffice.RestService {
             return base.Channel.getOrderAsync(fileName);
         }
         
+        public SKOffice.RestService.OrderConfirmation[] getAllActiveOrders() {
+            return base.Channel.getAllActiveOrders();
+        }
+        
+        public System.Threading.Tasks.Task<SKOffice.RestService.OrderConfirmation[]> getAllActiveOrdersAsync() {
+            return base.Channel.getAllActiveOrdersAsync();
+        }
+        
         public bool addOrderConfirmation(string[] fileContent) {
             return base.Channel.addOrderConfirmation(fileContent);
         }
         
         public System.Threading.Tasks.Task<bool> addOrderConfirmationAsync(string[] fileContent) {
             return base.Channel.addOrderConfirmationAsync(fileContent);
+        }
+        
+        public bool addNote(string text, string orderNumber) {
+            return base.Channel.addNote(text, orderNumber);
+        }
+        
+        public System.Threading.Tasks.Task<bool> addNoteAsync(string text, string orderNumber) {
+            return base.Channel.addNoteAsync(text, orderNumber);
         }
     }
 }
