@@ -29,7 +29,7 @@ CREATE TABLE TblCustomer	  (fldCustomerID int PRIMARY KEY,
 							   fldCustomerAdr VARCHAR(64) NOT NULL,
 							   fldZipCode INT FOREIGN KEY REFERENCES TblZipCodes(fldZipCode))
 
-CREATE TABLE TblOrder		  (fldOrderID int PRIMARY KEY,
+CREATE TABLE TblOrder		  (fldOrderNumber VARCHAR(64) PRIMARY KEY,
 							   fldAltDelivery VARCHAR(64),
 							   fldStartDate date NOT NULL,
 							   fldDeliveryDate date NOT NULL,
@@ -41,11 +41,11 @@ CREATE TABLE TblOrder		  (fldOrderID int PRIMARY KEY,
 
 CREATE TABLE TblNotes		  (fldNoteID int IDENTITY(1,1) PRIMARY KEY,
 							   fldComment VARCHAR(1024),
-							   fldOrderID INT FOREIGN KEY REFERENCES TblOrder(fldOrderID))
+							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber))
 
 CREATE TABLE TblOrderCategory (fldCategoryID int IDENTITY(1,1) PRIMARY KEY,
                                fldCategoryName VARCHAR(64) NOT NULL,
-							   fldOrderID INT FOREIGN KEY REFERENCES TblOrder(fldOrderID))
+							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber))
 
 CREATE TABLE TblOrderElements (fldOrderElementID int IDENTITY(1,1) PRIMARY KEY,
 							   fldPos VARCHAR(32) NOT NULL,
@@ -152,7 +152,7 @@ END
 GO
 
 
-CREATE PROCEDURE createOrder  (@OrderID int,
+CREATE PROCEDURE createOrder  (@OrderNumber VARCHAR(64),
 							   @AltDelivery VARCHAR(64),
 							   @StartDate DATE,
 							   @DeliveryDate DATE,
@@ -166,7 +166,7 @@ AS
 	BEGIN
 				INSERT INTO TblOrder
 				(
-					fldOrderID,
+					fldOrderNumber,
 					fldAltDelivery,
 					fldStartDate,
 					fldDeliveryDate,
@@ -193,37 +193,37 @@ GO
 
 
 CREATE PROCEDURE createNotes  (@CommentContent VARCHAR(1024),
-							   @OrderID int)
+							   @OrderNumber VARCHAR(64))
 
 AS
 	BEGIN
 				INSERT INTO TblNotes
 				(
 					fldComment,
-					fldOrderID
+					fldOrderNumber
 				)
 				VALUES
 				(
 					@CommentContent,
-					@OrderID
+					@OrderNumber
 				)
 END
 GO
 
 CREATE PROCEDURE createOrderCategory(@CategoryName VARCHAR(64),
-								     @OrderID int)
+								     @OrderNumber VARCHAR(64))
 
 AS
 	BEGIN
 				INSERT INTO TblOrderCategory
 				(
 					fldCategoryName,
-					fldOrderID
+					fldOrderNumber
 				)
 				VALUES
 				(
 					@CategoryName,
-					@OrderID
+					@OrderNumber
 				)
 END
 GO
@@ -283,11 +283,11 @@ GO
 
 -- Get 
 
-CREATE PROCEDURE getOrder (@OrderID int)
+CREATE PROCEDURE getOrder (@OrderNumber VARCHAR(64))
     AS 
 	BEGIN
 	SELECT  
-	   [OrderId]
+	   [OrderNumber]
 	  ,[StartDate]
 	  ,[DeliveryDate]	  
 	  ,[DeliveryWeek]
@@ -303,14 +303,14 @@ CREATE PROCEDURE getOrder (@OrderID int)
       ,[CustomerCity]
       ,[CompanyCity]
   FROM [SKDB].[dbo].[OrderView]
-  WHERE OrderId = @OrderID
+  WHERE OrderNumber = @OrderNumber
 END
 GO
 
-CREATE PROCEDURE getCategories(@OrderID int)
+CREATE PROCEDURE getCategories(@OrderNumber VARCHAR(64))
 	AS
 	BEGIN
-		SELECT * FROM TblOrderCategory WHERE TblOrderCategory.fldOrderID = @OrderID
+		SELECT * FROM TblOrderCategory WHERE TblOrderCategory.fldOrderNumber = @OrderNumber
 END
 GO
 
@@ -321,10 +321,10 @@ CREATE PROCEDURE getOrderElements(@CategoryID int)
 END
 GO
 
-CREATE PROCEDURE getNotes(@OrderID int)
+CREATE PROCEDURE getNotes(@OrderNumber VARCHAR(64))
 	AS
 	BEGIN
-		SELECT * FROM TblNotes WHERE TblNotes.fldOrderID = @OrderID
+		SELECT * FROM TblNotes WHERE TblNotes.fldOrderNumber = @OrderNumber
 END
 GO
 
@@ -347,7 +347,7 @@ GO
 
 CREATE VIEW OrderView AS
 	SELECT 
-	ord.fldOrderID OrderId,
+	ord.fldOrderNumber OrderNumber,
 	ord.fldStartDate StartDate,
 	ord.fldDeliveryDate DeliveryDate,
 	ord.fldDeliveryWeek DeliveryWeek,

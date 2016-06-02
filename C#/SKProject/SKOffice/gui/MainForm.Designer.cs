@@ -30,6 +30,9 @@
         {
             this.tb_e02 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.feedbackRequisition = new System.Windows.Forms.Label();
+            this.feedbackBlueprint = new System.Windows.Forms.Label();
+            this.feedbackE02 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,13 +46,13 @@
             this.tpOrderFiles = new System.Windows.Forms.TabPage();
             this.tpOverview = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.feedbackE02 = new System.Windows.Forms.Label();
-            this.feedbackBlueprint = new System.Windows.Forms.Label();
-            this.feedbackRequisition = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.groupBox1.SuspendLayout();
             this.tpBox.SuspendLayout();
             this.tpOrderFiles.SuspendLayout();
             this.tpOverview.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tb_e02
@@ -83,6 +86,39 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Upload Orderfiles";
+            // 
+            // feedbackRequisition
+            // 
+            this.feedbackRequisition.AutoSize = true;
+            this.feedbackRequisition.BackColor = System.Drawing.Color.RoyalBlue;
+            this.feedbackRequisition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.feedbackRequisition.Location = new System.Drawing.Point(393, 152);
+            this.feedbackRequisition.Name = "feedbackRequisition";
+            this.feedbackRequisition.Size = new System.Drawing.Size(15, 15);
+            this.feedbackRequisition.TabIndex = 12;
+            this.feedbackRequisition.Text = "  ";
+            // 
+            // feedbackBlueprint
+            // 
+            this.feedbackBlueprint.AutoSize = true;
+            this.feedbackBlueprint.BackColor = System.Drawing.Color.RoyalBlue;
+            this.feedbackBlueprint.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.feedbackBlueprint.Location = new System.Drawing.Point(393, 96);
+            this.feedbackBlueprint.Name = "feedbackBlueprint";
+            this.feedbackBlueprint.Size = new System.Drawing.Size(15, 15);
+            this.feedbackBlueprint.TabIndex = 11;
+            this.feedbackBlueprint.Text = "  ";
+            // 
+            // feedbackE02
+            // 
+            this.feedbackE02.AutoSize = true;
+            this.feedbackE02.BackColor = System.Drawing.Color.RoyalBlue;
+            this.feedbackE02.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.feedbackE02.Location = new System.Drawing.Point(393, 40);
+            this.feedbackE02.Name = "feedbackE02";
+            this.feedbackE02.Size = new System.Drawing.Size(15, 15);
+            this.feedbackE02.TabIndex = 10;
+            this.feedbackE02.Text = "  ";
             // 
             // label3
             // 
@@ -203,6 +239,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.vScrollBar1);
+            this.groupBox2.Controls.Add(this.listView1);
             this.groupBox2.Location = new System.Drawing.Point(7, 7);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(439, 228);
@@ -210,38 +248,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Overview";
             // 
-            // feedbackE02
+            // listView1
             // 
-            this.feedbackE02.AutoSize = true;
-            this.feedbackE02.BackColor = System.Drawing.Color.RoyalBlue;
-            this.feedbackE02.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.feedbackE02.Location = new System.Drawing.Point(393, 40);
-            this.feedbackE02.Name = "feedbackE02";
-            this.feedbackE02.Size = new System.Drawing.Size(15, 15);
-            this.feedbackE02.TabIndex = 10;
-            this.feedbackE02.Text = "  ";
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listView1.Location = new System.Drawing.Point(6, 19);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(427, 203);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // feedbackBlueprint
+            // vScrollBar1
             // 
-            this.feedbackBlueprint.AutoSize = true;
-            this.feedbackBlueprint.BackColor = System.Drawing.Color.RoyalBlue;
-            this.feedbackBlueprint.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.feedbackBlueprint.Location = new System.Drawing.Point(393, 96);
-            this.feedbackBlueprint.Name = "feedbackBlueprint";
-            this.feedbackBlueprint.Size = new System.Drawing.Size(15, 15);
-            this.feedbackBlueprint.TabIndex = 11;
-            this.feedbackBlueprint.Text = "  ";
-            // 
-            // feedbackRequisition
-            // 
-            this.feedbackRequisition.AutoSize = true;
-            this.feedbackRequisition.BackColor = System.Drawing.Color.RoyalBlue;
-            this.feedbackRequisition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.feedbackRequisition.Location = new System.Drawing.Point(393, 152);
-            this.feedbackRequisition.Name = "feedbackRequisition";
-            this.feedbackRequisition.Size = new System.Drawing.Size(15, 15);
-            this.feedbackRequisition.TabIndex = 12;
-            this.feedbackRequisition.Text = "  ";
+            this.vScrollBar1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vScrollBar1.LargeChange = 100;
+            this.vScrollBar1.Location = new System.Drawing.Point(415, 19);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(21, 203);
+            this.vScrollBar1.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -257,6 +280,7 @@
             this.tpBox.ResumeLayout(false);
             this.tpOrderFiles.ResumeLayout(false);
             this.tpOverview.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -280,6 +304,8 @@
         private System.Windows.Forms.Label feedbackE02;
         private System.Windows.Forms.Label feedbackRequisition;
         private System.Windows.Forms.Label feedbackBlueprint;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
 

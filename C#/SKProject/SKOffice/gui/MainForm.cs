@@ -114,5 +114,14 @@ namespace SKOffice
                 feedbackE02.BackColor = System.Drawing.Color.Red; //Feedback: failed
             }
         }
+
+        private void listView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                    
+            RestService.RestServiceClient rsClient = new RestService.RestServiceClient();
+
+            listView.Items.AddRange(rsClient.getOrder);
+
+    }
     }
 }
