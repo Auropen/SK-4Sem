@@ -20,8 +20,9 @@ namespace WcfService
     {
         OrderConfirmation IRestService.getOrder(string fileName)
         {
-            Console.WriteLine("Got RESTFul connection.");
-            return OrderParser.Instance.readOrder("C:\\School\\SKøkken\\" + fileName + ".e02");
+            string fileExtension = ".e02";
+            FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/FileServer/" + fileName + "/"), fileName + "." + fileExtension));
+            return OrderParser.Instance.readOrder(fileInfo.FullName);
         }
 
         public bool addOrderConfirmation(List<string> fileContent)
