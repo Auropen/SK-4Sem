@@ -53,6 +53,7 @@ CREATE TABLE TblOrderElements (fldOrderElementID int IDENTITY(1,1) PRIMARY KEY,
 							   fldAmount VARCHAR(32) NOT NULL,
 							   fldUnit VARCHAR(32) NOT NULL,
 							   fldText VARCHAR(256) NOT NULL,
+							   fldStatus BIT NOT NULL,
 							   fldCategoryID INT FOREIGN KEY REFERENCES TblOrderCategory(fldCategoryID))
 GO
 
@@ -226,6 +227,7 @@ CREATE PROCEDURE createOrderElements(@Pos VARCHAR(32),
 									 @amount VARCHAR(32),
 									 @unit VARCHAR(32),
 									 @text VARCHAR(256),
+									 @status BIT,
 									 @categoryID int)
 
 AS
@@ -238,6 +240,7 @@ AS
 					fldAmount,
 					fldUnit,
 					fldText,
+					fldStatus,
 					fldCategoryID
 				)
 				VALUES
@@ -248,6 +251,7 @@ AS
 					@amount,
 					@unit,
 					@text,
+					@status,
 					@categoryID
 				)
 END

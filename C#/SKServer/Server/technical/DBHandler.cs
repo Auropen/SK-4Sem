@@ -144,7 +144,7 @@ namespace Server.technical
         }
 
 
-        static void createOrderElements(String posId, String hinge, String finish, String amount, String unit, String text, int catagoryId)
+        static void createOrderElements(String posId, String hinge, String finish, String amount, String unit, String text, bool status, int catagoryId)
         {
 
             try
@@ -153,7 +153,7 @@ namespace Server.technical
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrderCategory VALUES('" + posId + "','" + hinge + "','" + finish + "','" + amount + "', '" + unit + "', '" + text + "', " + catagoryId + ")", connection))
+                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrderCategory VALUES('" + posId + "','" + hinge + "','" + finish + "','" + amount + "', '" + unit + "', '" + text + "',, '" + status + "' " + catagoryId + ")", connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " OrderCategory");
                     connection.Close();
                 }
