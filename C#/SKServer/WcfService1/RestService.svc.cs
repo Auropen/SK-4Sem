@@ -12,6 +12,7 @@ using System.Net;
 using System.Web.Hosting;
 using System.ServiceModel.Web;
 using WcfService.domain.data;
+using WcfService.technical;
 
 namespace WcfService
 {
@@ -50,9 +51,9 @@ namespace WcfService
             return true;
         }
 
-        public OrderConfirmation getAllActiveOrders()
+        public List<OrderConfirmation> getAllActiveOrders()
         {
-            throw new NotImplementedException();
+            return null; // DBHandler.Instance.
         }
 
         public bool addNote(string text, string orderNumber)

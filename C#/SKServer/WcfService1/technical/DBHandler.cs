@@ -10,14 +10,8 @@ namespace WcfService.technical
 
         private static DBHandler instance;
         private string dbName;
-
-
-        public static void getProperties(string propertyFile)
-        {
-            domain.Properties prop = new domain.Properties(propertyFile);
-
-            prop.get("databaseName");
-        }
+        private string dbTable;
+        private string connectionString;
 
         public static DBHandler Instance
         {
@@ -32,16 +26,22 @@ namespace WcfService.technical
             }
         }
 
-        private DBHandler() { }
+        private DBHandler() {
+            domain.Properties prop = new domain.Properties("database");
+
+            dbName = prop.get("databaseName");
+            dbTable = prop.get("databaseTable");
+            connectionString = String.Format("Data Source={0};Initial Catalog={1};Integrated Security=True", dbName, dbTable);
+        }
         
         // Create Methods
 
-        static void createCustomer(int custId, String Fname, String LName, String fone, String email, String custAdr, int zip)
+        public void createCustomer(int custId, String Fname, String LName, String fone, String email, String custAdr, int zip)
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -57,12 +57,12 @@ namespace WcfService.technical
 
         }
 
-        static void createCompany(int compId, String compName, String compAdr, String compFone, String compEmail, int zip)
+        public void createCompany(int compId, String compName, String compAdr, String compFone, String compEmail, int zip)
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -78,12 +78,12 @@ namespace WcfService.technical
 
         }
 
-        static void createOrder(int orderId, String altDelivery, String startDate, String deliveryDate, String deliveryWeek, String bluePrinkLink, int compId, int custId)
+        public void createOrder(int orderId, String altDelivery, String startDate, String deliveryDate, String deliveryWeek, String bluePrinkLink, int compId, int custId)
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -100,12 +100,12 @@ namespace WcfService.technical
         }
 
 
-        static void createNotes(String commentContent, int orderId)
+        public void createNotes(String commentContent, int orderId)
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -122,12 +122,12 @@ namespace WcfService.technical
         }
 
 
-        static void createOrderCategory(String categoryName, int orderId)
+        public void createOrderCategory(String categoryName, int orderId)
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -144,12 +144,12 @@ namespace WcfService.technical
         }
 
 
-        static void createOrderElements(String posId, String hinge, String finish, String amount, String unit, String text, int catagoryId)
+        public void createOrderElements(String posId, String hinge, String finish, String amount, String unit, String text, int catagoryId)
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -167,12 +167,12 @@ namespace WcfService.technical
 
         // Get methods
 
-        static String getZipAndTown()
+        public String getZipAndTown()
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -200,12 +200,12 @@ namespace WcfService.technical
         }
 
 
-        static String getCustomer()
+        public String getCustomer()
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -237,12 +237,12 @@ namespace WcfService.technical
         }
 
 
-        static String getCompany()
+        public String getCompany()
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -274,31 +274,36 @@ namespace WcfService.technical
         }
 
 
-        static String getOrder()
+        public String getOrder(string orderNumber)
         {
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("Select * FROM TblOrder", connection))
-                    using (SqlDataReader dr = command.ExecuteReader())
+                    string sql = String.Format("Select * FROM tblOrder WHERE OrderNumber = {0}", orderNumber);
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        if (dr.HasRows)
+                        using (SqlDataReader dr = command.ExecuteReader())
                         {
-                            while (dr.Read())
+                            if (dr.HasRows)
                             {
-                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                Console.WriteLine(dr.GetInt32(0)    + " "
-                                                + dr.GetString(1)   + " "
-                                                + dr.GetDateTime(2) + " "
-                                                + dr.GetDateTime(3) + " "
-                                                + dr.GetString(4) + " "
-                                                + dr.GetString(5) + " "
-                                                + dr.GetInt32(6)    + " "
-                                                + dr.GetInt32(7) + " This is an Order ");
+                                while (dr.Read())
+                                {
+                                    //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
+                                    Console.WriteLine(dr.GetString(0) + " "
+                                                    + dr.GetString(1) + " "
+                                                    + dr.GetString(2) + " "
+                                                    + dr.GetString(3) + " "
+                                                    + dr.GetString(4) + " "
+                                                    + dr.GetString(5) + " "
+                                                    + dr.GetString(6) + " "
+                                                    + dr.GetInt32(7) + " This is Element ");
+                                    OrderConfirmation orderConfirmation = new OrderConfirmation();
+                                    orderConfirmation.OrderNumber = dr.GetString(0);
+                                    orderConfirmation.ProducedDate = dr.GetDateTime(1);
+                                }
                             }
                         }
                     }
@@ -313,12 +318,12 @@ namespace WcfService.technical
         }
 
 
-        static String getNotes()
+        public String getNotes()
         {
             //Needs a List for the various Notes? 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -347,13 +352,13 @@ namespace WcfService.technical
         }
 
 
-        static List<OrderCategory> getOrderCategory()
+        public List<OrderCategory> getOrderCategory()
         {
             List<OrderCategory> categories = new List<OrderCategory>();
             //Needs a List for the various Categories
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
@@ -364,10 +369,6 @@ namespace WcfService.technical
                         {
                             while (dr.Read())
                             {
-                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                Console.WriteLine(dr.GetInt32(0) + " "
-                                                + dr.GetString(1) + " "
-                                                + dr.GetInt32(2) + " This is Category ");
                                 categories.Add(new OrderCategory(dr.GetString(1), dr.GetInt32(0)));
                             }
                         }
@@ -383,33 +384,36 @@ namespace WcfService.technical
         }
 
 
-        static List<OrderElement> getOrderElements(int categoryID)
+        public List<OrderElement> getOrderElements(int categoryID)
         {
 
             List<OrderElement> elements = new List<OrderElement>();
 
             try
             {
-                using (SqlConnection connection = new SqlConnection("Data Source=PIRATEBOAT-LT;Initial Catalog=SKDB;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("Select * FROM TblOrder", connection))
-                    using (SqlDataReader dr = command.ExecuteReader())
+                    string sql = String.Format("Select * FROM TblOrder WHERE CategoryID = {0}", categoryID);
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        if (dr.HasRows)
+                        using (SqlDataReader dr = command.ExecuteReader())
                         {
-                            while (dr.Read())
+                            if (dr.HasRows)
                             {
-                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                Console.WriteLine(dr.GetInt32(0) + " "
-                                                + dr.GetString(1) + " "
-                                                + dr.GetString(2) + " "
-                                                + dr.GetString(3) + " "
-                                                + dr.GetString(4) + " "
-                                                + dr.GetString(5) + " "
-                                                + dr.GetString(6) + " "
-                                                + dr.GetInt32(7) +" This is Element " );
+                                while (dr.Read())
+                                {
+                                    //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
+                                    Console.WriteLine(dr.GetInt32(0) + " "
+                                                    + dr.GetString(1) + " "
+                                                    + dr.GetString(2) + " "
+                                                    + dr.GetString(3) + " "
+                                                    + dr.GetString(4) + " "
+                                                    + dr.GetString(5) + " "
+                                                    + dr.GetString(6) + " "
+                                                    + dr.GetInt32(7) + " This is Element ");
+
+                                }
                             }
                         }
                     }

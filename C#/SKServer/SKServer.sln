@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{994B5BCE-EF2A-4544-88FE-AFF4281E1E53}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTService", "WcfService1\RESTService.csproj", "{2F2F0E83-4FEF-492E-830F-57D8D1CAB3C1}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{994B5BCE-EF2A-4544-88FE-AFF4281E1E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{994B5BCE-EF2A-4544-88FE-AFF4281E1E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{994B5BCE-EF2A-4544-88FE-AFF4281E1E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{994B5BCE-EF2A-4544-88FE-AFF4281E1E53}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2F2F0E83-4FEF-492E-830F-57D8D1CAB3C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2F2F0E83-4FEF-492E-830F-57D8D1CAB3C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F2F0E83-4FEF-492E-830F-57D8D1CAB3C1}.Release|Any CPU.ActiveCfg = Release|Any CPU

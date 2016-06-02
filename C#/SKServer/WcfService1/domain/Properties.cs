@@ -8,13 +8,19 @@ namespace WcfService.domain
     public class Properties
     {
         private Dictionary<String, String> list;
-        private String filename;
-        private const String DIR = "config";
+        private FileInfo configFile;
+        private static DirectoryInfo configFolder;
 
         public Properties(String file)
         {
-            if (!Directory.Exists(DIR))
-                Directory.CreateDirectory(DIR);
+            configFile = new FileInfo(file);
+            // Sets the configFolder field if needed
+            if (configFolder == null)
+                configFolder = configFile.Directory;
+            // Creates the configFolder if needed
+            if (!configFolder.Exists)
+                configFolder.Create();
+            
             reload(file);
         }
 
@@ -38,17 +44,20 @@ namespace WcfService.domain
 
         public void Save()
         {
-            Save(this.filename);
+            Save(this.configFile);
         }
 
         public void Save(String filename)
         {
-            this.filename = DIR + "/" + filename;
+            Save(new FileInfo(configFolder.FullName + filename));
+        }
 
-            if (!File.Exists(filename))
-                File.Create(filename);
+        public void Save(FileInfo fileInfo)
+        {
+            if (!fileInfo.Exists)
+                fileInfo.Create();
 
-            StreamWriter file = new StreamWriter(filename);
+            StreamWriter file = new StreamWriter(fileInfo.FullName);
 
             foreach (String prop in list.Keys.ToArray())
             {
@@ -61,23 +70,27 @@ namespace WcfService.domain
 
         public void reload()
         {
-            reload(this.filename);
+            reload(this.configFile);
         }
 
         public void reload(String filename)
         {
-            this.filename = DIR + "/" + filename;
-            list = new Dictionary<String, String>();
-
-            if (File.Exists(filename))
-                loadFromFile(filename);
-            else
-                File.Create(filename);
+            reload(new FileInfo(configFolder.FullName + filename));
         }
 
-        private void loadFromFile(String file)
+        public void reload(FileInfo fileInfo)
         {
-            foreach (String line in File.ReadAllLines(file))
+            list = new Dictionary<String, String>();
+
+            if (fileInfo.Exists)
+                loadFromFile(fileInfo);
+            else
+                fileInfo.Create();
+        }
+
+        private void loadFromFile(FileInfo fileInfo)
+        {
+            foreach (String line in File.ReadAllLines(fileInfo.FullName))
             {
                 if ((!String.IsNullOrEmpty(line)) &&
                     (!line.StartsWith(";")) &&
