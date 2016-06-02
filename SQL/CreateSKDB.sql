@@ -35,7 +35,7 @@ CREATE TABLE TblOrder		  (fldOrderID int PRIMARY KEY,
 							   fldDeliveryDate date NOT NULL,
 							   fldDeliveryWeek VARCHAR(32) NOT NULL,
 							   fldBluePrintLink VARCHAR(256) NOT NULL,
-							   fldDoneStatus BIT NOT NULL,
+							   fldProgressStatus VARCHAR(16) NOT NULL,
 							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldCompanyID),
 							   fldCustomerID INT FOREIGN KEY REFERENCES TblCustomer(fldCustomerID))
 
@@ -158,7 +158,7 @@ CREATE PROCEDURE createOrder  (@OrderID int,
 							   @DeliveryDate DATE,
 							   @DeliveryWeek VARCHAR(32),
 							   @BluePrintLinks VARCHAR(256),
-							   @doneStatus BIT,
+							   @progressStatus VARCHAR(16),
 							   @CompanyID int,
 							   @CustomerID int)
 
@@ -172,7 +172,7 @@ AS
 					fldDeliveryDate,
 					fldDeliveryWeek,
 					fldBluePrintLink,
-					fldDoneStatus,
+					fldProgressStatus,
 					fldCompanyID,
 					fldCustomerID
 				)
@@ -184,7 +184,7 @@ AS
 					@DeliveryDate,
 					@DeliveryWeek,
 					@BluePrintLinks,
-					@doneStatus,
+					@progressStatus,
 					@CompanyID,
 					@CustomerID
 				)
@@ -293,6 +293,7 @@ CREATE PROCEDURE getOrder (@OrderID int)
 	  ,[DeliveryWeek]
 	  ,[AlternativeDelivery]
 	  ,[BluePrinkLink]
+	  ,[ProgessStatus]
       ,[CompanyId]
       ,[CustomerId]
       ,[CompanyAddress]
@@ -352,7 +353,7 @@ CREATE VIEW OrderView AS
 	ord.fldDeliveryWeek DeliveryWeek,
 	ord.fldAltDelivery AlternativeDelivery,
 	ord.fldBluePrintLink BluePrintLink, 
-	ord.fldDoneStatus doneStatus,
+	ord.fldProgressStatus progressStatus,
 	ord.fldCompanyID CompanyId, 
 	ord.fldCustomerID CustomerId,
 	comp.fldCompanyAdr CompanyAddress,
