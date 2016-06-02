@@ -84,9 +84,7 @@ INSERT INTO TblCompany (fldCompanyID,
 
 GO
 
-
 -- Stored Procedure
-
 
 CREATE PROCEDURE createCustomer(@CustomerID int,
 								@FirstName VARCHAR(64),
@@ -151,7 +149,6 @@ AS
 END
 GO
 
-
 CREATE PROCEDURE createOrder  (@OrderNumber VARCHAR(64),
 							   @AltDelivery VARCHAR(64),
 							   @StartDate DATE,
@@ -191,7 +188,6 @@ AS
 END
 GO
 
-
 CREATE PROCEDURE createNotes  (@CommentContent VARCHAR(1024),
 							   @OrderNumber VARCHAR(64))
 
@@ -227,8 +223,6 @@ AS
 				)
 END
 GO
-
-
 
 CREATE PROCEDURE createOrderElements(@Pos VARCHAR(32),
 								     @hinge VARCHAR(64),
@@ -307,6 +301,18 @@ CREATE PROCEDURE getOrder (@OrderNumber VARCHAR(64))
 END
 GO
 
+CREATE PROCEDURE getAllOrders(@ProgressStatus VARCHAR(16))
+	AS
+	BEGIN
+	SELECT
+		*
+	FROM
+		TblOrder
+	WHERE
+		fldProgressStatus = @ProgressStatus
+END
+GO
+
 CREATE PROCEDURE getCategories(@OrderNumber VARCHAR(64))
 	AS
 	BEGIN
@@ -341,7 +347,6 @@ CREATE PROCEDURE getCompanyZipCode(@CompZip int)
 		SELECT * FROM TblZipCodes where fldZipCode = @CompZip
 END
 GO
-
 
 -- View
 

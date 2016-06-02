@@ -120,7 +120,7 @@ namespace SKOffice
                     
             RestService.RestServiceClient rsClient = new RestService.RestServiceClient();
 
-            listView.Items.AddRange(rsClient.getOrder);
+            //listView1.Items.AddRange(rsClient.getOrder);
 
     }
     }
