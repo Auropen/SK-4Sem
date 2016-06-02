@@ -520,10 +520,10 @@ namespace SKOffice.RestService {
         System.Threading.Tasks.Task<bool> addOrderConfirmationAsync(string[] fileContent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addNote", ReplyAction="http://tempuri.org/IRestService/addNoteResponse")]
-        bool addNote(string text, string orderNumber);
+        bool addNote(string text);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addNote", ReplyAction="http://tempuri.org/IRestService/addNoteResponse")]
-        System.Threading.Tasks.Task<bool> addNoteAsync(string text, string orderNumber);
+        System.Threading.Tasks.Task<bool> addNoteAsync(string text);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -577,12 +577,12 @@ namespace SKOffice.RestService {
             return base.Channel.addOrderConfirmationAsync(fileContent);
         }
         
-        public bool addNote(string text, string orderNumber) {
-            return base.Channel.addNote(text, orderNumber);
+        public bool addNote(string text) {
+            return base.Channel.addNote(text);
         }
         
-        public System.Threading.Tasks.Task<bool> addNoteAsync(string text, string orderNumber) {
-            return base.Channel.addNoteAsync(text, orderNumber);
+        public System.Threading.Tasks.Task<bool> addNoteAsync(string text) {
+            return base.Channel.addNoteAsync(text);
         }
     }
 }

@@ -20,8 +20,8 @@ namespace WcfService
     {
         OrderConfirmation IRestService.getOrder(string fileName)
         {
-            string fileExtension = ".e02";
-            FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/FileServer/" + fileName + "/"), fileName + "." + fileExtension));
+            string fileExtension = "e02";
+            FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/" + fileName + "/"), fileName + "." + fileExtension));
             return OrderParser.Instance.readOrder(fileInfo.FullName);
         }
 
@@ -29,16 +29,16 @@ namespace WcfService
         {
             try
             {
-                string fileName = "testfile";
-                string fileExtension = ".e02";
-                FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/FileServer/" + fileName + "/"), fileName + "." + fileExtension));
+                string fileName = fileContent[0].Split('.')[0];
+                string fileExtension = fileContent[0].Split('.')[1];
+                FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/" + fileName + "/"), fileName + "." + fileExtension));
 
                 fileInfo.Directory.Create();
                 using (var output = new StreamWriter(File.Create(fileInfo.FullName), Encoding.Default))
                 {
-                    foreach (string line in fileContent)
+                    for (int i = 1; i < fileContent.Count; i++)
                     {
-                        output.WriteLine(line);
+                        output.WriteLine(fileContent[i]);
                     }
                     output.Flush();
                     output.Close();
@@ -57,7 +57,7 @@ namespace WcfService
             return null; // DBHandler.Instance.
         }
 
-        public bool addNote(string text, string orderNumber)
+        public bool addNote(string text)
         {
             throw new NotImplementedException();
         }

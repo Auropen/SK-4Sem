@@ -95,7 +95,8 @@ namespace SKOffice
 
             //Read the content of the file into a string array
             List<string> fileContent = new List<string>();
-
+            FileInfo fileInfo = new FileInfo(paths[0]);
+            fileContent.Add(fileInfo.Name);
             using (StreamReader sReader = new StreamReader(paths[0]))
             {
                 while (sReader.Peek() > -1)

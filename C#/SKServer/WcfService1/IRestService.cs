@@ -16,15 +16,13 @@ namespace WcfService
     public interface IRestService
     {
         [OperationContract]
-        [WebInvoke(Method = "GET", 
-            ResponseFormat = WebMessageFormat.Json, 
+        [WebGet(ResponseFormat = WebMessageFormat.Json, 
             BodyStyle = WebMessageBodyStyle.Wrapped, 
             UriTemplate = "getOrder/{fileName}")]
         OrderConfirmation getOrder(string fileName);
 
         [OperationContract]
-        [WebInvoke(Method = "GET",
-            ResponseFormat = WebMessageFormat.Json,
+        [WebGet(ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "getAllActiveOrders/")]
         List<OrderConfirmation> getAllActiveOrders();
@@ -32,16 +30,16 @@ namespace WcfService
 
         [OperationContract]
         [WebInvoke(Method = "POST", 
-            RequestFormat = WebMessageFormat.Json, 
+            RequestFormat = WebMessageFormat.Json,
             UriTemplate = "addOrderConfirmation")]
         bool addOrderConfirmation(List<string> fileContent);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", 
-            RequestFormat = WebMessageFormat.Json, 
-            BodyStyle = WebMessageBodyStyle.WrappedRequest,
-            UriTemplate = "addNote/{text}/{orderNumber}")]
-        bool addNote(string text, string orderNumber);
-
+        [WebInvoke(Method = "POST",
+            UriTemplate = "addNote/{text}",
+            RequestFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            ResponseFormat = WebMessageFormat.Json)]
+        bool addNote(string text);
     }
 }
