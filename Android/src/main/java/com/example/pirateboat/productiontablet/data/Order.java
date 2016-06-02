@@ -21,6 +21,7 @@ public class Order {
     public String OrderNumber;
     public String ProducedDate;
     public String Week;
+    //public OrderStatus orderStatuses = new OrderStatus();
     public ArrayList<String> kitchenInfo = new ArrayList<String>();
     //public ArrayList<OrderNote> notes = new ArrayList<OrderNote>();
 

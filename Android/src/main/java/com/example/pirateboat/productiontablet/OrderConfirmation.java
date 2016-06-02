@@ -1,16 +1,24 @@
 package com.example.pirateboat.productiontablet;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.pirateboat.productiontablet.data.OrderResult;
+
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class OrderConfirmation extends Activity {
     TableLayout table_layout;
+    OrderResult or;
+    Bundle bundle;
+    String message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,9 +27,34 @@ public class OrderConfirmation extends Activity {
 
         table_layout = (TableLayout) findViewById(R.id.tableLayout1);
         ArrayList<String> data = new ArrayList<String>();
-        BuildTable(13,data);
+        bundle = getIntent().getExtras();
+        message = bundle.getString("message");
     }
-    private void BuildTable(int rows,ArrayList<String> data) {
+    class update extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
+            try {
+                RestfulHandler rfh = new RestfulHandler();
+                or = rfh.readStream();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+
+            }
+
+
+            BuildTable(13,or);
+
+            //doInBackground();
+            return null;
+        }
+
+
+        protected void onPostExecute(Void param) { }
+        // AsyncTask over
+    }
+    private void BuildTable(int rows,OrderResult data) {
 
         int cols = 13;
         // outer for loop

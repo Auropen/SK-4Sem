@@ -12,8 +12,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 
-import com.example.pirateboat.productiontablet.data.Ip;
-import com.example.pirateboat.productiontablet.data.Order;
 import com.example.pirateboat.productiontablet.data.OrderResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -33,8 +31,8 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
         Log.i(TAG,"resthandler created");
 
         if(url == null){
-            //url = new URL("http://ip.jsontest.com");
-           url = new URL("http://keddebock.dk:8080/RestService.svc/getOrder/w0000520");
+           //url = new URL("http://keddebock.dk:8080/RestService.svc/getOrder/w0000520");
+           url = new URL("http://10.176.160.135:8080/RestService.svc/getOrder/w0000520");
         }
 
     }
@@ -100,8 +98,8 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
             urlConnection.connect();
             urlConnection = (HttpURLConnection) url.openConnection();
             out = urlConnection.getOutputStream();
-            String questionnairesJson = gson.toJson(output);
-            out.write(questionnairesJson.getBytes(Charset.forName("UTF-8")));
+            String orJson = gson.toJson(output);
+            out.write(orJson.getBytes(Charset.forName("UTF-8")));
 
             int response = urlConnection.getResponseCode();
             Log.d(TAG, "Response: " + response);
