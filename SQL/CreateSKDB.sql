@@ -35,6 +35,7 @@ CREATE TABLE TblOrder		  (fldOrderID int PRIMARY KEY,
 							   fldDeliveryDate date NOT NULL,
 							   fldDeliveryWeek VARCHAR(32) NOT NULL,
 							   fldBluePrintLink VARCHAR(256) NOT NULL,
+							   fldDoneStatus BIT NOT NULL,
 							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldCompanyID),
 							   fldCustomerID INT FOREIGN KEY REFERENCES TblCustomer(fldCustomerID))
 
@@ -53,7 +54,12 @@ CREATE TABLE TblOrderElements (fldOrderElementID int IDENTITY(1,1) PRIMARY KEY,
 							   fldAmount VARCHAR(32) NOT NULL,
 							   fldUnit VARCHAR(32) NOT NULL,
 							   fldText VARCHAR(256) NOT NULL,
-							   fldStatus BIT NOT NULL,
+							   fldStation4Status BIT NOT NULL,
+							   fldStation5Status BIT NOT NULL,
+							   fldStation6Status BIT NOT NULL,
+							   fldStation7Status BIT NOT NULL,
+							   fldStation8Status BIT NOT NULL,
+							   fldOverallStatus BIT NOT NULL,
 							   fldCategoryID INT FOREIGN KEY REFERENCES TblOrderCategory(fldCategoryID))
 GO
 
@@ -152,6 +158,7 @@ CREATE PROCEDURE createOrder  (@OrderID int,
 							   @DeliveryDate DATE,
 							   @DeliveryWeek VARCHAR(32),
 							   @BluePrintLinks VARCHAR(256),
+							   @doneStatus BIT,
 							   @CompanyID int,
 							   @CustomerID int)
 
@@ -165,6 +172,7 @@ AS
 					fldDeliveryDate,
 					fldDeliveryWeek,
 					fldBluePrintLink,
+					fldDoneStatus,
 					fldCompanyID,
 					fldCustomerID
 				)
@@ -176,6 +184,7 @@ AS
 					@DeliveryDate,
 					@DeliveryWeek,
 					@BluePrintLinks,
+					@doneStatus,
 					@CompanyID,
 					@CustomerID
 				)
@@ -227,7 +236,12 @@ CREATE PROCEDURE createOrderElements(@Pos VARCHAR(32),
 									 @amount VARCHAR(32),
 									 @unit VARCHAR(32),
 									 @text VARCHAR(256),
-									 @status BIT,
+									 @station4Status BIT,
+									 @station5Status BIT,
+									 @station6Status BIT,
+									 @station7Status BIT,
+									 @station8Status BIT,
+									 @OverallStatus BIT,
 									 @categoryID int)
 
 AS
@@ -240,7 +254,12 @@ AS
 					fldAmount,
 					fldUnit,
 					fldText,
-					fldStatus,
+					fldStation4Status,
+					fldStation5Status,
+					fldStation6Status,
+					fldStation7Status,
+					fldStation8Status,
+					fldOverallStatus,
 					fldCategoryID
 				)
 				VALUES
@@ -251,7 +270,12 @@ AS
 					@amount,
 					@unit,
 					@text,
-					@status,
+					@station4Status,
+					@station5Status,
+					@station6Status,
+					@station7Status,
+					@station8Status,
+					@OverallStatus,
 					@categoryID
 				)
 END
@@ -328,6 +352,7 @@ CREATE VIEW OrderView AS
 	ord.fldDeliveryWeek DeliveryWeek,
 	ord.fldAltDelivery AlternativeDelivery,
 	ord.fldBluePrintLink BluePrintLink, 
+	ord.fldDoneStatus doneStatus,
 	ord.fldCompanyID CompanyId, 
 	ord.fldCustomerID CustomerId,
 	comp.fldCompanyAdr CompanyAddress,
