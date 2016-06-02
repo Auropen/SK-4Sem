@@ -34,7 +34,7 @@ namespace WcfService
                 FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/FileServer/" + fileName + "/"), fileName + "." + fileExtension));
 
                 fileInfo.Directory.Create();
-                using (var output = new StreamWriter(File.Create(fileInfo.FullName)))
+                using (var output = new StreamWriter(File.Create(fileInfo.FullName), Encoding.Default))
                 {
                     foreach (string line in fileContent)
                     {
