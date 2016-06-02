@@ -31,12 +31,15 @@ namespace WcfService
 
 
         [OperationContract]
-        [WebInvoke(Method = "POST",
+        [WebInvoke(Method = "POST", 
+            RequestFormat = WebMessageFormat.Json, 
             UriTemplate = "addOrderConfirmation")]
         bool addOrderConfirmation(List<string> fileContent);
 
         [OperationContract]
-        [WebInvoke(Method = "POST",
+        [WebInvoke(Method = "POST", 
+            RequestFormat = WebMessageFormat.Json, 
+            BodyStyle = WebMessageBodyStyle.WrappedRequest,
             UriTemplate = "addNote/{text}/{orderNumber}")]
         bool addNote(string text, string orderNumber);
 
