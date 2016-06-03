@@ -101,6 +101,7 @@
     <Compile Include="domain\order\OrderConfirmation.cs" />
     <Compile Include="domain\order\OrderElement.cs" />
     <Compile Include="domain\order\OrderNote.cs" />
+    <Compile Include="domain\order\OrderStatus.cs" />
     <Compile Include="domain\Properties.cs" />
     <Compile Include="domain\utility\ConversionUtil.cs" />
     <Compile Include="IRestService.cs" />

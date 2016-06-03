@@ -54,7 +54,13 @@ namespace WcfService
 
         public List<OrderConfirmation> getAllActiveOrders()
         {
-            return null; // DBHandler.Instance.
+            List<OrderConfirmation> list = new List<OrderConfirmation>();
+            string fileExtension = "e02";
+            FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/w0000520/"), "w0000520." + fileExtension));
+            list.Add(OrderParser.Instance.readOrder(fileInfo.FullName));
+            fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/w0000524/"), "w0000524." + fileExtension));
+            list.Add(OrderParser.Instance.readOrder(fileInfo.FullName));
+            return list; // DBHandler.Instance.
         }
 
         public bool addNote(string dataText)
