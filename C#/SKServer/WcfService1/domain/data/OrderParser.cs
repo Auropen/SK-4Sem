@@ -160,11 +160,12 @@ namespace WcfService.domain.data
                         lastElement.ElementInfo.Add(lineSplit[8]);
                         result.findCategoryByID(ConversionUtil.stringToInt(lineSplit[12])).Elements.Add(lastElement);
                         break;
-                    case "501": // Order Element
+                    case "501": // Order Element - Hinge + Finish
                         Console.WriteLine(line);
                         lastElement.Hinge = lineSplit[8];
+                        lastElement.Finish = lineSplit[9];
                         break;
-                    case "502": // Order Element
+                    case "502": // Order Element - Extra info
                         lastElement.ElementInfo.Add(lineSplit[1]);
                         break;
                     default:

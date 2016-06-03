@@ -21,5 +21,15 @@ namespace WcfService.domain.order
         public string Station8 { get; set; }
         [DataMember]
         public bool Finished { get; set; }
+
+        public OrderStatus()
+        {
+            Station4 = "NotStartet";
+            Station5 = "NotStartet";
+            Station6 = "NotStartet";
+            Station7 = "NotStartet";
+            Station8 = "NotStartet";
+            Finished = false;
+        }
     }
 }
