@@ -21,7 +21,8 @@ namespace WcfService
         OrderConfirmation getOrder(string fileName);
 
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json,
+        [WebInvoke(Method="GET",
+            ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "getAllActiveOrders")]
         List<OrderConfirmation> getAllActiveOrders();

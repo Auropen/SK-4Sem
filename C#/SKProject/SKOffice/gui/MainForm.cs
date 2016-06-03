@@ -1,5 +1,4 @@
-﻿using SKOffice.RestService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -28,7 +27,7 @@ namespace SKOffice
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-            RestServiceClient rsClient = new RestServiceClient();
+            ServiceReference1.ServiceWGetClient rsClient = new ServiceReference1.ServiceWGetClient();
 
             // Set the view to show details.
             orderOverViewList.View = View.Details;
@@ -50,33 +49,30 @@ namespace SKOffice
             orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
             orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
             orderOverViewList.Columns.Add("Note", -2, HorizontalAlignment.Left);
-
+            
             try
             {
-                foreach (OrderConfirmation oc in rsClient.getAllActiveOrders())
+                foreach (ServiceReference1.OrderConfirmation oc in rsClient.getAllActiveOrders())
                 {
-                    orderOverViewList.Items.Add(new ListViewItem(new[] { oc.OrderNumber, (oc.StationStatus.Station4 == "Active" || oc.Status == "Done")? "X": " ",
-                                                                        (oc.StationStatus.Station4 == "Done") ? "X" : " ",
-                                                                        (oc.StationStatus.Station5 == "Active" || oc.Status == "Done")? "X": " ",
-                                                                        (oc.StationStatus.Station5 == "Done") ? "X" : " ",
-                                                                        (oc.StationStatus.Station6 == "Active" || oc.Status == "Done")? "X": " ",
-                                                                        (oc.StationStatus.Station6 == "Done") ? "X" : " ",
-                                                                        (oc.StationStatus.Station7 == "Active" || oc.Status == "Done")? "X": " ",
-                                                                        (oc.StationStatus.Station7 == "Done") ? "X" : " ",
-                                                                        (oc.StationStatus.Station8 == "Active" || oc.Status == "Done")? "X": " ",
-                                                                        (oc.StationStatus.Station8 == "Done") ? "X" : " ",
-                                                                        "Note" }));
+                    orderOverViewList.Items.Add(new ListViewItem(new[] 
+                    {oc.OrderNumber + " " + oc.OrderDate.Day + "-" + oc.OrderDate.Month + "-" + oc.OrderDate.Year,
+                    (oc.StationStatus.Station4 == "Active" || (oc.StationStatus.Station4 == "Done")? "X": " "),
+                    (oc.StationStatus.Station4 == "Done") ? "X" : " ",
+                    (oc.StationStatus.Station5 == "Active" || (oc.StationStatus.Station5 == "Done")? "X": " "),
+                    (oc.StationStatus.Station5 == "Done") ? "X" : " ",
+                    (oc.StationStatus.Station6 == "Active" || (oc.StationStatus.Station6 == "Done")? "X": " "),
+                    (oc.StationStatus.Station6 == "Done") ? "X" : " ",
+                    (oc.StationStatus.Station7 == "Active" || (oc.StationStatus.Station7 == "Done")? "X": " "),
+                    (oc.StationStatus.Station7 == "Done") ? "X" : " ",
+                    (oc.StationStatus.Station8 == "Active" || (oc.StationStatus.Station8 == "Done")? "X": " "),
+                    (oc.StationStatus.Station8 == "Done") ? "X" : " ",
+                    "Note" }));
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERRRRRROR.. " + ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
-
-
-
-            // Add the ListView to the control collection.
-            this.Controls.Add(orderOverViewList);
         }
 
 

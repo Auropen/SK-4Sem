@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="306f6381-1911-4800-8553-93f9e4635100" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/ServiceWGet.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceWGet.wsdl" MetadataType="Wsdl" ID="b40cd728-48a3-4fcf-a111-f0c6bb098d26" SourceId="1" SourceUrl="http://localhost:8080/ServiceWGet.svc?wsdl" />
+    <MetadataFile FileName="ServiceWGet.xsd" MetadataType="Schema" ID="76e64190-6e8b-4fe1-b9a7-8734da084622" SourceId="1" SourceUrl="http://localhost:8080/ServiceWGet.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServiceWGet1.xsd" MetadataType="Schema" ID="c65cdd62-e6b1-421e-932d-c7ec53f29a71" SourceId="1" SourceUrl="http://localhost:8080/ServiceWGet.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceWGet2.xsd" MetadataType="Schema" ID="9dd23f90-e481-41ba-bfb5-035ca514709c" SourceId="1" SourceUrl="http://localhost:8080/ServiceWGet.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceWGet3.xsd" MetadataType="Schema" ID="a8a3787d-6360-42ae-8a05-f8123c23c6f8" SourceId="1" SourceUrl="http://localhost:8080/ServiceWGet.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceWGet.disco" MetadataType="Disco" ID="fd459aa3-6775-4ba6-8400-4232832d7756" SourceId="1" SourceUrl="http://localhost:8080/ServiceWGet.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

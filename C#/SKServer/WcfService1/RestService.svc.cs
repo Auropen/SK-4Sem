@@ -60,6 +60,12 @@ namespace WcfService
             list.Add(OrderParser.Instance.readOrder(fileInfo.FullName));
             fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/w0000524/"), "w0000524." + fileExtension));
             list.Add(OrderParser.Instance.readOrder(fileInfo.FullName));
+            list[0].StationStatus.Station4 = "Active";
+            list[0].StationStatus.Station6 = "Done";
+            list[0].StationStatus.Station7 = "Active";
+            list[1].StationStatus.Station5 = "Done";
+            list[1].StationStatus.Station7 = "Done";
+            list[1].StationStatus.Station8 = "Active";
             return list; // DBHandler.Instance.
         }
 
