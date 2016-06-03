@@ -169,7 +169,7 @@ namespace WcfService.technical
 
         public String getOrder(string orderNumber)
         {
-
+            OrderConfirmation orderConfirmation = null;
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -184,7 +184,7 @@ namespace WcfService.technical
                             {
                                 while (dr.Read())
                                 {
-                                    OrderConfirmation orderConfirmation = new OrderConfirmation();
+                                    orderConfirmation = new OrderConfirmation();
                                     orderConfirmation.OrderNumber = dr.GetString(0);        //Order Number
                                     orderConfirmation.ProducedDate = dr.GetDateTime(1);     //Start date/produced date
                                     orderConfirmation.OrderDate = dr.GetDateTime(2);        //Delivery date/order date
@@ -203,7 +203,6 @@ namespace WcfService.technical
                                     orderConfirmation.CompanyInfo.Add(dr.GetString(13));    //Phone
                                     orderConfirmation.CompanyInfo.Add(dr.GetString(14));    //FaxPhone
                                     orderConfirmation.CompanyInfo.Add(dr.GetString(15));    //CVR
-                                    orderConfirmation.CompanyInfo.Add(dr.GetString(16));    //Email
                                 }
                             }
                         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace WcfService1.domain.order
+namespace WcfService.domain.order
 {
     [DataContract]
     public class OrderStatus
