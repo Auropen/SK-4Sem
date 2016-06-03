@@ -22,6 +22,8 @@ namespace WcfService.domain.order
         public string Amount { get; set; }
         [DataMember]
         public string Unit { get; set; }
+        [DataMember]
+        public bool[] StationStatus { get; set; }
 
         public OrderElement(string position, string hinge, string finish, string amount, string unit)
         {
@@ -31,6 +33,12 @@ namespace WcfService.domain.order
             Finish = finish;
             Amount = amount;
             Unit = unit;
+            StationStatus = new bool[5];
+        }
+
+        public void updateStatus(int stationNumber, bool status)
+        {
+            StationStatus[stationNumber - 4] = status;
         }
     }
 }

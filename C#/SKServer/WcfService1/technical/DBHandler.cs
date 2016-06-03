@@ -301,8 +301,15 @@ namespace WcfService.technical
                                                     + dr.GetString(6) + " "
                                                     + dr.GetInt32(7) + " This is Element ");
                                     OrderConfirmation orderConfirmation = new OrderConfirmation();
-                                    orderConfirmation.OrderNumber = dr.GetString(0);
-                                    orderConfirmation.ProducedDate = dr.GetDateTime(1);
+                                    orderConfirmation.OrderNumber = dr.GetString(0);        //Order Number
+                                    foreach (string line in dr.GetString(1).Split(';'))     //Alt delivery info
+                                        orderConfirmation.AltDeliveryInfo.Add(line);
+                                    orderConfirmation.ProducedDate = dr.GetDateTime(2);     //Start date/produced date
+                                    orderConfirmation.OrderDate = dr.GetDateTime(3);        //Delivery date/order date
+                                    orderConfirmation.Week = dr.GetString(4);               //Delivery week
+                                    orderConfirmation.Status = dr.GetString(6);             //Status
+                                    
+
                                 }
                             }
                         }
@@ -350,7 +357,6 @@ namespace WcfService.technical
             }
             return "";
         }
-
 
         public List<OrderCategory> getOrderCategory()
         {

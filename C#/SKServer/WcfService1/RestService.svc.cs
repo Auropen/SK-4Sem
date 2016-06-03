@@ -57,9 +57,18 @@ namespace WcfService
             return null; // DBHandler.Instance.
         }
 
-        public bool addNote(string text)
+        public bool addNote(string dataText)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return true;
         }
     }
 }

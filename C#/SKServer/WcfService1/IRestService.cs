@@ -40,6 +40,6 @@ namespace WcfService
             RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             ResponseFormat = WebMessageFormat.Json)]
-        bool addNote(string text);
+        bool addNote(string dataText);
     }
 }
