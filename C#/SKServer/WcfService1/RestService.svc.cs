@@ -62,11 +62,11 @@ namespace WcfService
             try
             {
 
+                DBHandler.Instance.createNotes("",0);
             }
             catch (Exception)
             {
-
-                throw;
+                return false;
             }
             return true;
         }

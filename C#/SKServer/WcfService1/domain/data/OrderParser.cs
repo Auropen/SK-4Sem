@@ -96,13 +96,13 @@ namespace WcfService.domain.data
                         result.CompanyInfo.Add(lineSplit[30]);
                         break;
                     case "211": // Customer Info
-                        result.CustomerInfo.Add(lineSplit[1]);
-                        result.CustomerInfo.Add(lineSplit[3]);
-                        result.CustomerInfo.Add(lineSplit[4]);
-                        result.CustomerInfo.Add(lineSplit[5]);
-                        result.CustomerInfo.Add(lineSplit[20]);
-                        result.CustomerInfo.Add(lineSplit[24]);
-                        result.CustomerInfo.Add(lineSplit[25]);
+                        result.DeliveryInfo.Add(lineSplit[1]);
+                        result.DeliveryInfo.Add(lineSplit[3]);
+                        result.DeliveryInfo.Add(lineSplit[4]);
+                        result.DeliveryInfo.Add(lineSplit[5]);
+                        result.DeliveryInfo.Add(lineSplit[20]);
+                        result.DeliveryInfo.Add(lineSplit[24]);
+                        result.DeliveryInfo.Add(lineSplit[25]);
                         break;
                     case "212": // Customers Alternative Delivery Address
                         result.AltDeliveryInfo.Add(lineSplit[1]);
@@ -133,18 +133,18 @@ namespace WcfService.domain.data
                             splitName[1];
                         break;
                     case "410": // Start of kitchen info
-                        result.kitchenInfo.Add("KInfo-" + kitchenInfoNumber);
+                        result.KitchenInfo.Add("KInfo-" + kitchenInfoNumber);
                         kitchenInfoNumber++;
                         break;
                     case "423": // Title of the order part
-                        result.kitchenInfo.Add(lineSplit[2]);
+                        result.KitchenInfo.Add(lineSplit[2]);
                         break;
                     case "424": // Text for the order part (423)
-                        result.kitchenInfo.Add(lineSplit[2]);
+                        result.KitchenInfo.Add(lineSplit[2]);
                         break;
                     case "425": // Finish of the order part
-                        result.kitchenInfo.Add(lineSplit[2]); // Title
-                        result.kitchenInfo.Add(lineSplit[4]); // Description
+                        result.KitchenInfo.Add(lineSplit[2]); // Title
+                        result.KitchenInfo.Add(lineSplit[4]); // Description
                         break;
                     case "430": // Order Category Info
                         result.Categories.Add(new OrderCategory(lineSplit[2], ConversionUtil.stringToInt(lineSplit[1])));

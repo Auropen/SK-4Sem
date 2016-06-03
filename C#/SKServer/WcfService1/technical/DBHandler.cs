@@ -167,113 +167,6 @@ namespace WcfService.technical
 
         // Get methods
 
-        public String getZipAndTown()
-        {
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("Select * FROM TblZipCodes", connection))
-                    using (SqlDataReader dr = command.ExecuteReader())
-                    {
-                        if (dr.HasRows)
-                        {
-                            while (dr.Read())
-                            {
-                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                Console.WriteLine(dr.GetInt32(0) + " "
-                                               + dr.GetString(1) + " This is Town & Zip ");
-                            }
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
-            return "";
-        }
-
-
-        public String getCustomer()
-        {
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("Select * FROM TblCustomer", connection))
-                    using (SqlDataReader dr = command.ExecuteReader())
-                    {
-                        if (dr.HasRows)
-                        {
-                            while (dr.Read())
-                            {
-                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                Console.WriteLine(dr.GetInt32(0) + " "
-                                               + dr.GetString(1) + " "
-                                               + dr.GetString(2) + " "
-                                               + dr.GetString(3) + " "
-                                               + dr.GetString(4) + " "
-                                               + dr.GetInt32(5) + " This is Customer ");
-                            }
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
-            return "";
-        }
-
-
-        public String getCompany()
-        {
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("Select * FROM TblCompany", connection))
-                    using (SqlDataReader dr = command.ExecuteReader())
-                    {
-                        if (dr.HasRows)
-                        {
-                            while (dr.Read())
-                            {
-                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                Console.WriteLine(dr.GetInt32(0)  + " " 
-                                                + dr.GetString(1) + " " 
-                                                + dr.GetString(2) + " " 
-                                                + dr.GetString(3) + " " 
-                                                + dr.GetString(4) + " " 
-                                                + dr.GetInt32(5) + " This is Company ");
-                            }
-                        }
-                    }
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
-            return "";
-        }
-
-
         public String getOrder(string orderNumber)
         {
 
@@ -282,7 +175,7 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("Select * FROM tblOrder WHERE OrderNumber = {0}", orderNumber);
+                    string sql = String.Format("call  {0}", orderNumber);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader dr = command.ExecuteReader())
@@ -291,25 +184,26 @@ namespace WcfService.technical
                             {
                                 while (dr.Read())
                                 {
-                                    //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                    Console.WriteLine(dr.GetString(0) + " "
-                                                    + dr.GetString(1) + " "
-                                                    + dr.GetString(2) + " "
-                                                    + dr.GetString(3) + " "
-                                                    + dr.GetString(4) + " "
-                                                    + dr.GetString(5) + " "
-                                                    + dr.GetString(6) + " "
-                                                    + dr.GetInt32(7) + " This is Element ");
                                     OrderConfirmation orderConfirmation = new OrderConfirmation();
                                     orderConfirmation.OrderNumber = dr.GetString(0);        //Order Number
-                                    foreach (string line in dr.GetString(1).Split(';'))     //Alt delivery info
+                                    orderConfirmation.ProducedDate = dr.GetDateTime(1);     //Start date/produced date
+                                    orderConfirmation.OrderDate = dr.GetDateTime(2);        //Delivery date/order date
+                                    orderConfirmation.Week = dr.GetString(3);               //Delivery week
+                                    foreach (string line in dr.GetString(4).Split(';'))     //Delivery info
+                                        orderConfirmation.DeliveryInfo.Add(line);
+                                    foreach (string line in dr.GetString(5).Split(';'))     //Alt delivery info
                                         orderConfirmation.AltDeliveryInfo.Add(line);
-                                    orderConfirmation.ProducedDate = dr.GetDateTime(2);     //Start date/produced date
-                                    orderConfirmation.OrderDate = dr.GetDateTime(3);        //Delivery date/order date
-                                    orderConfirmation.Week = dr.GetString(4);               //Delivery week
-                                    orderConfirmation.Status = dr.GetString(6);             //Status
-                                    
+                                    orderConfirmation.HousingAssociation = dr.GetString(6); //Housing Association
+                                    orderConfirmation.Status = dr.GetString(9);             //Status
 
+                                    //Company info:
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(10));    //Name
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(11));    //Address
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(12));    //ZipCode
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(13));    //Phone
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(14));    //FaxPhone
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(15));    //CVR
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(16));    //Email
                                 }
                             }
                         }

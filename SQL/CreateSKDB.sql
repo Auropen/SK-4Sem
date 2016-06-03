@@ -17,6 +17,7 @@ CREATE TABLE TblCompany       (fldID int IDENTITY(1,1) PRIMARY KEY,
 							   fldPhone VARCHAR(64) NOT NULL,
 							   fldFaxPhone VARCHAR(64),
 							   fldCVR VARCHAR(64),
+							   fldWebsite VARCHAR(64),
 							   fldEmail VARCHAR(64),
 							   fldTown VARCHAR(64) NOT NULL,
 							   fldZipCode INT NOT NULL
@@ -24,6 +25,7 @@ CREATE TABLE TblCompany       (fldID int IDENTITY(1,1) PRIMARY KEY,
 CREATE TABLE TblOrder		  (fldOrderNumber VARCHAR(64) PRIMARY KEY,
 							   fldDelivery VARCHAR(64),
 							   fldAltDelivery VARCHAR(64),
+							   fldHousingAssociation VARCHAR(64),
 							   fldStartDate date NOT NULL,
 							   fldDeliveryDate date NOT NULL,
 							   fldDeliveryWeek VARCHAR(32) NOT NULL,
@@ -58,18 +60,22 @@ GO
 
 -- Fill Zip and Company
 
-INSERT INTO TblCompany (fldName, 
-						fldAdr, 
-						fldPhone, 
-						fldFaxPhone, 
-						fldEmail, 
-						fldTown, 
+INSERT INTO TblCompany (fldName,
+						fldAdr,
+						fldPhone,
+						fldFaxPhone,
+						fldCVR,
+						fldWebsite,
+						fldEmail,
+						fldTown,
 						fldZipCode) 
 						
 	VALUES('Sønderborg Køkken',
 		  'Ellegårdvej 23B',
 		  '74 42 92 20',
 		  '74 42 92 21',
+		  '',
+		  'www.sonderborg-kokken.dk',
 		  'info@sonderborg-kokken.dk',
 		  'Sønderborg',
 		   6400)
@@ -97,6 +103,7 @@ AS
 			fldPhone,
 			fldFaxPhone,
 			fldCVR,
+			fldWebsite,
 			fldEmail,
 			fldTown,
 			fldZipCode
@@ -108,6 +115,7 @@ AS
 			@Phone,
 			@FaxPhone,
 			@CVR,
+			@fldWebsite,
 			@Email,
 			@Town,
 			@ZipCode
@@ -255,9 +263,10 @@ CREATE PROCEDURE getOrder (@OrderNumber VARCHAR(64))
 	   [DeliveryWeek],
 	   [Delivery],
 	   [AlternativeDelivery],
+	   [HousingAssociation],
 	   [BlueprinkLink],
 	   [RequisitionLink],
-	   [ProgessStatus],
+	   [ProgressStatus],
        [CompanyName],
        [CompanyAddress],
        [CompanyZipCode],
@@ -270,15 +279,29 @@ CREATE PROCEDURE getOrder (@OrderNumber VARCHAR(64))
 END
 GO
 
-CREATE PROCEDURE getAllOrders(@ProgressStatus VARCHAR(16))
-	AS
+CREATE PROCEDURE getAllOrdersOfStatus(@ProgressStatus VARCHAR(16))
+    AS 
 	BEGIN
 	SELECT
-		*
-	FROM
-		TblOrder
-	WHERE
-		fldProgressStatus = @ProgressStatus
+	   [OrderNumber],
+	   [StartDate],
+	   [DeliveryDate],	  
+	   [DeliveryWeek],
+	   [Delivery],
+	   [AlternativeDelivery],
+	   [HousingAssociation],
+	   [BlueprinkLink],
+	   [RequisitionLink],
+	   [ProgessStatus],
+       [CompanyName],
+       [CompanyAddress],
+       [CompanyZipCode],
+       [CompanyPhone],
+       [CompanyFaxPhone],
+       [CompanyCVR],
+       [CompanyEmail]
+  FROM [SKDB].[dbo].[OrderView]
+  WHERE ProgressStatus = @ProgressStatus
 END
 GO
 
@@ -313,6 +336,7 @@ CREATE VIEW OrderView AS
 	ord.fldDeliveryWeek DeliveryWeek,
 	ord.fldDelivery Delivery,
 	ord.fldAltDelivery AlternativeDelivery,
+	ord.fldHousingAssociation HousingAssociation,
 	ord.fldBluePrintLink BlueprintLink, 
 	ord.fldRequisitionLink RequisitionLink, 
 	ord.fldProgressStatus ProgressStatus,
