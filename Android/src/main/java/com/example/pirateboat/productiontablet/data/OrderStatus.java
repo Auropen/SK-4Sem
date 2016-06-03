@@ -4,7 +4,7 @@ package com.example.pirateboat.productiontablet.data;
  * Created by Swodah on 02-06-2016.
  */
 public class OrderStatus {
-    public String Order;
+    public Boolean Finished;
     public String Station4;
     public String Station5;
     public String Station6;

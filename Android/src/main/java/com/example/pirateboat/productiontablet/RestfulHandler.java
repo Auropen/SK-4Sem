@@ -32,7 +32,8 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
 
         if(url == null){
            //url = new URL("http://keddebock.dk:8080/RestService.svc/getOrder/w0000520");
-           url = new URL("http://10.176.160.135:8080/RestService.svc/getOrder/w0000520");
+           //url = new URL("http://10.176.160.151:8080/RestService.svc/getOrder/w0000520");
+           url = new URL ("http://10.176.160.151:8080/RestService.svc/getAllActiveOrders");
         }
 
     }

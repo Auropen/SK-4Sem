@@ -12,6 +12,6 @@ public class Element {
     public String Hinge;
     public String Position;
     public String Unit;
-   // public ArrayList<ElementStatus> elementStatuses = new ArrayList<ElementStatus>();
+    public boolean[] StationStatus = new boolean[5];
 
 }
