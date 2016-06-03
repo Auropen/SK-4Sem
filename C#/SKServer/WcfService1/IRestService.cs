@@ -36,7 +36,7 @@ namespace WcfService
 
         [OperationContract]
         [WebInvoke(Method = "POST",
-            UriTemplate = "addNote/{text}",
+            UriTemplate = "addNote/{dataText}",
             RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
             ResponseFormat = WebMessageFormat.Json)]
