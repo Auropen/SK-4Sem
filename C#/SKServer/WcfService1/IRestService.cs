@@ -11,7 +11,6 @@ using System.Text;
 
 namespace WcfService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IRestService" in both code and config file together.
     [ServiceContract]
     public interface IRestService
     {
@@ -24,7 +23,7 @@ namespace WcfService
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "getAllActiveOrders/")]
+            UriTemplate = "getAllActiveOrders")]
         List<OrderConfirmation> getAllActiveOrders();
 
 
