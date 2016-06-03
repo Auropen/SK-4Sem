@@ -35,7 +35,13 @@ namespace SKOffice.RestService {
         private string[] CompanyInfoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] CustomerInfoField;
+        private string[] DeliveryInfoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HousingAssociationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] KitchenInfoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private SKOffice.RestService.OrderNote[] NotesField;
@@ -53,13 +59,13 @@ namespace SKOffice.RestService {
         private System.DateTime ProducedDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SKOffice.RestService.OrderStatus StationStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string WeekField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] kitchenInfoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -124,14 +130,40 @@ namespace SKOffice.RestService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] CustomerInfo {
+        public string[] DeliveryInfo {
             get {
-                return this.CustomerInfoField;
+                return this.DeliveryInfoField;
             }
             set {
-                if ((object.ReferenceEquals(this.CustomerInfoField, value) != true)) {
-                    this.CustomerInfoField = value;
-                    this.RaisePropertyChanged("CustomerInfo");
+                if ((object.ReferenceEquals(this.DeliveryInfoField, value) != true)) {
+                    this.DeliveryInfoField = value;
+                    this.RaisePropertyChanged("DeliveryInfo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HousingAssociation {
+            get {
+                return this.HousingAssociationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HousingAssociationField, value) != true)) {
+                    this.HousingAssociationField = value;
+                    this.RaisePropertyChanged("HousingAssociation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] KitchenInfo {
+            get {
+                return this.KitchenInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KitchenInfoField, value) != true)) {
+                    this.KitchenInfoField = value;
+                    this.RaisePropertyChanged("KitchenInfo");
                 }
             }
         }
@@ -202,6 +234,19 @@ namespace SKOffice.RestService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public SKOffice.RestService.OrderStatus StationStatus {
+            get {
+                return this.StationStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StationStatusField, value) != true)) {
+                    this.StationStatusField = value;
+                    this.RaisePropertyChanged("StationStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Status {
             get {
                 return this.StatusField;
@@ -227,15 +272,127 @@ namespace SKOffice.RestService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] kitchenInfo {
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStatus", Namespace="http://schemas.datacontract.org/2004/07/WcfService.domain.order")]
+    [System.SerializableAttribute()]
+    public partial class OrderStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool FinishedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Station4Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Station5Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Station6Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Station7Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Station8Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
-                return this.kitchenInfoField;
+                return this.extensionDataField;
             }
             set {
-                if ((object.ReferenceEquals(this.kitchenInfoField, value) != true)) {
-                    this.kitchenInfoField = value;
-                    this.RaisePropertyChanged("kitchenInfo");
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Finished {
+            get {
+                return this.FinishedField;
+            }
+            set {
+                if ((this.FinishedField.Equals(value) != true)) {
+                    this.FinishedField = value;
+                    this.RaisePropertyChanged("Finished");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Station4 {
+            get {
+                return this.Station4Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Station4Field, value) != true)) {
+                    this.Station4Field = value;
+                    this.RaisePropertyChanged("Station4");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Station5 {
+            get {
+                return this.Station5Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Station5Field, value) != true)) {
+                    this.Station5Field = value;
+                    this.RaisePropertyChanged("Station5");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Station6 {
+            get {
+                return this.Station6Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Station6Field, value) != true)) {
+                    this.Station6Field = value;
+                    this.RaisePropertyChanged("Station6");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Station7 {
+            get {
+                return this.Station7Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Station7Field, value) != true)) {
+                    this.Station7Field = value;
+                    this.RaisePropertyChanged("Station7");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Station8 {
+            get {
+                return this.Station8Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Station8Field, value) != true)) {
+                    this.Station8Field = value;
+                    this.RaisePropertyChanged("Station8");
                 }
             }
         }
@@ -397,6 +554,9 @@ namespace SKOffice.RestService {
         private string PositionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool[] StationStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UnitField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -475,6 +635,19 @@ namespace SKOffice.RestService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool[] StationStatus {
+            get {
+                return this.StationStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StationStatusField, value) != true)) {
+                    this.StationStatusField = value;
+                    this.RaisePropertyChanged("StationStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Unit {
             get {
                 return this.UnitField;
@@ -520,10 +693,10 @@ namespace SKOffice.RestService {
         System.Threading.Tasks.Task<bool> addOrderConfirmationAsync(string[] fileContent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addNote", ReplyAction="http://tempuri.org/IRestService/addNoteResponse")]
-        bool addNote(string text);
+        bool addNote(string dataText);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addNote", ReplyAction="http://tempuri.org/IRestService/addNoteResponse")]
-        System.Threading.Tasks.Task<bool> addNoteAsync(string text);
+        System.Threading.Tasks.Task<bool> addNoteAsync(string dataText);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -577,12 +750,12 @@ namespace SKOffice.RestService {
             return base.Channel.addOrderConfirmationAsync(fileContent);
         }
         
-        public bool addNote(string text) {
-            return base.Channel.addNote(text);
+        public bool addNote(string dataText) {
+            return base.Channel.addNote(dataText);
         }
         
-        public System.Threading.Tasks.Task<bool> addNoteAsync(string text) {
-            return base.Channel.addNoteAsync(text);
+        public System.Threading.Tasks.Task<bool> addNoteAsync(string dataText) {
+            return base.Channel.addNoteAsync(dataText);
         }
     }
 }

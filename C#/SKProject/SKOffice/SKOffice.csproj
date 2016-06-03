@@ -52,6 +52,8 @@
     <Compile Include="domain\order\OrderCategory.cs" />
     <Compile Include="domain\order\OrderConfirmation.cs" />
     <Compile Include="domain\order\OrderElement.cs" />
+    <Compile Include="domain\order\OrderNote.cs" />
+    <Compile Include="domain\order\OrderStatus.cs" />
     <Compile Include="gui\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,17 +94,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\RestService\RestService.wsdl" />
-    <None Include="Service References\RestService\RestService.xsd">
+    <None Include="Service References\RestService\RestService1.wsdl" />
+    <None Include="Service References\RestService\RestService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RestService\RestService1.xsd">
+    <None Include="Service References\RestService\RestService41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RestService\RestService2.xsd">
+    <None Include="Service References\RestService\RestService42.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RestService\RestService3.xsd">
+    <None Include="Service References\RestService\RestService43.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\RestService\SKOffice.RestService.OrderConfirmation.datasource">
@@ -135,7 +137,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RestService\RestService.disco" />
+    <ProjectReference Include="..\..\..\..\..\..\..\Desktop\ObjectListViewFull-2.9.1\ObjectListViewDemo\ObjectListView\ObjectListView2012.csproj">
+      <Project>{18feda0c-d147-4286-b39a-01204808106a}</Project>
+      <Name>ObjectListView2012</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RestService\RestService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

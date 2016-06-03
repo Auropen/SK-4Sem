@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
-namespace SKOffice.domain.order
+namespace WcfService.domain.order
 {
     [DataContract]
     public class OrderConfirmation
@@ -19,19 +19,27 @@ namespace SKOffice.domain.order
         [DataMember]
         public string Week { get; set; }
         [DataMember]
+        public string Status { get; set; }
+        [DataMember]
         public DateTime OrderDate { get; set; }
         [DataMember]
         public DateTime ProducedDate { get; set; }
         [DataMember]
+        public string HousingAssociation { get; set; }
+        [DataMember]
         public List<string> CompanyInfo { get; private set; }
         [DataMember]
-        public List<string> CustomerInfo { get; private set; }
+        public List<string> DeliveryInfo { get; private set; }
         [DataMember]
         public List<string> AltDeliveryInfo { get; private set; }
         [DataMember]
-        public List<string> kitchenInfo { get; private set; }
+        public List<string> KitchenInfo { get; private set; }
         [DataMember]
         public List<OrderCategory> Categories { get; private set; }
+        [DataMember]
+        public List<OrderNote> Notes { get; private set; }
+        [DataMember]
+        public OrderStatus StationStatus { get; private set; }
 
 
         public OrderConfirmation()
@@ -40,13 +48,17 @@ namespace SKOffice.domain.order
             AlternativeNumber = "";
             OrderName = "";
             Week = "";
+            Status = "";
+            HousingAssociation = "";
             OrderDate = new DateTime();
             ProducedDate = new DateTime();
             CompanyInfo = new List<string>();
-            CustomerInfo = new List<string>();
+            DeliveryInfo = new List<string>();
             AltDeliveryInfo = new List<string>();
             Categories = new List<OrderCategory>();
-            kitchenInfo = new List<string>();
+            Notes = new List<OrderNote>();
+            KitchenInfo = new List<string>();
+            StationStatus = new OrderStatus();
         }
 
         public OrderCategory findCategoryByID(int id)

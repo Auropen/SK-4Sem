@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SKOffice.domain.order
+namespace WcfService.domain.order
 {
     [DataContract]
     public class OrderCategory

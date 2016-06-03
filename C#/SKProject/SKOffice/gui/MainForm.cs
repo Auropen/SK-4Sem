@@ -1,4 +1,4 @@
-﻿using SKOffice.domain;
+﻿using SKOffice.RestService;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,12 +22,61 @@ namespace SKOffice
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
 
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
+            RestServiceClient rsClient = new RestServiceClient();
 
+            // Set the view to show details.
+            orderOverViewList.View = View.Details;
+
+            // Display grid lines.
+            orderOverViewList.GridLines = true;
+
+            // Create columns for the items and subitems.
+            // Width of -2 indicates auto-size.
+            orderOverViewList.Columns.Add("Order ID", 150, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Note", -2, HorizontalAlignment.Left);
+
+            try
+            {
+                foreach (OrderConfirmation oc in rsClient.getAllActiveOrders())
+                {
+                    orderOverViewList.Items.Add(new ListViewItem(new[] { oc.OrderNumber, (oc.StationStatus.Station4 == "Active" || oc.Status == "Done")? "X": " ",
+                                                                        (oc.StationStatus.Station4 == "Done") ? "X" : " ",
+                                                                        (oc.StationStatus.Station5 == "Active" || oc.Status == "Done")? "X": " ",
+                                                                        (oc.StationStatus.Station5 == "Done") ? "X" : " ",
+                                                                        (oc.StationStatus.Station6 == "Active" || oc.Status == "Done")? "X": " ",
+                                                                        (oc.StationStatus.Station6 == "Done") ? "X" : " ",
+                                                                        (oc.StationStatus.Station7 == "Active" || oc.Status == "Done")? "X": " ",
+                                                                        (oc.StationStatus.Station7 == "Done") ? "X" : " ",
+                                                                        (oc.StationStatus.Station8 == "Active" || oc.Status == "Done")? "X": " ",
+                                                                        (oc.StationStatus.Station8 == "Done") ? "X" : " ",
+                                                                        "Note" }));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERRRRRROR.. " + ex.Message);
+            }
+
+
+
+            // Add the ListView to the control collection.
+            this.Controls.Add(orderOverViewList);
         }
 
 
@@ -116,13 +165,9 @@ namespace SKOffice
             }
         }
 
-        private void listView_SelectedIndexChanged(object sender, EventArgs e)
+        private void orderOverViewList_SelectedIndexChanged(object sender, EventArgs e)
         {
-                    
-            RestService.RestServiceClient rsClient = new RestService.RestServiceClient();
 
-            //listView1.Items.AddRange(rsClient.getOrder);
-
-    }
+        }
     }
 }
