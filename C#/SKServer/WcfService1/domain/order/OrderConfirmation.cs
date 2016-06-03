@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
-using WcfService1.domain.order;
 
 namespace WcfService.domain.order
 {
@@ -59,6 +58,7 @@ namespace WcfService.domain.order
             Categories = new List<OrderCategory>();
             Notes = new List<OrderNote>();
             KitchenInfo = new List<string>();
+            StationStatus = new OrderStatus();
         }
 
         public OrderCategory findCategoryByID(int id)
