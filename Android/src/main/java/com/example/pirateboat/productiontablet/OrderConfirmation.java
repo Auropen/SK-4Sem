@@ -11,6 +11,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.pirateboat.productiontablet.data.Order;
 import com.example.pirateboat.productiontablet.data.OrderResult;
 
 import java.net.MalformedURLException;
@@ -21,7 +22,8 @@ public class OrderConfirmation extends Activity {
     OrderResult or;
     Bundle bundle;
     String message;
-    OrderResult storedOR;
+    Order storedOR;
+    Order order;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class OrderConfirmation extends Activity {
         table_layout = (TableLayout) findViewById(R.id.tableLayout1);
 
         bundle = getIntent().getExtras();
-        message = bundle.getString("message");
+        message = bundle.getString("SelectedON");
         new update().execute();
     }
     class update extends AsyncTask<Void, Void, Void> {
@@ -46,11 +48,15 @@ public class OrderConfirmation extends Activity {
                 e.printStackTrace();
 
             }
-
+            for(int i = 0; i<or.getAllActiveOrdersResult.size();i++){
+                if(or.getAllActiveOrdersResult.get(i).OrderName.equals(message)){
+                    order=or.getAllActiveOrdersResult.get(i);
+                }
+            }
             try {
-                if (or.getOrderResult.AltDeliveryInfo != null) {
-                    BuildTable(5, or);
-                     storedOR = or;
+                if (order.OrderName!=null) {
+                    BuildTable(5, order);
+                     storedOR = order;
                     or = null;
 
                 }else{
@@ -136,19 +142,19 @@ public class OrderConfirmation extends Activity {
     View.OnClickListener updateStation(final Button button, final int category, final int element,final int number)  {
         return new View.OnClickListener() {
             public void onClick(View v) {
-                if(or.getOrderResult.Categories.get(category).Elements.get(element).StationStatus[number]==true) {
-                    or.getOrderResult.Categories.get(category).Elements.get(element).StationStatus[number] =false;
+                if(order.Categories.get(category).Elements.get(element).StationStatus[number]==true) {
+                    order.Categories.get(category).Elements.get(element).StationStatus[number] =false;
                 }else{
-                    or.getOrderResult.Categories.get(category).Elements.get(element).StationStatus[number] =true;
+                    order.Categories.get(category).Elements.get(element).StationStatus[number] =true;
                 }
                 //send or to webserver
             }
         };
     }
 
-    private void BuildTable(int rows,OrderResult data) {
+    private void BuildTable(int rows,Order data) {
         ClearTable();
-        for(int k = 0;k<data.getOrderResult.Categories.size();k++){
+        for(int k = 0;k<data.Categories.size();k++){
             TableRow CategoryRow = new TableRow(this);
             CategoryRow.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
@@ -158,10 +164,10 @@ public class OrderConfirmation extends Activity {
             CategoryName.setBackgroundResource(R.drawable.cell_shape);
             CategoryName.setPadding(40, 40, 40, 40);
             CategoryName.setId(CategoryName.generateViewId());
-            CategoryName.setText(data.getOrderResult.Categories.get(k).Name);
+            CategoryName.setText(data.Categories.get(k).Name);
             addRow(CategoryRow);
 
-        rows = data.getOrderResult.Categories.get(k).Elements.size();
+        rows = data.Categories.get(k).Elements.size();
         int cols = 13;
         // outer for loop
         for (int i = 0; i <= rows-1; i++) {
@@ -182,7 +188,7 @@ public class OrderConfirmation extends Activity {
                         pos.setBackgroundResource(R.drawable.cell_shape);
                         pos.setPadding(40, 40, 40, 40);
                         pos.setId(pos.generateViewId());
-                        pos.setText(data.getOrderResult.Categories.get(k).Elements.get(i).Position);//hardcode knapper og links og labels
+                        pos.setText(data.Categories.get(k).Elements.get(i).Position);//hardcode knapper og links og labels
                         row.addView(pos);
 
                         break;
@@ -195,8 +201,8 @@ public class OrderConfirmation extends Activity {
                         info.setPadding(40, 40, 40, 40);
                         info.setId(info.generateViewId());
                         String elementinfo ="";
-                        for (int n = 0;n<data.getOrderResult.Categories.get(k).Elements.get(i).ElementInfo.size()-n;n++){
-                            elementinfo += data.getOrderResult.Categories.get(k).Elements.get(i).ElementInfo.get(n)+"\n";
+                        for (int n = 0;n<data.Categories.get(k).Elements.get(i).ElementInfo.size()-n;n++){
+                            elementinfo += data.Categories.get(k).Elements.get(i).ElementInfo.get(n)+"\n";
                         }
                         info.setText(elementinfo);
                         row.addView(info);
@@ -209,7 +215,7 @@ public class OrderConfirmation extends Activity {
                         hinge.setBackgroundResource(R.drawable.cell_shape);
                         hinge.setPadding(40, 40, 40, 40);
                         hinge.setId(hinge.generateViewId());
-                        hinge.setText(data.getOrderResult.Categories.get(k).Elements.get(i).Hinge);//hardcode knapper og links og labels
+                        hinge.setText(data.Categories.get(k).Elements.get(i).Hinge);//hardcode knapper og links og labels
                         row.addView(hinge);
 
                         break;
@@ -221,7 +227,7 @@ public class OrderConfirmation extends Activity {
                         finish.setBackgroundResource(R.drawable.cell_shape);
                         finish.setPadding(40, 40, 40, 40);
                         finish.setId(finish.generateViewId());
-                        finish.setText(data.getOrderResult.Categories.get(k).Elements.get(i).Finish);//hardcode knapper og links og labels
+                        finish.setText(data.Categories.get(k).Elements.get(i).Finish);//hardcode knapper og links og labels
                         row.addView(finish);
 
                         break;
@@ -233,7 +239,7 @@ public class OrderConfirmation extends Activity {
                         amount.setBackgroundResource(R.drawable.cell_shape);
                         amount.setPadding(40, 40, 40, 40);
                         amount.setId(amount.generateViewId());
-                        amount.setText(data.getOrderResult.Categories.get(k).Elements.get(i).Amount);//hardcode knapper og links og labels
+                        amount.setText(data.Categories.get(k).Elements.get(i).Amount);//hardcode knapper og links og labels
                         row.addView(amount);
                         break;
                     case 6:
@@ -244,7 +250,7 @@ public class OrderConfirmation extends Activity {
                         unit.setBackgroundResource(R.drawable.cell_shape);
                         unit.setPadding(40, 40, 40, 40);
                         unit.setId(unit.generateViewId());
-                        unit.setText(data.getOrderResult.Categories.get(k).Elements.get(i).Unit);//hardcode knapper og links og labels
+                        unit.setText(data.Categories.get(k).Elements.get(i).Unit);//hardcode knapper og links og labels
                         row.addView(unit);
                         break;
                     case 7:
@@ -254,7 +260,7 @@ public class OrderConfirmation extends Activity {
                                 TableRow.LayoutParams.WRAP_CONTENT));
                         showSpecieal.setBackgroundResource(R.drawable.cell_shape);
                         showSpecieal.setPadding(40, 40, 40, 40);
-                        showSpecieal.setText(data.getOrderResult.OrderName);//hardcode knapper og links og labels
+                        showSpecieal.setText(data.OrderName);//hardcode knapper og links og labels
                         showSpecieal.setId(showSpecieal.generateViewId());
                         showSpecieal.setOnClickListener(toggleColumns(showSpecieal));
                         row.addView(showSpecieal);
@@ -266,7 +272,7 @@ public class OrderConfirmation extends Activity {
                                 TableRow.LayoutParams.WRAP_CONTENT));
                         st4.setBackgroundResource(R.drawable.cell_shape);
                         st4.setPadding(40, 40, 40, 40);
-                        st4.setText(data.getOrderResult.OrderName);//hardcode knapper og links og labels
+                        st4.setText(data.OrderName);//hardcode knapper og links og labels
                         st4.setId(st4.generateViewId());
                         st4.setOnClickListener(updateStation(st4,k,i,j));
                         row.addView(st4);
@@ -278,7 +284,7 @@ public class OrderConfirmation extends Activity {
                                 TableRow.LayoutParams.WRAP_CONTENT));
                         st5.setBackgroundResource(R.drawable.cell_shape);
                         st5.setPadding(40, 40, 40, 40);
-                        st5.setText(data.getOrderResult.OrderName);//hardcode knapper og links og labels
+                        st5.setText(data.OrderName);//hardcode knapper og links og labels
                         st5.setId(st5.generateViewId());
                         st5.setOnClickListener(updateStation(st5,k,i,j));
                         row.addView(st5);
@@ -290,7 +296,7 @@ public class OrderConfirmation extends Activity {
                                 TableRow.LayoutParams.WRAP_CONTENT));
                         st6.setBackgroundResource(R.drawable.cell_shape);
                         st6.setPadding(40, 40, 40, 40);
-                        st6.setText(data.getOrderResult.OrderName);//hardcode knapper og links og labels
+                        st6.setText(data.OrderName);//hardcode knapper og links og labels
                         st6.setId(st6.generateViewId());
                         st6.setOnClickListener(updateStation(st6,k,i,j));
                         row.addView(st6);
@@ -302,7 +308,7 @@ public class OrderConfirmation extends Activity {
                                 TableRow.LayoutParams.WRAP_CONTENT));
                         st7.setBackgroundResource(R.drawable.cell_shape);
                         st7.setPadding(40, 40, 40, 40);
-                        st7.setText(data.getOrderResult.OrderName);//hardcode knapper og links og labels
+                        st7.setText(data.OrderName);//hardcode knapper og links og labels
                         st7.setId(st7.generateViewId());
                         st7.setOnClickListener(updateStation(st7,k,i,j));
                         row.addView(st7);
@@ -314,13 +320,13 @@ public class OrderConfirmation extends Activity {
                                 TableRow.LayoutParams.WRAP_CONTENT));
                         st8.setBackgroundResource(R.drawable.cell_shape);
                         st8.setPadding(40, 40, 40, 40);
-                        st8.setText(data.getOrderResult.OrderName);//hardcode knapper og links og labels
+                        st8.setText(data.OrderName);//hardcode knapper og links og labels
                         st8.setId(st8.generateViewId());
                         st8.setOnClickListener(updateStation(st8,k,i,j));
                         row.addView(st8);
                     case 13:
                         //button
-                        final String ordername = data.getOrderResult.OrderName;
+                        final String ordername = data.OrderName;
                         Button btn = new Button(this);
                         btn.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                                 TableRow.LayoutParams.WRAP_CONTENT));
