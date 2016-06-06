@@ -63,9 +63,16 @@ namespace WcfService
             list[0].StationStatus.Station4 = "Active";
             list[0].StationStatus.Station6 = "Done";
             list[0].StationStatus.Station7 = "Active";
+
+            list[0].Notes.Add(new OrderNote("This is a good order!.. NOOOT"));
+            list[0].Notes.Add(new OrderNote("This is a very long teeeeeeeeeeeeeeeeeeeeeeeeext text text text text text text text text text text text text..."));
+
             list[1].StationStatus.Station5 = "Done";
             list[1].StationStatus.Station7 = "Done";
             list[1].StationStatus.Station8 = "Active";
+
+            list[1].Notes.Add(new OrderNote("Small"));
+            list[1].Notes.Add(new OrderNote("L\nA\nR\nG\nE because of new lines.. :)"));
             return list; // DBHandler.Instance.
         }
 

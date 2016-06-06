@@ -203,6 +203,7 @@ namespace WcfService.technical
                                     orderConfirmation.CompanyInfo.Add(dr.GetString(13));    //Phone
                                     orderConfirmation.CompanyInfo.Add(dr.GetString(14));    //FaxPhone
                                     orderConfirmation.CompanyInfo.Add(dr.GetString(15));    //CVR
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(16));    //Email
                                 }
                             }
                         }
