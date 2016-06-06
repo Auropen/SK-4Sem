@@ -76,12 +76,15 @@ namespace WcfService
             return list; // DBHandler.Instance.
         }
 
-        public bool addNote(string dataText)
+        public bool addNote(List<string> dataText)
         {
+            if (dataText.Count != 2)
+                return false;
+
             try
             {
 
-                DBHandler.Instance.createNotes("",0);
+                DBHandler.Instance.createNotes(dataText[0],dataText[1]);
             }
             catch (Exception)
             {

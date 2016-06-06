@@ -100,7 +100,7 @@ namespace WcfService.technical
         }
 
 
-        public void createNotes(String commentContent, int orderId)
+        public void createNotes(string orderNummer, string commentContent)
         {
 
             try
