@@ -29,6 +29,13 @@ namespace WcfService1
 
             list[0].Notes.Add(new OrderNote("This is a good order!.. NOOOT"));
             list[0].Notes.Add(new OrderNote("This is a very long teeeeeeeeeeeeeeeeeeeeeeeeext text text text text text text text text text text text text..."));
+            list[0].Notes.Add(new OrderNote("We are done with station 6"));
+            list[0].Notes.Add(new OrderNote("We began with station 7"));
+            list[0].Notes.Add(new OrderNote("We began with station 8"));
+            list[0].Notes.Add(new OrderNote("We are having trouble with station 7"));
+            list[0].Notes.Add(new OrderNote("We need another week to fix the problems with station 7"));
+            list[0].Notes.Add(new OrderNote("Station 8:\nGoing good might finish it later today!\nCan help on station 7 by tomorrow."));
+            list[0].Notes.Add(new OrderNote("Station 7:\nSounds good!"));
 
             list[1].StationStatus.Station5 = "Done";
             list[1].StationStatus.Station7 = "Done";

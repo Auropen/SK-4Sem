@@ -252,7 +252,7 @@ namespace WcfService.technical
             return "";
         }
 
-        public List<OrderCategory> getOrderCategory()
+        public List<OrderCategory> getOrderCategory(string orderNumber)
         {
             List<OrderCategory> categories = new List<OrderCategory>();
             //Needs a List for the various Categories
