@@ -5,24 +5,21 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
 import com.example.pirateboat.productiontablet.data.OrderResult;
 
 import java.net.MalformedURLException;
-import java.security.spec.ECField;
-import java.util.Timer;
 
 
 public class OrderOverView extends Activity {
     TableLayout table_layout;
-    Button btn;
+
     OrderResult or;
     OrderResult storedOR;
     @Override
@@ -32,7 +29,7 @@ public class OrderOverView extends Activity {
 
         table_layout = (TableLayout) findViewById(R.id.tableLayout1);
 
-        new update().execute();
+        new update().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);;
 
     }
 
@@ -63,14 +60,14 @@ public class OrderOverView extends Activity {
             }
 
             try {
-                Thread.sleep(120000);
+                Thread.sleep(12000);
             }
             catch (InterruptedException e)
             {
                 e.printStackTrace();
             }
 
-            doInBackground();
+//            doInBackground();
             return null;
         }
 
@@ -127,7 +124,7 @@ public class OrderOverView extends Activity {
                     LayoutParams.WRAP_CONTENT));
 
             // inner for loop
-            for (int j = 1; j <= cols; j++) {
+            for (int j = 0; j <= cols-1; j++) {
 
                 switch (j) {
                     case 1:
@@ -143,15 +140,15 @@ public class OrderOverView extends Activity {
                         row.addView(btnON);
                         break;
                     case 2:
-                        //textlinks
-                        TextView tl2 = new TextView(this);
-                        tl2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-                                LayoutParams.WRAP_CONTENT));
-                        tl2.setBackgroundResource(R.drawable.cell_shape);
-                        tl2.setPadding(40, 40, 40, 40);
-                        tl2.setId(tl2.generateViewId());
-                        tl2.setText("File links disabled");//hardcode knapper og links og labels
-                        row.addView(tl2);
+//                        //textlinks
+//                        TextView tl2 = new TextView(this);
+//                        tl2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+//                                LayoutParams.WRAP_CONTENT));
+//                        tl2.setBackgroundResource(R.drawable.cell_shape);
+//                        tl2.setPadding(40, 40, 40, 40);
+//                        tl2.setId(tl2.generateViewId());
+//                        tl2.setText("File links disabled");//hardcode knapper og links og labels
+//                        row.addView(tl2);
                         break;
                     case 3:
                         //label textviews
@@ -162,7 +159,7 @@ public class OrderOverView extends Activity {
                         st4.setPadding(40, 40, 40, 40);
                         st4.setId(st4.generateViewId());
                         if (data.getAllActiveOrdersResult.get(i).StationStatus.Station4 != null) {
-                            st4.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done"))?"X":" ");
+                            st4.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done")||data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Activte"))?"X":" ");
                         }
                         else{
                             st4.setText("missing");
@@ -197,7 +194,7 @@ public class OrderOverView extends Activity {
                         st5.setPadding(40, 40, 40, 40);
                         st5.setId(st5.generateViewId());
                         if (data.getAllActiveOrdersResult.get(i).StationStatus.Station5 != null) {
-                            st5.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done"))?"X":" ");
+                            st5.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station5.equals("Done")||data.getAllActiveOrdersResult.get(i).StationStatus.Station5.equals("Activte"))?"X":" ");
                         }
                         else{
                             st5.setText("missing");
@@ -215,7 +212,7 @@ public class OrderOverView extends Activity {
                         st5d.setPadding(40, 40, 40, 40);
                         st5d.setId(st5d.generateViewId());
                         if(data.getAllActiveOrdersResult.get(i).StationStatus.Station5 !=null) {
-                            st5d.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done"))?"X":" ");
+                            st5d.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station5.equals("Done"))?"X":" ");
                 }else{
                             st5d.setText("missing");
                         }
@@ -231,7 +228,7 @@ public class OrderOverView extends Activity {
                         st6.setPadding(40, 40, 40, 40);
                         st6.setId(st6.generateViewId());
                         if(data.getAllActiveOrdersResult.get(i).StationStatus.Station6 !=null) {
-                            st6.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done"))?"X":" ");
+                            st6.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station6.equals("Done")||data.getAllActiveOrdersResult.get(i).StationStatus.Station6.equals("Activte"))?"X":" ");
                         }
                         else{
                             st6.setText("missing");
@@ -249,7 +246,7 @@ public class OrderOverView extends Activity {
                         st6d.setPadding(40, 40, 40, 40);
                         st6d.setId(st6d.generateViewId());
                         if(data.getAllActiveOrdersResult.get(i).StationStatus.Station6 !=null) {
-                            st6d.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done"))?"X":" ");
+                            st6d.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station6.equals("Done"))?"X":" ");
                         }else{
                             st6d.setText("missing");
                         }
@@ -265,7 +262,7 @@ public class OrderOverView extends Activity {
                         st7.setPadding(40, 40, 40, 40);
                         st7.setId(st7.generateViewId());
                         if(data.getAllActiveOrdersResult.get(i).StationStatus.Station7 !=null) {
-                            st7.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done"))?"X":" ");
+                            st7.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station7.equals("Done")||data.getAllActiveOrdersResult.get(i).StationStatus.Station7.equals("Activte"))?"X":" ");
                         }
                         else{
                             st7.setText("missing");
@@ -282,7 +279,7 @@ public class OrderOverView extends Activity {
                         st7d.setPadding(40, 40, 40, 40);
                         st7d.setId(st7d.generateViewId());
                         if(data.getAllActiveOrdersResult.get(i).StationStatus.Station7 !=null) {
-                            st7d.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done"))?"X":" ");
+                            st7d.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station7.equals("Done"))?"X":" ");
                         }else{
                             st7d.setText("missing");
                         }
@@ -298,7 +295,7 @@ public class OrderOverView extends Activity {
                         st8.setPadding(40, 40, 40, 40);
                         st8.setId(st8.generateViewId());
                         if(data.getAllActiveOrdersResult.get(i).StationStatus.Station8 !=null) {
-                            st8.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done"))?"X":" ");
+                            st8.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station8.equals("Done")||data.getAllActiveOrdersResult.get(i).StationStatus.Station8.equals("Activte"))?"X":" ");
                         }else{
                             st8.setText("missing");
                         }
@@ -314,7 +311,7 @@ public class OrderOverView extends Activity {
                         st8d.setPadding(40, 40, 40, 40);
                         st8d.setId(st8d.generateViewId());
                         if(data.getAllActiveOrdersResult.get(i).StationStatus.Station8 !=null) {
-                            st8d.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station4.equals("Done"))?"X":" ");
+                            st8d.setText((data.getAllActiveOrdersResult.get(i).StationStatus.Station8.equals("Done"))?"X":" ");
                         }else{
                             st8d.setText("missing");
                         }
@@ -332,7 +329,7 @@ public class OrderOverView extends Activity {
                         btn.setId(btn.generateViewId());
                         btn.setOnClickListener(noteclicker(btn,ordername));
 
-                        btn.setText("Notes");//hardcode knapper og links og labels
+                        btn.setText("Notes");
                         row.addView(btn);
                         break;
 

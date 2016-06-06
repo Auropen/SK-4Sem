@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
 import com.example.pirateboat.productiontablet.data.OrderResult;
 import com.google.gson.Gson;
@@ -27,19 +28,22 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
     private static Gson gson = new GsonBuilder().create();
     public final Charset charset = Charset.forName("UTF-8");
     int attemptcounter = 0;
+    String baseurl = "http://10.176.160.197:8080";
     public RestfulHandler() throws MalformedURLException {
         Log.i(TAG,"resthandler created");
 
         if(url == null){
            //url = new URL("http://keddebock.dk:8080/RestService.svc/getOrder/w0000520");
            //url = new URL("http://10.176.160.151:8080/RestService.svc/getOrder/w0000520");
-           url = new URL ("http://10.176.160.151:8080/RestService.svc/getAllActiveOrders");
+
+           url = new URL (baseurl+"/RestService.svc/getAllActiveOrders");
         }
 
     }
 
     @Override
     protected Void doInBackground(Void... params) {
+
         return null;
     }
 
@@ -48,8 +52,12 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
         return url;
     }
 
-    public void setUrl(URL url) {
-        this.url = url;
+    public void setUrl(String url) {
+        try {
+            this.url = new URL(baseurl+url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -87,7 +95,7 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
     }
 
 
-    public void writeStream(OrderResult output) {
+    public void writeStream(String output) {
 
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -97,9 +105,13 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
             urlConnection.setDoInput(false);
             urlConnection.setDoOutput(true);
             urlConnection.connect();
+
             urlConnection = (HttpURLConnection) url.openConnection();
+
             out = urlConnection.getOutputStream();
+
             String orJson = gson.toJson(output);
+
             out.write(orJson.getBytes(Charset.forName("UTF-8")));
 
             int response = urlConnection.getResponseCode();

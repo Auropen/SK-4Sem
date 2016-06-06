@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -15,10 +16,9 @@ import com.example.pirateboat.productiontablet.data.Order;
 import com.example.pirateboat.productiontablet.data.OrderResult;
 
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 
 public class OrderConfirmation extends Activity {
-    TableLayout table_layout;
+    TableLayout table_layoutoc;
     OrderResult or;
     Bundle bundle;
     String message;
@@ -30,50 +30,54 @@ public class OrderConfirmation extends Activity {
         setContentView(R.layout.activity_order_confirmation);
 
 
-        table_layout = (TableLayout) findViewById(R.id.tableLayout1);
+        table_layoutoc = (TableLayout) findViewById(R.id.tableLayout2);
 
         bundle = getIntent().getExtras();
         message = bundle.getString("SelectedON");
-        new update().execute();
+        Log.i("OC",message);
+        new update2().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
-    class update extends AsyncTask<Void, Void, Void> {
+    class update2 extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... params) {
+            Log.i("OC","test");
             StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
             try {
-                RestfulHandler rfh = new RestfulHandler();
-                or = rfh.readStream();
+                RestfulHandler rfh2 = new RestfulHandler();
+                or = rfh2.readStream();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
 
             }
+            Log.i("OC","Do in background");
             for(int i = 0; i<or.getAllActiveOrdersResult.size();i++){
                 if(or.getAllActiveOrdersResult.get(i).OrderName.equals(message)){
                     order=or.getAllActiveOrdersResult.get(i);
                 }
             }
+//            BuildTable(order);
             try {
                 if (order.OrderName!=null) {
-                    BuildTable(5, order);
+                    BuildTable(order);
                      storedOR = order;
                     or = null;
 
                 }else{
-                    BuildTable(13,storedOR);
+                    BuildTable(storedOR);
                 }
             }catch(Exception e){
                 e.printStackTrace();
             }
 
-            try {
-                Thread.sleep(120000);
-            }
-            catch (InterruptedException e)
-            {
+                try {
+                    Thread.sleep(12000);
+                }
+                catch (InterruptedException e)
+                {
                 e.printStackTrace();
             }
-            doInBackground();
+//            doInBackground();
             return null;
         }
 
@@ -86,7 +90,7 @@ public class OrderConfirmation extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                table_layout.removeAllViews();
+                table_layoutoc.removeAllViews();
             }
         });
     }
@@ -96,7 +100,7 @@ public class OrderConfirmation extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                table_layout.addView(row);
+                table_layoutoc.addView(row);
             }
         });
     }
@@ -107,13 +111,13 @@ public class OrderConfirmation extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                table_layout.setColumnCollapsed(7, !table_layout.isColumnCollapsed(7));
-                table_layout.setColumnCollapsed(8, !table_layout.isColumnCollapsed(8));
-                table_layout.setColumnCollapsed(9, !table_layout.isColumnCollapsed(9));
-                table_layout.setColumnCollapsed(10, !table_layout.isColumnCollapsed(10));
-                table_layout.setColumnCollapsed(11, !table_layout.isColumnCollapsed(11));
-                table_layout.setColumnCollapsed(12, !table_layout.isColumnCollapsed(12));
-                if(table_layout.isColumnCollapsed(7))
+                table_layoutoc.setColumnCollapsed(7, !table_layoutoc.isColumnCollapsed(7));
+                table_layoutoc.setColumnCollapsed(8, !table_layoutoc.isColumnCollapsed(8));
+                table_layoutoc.setColumnCollapsed(9, !table_layoutoc.isColumnCollapsed(9));
+                table_layoutoc.setColumnCollapsed(10, !table_layoutoc.isColumnCollapsed(10));
+                table_layoutoc.setColumnCollapsed(11, !table_layoutoc.isColumnCollapsed(11));
+                table_layoutoc.setColumnCollapsed(12, !table_layoutoc.isColumnCollapsed(12));
+                if(table_layoutoc.isColumnCollapsed(7))
                 {
                     button.setText("show");
                 }
@@ -152,8 +156,10 @@ public class OrderConfirmation extends Activity {
         };
     }
 
-    private void BuildTable(int rows,Order data) {
+    private void BuildTable(Order data) {
+        Log.i("OC","buildtable");
         ClearTable();
+        Log.i("OC","clear");
         for(int k = 0;k<data.Categories.size();k++){
             TableRow CategoryRow = new TableRow(this);
             CategoryRow.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
@@ -167,17 +173,18 @@ public class OrderConfirmation extends Activity {
             CategoryName.setText(data.Categories.get(k).Name);
             addRow(CategoryRow);
 
-        rows = data.Categories.get(k).Elements.size();
+        int rows = data.Categories.get(k).Elements.size();
         int cols = 13;
+            Log.i("OC","category added");
         // outer for loop
         for (int i = 0; i <= rows-1; i++) {
 
             TableRow row = new TableRow(this);
             row.setLayoutParams(new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                     TableRow.LayoutParams.WRAP_CONTENT));
-
+            Log.i("OC","new row");
             // inner for loop
-            for (int j = 1; j <= cols; j++) {
+            for (int j = 1; j <= cols-1; j++) {
 
                 switch (j){
                     case 1:
