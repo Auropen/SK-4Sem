@@ -322,7 +322,7 @@
             this.orderOverViewList.Size = new System.Drawing.Size(729, 361);
             this.orderOverViewList.TabIndex = 0;
             this.orderOverViewList.UseCompatibleStateImageBehavior = false;
-            this.orderOverViewList.SelectedIndexChanged += new System.EventHandler(this.orderOverViewList_SelectedIndexChanged);
+            this.orderOverViewList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.clickedOrder);
             // 
             // orderConfirmationBindingSource
             // 

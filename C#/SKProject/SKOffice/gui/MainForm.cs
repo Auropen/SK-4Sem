@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using WcfService.domain.order;
 
 namespace SKOffice
 {
@@ -11,6 +12,7 @@ namespace SKOffice
         FolderBrowserDialog fbd;
         OpenFileDialog ofd;
         public List<string> paths;
+        private List<OrderConfirmation> orderConfirmations;
 
 
         public MainForm()
@@ -38,22 +40,25 @@ namespace SKOffice
             // Create columns for the items and subitems.
             // Width of -2 indicates auto-size.
             orderOverViewList.Columns.Add("Order ID", 150, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("i gang", 50, HorizontalAlignment.Center);
-            orderOverViewList.Columns.Add("Færdig", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Started", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Done", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Started", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Done", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Started", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Done", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Started", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Done", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Started", 50, HorizontalAlignment.Center);
+            orderOverViewList.Columns.Add("Done", 50, HorizontalAlignment.Center);
             orderOverViewList.Columns.Add("Note", -2, HorizontalAlignment.Left);
-            
+
+
+            orderConfirmations = new List<OrderConfirmation>();
             try
             {
                 foreach (ServiceReference1.OrderConfirmation oc in rsClient.getAllActiveOrders())
                 {
+                    orderConfirmations.Add((OrderConfirmation) oc);
                     orderOverViewList.Items.Add(new ListViewItem(new[] 
                     {oc.OrderNumber + " " + oc.OrderDate.Day + "-" + oc.OrderDate.Month + "-" + oc.OrderDate.Year,
                     (oc.StationStatus.Station4 == "Active" || (oc.StationStatus.Station4 == "Done")? "X": " "),
@@ -66,7 +71,7 @@ namespace SKOffice
                     (oc.StationStatus.Station7 == "Done") ? "X" : " ",
                     (oc.StationStatus.Station8 == "Active" || (oc.StationStatus.Station8 == "Done")? "X": " "),
                     (oc.StationStatus.Station8 == "Done") ? "X" : " ",
-                    "Note" }));
+                    oc.Notes.Length + "" }));
                 }
             }
             catch (Exception ex)
@@ -161,9 +166,21 @@ namespace SKOffice
             }
         }
 
-        private void orderOverViewList_SelectedIndexChanged(object sender, EventArgs e)
+        private void clickedOrder(object sender, MouseEventArgs e)
         {
-
+            int y = 24;
+            for (int i = 0; i < orderOverViewList.Items.Count; i++)
+            {
+                if (e.Y >= y && e.Y <= y + 16)
+                {
+                    Console.WriteLine(e.Y + " " + i);
+                    OrderForm orderForm = new OrderForm(orderConfirmations[i]);
+                    orderForm.Show();
+                    break;
+                }
+                //each row is 16 pixels in height
+                y += 17;
+            }
         }
     }
 }

@@ -31,5 +31,15 @@ namespace WcfService.domain.order
             Station8 = "NotStartet";
             Finished = false;
         }
+
+        public OrderStatus(string station4, string station5, string station6, string station7, string station8, bool finished)
+        {
+            Station4 = station4;
+            Station5 = station5;
+            Station6 = station6;
+            Station7 = station7;
+            Station8 = station8;
+            Finished = finished;
+        }
     }
 }
