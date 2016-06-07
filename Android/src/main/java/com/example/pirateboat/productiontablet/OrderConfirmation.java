@@ -25,6 +25,7 @@ public class OrderConfirmation extends Activity {
     String message;
     Order storedOR;
     Order order;
+    RestfulHandler rfh2;
     ArrayList<Integer> hidelist = new ArrayList<Integer>();
 
     @Override
@@ -38,6 +39,11 @@ public class OrderConfirmation extends Activity {
         bundle = getIntent().getExtras();
         message = bundle.getString("SelectedON");
         Log.i("OC", message);
+        try {
+            rfh2 = new RestfulHandler();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         new update2().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
@@ -47,39 +53,37 @@ public class OrderConfirmation extends Activity {
         protected Void doInBackground(Void... params) {
             Log.i("OC", "test");
             StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
-            try {
-                RestfulHandler rfh2 = new RestfulHandler();
+
+
                 or = rfh2.readStream();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
 
-            }
-            Log.i("OC", "Do in background");
-            for (int i = 0; i < or.getAllActiveOrdersResult.size(); i++) {
-                if (or.getAllActiveOrdersResult.get(i).OrderName.equals(message)) {
-                    order = or.getAllActiveOrdersResult.get(i);
+            if (or != null) {
+                Log.i("OC", "Do in background");
+                for (int i = 0; i < or.getAllActiveOrdersResult.size(); i++) {
+                    if (or.getAllActiveOrdersResult.get(i).OrderName.equals(message)) {
+                        order = or.getAllActiveOrdersResult.get(i);
+                    }
+                }
+
+                try {
+                    if (order.OrderName != null) {
+                        BuildTable(order);
+                        storedOR = order;
+                        or = null;
+
+                    } else {
+                        BuildTable(storedOR);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-
-            try {
-                if (order.OrderName != null) {
-                    BuildTable(order);
-                    storedOR = order;
-                    or = null;
-
-                } else {
-                    BuildTable(storedOR);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
             try {
                 Thread.sleep(12000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-           // doInBackground();
+            // doInBackground();
             return null;
         }
 
@@ -115,7 +119,7 @@ public class OrderConfirmation extends Activity {
                     @Override
                     public void run() {
                         for (int i = 0; i < hidelist.size(); i++) {
-                            if (findViewById(hidelist.get(0)).getVisibility() == View.GONE) {
+                            if (findViewById(hidelist.get(i)).getVisibility() == View.GONE) {
                                 findViewById(hidelist.get(i)).setVisibility(View.VISIBLE);
                             } else {
                                 findViewById(hidelist.get(i)).setVisibility(View.GONE);
@@ -123,7 +127,7 @@ public class OrderConfirmation extends Activity {
                             }
                         }
 
-                        if  (findViewById(hidelist.get(0)).getVisibility() == View.GONE) {
+                        if (findViewById(hidelist.get(0)).getVisibility() == View.GONE) {
                             button.setText("show");
                         } else {
                             button.setText("Hide");
@@ -314,7 +318,7 @@ public class OrderConfirmation extends Activity {
                                     TableRow.LayoutParams.WRAP_CONTENT));
                             st4.setBackgroundResource(R.drawable.cell_shape);
                             st4.setPadding(40, 40, 40, 40);
-                            st4.setText("Done1");//hardcode knapper og links og labels
+                            st4.setText("sta4");//hardcode knapper og links og labels
                             st4.setId(st4.generateViewId());
                             hidelist.add(st4.getId());
                             st4.setOnClickListener(updateStation(st4, k, i, j));
@@ -327,7 +331,7 @@ public class OrderConfirmation extends Activity {
                                     TableRow.LayoutParams.WRAP_CONTENT));
                             st5.setBackgroundResource(R.drawable.cell_shape);
                             st5.setPadding(40, 40, 40, 40);
-                            st5.setText("Done2");//hardcode knapper og links og labels
+                            st5.setText("Sta5");//hardcode knapper og links og labels
                             st5.setId(st5.generateViewId());
                             hidelist.add(st5.getId());
                             st5.setOnClickListener(updateStation(st5, k, i, j));
@@ -340,7 +344,7 @@ public class OrderConfirmation extends Activity {
                                     TableRow.LayoutParams.WRAP_CONTENT));
                             st6.setBackgroundResource(R.drawable.cell_shape);
                             st6.setPadding(40, 40, 40, 40);
-                            st6.setText("Done3");//hardcode knapper og links og labels
+                            st6.setText("Sta6");//hardcode knapper og links og labels
                             st6.setId(st6.generateViewId());
                             hidelist.add(st6.getId());
                             st6.setOnClickListener(updateStation(st6, k, i, j));
@@ -353,7 +357,7 @@ public class OrderConfirmation extends Activity {
                                     TableRow.LayoutParams.WRAP_CONTENT));
                             st7.setBackgroundResource(R.drawable.cell_shape);
                             st7.setPadding(40, 40, 40, 40);
-                            st7.setText("Done4");//hardcode knapper og links og labels
+                            st7.setText("Sta7");//hardcode knapper og links og labels
                             st7.setId(st7.generateViewId());
                             hidelist.add(st7.getId());
                             st7.setOnClickListener(updateStation(st7, k, i, j));
@@ -366,7 +370,7 @@ public class OrderConfirmation extends Activity {
                                     TableRow.LayoutParams.WRAP_CONTENT));
                             st8.setBackgroundResource(R.drawable.cell_shape);
                             st8.setPadding(40, 40, 40, 40);
-                            st8.setText("Done5");//hardcode knapper og links og labels
+                            st8.setText("Sta8");//hardcode knapper og links og labels
                             st8.setId(st8.generateViewId());
                             hidelist.add(st8.getId());
                             st8.setOnClickListener(updateStation(st8, k, i, j));

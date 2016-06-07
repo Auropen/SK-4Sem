@@ -22,14 +22,18 @@ public class OrderOverView extends Activity {
 
     OrderResult or;
     OrderResult storedOR;
-
+    RestfulHandler rfh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_over_view);
 
         table_layout = (TableLayout) findViewById(R.id.tableLayout1);
-
+        try {
+            rfh = new RestfulHandler();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         new update().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         ;
 
@@ -40,27 +44,25 @@ public class OrderOverView extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
-            try {
-                RestfulHandler rfh = new RestfulHandler();
+
+
                 or = rfh.readStream();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
 
-            }
-            try {
-                if (or.getAllActiveOrdersResult.get(0).AltDeliveryInfo != null) {
-                    int orderAmount = or.getAllActiveOrdersResult.size();
-                    BuildTable(orderAmount, or);
-                    storedOR = or;
-                    or = null;
-                } else {
-                    int orderAmount = storedOR.getAllActiveOrdersResult.size();
-                    BuildTable(orderAmount, storedOR);
+            if (or != null) {
+                try {
+                    if (or.getAllActiveOrdersResult.get(0).AltDeliveryInfo != null) {
+                        int orderAmount = or.getAllActiveOrdersResult.size();
+                        BuildTable(orderAmount, or);
+                        storedOR = or;
+                        or = null;
+                    } else {
+                        int orderAmount = storedOR.getAllActiveOrdersResult.size();
+                        BuildTable(orderAmount, storedOR);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-
             try {
                 Thread.sleep(12000);
             } catch (InterruptedException e) {
