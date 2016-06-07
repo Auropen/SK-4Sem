@@ -95,7 +95,7 @@ namespace WcfService.domain.data
                         result.CompanyInfo.Add(lineSplit[25]);
                         result.CompanyInfo.Add(lineSplit[30]);
                         break;
-                    case "211": // Customer Info
+                    case "211": // Delivery Info
                         result.DeliveryInfo.Add(lineSplit[1]);
                         result.DeliveryInfo.Add(lineSplit[3]);
                         result.DeliveryInfo.Add(lineSplit[4]);
@@ -104,7 +104,7 @@ namespace WcfService.domain.data
                         result.DeliveryInfo.Add(lineSplit[24]);
                         result.DeliveryInfo.Add(lineSplit[25]);
                         break;
-                    case "212": // Customers Alternative Delivery Address
+                    case "212": // Alternative Delivery Address
                         result.AltDeliveryInfo.Add(lineSplit[1]);
                         result.AltDeliveryInfo.Add(lineSplit[3]);
                         result.AltDeliveryInfo.Add(lineSplit[4]);
@@ -147,7 +147,7 @@ namespace WcfService.domain.data
                         result.KitchenInfo.Add(lineSplit[4]); // Description
                         break;
                     case "430": // Order Category Info
-                        result.Categories.Add(new OrderCategory(lineSplit[2], ConversionUtil.stringToInt(lineSplit[1])));
+                        result.Categories.Add(new OrderCategory(ConversionUtil.stringToInt(lineSplit[1]), lineSplit[2]));
                         break;
                     case "500": // Order Element
                         lastElement = new OrderElement(lineSplit[1],"", "", lineSplit[9], lineSplit[10]);

@@ -76,8 +76,19 @@ namespace WcfService
             return list; // DBHandler.Instance.
         }
 
-        public bool addNote(string dataText)
+        public bool addNote(Stream stream)
         {
+            string dataText = "";
+            try
+            {
+                StreamReader sr = new StreamReader(stream);
+
+                dataText = sr.ReadToEnd();
+            }
+            catch (IOException)
+            {
+            }
+
             string[] data = dataText.Split("%ENDMETA%".ToArray());
             if (data.Length != 2)
                 return false;

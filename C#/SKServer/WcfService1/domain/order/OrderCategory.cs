@@ -17,7 +17,7 @@ namespace WcfService.domain.order
         [DataMember]
         public List<OrderElement> Elements { get; private set; }
         
-        public OrderCategory(string name, int id)
+        public OrderCategory(int id, string name)
         {
             Elements = new List<OrderElement>();
             Name = name;

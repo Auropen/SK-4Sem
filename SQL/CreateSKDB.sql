@@ -38,7 +38,7 @@ CREATE TABLE TblNotes		  (fldNoteID int IDENTITY(1,1) PRIMARY KEY,
 							   fldComment VARCHAR(1024),
 							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber))
 
-CREATE TABLE TblOrderCategory (fldCategoryID int IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE TblOrderCategory (fldCategoryID int PRIMARY KEY,
                                fldCategoryName VARCHAR(64) NOT NULL,
 							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber))
 
@@ -84,7 +84,8 @@ GO
 
 -- Stored Procedure
 
-CREATE PROCEDURE createCompany(@CompanyName VARCHAR(64),
+CREATE PROCEDURE createCompany(@CompanyID int,
+							   @CompanyName VARCHAR(64),
 							   @Adr VARCHAR(64),
 							   @Phone VARCHAR(64),
 							   @FaxPhone VARCHAR(64),
@@ -110,6 +111,7 @@ AS
 		)
 		VALUES
 		(
+			@CompanyID
 			@Name,
 			@Adr,
 			@Phone,
@@ -180,8 +182,8 @@ AS
 END
 GO
 
-CREATE PROCEDURE createOrderCategory(@CategoryName VARCHAR(64),
-								     @OrderNumber VARCHAR(64), 
+CREATE PROCEDURE createOrderCategory(@OrderNumber VARCHAR(64), 
+								     @CategoryName VARCHAR(64),
 								     @new_id INT OUTPUT)
 
 AS

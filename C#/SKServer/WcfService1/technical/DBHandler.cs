@@ -66,8 +66,33 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
+                    int companyID = -1;
+                    string sql = String.Format("createCompany({0}{1}{2}{3}{4}{5}{6}{7})",
+                        orderConfirmation.CompanyInfo[0],
+                        orderConfirmation.CompanyInfo[1],
+                        orderConfirmation.CompanyInfo[2],
+                        orderConfirmation.CompanyInfo[3],
+                        orderConfirmation.CompanyInfo[4],
+                        orderConfirmation.CompanyInfo[5],
+                        orderConfirmation.CompanyInfo[6],
+                        orderConfirmation.CompanyInfo[7]);
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        Console.WriteLine("Added " + command.ExecuteNonQuery() + " Order");
+                        companyID = (int) command.Parameters[7].Value;
+                    }
 
-                    string sql = String.Format("call ****()", orderConfirmation.AltDeliveryInfo, orderConfirmation.ProducedDate, orderConfirmation.OrderDate);
+
+                    sql = String.Format("createOrder({0}{1}{2}{3}{4}{5}{6}{7}{8})", 
+                        orderConfirmation.DeliveryInfo, 
+                        orderConfirmation.AltDeliveryInfo, 
+                        orderConfirmation.ProducedDate,
+                        orderConfirmation.OrderDate,
+                        orderConfirmation.Week,
+                        null,
+                        null,
+                        orderConfirmation.Status,
+                        companyID);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " Order");
                     connection.Close();
@@ -89,11 +114,9 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("call createNotes('{0}', '{1}')", orderNummer, content);
+                    string sql = String.Format("createNotes('{0}', '{1}')", orderNummer, content);
                     using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " Notes");
-                    }
                     connection.Close();
                 }
             }
@@ -113,8 +136,8 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrderCategory VALUES('" + orderNumber + "', '" + category.Name + "')", connection))
+                    string sql = String.Format("createOrderCategory({0}, '{1}', '{2}')", category.ID, orderNumber, category.Name);
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " OrderCategory");
                     connection.Close();
                 }
@@ -125,9 +148,8 @@ namespace WcfService.technical
             }
             return result;
         }
-
-
-        public void createOrderElements(String posId, String hinge, String finish, String amount, String unit, String text, int catagoryId)
+        
+        public void createOrderElements(OrderElement element, int catagoryId)
         {
             try
             {
@@ -135,7 +157,9 @@ namespace WcfService.technical
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrderCategory VALUES('" + posId + "','" + hinge + "','" + finish + "','" + amount + "', '" + unit + "', '" + text + "', " + catagoryId + ")", connection))
+                    string sql = String.Format("createOrderCategory('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}')", 
+                        element.Position, element.Hinge, element.Finish, element.Amount, element.Unit, "");
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " OrderCategory");
                     connection.Close();
                 }
@@ -188,6 +212,12 @@ namespace WcfService.technical
                                 }
                             }
                         }
+
+                        foreach (OrderCategory category in getOrderCategories(orderNumber))
+                        {
+                            orderConfirmation.Categories.Add(category);
+                        } 
+
                     }
                     connection.Close();
                 }
@@ -208,7 +238,7 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "call ****()";
+                    string sql = String.Format("getNotes('{0}')", orderNumber);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     using (SqlDataReader dr = command.ExecuteReader())
                     {
@@ -216,10 +246,7 @@ namespace WcfService.technical
                         {
                             while (dr.Read())
                             {
-                                //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                Console.WriteLine(dr.GetInt32(0) + " "
-                                                + dr.GetString(1) + " "
-                                                + dr.GetInt32(2) + " This is Note ");
+                                result.Add(new OrderNote(dr.GetString(0)));
                             }
                         }
                     }
@@ -233,7 +260,7 @@ namespace WcfService.technical
             return result;
         }
 
-        public List<OrderCategory> getOrderCategory(string orderNumber)
+        public List<OrderCategory> getOrderCategories(string orderNumber)
         {
             List<OrderCategory> categories = new List<OrderCategory>();
             try
@@ -241,7 +268,7 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "call ****()";
+                    string sql = String.Format("getCategories('{0}')", orderNumber);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     using (SqlDataReader dr = command.ExecuteReader())
                     {
@@ -249,7 +276,12 @@ namespace WcfService.technical
                         {
                             while (dr.Read())
                             {
-                                categories.Add(new OrderCategory(dr.GetString(1), dr.GetInt32(0)));
+                                OrderCategory category = new OrderCategory(dr.GetInt32(0), dr.GetString(1));
+                                categories.Add(category);
+                                foreach (OrderElement element in getOrderElements(category.ID))
+                                {
+                                    category.Elements.Add(element);
+                                }
                             }
                         }
                     }
