@@ -76,15 +76,15 @@ namespace WcfService
             return list; // DBHandler.Instance.
         }
 
-        public bool addNote(List<string> dataText)
+        public bool addNote(string dataText)
         {
-            if (dataText.Count != 2)
+            string[] data = dataText.Split("%ENDMETA%".ToArray());
+            if (data.Length != 2)
                 return false;
 
             try
             {
-
-                DBHandler.Instance.createNotes(dataText[0],dataText[1]);
+                DBHandler.Instance.createNotes(data[0], data[1]);
             }
             catch (Exception)
             {

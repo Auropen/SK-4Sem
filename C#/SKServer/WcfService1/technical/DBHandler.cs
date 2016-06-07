@@ -35,28 +35,7 @@ namespace WcfService.technical
         }
         
         // Create Methods
-
-        public void createCustomer(int custId, String Fname, String LName, String fone, String email, String custAdr, int zip)
-        {
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblCustomer VALUES(" + custId + ", '" + Fname + "', '" + LName + "', '" + fone + "', '" + email + "', '" + custAdr + "', " + zip + ")", connection))
-                        Console.WriteLine("Added " + command.ExecuteNonQuery() + " customers");
-                    connection.Close();
-                }
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-        }
-
+        
         public void createCompany(int compId, String compName, String compAdr, String compFone, String compEmail, int zip)
         {
 
@@ -66,6 +45,7 @@ namespace WcfService.technical
                 {
                     connection.Open();
 
+                    string sql = String.Format("call ****()");
                     using (SqlCommand command = new SqlCommand("INSERT INTO TblCompany VALUES(" + compId + ", '" + compName + "','" + compAdr + "', '" + compFone + "', '" + compEmail + "', " + zip + ")", connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " company");
                     connection.Close();
@@ -78,7 +58,7 @@ namespace WcfService.technical
 
         }
 
-        public void createOrder(int orderId, String altDelivery, String startDate, String deliveryDate, String deliveryWeek, String bluePrinkLink, int compId, int custId)
+        public void createOrder(OrderConfirmation orderConfirmation)
         {
 
             try
@@ -87,7 +67,8 @@ namespace WcfService.technical
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrder VALUES(" + orderId + ", '" + altDelivery + "', '" + startDate + "', '" + deliveryDate + "', '" + deliveryWeek + "','" + bluePrinkLink + "'," + compId + ", " + custId + ")", connection))
+                    string sql = String.Format("call ****()", orderConfirmation.AltDeliveryInfo, orderConfirmation.ProducedDate, orderConfirmation.OrderDate);
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " Order");
                     connection.Close();
                 }
@@ -100,17 +81,19 @@ namespace WcfService.technical
         }
 
 
-        public void createNotes(string orderNummer, string commentContent)
+        public List<OrderNote> createNotes(string orderNummer, string content)
         {
-
+            List<OrderNote> result = new List<OrderNote>();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblNotes VALUES('" + commentContent + "', " + orderId + ")", connection))
+                    string sql = String.Format("call createNotes('{0}', '{1}')", orderNummer, content);
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " Notes");
+                    }
                     connection.Close();
                 }
             }
@@ -118,20 +101,20 @@ namespace WcfService.technical
             {
                 Console.WriteLine(ex.Message);
             }
-
+            return result;
         }
 
 
-        public void createOrderCategory(String categoryName, int orderId)
+        public List<OrderCategory> createOrderCategory(string orderNumber, OrderCategory category)
         {
-
+            List<OrderCategory> result = new List<OrderCategory>();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrderCategory VALUES('" + categoryName + "', " + orderId + ")", connection))
+                    using (SqlCommand command = new SqlCommand("INSERT INTO TblOrderCategory VALUES('" + orderNumber + "', '" + category.Name + "')", connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " OrderCategory");
                     connection.Close();
                 }
@@ -140,13 +123,12 @@ namespace WcfService.technical
             {
                 Console.WriteLine(ex.Message);
             }
-
+            return result;
         }
 
 
         public void createOrderElements(String posId, String hinge, String finish, String amount, String unit, String text, int catagoryId)
         {
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -162,12 +144,11 @@ namespace WcfService.technical
             {
                 Console.WriteLine(ex.Message);
             }
-
         }
 
         // Get methods
 
-        public String getOrder(string orderNumber)
+        public OrderConfirmation getOrder(string orderNumber)
         {
             OrderConfirmation orderConfirmation = null;
             try
@@ -175,7 +156,7 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("call  {0}", orderNumber);
+                    string sql = String.Format("call getOrder{0}", orderNumber);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader dr = command.ExecuteReader())
@@ -215,20 +196,20 @@ namespace WcfService.technical
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            return "";
+            return orderConfirmation;
         }
 
 
-        public String getNotes()
+        public List<OrderNote> getNotes(string orderNumber)
         {
-            //Needs a List for the various Notes? 
+            List<OrderNote> result = new List<OrderNote>();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("Select * FROM TblNotes", connection))
+                    string sql = "call ****()";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                     using (SqlDataReader dr = command.ExecuteReader())
                     {
                         if (dr.HasRows)
@@ -249,20 +230,19 @@ namespace WcfService.technical
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            return "";
+            return result;
         }
 
         public List<OrderCategory> getOrderCategory(string orderNumber)
         {
             List<OrderCategory> categories = new List<OrderCategory>();
-            //Needs a List for the various Categories
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
-                    using (SqlCommand command = new SqlCommand("Select * FROM TblOrderCategory", connection))
+                    string sql = "call ****()";
+                    using (SqlCommand command = new SqlCommand(sql, connection))
                     using (SqlDataReader dr = command.ExecuteReader())
                     {
                         if (dr.HasRows)
@@ -294,7 +274,7 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("Select * FROM TblOrder WHERE CategoryID = {0}", categoryID);
+                    string sql = String.Format("call ****()", categoryID);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader dr = command.ExecuteReader())

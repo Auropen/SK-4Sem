@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Web.Hosting;
 
 namespace WcfService.domain
 {
@@ -13,7 +14,8 @@ namespace WcfService.domain
 
         public Properties(String file)
         {
-            configFile = new FileInfo(file);
+            configFile = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/config/"), file + ".ini"));
+            Console.Error.WriteLine(configFile.FullName);
             // Sets the configFolder field if needed
             if (configFolder == null)
                 configFolder = configFile.Directory;

@@ -91,20 +91,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="RestService.svc" />
-    <Content Include="domain\scripts\ai.0.22.9-build00167.js" />
-    <Content Include="domain\scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Domain\Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Domain\Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="ServiceWGet.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="domain\data\OrderParser.cs" />
-    <Compile Include="domain\order\OrderCategory.cs" />
-    <Compile Include="domain\order\OrderConfirmation.cs" />
-    <Compile Include="domain\order\OrderElement.cs" />
-    <Compile Include="domain\order\OrderNote.cs" />
-    <Compile Include="domain\order\OrderStatus.cs" />
-    <Compile Include="domain\Properties.cs" />
-    <Compile Include="domain\utility\ConversionUtil.cs" />
+    <Compile Include="Domain\Data\OrderParser.cs" />
+    <Compile Include="Domain\Order\OrderCategory.cs" />
+    <Compile Include="Domain\Order\OrderConfirmation.cs" />
+    <Compile Include="Domain\Order\OrderElement.cs" />
+    <Compile Include="Domain\Order\OrderNote.cs" />
+    <Compile Include="Domain\Order\OrderStatus.cs" />
+    <Compile Include="Domain\Properties.cs" />
+    <Compile Include="Domain\Utility\ConversionUtil.cs" />
     <Compile Include="IRestService.cs" />
     <Compile Include="IServiceWGet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,7 +114,7 @@
     <Compile Include="ServiceWGet.svc.cs">
       <DependentUpon>ServiceWGet.svc</DependentUpon>
     </Compile>
-    <Compile Include="technical\DBHandler.cs" />
+    <Compile Include="Technical\DBHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -162,8 +162,8 @@ AS
 END
 GO
 
-CREATE PROCEDURE createNotes  (@Content VARCHAR(1024),
-							   @OrderNumber VARCHAR(64))
+CREATE PROCEDURE createNotes  (@OrderNumber VARCHAR(64),
+							   @Content VARCHAR(1024))
 
 AS
 	BEGIN
