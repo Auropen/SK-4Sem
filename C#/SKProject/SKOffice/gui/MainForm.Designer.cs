@@ -243,7 +243,7 @@
             this.tpOverview.Padding = new System.Windows.Forms.Padding(3);
             this.tpOverview.Size = new System.Drawing.Size(754, 412);
             this.tpOverview.TabIndex = 1;
-            this.tpOverview.Text = "Overview";
+            this.tpOverview.Text = "Order Overview";
             this.tpOverview.UseVisualStyleBackColor = true;
             this.tpOverview.Click += new System.EventHandler(this.tabPage1_Click);
             // 
