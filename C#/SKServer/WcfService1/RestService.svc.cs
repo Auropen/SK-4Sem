@@ -24,17 +24,19 @@ namespace WcfService
         {
             string fileExtension = "e02";
             FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/" + fileName + "/"), fileName + "." + fileExtension));
-            updates++;
             return OrderParser.Instance.readOrder(fileInfo.FullName);
         }
 
-        public bool addOrderConfirmation(List<string> fileContent)
+        public string addOrderConfirmation(List<string> fileContent)
         {
             try
             {
                 string fileName = fileContent[0].Split('.')[0];
                 string fileExtension = fileContent[0].Split('.')[1];
                 FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/" + fileName + "/"), fileName + "." + fileExtension));
+
+                if (fileInfo.Exists)
+                    return "ERROR: File already exists.";
 
                 fileInfo.Directory.Create();
                 using (var output = new StreamWriter(File.Create(fileInfo.FullName), Encoding.Default))
@@ -50,9 +52,9 @@ namespace WcfService
             }
             catch (IOException)
             {
-                return false;
+                return "ERROR: File was not uploaded correctly.";
             }
-            return true;
+            return "OK: File was successfully uplaoded to the service.";
         }
 
         public List<OrderConfirmation> getAllActiveOrders()
