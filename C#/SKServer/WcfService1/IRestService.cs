@@ -15,7 +15,7 @@ namespace WcfService
     public interface IRestService
     {
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, 
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, 
             BodyStyle = WebMessageBodyStyle.Wrapped, 
             UriTemplate = "getOrder/{fileName}")]
         OrderConfirmation getOrder(string fileName);
@@ -26,6 +26,13 @@ namespace WcfService
             BodyStyle = WebMessageBodyStyle.Wrapped,
             UriTemplate = "getAllActiveOrders")]
         List<OrderConfirmation> getAllActiveOrders();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "hasUpdates")]
+        int hasUpdates();
 
 
         [OperationContract]

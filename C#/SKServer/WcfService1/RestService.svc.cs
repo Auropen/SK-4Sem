@@ -18,10 +18,13 @@ namespace WcfService
 {
     public class RestService : IRestService
     {
+        private static int updates = 0;
+
         OrderConfirmation IRestService.getOrder(string fileName)
         {
             string fileExtension = "e02";
             FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/" + fileName + "/"), fileName + "." + fileExtension));
+            updates++;
             return OrderParser.Instance.readOrder(fileInfo.FullName);
         }
 
@@ -76,6 +79,11 @@ namespace WcfService
             return list; // DBHandler.Instance.
         }
 
+        public int hasUpdates()
+        {
+            return updates;
+        }
+
         public bool addNote(Stream stream)
         {
             string dataText = "";
@@ -101,6 +109,7 @@ namespace WcfService
             {
                 return false;
             }
+            updates++;
             return true;
         }
     }

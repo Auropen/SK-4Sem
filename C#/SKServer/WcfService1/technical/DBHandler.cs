@@ -39,28 +39,6 @@ namespace WcfService.technical
         }
         
         // Create Methods
-        
-        public void createCompany(int compId, String compName, String compAdr, String compFone, String compEmail, int zip)
-        {
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    string sql = String.Format("call ****()");
-                    using (SqlCommand command = new SqlCommand("INSERT INTO TblCompany VALUES(" + compId + ", '" + compName + "','" + compAdr + "', '" + compFone + "', '" + compEmail + "', " + zip + ")", connection))
-                        Console.WriteLine("Added " + command.ExecuteNonQuery() + " company");
-                    connection.Close();
-                }
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-        }
 
         public void createOrder(OrderConfirmation orderConfirmation)
         {
@@ -68,25 +46,7 @@ namespace WcfService.technical
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
-                    int companyID = -1;
-                    string sql = String.Format("createCompany({0}{1}{2}{3}{4}{5}{6}{7})",
-                        orderConfirmation.CompanyInfo[0],
-                        orderConfirmation.CompanyInfo[1],
-                        orderConfirmation.CompanyInfo[2],
-                        orderConfirmation.CompanyInfo[3],
-                        orderConfirmation.CompanyInfo[4],
-                        orderConfirmation.CompanyInfo[5],
-                        orderConfirmation.CompanyInfo[6],
-                        orderConfirmation.CompanyInfo[7]);
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        Console.WriteLine("Added " + command.ExecuteNonQuery() + " Order");
-                        companyID = (int) command.Parameters[7].Value;
-                    }
-
-
-                    sql = String.Format("createOrder({0}{1}{2}{3}{4}{5}{6}{7}{8})", 
+                    string sql = String.Format("createOrder({0}{1}{2}{3}{4}{5}{6}{7}{8})", 
                         orderConfirmation.DeliveryInfo, 
                         orderConfirmation.AltDeliveryInfo, 
                         orderConfirmation.ProducedDate,
@@ -95,7 +55,7 @@ namespace WcfService.technical
                         null,
                         null,
                         orderConfirmation.Status,
-                        companyID);
+                        1);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " Order");
                     connection.Close();
