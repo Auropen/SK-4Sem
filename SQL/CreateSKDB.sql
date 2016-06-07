@@ -20,7 +20,7 @@ CREATE TABLE TblCompany       (fldID int IDENTITY(1,1) PRIMARY KEY,
 							   fldWebsite VARCHAR(64),
 							   fldEmail VARCHAR(64),
 							   fldTown VARCHAR(64) NOT NULL,
-							   fldZipCode INT NOT NULL
+							   fldZipCode INT NOT NULL)
 
 CREATE TABLE TblOrder		  (fldOrderNumber VARCHAR(64) PRIMARY KEY,
 							   fldDelivery VARCHAR(64),
@@ -32,7 +32,7 @@ CREATE TABLE TblOrder		  (fldOrderNumber VARCHAR(64) PRIMARY KEY,
 							   fldBluePrintLink VARCHAR(256),
 							   fldRequisitionLink VARCHAR(256),
 							   fldProgressStatus VARCHAR(16) NOT NULL,
-							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldCompanyID))
+							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldID))
 
 CREATE TABLE TblNotes		  (fldNoteID int IDENTITY(1,1) PRIMARY KEY,
 							   fldComment VARCHAR(1024),
@@ -84,11 +84,12 @@ GO
 -- Stored Procedure
 
 CREATE PROCEDURE createCompany(@CompanyID int,
-							   @CompanyName VARCHAR(64),
+							   @Name VARCHAR(64),
 							   @Adr VARCHAR(64),
 							   @Phone VARCHAR(64),
 							   @FaxPhone VARCHAR(64),
 							   @CVR VARCHAR(64),
+							   @fldWebsite VARCHAR(64),
 							   @Email VARCHAR(64),
 							   @Town VARCHAR(64),
 							   @ZipCode int)
@@ -97,7 +98,7 @@ AS
 	BEGIN
 		INSERT INTO TblCompany
 		(
-			fldCompanyID,
+			fldID,
 			fldName,
 			fldAdr,
 			fldPhone,
@@ -347,6 +348,6 @@ CREATE VIEW OrderView AS
 	comp.fldCVR CompanyCVR,
 	comp.fldEmail CompanyEmail
 	FROM dbo.TblOrder ord
-	INNER JOIN dbo.TblCompany comp ON ord.fldCompanyID=comp.fldCompanyID
+	INNER JOIN dbo.TblCompany comp ON ord.fldCompanyID=comp.fldID
 GO
 
