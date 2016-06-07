@@ -49,6 +49,9 @@ namespace WcfService
                     output.Close();
                 }
 
+                OrderConfirmation oc = OrderParser.Instance.readOrder(fileInfo.FullName);
+
+                DBHandler.Instance.createOrder(oc);
             }
             catch (IOException)
             {
