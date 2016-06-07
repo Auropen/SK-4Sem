@@ -11,6 +11,13 @@ namespace WcfService.domain
         private Dictionary<String, String> list;
         private FileInfo configFile;
         private static DirectoryInfo configFolder;
+        public int Count
+        {
+            get
+            {
+                return list.Count;
+            }
+        }
 
         public Properties(String file)
         {
@@ -42,6 +49,11 @@ namespace WcfService.domain
                 list.Add(field, value.ToString());
             else
                 list[field] = value.ToString();
+        }
+
+        public bool keyExists(string key)
+        {
+            return list.Keys.Contains(key);
         }
 
         public void Save()

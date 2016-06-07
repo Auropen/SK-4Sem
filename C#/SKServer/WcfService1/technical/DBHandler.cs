@@ -28,7 +28,11 @@ namespace WcfService.technical
 
         private DBHandler() {
             domain.Properties prop = new domain.Properties("database");
-
+            if (prop.keyExists("databaseName"))
+                prop.set("databaseName", "localhost");
+            if (prop.keyExists("databaseTable"))
+                prop.set("databaseTable", "SKDB");
+            prop.Save();
             dbName = prop.get("databaseName");
             dbTable = prop.get("databaseTable");
             connectionString = String.Format("Data Source={0};Initial Catalog={1};Integrated Security=True", dbName, dbTable);
@@ -60,7 +64,6 @@ namespace WcfService.technical
 
         public void createOrder(OrderConfirmation orderConfirmation)
         {
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -158,7 +161,16 @@ namespace WcfService.technical
                     connection.Open();
 
                     string sql = String.Format("createOrderCategory('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}')", 
-                        element.Position, element.Hinge, element.Finish, element.Amount, element.Unit, "");
+                        element.Position, 
+                        element.Hinge, 
+                        element.Finish, 
+                        element.Amount, 
+                        element.Unit, "", 
+                        element.StationStatus[0], 
+                        element.StationStatus[1],
+                        element.StationStatus[2],
+                        element.StationStatus[3],
+                        element.StationStatus[4]);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                         Console.WriteLine("Added " + command.ExecuteNonQuery() + " OrderCategory");
                     connection.Close();
@@ -306,7 +318,7 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("call ****()", categoryID);
+                    string sql = String.Format("getOrderElements({0})", categoryID);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader dr = command.ExecuteReader())
@@ -315,16 +327,13 @@ namespace WcfService.technical
                             {
                                 while (dr.Read())
                                 {
-                                    //Console.WriteLine(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6));
-                                    Console.WriteLine(dr.GetInt32(0) + " "
-                                                    + dr.GetString(1) + " "
-                                                    + dr.GetString(2) + " "
-                                                    + dr.GetString(3) + " "
-                                                    + dr.GetString(4) + " "
-                                                    + dr.GetString(5) + " "
-                                                    + dr.GetString(6) + " "
-                                                    + dr.GetInt32(7) + " This is Element ");
-
+                                    OrderElement element = new OrderElement(dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5));
+                                    element.StationStatus[0] = dr.GetBoolean(6);
+                                    element.StationStatus[0] = dr.GetBoolean(7);
+                                    element.StationStatus[0] = dr.GetBoolean(8);
+                                    element.StationStatus[0] = dr.GetBoolean(9);
+                                    element.StationStatus[0] = dr.GetBoolean(10);
+                                    elements.Add(element);
                                 }
                             }
                         }

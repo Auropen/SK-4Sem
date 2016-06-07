@@ -40,5 +40,10 @@ namespace WcfService.domain.order
         {
             StationStatus[stationNumber - 4] = status;
         }
+
+        public bool allDone()
+        {
+            return StationStatus[0] && StationStatus[1] && StationStatus[2] && StationStatus[3] && StationStatus[4];
+        }
     }
 }
