@@ -29,14 +29,15 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
     public final Charset charset = Charset.forName("UTF-8");
     int attemptcounter = 0;
     String baseurl = "http://10.176.160.197:8080";
+
     public RestfulHandler() throws MalformedURLException {
-        Log.i(TAG,"resthandler created");
+        Log.i(TAG, "resthandler created");
 
-        if(url == null){
-           //url = new URL("http://keddebock.dk:8080/RestService.svc/getOrder/w0000520");
-           //url = new URL("http://10.176.160.151:8080/RestService.svc/getOrder/w0000520");
+        if (url == null) {
+            //url = new URL("http://keddebock.dk:8080/RestService.svc/getOrder/w0000520");
+            //url = new URL("http://10.176.160.151:8080/RestService.svc/getOrder/w0000520");
 
-           url = new URL (baseurl+"/RestService.svc/getAllActiveOrders");
+            url = new URL(baseurl + "/RestService.svc/getAllActiveOrders");
         }
 
     }
@@ -54,7 +55,7 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
 
     public void setUrl(String url) {
         try {
-            this.url = new URL(baseurl+url);
+            this.url = new URL(baseurl + url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -64,29 +65,28 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
     public OrderResult readStream() {
         InputStream is = null;
         OrderResult o = null;
-            try {
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setReadTimeout(10000);
-                urlConnection.setConnectTimeout(20000);
-                urlConnection.setRequestMethod("GET");
-                urlConnection.setDoInput(true);
-                urlConnection.setDoOutput(false);
-                urlConnection.connect();
-                is = urlConnection.getInputStream();
-                InputStreamReader reader = new InputStreamReader(is, charset);
-                o = gson.fromJson(reader, OrderResult.class);
+        try {
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setReadTimeout(10000);
+            urlConnection.setConnectTimeout(20000);
+            urlConnection.setRequestMethod("GET");
+            urlConnection.setDoInput(true);
+            urlConnection.setDoOutput(false);
+            urlConnection.connect();
+            is = urlConnection.getInputStream();
+            InputStreamReader reader = new InputStreamReader(is, charset);
+            o = gson.fromJson(reader, OrderResult.class);
 
 
+        } catch (Exception ioe) {
+            ioe.printStackTrace();
+        } finally {
+            urlConnection.disconnect();
 
-            } catch (Exception ioe) {
-                ioe.printStackTrace();
-            } finally {
-                urlConnection.disconnect();
 
-
-            }
-        if (o == null){
-            if(attemptcounter<3){
+        }
+        if (o == null) {
+            if (attemptcounter < 3) {
                 attemptcounter++;
                 readStream();
             }
@@ -102,12 +102,9 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
             urlConnection.setReadTimeout(10000);
             urlConnection.setConnectTimeout(20000);
             urlConnection.setRequestMethod("POST");
-            urlConnection.setDoInput(false);
+            urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
             urlConnection.connect();
-
-            urlConnection = (HttpURLConnection) url.openConnection();
-
             out = urlConnection.getOutputStream();
 
             String orJson = gson.toJson(output);
@@ -119,7 +116,7 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             urlConnection.disconnect();
         }
     }

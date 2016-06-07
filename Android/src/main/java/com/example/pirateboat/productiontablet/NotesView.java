@@ -26,10 +26,11 @@ public class NotesView extends Activity {
     RestfulHandler rfh;
     ArrayList<String> comments = new ArrayList<String>();
     ArrayList<String> newcomments = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout .activity_notes_viewnew);
+        setContentView(R.layout.activity_notes_viewnew);
         lw = (ListView) findViewById(R.id.mobile_list);
         et = (EditText) findViewById(R.id.commentField);
         postbtn = (Button) findViewById(R.id.postBTN);
@@ -45,19 +46,19 @@ public class NotesView extends Activity {
 
         StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
         try {
-             rfh = new RestfulHandler();
+            rfh = new RestfulHandler();
             or = rfh.readStream();
         } catch (MalformedURLException e) {
             e.printStackTrace();
 
         }
-        for(int i = 0; i<or.getAllActiveOrdersResult.size();i++){
-            if(or.getAllActiveOrdersResult.get(i).OrderName.equals(message)){
-                order=or.getAllActiveOrdersResult.get(i);
+        for (int i = 0; i < or.getAllActiveOrdersResult.size(); i++) {
+            if (or.getAllActiveOrdersResult.get(i).OrderName.equals(message)) {
+                order = or.getAllActiveOrdersResult.get(i);
             }
         }
         comments.clear();
-        for(int i = 0; i<order.Notes.size();i++) {
+        for (int i = 0; i < order.Notes.size(); i++) {
             comments.add(order.Notes.get(i).toString());
         }
         updateComments(comments);
@@ -105,13 +106,14 @@ public class NotesView extends Activity {
 //    }
 
 
-    public void updateComments(ArrayList<String> comments){
+    public void updateComments(ArrayList<String> comments) {
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, comments);
         lw.setAdapter(adapter);
 
     }
-    public void postComment(String text){
+
+    public void postComment(String text) {
         newcomments.add(text);
         comments.add(text);
         et.setText("");
@@ -119,12 +121,13 @@ public class NotesView extends Activity {
         uploadComments();
 
     }
-    public void uploadComments(){
-//        rfh.setUrl("http://10.176.160.197:8080/RestService.svc/addNote");
-//        for(int i=0;i<newcomments.size();i++) {
-//            rfh.writeStream(order.OrderNumber + "%ENDMETA%" + newcomments.get(i));
-//        }
-//
-//        rfh.setUrl("/RestService.svc/getAllActiveOrders");
-  }
+
+    public void uploadComments() {
+        rfh.setUrl("/RestService.svc/addNote");
+        for (int i = 0; i < newcomments.size(); i++) {
+            rfh.writeStream(order.OrderNumber + "%ENDMETA%" + newcomments.get(i));
+        }
+
+        rfh.setUrl("/RestService.svc/getAllActiveOrders");
+    }
 }
