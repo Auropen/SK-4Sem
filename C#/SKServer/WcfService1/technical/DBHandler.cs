@@ -46,7 +46,6 @@ namespace WcfService.technical
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
                     string sql = String.Format("createOrder({0}{1}{2}{3}{4}{5}{6}{7}{8})", 
                         orderConfirmation.DeliveryInfo, 
                         orderConfirmation.AltDeliveryInfo, 
@@ -65,8 +64,6 @@ namespace WcfService.technical
             catch (SqlException ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                throw;
             }
 
         }
@@ -158,7 +155,6 @@ namespace WcfService.technical
                     string sql = String.Format("call getOrder{0}", orderNumber);
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        connection.Open();
                         using (SqlDataReader dr = command.ExecuteReader())
                         {
                             if (dr.HasRows)

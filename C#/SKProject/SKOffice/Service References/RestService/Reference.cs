@@ -686,23 +686,17 @@ namespace SKOffice.RestService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/getAllActiveOrders", ReplyAction="http://tempuri.org/IRestService/getAllActiveOrdersResponse")]
         System.Threading.Tasks.Task<SKOffice.RestService.OrderConfirmation[]> getAllActiveOrdersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/hasUpdates", ReplyAction="http://tempuri.org/IRestService/hasUpdatesResponse")]
-        int hasUpdates();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/hasUpdates", ReplyAction="http://tempuri.org/IRestService/hasUpdatesResponse")]
-        System.Threading.Tasks.Task<int> hasUpdatesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addOrderConfirmation", ReplyAction="http://tempuri.org/IRestService/addOrderConfirmationResponse")]
+        bool addOrderConfirmation(string[] fileContent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addOrderConfirmation", ReplyAction="http://tempuri.org/IRestService/addOrderConfirmationResponse")]
-        string addOrderConfirmation(string[] fileContent);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addOrderConfirmation", ReplyAction="http://tempuri.org/IRestService/addOrderConfirmationResponse")]
-        System.Threading.Tasks.Task<string> addOrderConfirmationAsync(string[] fileContent);
+        System.Threading.Tasks.Task<bool> addOrderConfirmationAsync(string[] fileContent);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addNote", ReplyAction="http://tempuri.org/IRestService/addNoteResponse")]
-        bool addNote(System.IO.Stream stream);
+        bool addNote(string dataText);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addNote", ReplyAction="http://tempuri.org/IRestService/addNoteResponse")]
-        System.Threading.Tasks.Task<bool> addNoteAsync(System.IO.Stream stream);
+        System.Threading.Tasks.Task<bool> addNoteAsync(string dataText);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -748,28 +742,20 @@ namespace SKOffice.RestService {
             return base.Channel.getAllActiveOrdersAsync();
         }
         
-        public int hasUpdates() {
-            return base.Channel.hasUpdates();
-        }
-        
-        public System.Threading.Tasks.Task<int> hasUpdatesAsync() {
-            return base.Channel.hasUpdatesAsync();
-        }
-        
-        public string addOrderConfirmation(string[] fileContent) {
+        public bool addOrderConfirmation(string[] fileContent) {
             return base.Channel.addOrderConfirmation(fileContent);
         }
         
-        public System.Threading.Tasks.Task<string> addOrderConfirmationAsync(string[] fileContent) {
+        public System.Threading.Tasks.Task<bool> addOrderConfirmationAsync(string[] fileContent) {
             return base.Channel.addOrderConfirmationAsync(fileContent);
         }
         
-        public bool addNote(System.IO.Stream stream) {
-            return base.Channel.addNote(stream);
+        public bool addNote(string dataText) {
+            return base.Channel.addNote(dataText);
         }
         
-        public System.Threading.Tasks.Task<bool> addNoteAsync(System.IO.Stream stream) {
-            return base.Channel.addNoteAsync(stream);
+        public System.Threading.Tasks.Task<bool> addNoteAsync(string dataText) {
+            return base.Channel.addNoteAsync(dataText);
         }
     }
 }

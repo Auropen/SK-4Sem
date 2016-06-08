@@ -11,18 +11,20 @@ namespace SKOffice
 
         FolderBrowserDialog fbd;
         OpenFileDialog ofd;
-        public string[] paths;
+        public List<string> paths;
         private List<OrderConfirmation> orderConfirmations;
 
 
         public MainForm()
         {
-            paths = new string[3];
+            paths = new List<string>();
             InitializeComponent();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
+
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -90,28 +92,46 @@ namespace SKOffice
             switch (btn.Name)
             {
                 case "browseE02Btn":
+
                     ofd.Filter = "Text Files (.e02)|*.e02";
                     ofd.FilterIndex = 1;
+
                     ofd.Multiselect = false;
+
                     ofd.ShowDialog();
+
                     tb_e02.Text = ofd.FileName;
-                    paths[0] = tb_e02.Text;
+
+                    paths.Add(tb_e02.Text);
+
                     break;
                 /*case "browseBlueprintBtn":
+
                     ofd.Filter = "Text Files (.pdf)|*.pdf";
                     ofd.FilterIndex = 1;
+
                     ofd.Multiselect = false;
+
                     ofd.ShowDialog();
+
                     tb_Blueprints.Text = ofd.FileName;
+
                     paths.Add(tb_Blueprints.Text);
+
                     break;
                 case "browseRequisitionBtn":
+
                     ofd.Filter = "Text Files (.pdf)|*.pdf";
                     ofd.FilterIndex = 1;
+
                     ofd.Multiselect = false;
+
                     ofd.ShowDialog();
+
                     tb_Requisition.Text = ofd.FileName;
+
                     paths.Add(tb_Requisition.Text);
+
                     break;*/
                 default:
                     break;
@@ -132,13 +152,18 @@ namespace SKOffice
                 while (sReader.Peek() > -1)
                     fileContent.Add(sReader.ReadLine());
             }
-            string msg = rsClient.addOrderConfirmation(fileContent.ToArray());
+
             //Tries to add the order confirmation on the service
-            if (msg.StartsWith("OK"))
+            if (rsClient.addOrderConfirmation(fileContent.ToArray()))
+            {
+                Console.WriteLine("Order Confirmation was successful added to the service.");
                 feedbackE02.BackColor = System.Drawing.Color.Green; //Feedback: success
+            }
             else
+            {
+                Console.WriteLine("Order Confirmation was not added.");
                 feedbackE02.BackColor = System.Drawing.Color.Red; //Feedback: failed
-            MessageBox.Show(msg , "Service Response");
+            }
         }
 
         private void clickedOrder(object sender, MouseEventArgs e)
@@ -156,11 +181,6 @@ namespace SKOffice
                 //each row is 16 pixels in height
                 y += 17;
             }
-        }
-
-        private void orderOverViewList_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {
-            e.Cancel = true;
         }
     }
 }

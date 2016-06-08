@@ -25,7 +25,6 @@
     <MetadataFile FileName="RestService.xsd" MetadataType="Schema" ID="10d1855d-0ab5-4194-9493-a5655f177dfe" SourceId="1" SourceUrl="http://localhost:8080/RestService.svc?xsd=xsd2" />
     <MetadataFile FileName="RestService.disco" MetadataType="Disco" ID="325dd15a-7f13-4906-bba6-5cbf0065956f" SourceId="1" SourceUrl="http://localhost:8080/RestService.svc?disco" />
     <MetadataFile FileName="RestService.wsdl" MetadataType="Wsdl" ID="be2f369e-5f21-4003-95f8-048fee8efb29" SourceId="1" SourceUrl="http://localhost:8080/RestService.svc?wsdl" />
-    <MetadataFile FileName="RestService44.xsd" MetadataType="Schema" ID="0c9c7852-9d19-4991-9fb9-1ddaef3c1bb8" SourceId="1" SourceUrl="http://localhost:8080/RestService.svc?xsd=xsd4" />
     <MetadataFile FileName="RestService1.xsd" MetadataType="Schema" ID="49841ed7-b83f-4d99-b450-9de008e8cdb6" SourceId="1" SourceUrl="http://localhost:8080/RestService.svc?xsd=xsd1" />
     <MetadataFile FileName="RestService2.xsd" MetadataType="Schema" ID="beac889d-2f95-4c6f-b100-4be95afd02de" SourceId="1" SourceUrl="http://localhost:8080/RestService.svc?xsd=xsd0" />
     <MetadataFile FileName="RestService3.xsd" MetadataType="Schema" ID="2a6d9bb6-a332-4577-8241-15093f9b98b2" SourceId="1" SourceUrl="http://localhost:8080/RestService.svc?xsd=xsd3" />
