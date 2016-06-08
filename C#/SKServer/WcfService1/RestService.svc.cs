@@ -97,17 +97,11 @@ namespace WcfService
                 StreamReader sr = new StreamReader(stream);
 
                 dataText = sr.ReadToEnd();
-            }
-            catch (IOException)
-            {
-            }
 
-            string[] data = dataText.Split("%ENDMETA%".ToArray());
-            if (data.Length != 2)
-                return false;
+                string[] data = dataText.Split("%ENDMETA%".ToArray());
+                if (data.Length != 2)
+                    return false;
 
-            try
-            {
                 DBHandler.Instance.createNotes(data[0], data[1]);
             }
             catch (Exception)

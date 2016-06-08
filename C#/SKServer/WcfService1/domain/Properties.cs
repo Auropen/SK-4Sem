@@ -22,7 +22,6 @@ namespace WcfService.domain
         public Properties(String file)
         {
             configFile = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/config/"), file + ".ini"));
-            Console.Error.WriteLine(configFile.FullName);
             // Sets the configFolder field if needed
             if (configFolder == null)
                 configFolder = configFile.Directory;
@@ -63,7 +62,7 @@ namespace WcfService.domain
 
         public void Save(String filename)
         {
-            Save(new FileInfo(configFolder.FullName + filename));
+            Save(new FileInfo(configFolder.FullName + "/" + filename + ".ini"));
         }
 
         public void Save(FileInfo fileInfo)
@@ -89,7 +88,7 @@ namespace WcfService.domain
 
         public void reload(String filename)
         {
-            reload(new FileInfo(configFolder.FullName + filename));
+            reload(new FileInfo(configFolder.FullName + "/" + filename + ".ini"));
         }
 
         public void reload(FileInfo fileInfo)

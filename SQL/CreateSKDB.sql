@@ -23,6 +23,7 @@ CREATE TABLE TblCompany       (fldID int IDENTITY(1,1) PRIMARY KEY,
 							   fldZipCode INT NOT NULL)
 
 CREATE TABLE TblOrder		  (fldOrderNumber VARCHAR(64) PRIMARY KEY,
+							   fldOrderName VARCHAR(64),
 							   fldDelivery VARCHAR(64),
 							   fldAltDelivery VARCHAR(64),
 							   fldHousingAssociation VARCHAR(64),
@@ -35,8 +36,8 @@ CREATE TABLE TblOrder		  (fldOrderNumber VARCHAR(64) PRIMARY KEY,
 							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldID))
 
 CREATE TABLE TblNotes		  (fldNoteID int IDENTITY(1,1) PRIMARY KEY,
-							   fldComment VARCHAR(1024),
-							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber))
+							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber),
+							   fldComment VARCHAR(1024))
 
 CREATE TABLE TblOrderCategory (fldCategoryID int PRIMARY KEY,
                                fldCategoryName VARCHAR(64) NOT NULL,
@@ -126,12 +127,15 @@ END
 GO
 
 CREATE PROCEDURE createOrder  (@OrderNumber VARCHAR(64),
+							   @OrderName VARCHAR(64),
 							   @Delivery VARCHAR(64),
 							   @AltDelivery VARCHAR(64),
+							   @HousingAssociation VARCHAR(64),
 							   @StartDate DATE,
 							   @DeliveryDate DATE,
 							   @DeliveryWeek VARCHAR(32),
-							   @BluePrintLinks VARCHAR(256),
+							   @BluePrintLink VARCHAR(256),
+							   @RequisitionLink VARCHAR(256),
 							   @ProgressStatus VARCHAR(16),
 							   @CompanyID int)
 
@@ -140,24 +144,30 @@ AS
 		INSERT INTO TblOrder
 		(
 			fldOrderNumber,
+			fldOrderName,
 			fldDelivery,
 			fldAltDelivery,
 			fldStartDate,
+			fldHousingAssociation,
 			fldDeliveryDate,
 			fldDeliveryWeek,
 			fldBluePrintLink,
+			fldRequisitionLink,
 			fldProgressStatus,
 			fldCompanyID
 		)
 		VALUES
 		(
-			@CompanyID,
+			@OrderNumber,
+			@OrderName,
 			@Delivery,
 			@AltDelivery,
+			@HousingAssociation,
 			@StartDate,
 			@DeliveryDate,
 			@DeliveryWeek,
-			@BluePrintLinks,
+			@BluePrintLink,
+			@RequisitionLink,
 			@ProgressStatus,
 			@CompanyID
 		)
@@ -257,6 +267,7 @@ CREATE PROCEDURE getOrder (@OrderNumber VARCHAR(64))
 	BEGIN
 	SELECT
 	   [OrderNumber],
+	   [OrderName],
 	   [StartDate],
 	   [DeliveryDate],	  
 	   [DeliveryWeek],
@@ -330,6 +341,7 @@ GO
 CREATE VIEW OrderView AS
 	SELECT 
 	ord.fldOrderNumber OrderNumber,
+	ord.fldOrderName OrderName,
 	ord.fldStartDate StartDate,
 	ord.fldDeliveryDate DeliveryDate,
 	ord.fldDeliveryWeek DeliveryWeek,
