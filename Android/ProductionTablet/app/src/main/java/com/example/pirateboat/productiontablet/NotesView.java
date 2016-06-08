@@ -127,6 +127,7 @@ public class NotesView extends Activity {
         for (int i = 0; i < newcomments.size(); i++) {
             rfh.writeStream(order.OrderNumber + "%ENDMETA%" + newcomments.get(i));
         }
+        newcomments.clear();
 
         rfh.setUrl("/RestService.svc/getAllActiveOrders");
     }
