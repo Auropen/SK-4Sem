@@ -14,6 +14,9 @@ namespace WcfService.technical
         private string dbTable;
         private string connectionString;
 
+        /// <summary>
+        /// Construcks a Singleton
+        /// </summary>
         public static DBHandler Instance
         {
             get
@@ -27,6 +30,9 @@ namespace WcfService.technical
             }
         }
 
+        /// <summary>
+        /// Reads the Properties File for the Connection information 
+        /// </summary>
         private DBHandler() {
             domain.Properties prop = new domain.Properties("database");
             prop.reload();
@@ -42,6 +48,10 @@ namespace WcfService.technical
         
         // Create Methods
 
+        /// <summary>
+        /// Recieves the orderConfirmation Object and takes the information to Create and Order
+        /// </summary>
+        /// <param name="orderConfirmation"></param>
         public void createOrder(OrderConfirmation orderConfirmation)
         {
             try
@@ -106,7 +116,12 @@ namespace WcfService.technical
 
         }
 
-
+        /// <summary>
+        /// Creates notes and saves it to the database
+        /// </summary>
+        /// <param name="orderNumber"></param>
+        /// <param name="note"></param>
+        /// <returns></returns>
         public List<OrderNote> createNotes(string orderNumber, OrderNote note)
         {
             List<OrderNote> result = new List<OrderNote>();
@@ -133,7 +148,12 @@ namespace WcfService.technical
             return result;
         }
 
-
+        /// <summary>
+        /// Creates Categories saves themn to the Database
+        /// </summary>
+        /// <param name="orderNumber"></param>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public List<OrderCategory> createOrderCategory(string orderNumber, OrderCategory category)
         {
             List<OrderCategory> result = new List<OrderCategory>();
@@ -173,6 +193,11 @@ namespace WcfService.technical
             return result;
         }
         
+        /// <summary>
+        /// Creates OrderElements and stores them with the orderCategory ID
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="categoryId"></param>
         public void createOrderElements(OrderElement element, int categoryId)
         {
             try
@@ -227,6 +252,11 @@ namespace WcfService.technical
 
         // Get methods
 
+        /// <summary>
+        /// Get an order from the Database by OrderNumber with the Categorylist containing the Elementlist by
+        /// </summary>
+        /// <param name="orderNumber"></param>
+        /// <returns></returns>
         public OrderConfirmation getOrder(string orderNumber)
         {
             OrderConfirmation orderConfirmation = null;
@@ -298,6 +328,11 @@ namespace WcfService.technical
             return orderConfirmation;
         }
 
+        /// <summary>
+        /// Get a list of Orders that are active containing a list of Categories containign a list of Elements
+        /// </summary>
+        /// <param name="status"></param>
+        /// <returns></returns>
         public List<OrderConfirmation> getAllOrdersOfStatus(string status)
         {
             List<OrderConfirmation> result = new List<OrderConfirmation>();
@@ -372,6 +407,11 @@ namespace WcfService.technical
             return result;
         }
 
+        /// <summary>
+        /// gets a list of Notes by orderNumber
+        /// </summary>
+        /// <param name="orderNumber"></param>
+        /// <returns></returns>
         public List<OrderNote> getNotes(string orderNumber)
         {
             List<OrderNote> result = new List<OrderNote>();
@@ -405,7 +445,12 @@ namespace WcfService.technical
             }
             return result;
         }
-
+        
+        /// <summary>
+        /// Get a list of Categories by orderNumber
+        /// </summary>
+        /// <param name="orderNumber"></param>
+        /// <returns></returns>
         public List<OrderCategory> getOrderCategories(string orderNumber)
         {
             List<OrderCategory> result = new List<OrderCategory>();
@@ -449,7 +494,11 @@ namespace WcfService.technical
             return result;
         }
 
-
+        /// <summary>
+        /// Gets a list of Elements by category ID
+        /// </summary>
+        /// <param name="categoryID"></param>
+        /// <returns></returns>
         public List<OrderElement> getOrderElements(int categoryID)
         {
             List<OrderElement> elements = new List<OrderElement>();
@@ -493,6 +542,12 @@ namespace WcfService.technical
             }
             return elements;
         }
+
+        /// <summary>
+        /// Retries the last ID from any table.
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
         public int getLastID(string tableName)
         {
             int id = -1;

@@ -57,7 +57,7 @@ namespace SKOffice
         }
 
         /// <summary>
-        /// When the tappage are clicked on, the list is updated
+        /// When the tabpage are clicked on, the list is updated
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -111,7 +111,7 @@ namespace SKOffice
         }
 
         /// <summary>
-        /// Takes the path from the textbox and checks if the file exists if it doesn't a msg will open telling the file is sent.
+        /// When the Upload button is Clicked, it will take the file from the path and uploads it
         /// A box will show the status for the upload, if its uploaded Green and failed Red, idle is Blue
         /// </summary>
         /// <param name="sender"></param>
@@ -144,7 +144,7 @@ namespace SKOffice
         }
 
         /// <summary>
-        /// Open an onder in the orderOverview so that you can read the notes
+        /// Double clicking on an order number it will open a window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -169,7 +169,7 @@ namespace SKOffice
         private delegate void UniversalVoidDelegate();
 
         /// <summary>
-        /// Recieves a call from the main and allows the listview to be updated from another thread.
+        /// Recieves a call from the form and allows the listview to be updated from another thread.
         /// </summary>
         /// <param name="control"></param>
         /// <param name="function"></param>
@@ -187,7 +187,7 @@ namespace SKOffice
         }
 
         /// <summary>
-        /// fills the listvies with orders from the database containing station status and notes
+        /// Updates the listview to contain orders from the database containing station status and notes
         /// </summary>
         private void updateList()
         {
@@ -228,7 +228,7 @@ namespace SKOffice
         }
 
         /// <summary>
-        /// Checks if the database has been updated.
+        /// Receives an int and return a boolean if there is an update.
         /// </summary>
         /// <returns></returns>
         private bool checkServiceUpdates()
@@ -241,7 +241,7 @@ namespace SKOffice
         }
 
         /// <summary>
-        /// Checks if the current listviw is containing the newest information from the Database
+        /// Keep checking for an update every 30 sec
         /// </summary>
         private void updateLoop()
         {

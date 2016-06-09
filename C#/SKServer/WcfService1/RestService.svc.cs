@@ -20,6 +20,11 @@ namespace WcfService
     {
         public static int Updates = 0;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         OrderConfirmation IRestService.getOrder(string fileName)
         {
             string fileExtension = "e02";
@@ -27,6 +32,11 @@ namespace WcfService
             return OrderParser.Instance.readOrder(fileInfo.FullName);
         }
 
+        /// <summary>
+        /// Checks if the file exists or creates it on to the Database 
+        /// </summary>
+        /// <param name="fileContent"></param>
+        /// <returns></returns>
         public string addOrderConfirmation(List<string> fileContent)
         {
             try
@@ -61,6 +71,10 @@ namespace WcfService
             return "OK: File was successfully uploaded to the service.";
         }
 
+        /// <summary>
+        /// Returns all the active orders from the Database as a list
+        /// </summary>
+        /// <returns></returns>
         public List<OrderConfirmation> getAllActiveOrders()
         {
             return DBHandler.Instance.getAllOrdersOfStatus("Active");
@@ -71,6 +85,11 @@ namespace WcfService
             return Updates;
         }
 
+        /// <summary>
+        /// Saves the note from the Android and stores it in the Database
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
         public bool addNote(Stream stream)
         {
             string dataText = "";

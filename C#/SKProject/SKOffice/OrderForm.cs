@@ -15,16 +15,23 @@ namespace SKOffice
     {
         public OrderConfirmation OrderConfirmation { get; private set; }
         public string OrderName { get; private set; }
+        /// <summary>
+        /// Renames the window with the OrderNumber
+        /// </summary>
+        /// <param name="orderConfirmation"></param>
 
-        //Renames the window with the OrderNumber
         public OrderForm(OrderConfirmation orderConfirmation) 
         {
             this.OrderConfirmation = orderConfirmation;
             InitializeComponent();
             Text = "Order - " + orderConfirmation.OrderNumber;
         }
-        
-        //Makes a status check if there is a link for the Blueprint and Requisition button
+
+        /// <summary>
+        /// Makes a status check if there is a link for the Blueprint and Requisition button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OrderForm_Load(object sender, EventArgs e)
         {
             feedbackBp.BackColor = Color.Red;
@@ -36,13 +43,20 @@ namespace SKOffice
             }
         }
 
-        //Closes the window when you press the button "Close"
+        /// <summary>
+        /// Closes the window when you press the button "Close"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void closeBtn_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        //Fills the text area with the note text. 
+        /// <summary>
+        /// Fills the text area with the note text. 
+        /// </summary>
+        /// <param name="txt"></param>
         private void addNote(string txt)
         {
             Console.WriteLine("Adding note: " + txt);

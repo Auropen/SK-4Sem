@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
 namespace WcfService.domain.order
@@ -41,7 +38,9 @@ namespace WcfService.domain.order
         [DataMember]
         public OrderStatus StationStatus { get; private set; }
 
-
+        /// <summary>
+        /// instanciates the variables
+        /// </summary>
         public OrderConfirmation()
         {
             OrderNumber = "";
@@ -61,6 +60,11 @@ namespace WcfService.domain.order
             StationStatus = new OrderStatus();
         }
 
+        /// <summary>
+        /// Fins the orderconfirmation with the given parserID
+        /// </summary>
+        /// <param name="parserID"></param>
+        /// <returns></returns>
         public OrderCategory findCategoryByParserID(int parserID)
         {
             foreach (OrderCategory category in Categories)
