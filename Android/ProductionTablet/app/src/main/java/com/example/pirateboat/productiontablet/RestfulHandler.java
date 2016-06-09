@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.pirateboat.productiontablet.data.OrderResult;
-import com.example.pirateboat.productiontablet.data.hasUpdatesResult;
+import com.example.pirateboat.productiontablet.data.getUpdates;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -29,7 +29,7 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
     private static Gson gson = new GsonBuilder().create();
     public final Charset charset = Charset.forName("UTF-8");
     int attemptcounter;
-    String baseurl = "http://10.176.160.197:8080";
+    String baseurl = "http://10.176.160.175:8080";
     public int updatepoint = -1;
 
     public RestfulHandler() throws MalformedURLException {
@@ -79,8 +79,8 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
             urlConnection.connect();
             is = urlConnection.getInputStream();
             reader = new InputStreamReader(is, charset);
-            hasUpdatesResult upDR = gson.fromJson(reader, hasUpdatesResult.class);
-            check = upDR.hasUpdatesResult;
+            getUpdates upDR = gson.fromJson(reader, getUpdates.class);
+            check = upDR.getUpdatesResult;
             if (check > updatepoint) {
 
 
@@ -96,7 +96,7 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
                 reader = new InputStreamReader(is, charset);
 
                 o = gson.fromJson(reader, OrderResult.class);
-                updatepoint = upDR.hasUpdatesResult;
+                updatepoint = upDR.getUpdatesResult;
                 Log.i(TAG,"return object");
                 return o;
             }
