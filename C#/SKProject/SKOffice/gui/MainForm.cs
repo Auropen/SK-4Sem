@@ -198,5 +198,19 @@ namespace SKOffice
                 Thread.Sleep(updateFrequency);
             }
         }
+
+
+        public void updateControl(Control targetControl, string text)
+        {
+            if (targetControl.InvokeRequired)
+            {
+                MyDelegate call = new MyDelegate(call, new Object[] { text });
+            }
+            else
+            {
+                
+            }
+        }
+
     }
 }
