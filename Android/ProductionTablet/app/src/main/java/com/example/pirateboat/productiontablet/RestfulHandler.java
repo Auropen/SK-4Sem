@@ -69,7 +69,7 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
         OrderResult o = null;
         int check = -1;
         try {
-            setUrl("/RestService.svc/hasupdates");
+            setUrl("/RestService.svc/getUpdates");
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(10000);
             urlConnection.setConnectTimeout(20000);
