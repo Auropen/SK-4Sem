@@ -9,15 +9,15 @@ namespace SKOffice
 {
     public partial class MainForm : Form
     {
-
-        FolderBrowserDialog fbd;
         OpenFileDialog ofd;
         public string[] paths;
         private List<OrderConfirmation> orderConfirmations;
         private int updates;
         private Thread updateThread;
         private int updateFrequency;
-
+        
+        //Creating the viewList, the thread that will invoke the main thread
+        //saving the paths for the: e02 file, drawings and requisition
         public MainForm()
         {
             updates = 0;
@@ -52,15 +52,16 @@ namespace SKOffice
         private void MainForm_Load(object sender, EventArgs e)
         {
         }
-
+        
+        //Updates the viewList
         private void tabPage1_Click(object sender, EventArgs e)
         {
             updateList();
         }
 
+        //Office user browse in the Documentation for the e02 file, show the path in the textbox and upload.
         private void browse_Click(object sender, EventArgs e)
         {
-            fbd = new FolderBrowserDialog();
             ofd = new OpenFileDialog();
         
             //fbd.RootFolder = Environment.SpecialFolder.Desktop;
@@ -97,6 +98,8 @@ namespace SKOffice
             }
         }
 
+        //Takes the path from the textbox and checks if the file exists if it doesn't a msg will open telling the file is sent.
+        //A box will show the status for the upload, if its uploaded Green and failed Red, idle is Blue 
         private void uploadBtn_Click(object sender, EventArgs e)
         {
             feedbackE02.BackColor = System.Drawing.Color.RoyalBlue; //Feedback: idle
@@ -124,6 +127,7 @@ namespace SKOffice
             MessageBox.Show(msg , "Service Response");
         }
 
+        //Open an onder in the orderOverview so that you can read the notes
         private void clickedOrder(object sender, MouseEventArgs e)
         {
             int y = 24;
@@ -144,6 +148,8 @@ namespace SKOffice
 
         private delegate void UniversalVoidDelegate();
 
+
+        //Recieves a call from the main and allows the listview to be updated from another thread.
         public static void controlInvoke(Control control, Action function)
         {
             if (control.IsDisposed || control.Disposing)
@@ -157,7 +163,7 @@ namespace SKOffice
             function();
         }
 
-
+        //fills the listvies with orders from the database containing station status and notes
         private void updateList()
         {
             FormRestService.ServiceWGetClient rsClient = new FormRestService.ServiceWGetClient();
@@ -196,6 +202,7 @@ namespace SKOffice
             }
         }
         
+        //Checks if the database has been updatet.
         private bool checkServiceUpdates()
         {
             FormRestService.ServiceWGetClient rsClient = new FormRestService.ServiceWGetClient();
@@ -205,6 +212,7 @@ namespace SKOffice
             return result;
         }
 
+        //Checks if the current listviw is containing the newest information from the Database
         private void updateLoop()
         {
             while (true)

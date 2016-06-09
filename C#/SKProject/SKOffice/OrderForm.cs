@@ -16,6 +16,7 @@ namespace SKOffice
         public OrderConfirmation OrderConfirmation { get; private set; }
         public string OrderName { get; private set; }
 
+        //Renames the window with the OrderNumber
         public OrderForm(OrderConfirmation orderConfirmation) 
         {
             this.OrderConfirmation = orderConfirmation;
@@ -23,6 +24,7 @@ namespace SKOffice
             Text = "Order - " + orderConfirmation.OrderNumber;
         }
         
+        //Makes a status check if there is a link for the Blueprint and Requisition button
         private void OrderForm_Load(object sender, EventArgs e)
         {
             feedbackBp.BackColor = Color.Red;
@@ -34,11 +36,13 @@ namespace SKOffice
             }
         }
 
+        //Closes the window when you press the button "Close"
         private void closeBtn_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //Fills the text area with the note text. 
         private void addNote(string txt)
         {
             Console.WriteLine("Adding note: " + txt);
