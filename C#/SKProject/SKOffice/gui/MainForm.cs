@@ -142,6 +142,22 @@ namespace SKOffice
             }
         }
 
+        private delegate void UniversalVoidDelegate();
+
+        public static void controlInvoke(Control control, Action function)
+        {
+            if (control.IsDisposed || control.Disposing)
+                return;
+
+            if (control.InvokeRequired)
+            {
+                control.Invoke(new UniversalVoidDelegate(() => controlInvoke(control, function)));
+                return;
+            }
+            function();
+        }
+
+
         private void updateList()
         {
             FormRestService.ServiceWGetClient rsClient = new FormRestService.ServiceWGetClient();
@@ -194,21 +210,8 @@ namespace SKOffice
             while (true)
             {
                 if (checkServiceUpdates())
-                    updateList();
+                    controlInvoke(orderOverViewList, new Action(updateList));
                 Thread.Sleep(updateFrequency);
-            }
-        }
-
-
-        public void updateControl(Control targetControl, string text)
-        {
-            if (targetControl.InvokeRequired)
-            {
-                MyDelegate call = new MyDelegate(call, new Object[] { text });
-            }
-            else
-            {
-                
             }
         }
 
