@@ -21,21 +21,20 @@ namespace WcfService
         public static int Updates = 0;
 
         /// <summary>
-        /// 
+        /// Gets an order by the orders number
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="orderNumber"></param>
         /// <returns></returns>
-        OrderConfirmation IRestService.getOrder(string fileName)
+        OrderConfirmation IRestService.getOrder(string orderNumber)
         {
-            string fileExtension = "e02";
-            FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/" + fileName + "/"), fileName + "." + fileExtension));
-            return OrderParser.Instance.readOrder(fileInfo.FullName);
+            return DBHandler.Instance.getOrder(orderNumber);
         }
 
         /// <summary>
-        /// Checks if the file exists or creates it on to the Database 
+        /// Tries to create a order confirmation file from a given string array, 
+        /// which then is parsed into an object by the OrderParser and stored on the DB.
         /// </summary>
-        /// <param name="fileContent"></param>
+        /// <param name="fileContent">String array of each line in the file, first line given is the filename</param>
         /// <returns></returns>
         public string addOrderConfirmation(List<string> fileContent)
         {
@@ -72,9 +71,9 @@ namespace WcfService
         }
 
         /// <summary>
-        /// Returns all the active orders from the Database as a list
+        /// Returns all the active orders from the Database
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of OrderConfirmation</returns>
         public List<OrderConfirmation> getAllActiveOrders()
         {
             return DBHandler.Instance.getAllOrdersOfStatus("Active");
@@ -88,7 +87,7 @@ namespace WcfService
         /// <summary>
         /// Saves the note from the Android and stores it in the Database
         /// </summary>
-        /// <param name="stream"></param>
+        /// <param name="stream">Stream containing note information</param>
         /// <returns></returns>
         public bool addNote(Stream stream)
         {

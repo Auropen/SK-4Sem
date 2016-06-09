@@ -18,8 +18,8 @@ namespace WcfService
         [WebInvoke(Method = "GET", 
             ResponseFormat = WebMessageFormat.Json, 
             BodyStyle = WebMessageBodyStyle.Wrapped, 
-            UriTemplate = "getOrder/{fileName}")]
-        OrderConfirmation getOrder(string fileName);
+            UriTemplate = "getOrder/{orderNumber}")]
+        OrderConfirmation getOrder(string orderNumber);
 
         [OperationContract]
         [WebInvoke(Method="GET",
