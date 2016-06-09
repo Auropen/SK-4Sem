@@ -447,7 +447,7 @@ namespace WcfService.technical
         }
         
         /// <summary>
-        /// Get a list of Categories by orderNumber
+        /// Creates a list of Categories by orderNumber
         /// </summary>
         /// <param name="orderNumber"></param>
         /// <returns></returns>
@@ -495,7 +495,7 @@ namespace WcfService.technical
         }
 
         /// <summary>
-        /// Gets a list of Elements by category ID
+        /// Creates a list of Elements by category ID from the Database
         /// </summary>
         /// <param name="categoryID"></param>
         /// <returns></returns>
@@ -544,7 +544,7 @@ namespace WcfService.technical
         }
 
         /// <summary>
-        /// Retries the last ID from any table.
+        /// Retries the last ID from a given table.
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
