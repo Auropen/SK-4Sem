@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using WcfService.domain.order;
 
@@ -13,21 +14,18 @@ namespace SKOffice
         OpenFileDialog ofd;
         public string[] paths;
         private List<OrderConfirmation> orderConfirmations;
-
+        private int updates;
+        private Thread updateThread;
+        private int updateFrequency;
 
         public MainForm()
         {
+            updates = 0;
+            updateThread = new Thread(new ThreadStart(updateLoop));
+            updateFrequency = 30000;
+            updateThread.Start();
             paths = new string[3];
             InitializeComponent();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-            ServiceReference1.ServiceWGetClient rsClient = new ServiceReference1.ServiceWGetClient();
 
             // Set the view to show details.
             orderOverViewList.View = View.Details;
@@ -49,35 +47,16 @@ namespace SKOffice
             orderOverViewList.Columns.Add("Started", 50, HorizontalAlignment.Center);
             orderOverViewList.Columns.Add("Done", 50, HorizontalAlignment.Center);
             orderOverViewList.Columns.Add("Note", -2, HorizontalAlignment.Left);
-
-
-            orderConfirmations = new List<OrderConfirmation>();
-            try
-            {
-                foreach (ServiceReference1.OrderConfirmation oc in rsClient.getAllActiveOrders())
-                {
-                    orderConfirmations.Add((OrderConfirmation) oc);
-                    orderOverViewList.Items.Add(new ListViewItem(new[] 
-                    {oc.OrderNumber + " " + oc.OrderDate.Day + "-" + oc.OrderDate.Month + "-" + oc.OrderDate.Year,
-                    (oc.StationStatus.Station4 == "Active" || (oc.StationStatus.Station4 == "Done")? "X": " "),
-                    (oc.StationStatus.Station4 == "Done") ? "X" : " ",
-                    (oc.StationStatus.Station5 == "Active" || (oc.StationStatus.Station5 == "Done")? "X": " "),
-                    (oc.StationStatus.Station5 == "Done") ? "X" : " ",
-                    (oc.StationStatus.Station6 == "Active" || (oc.StationStatus.Station6 == "Done")? "X": " "),
-                    (oc.StationStatus.Station6 == "Done") ? "X" : " ",
-                    (oc.StationStatus.Station7 == "Active" || (oc.StationStatus.Station7 == "Done")? "X": " "),
-                    (oc.StationStatus.Station7 == "Done") ? "X" : " ",
-                    (oc.StationStatus.Station8 == "Active" || (oc.StationStatus.Station8 == "Done")? "X": " "),
-                    (oc.StationStatus.Station8 == "Done") ? "X" : " ",
-                    oc.Notes.Length + "" }));
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+            updateList();
+        }
 
         private void browse_Click(object sender, EventArgs e)
         {
@@ -158,13 +137,66 @@ namespace SKOffice
                     break;
                 }
                 //each row is 16 pixels in height
+                //So each element is 0-16, 17-32, 33-48
                 y += 17;
             }
         }
 
-        private void orderOverViewList_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        private void updateList()
         {
-            e.Cancel = true;
+            FormRestService.ServiceWGetClient rsClient = new FormRestService.ServiceWGetClient();
+
+            orderConfirmations = new List<OrderConfirmation>();
+            try
+            {
+                //Clears the list
+                orderOverViewList.Items.Clear();
+
+                //Creates the items in the list
+                foreach (FormRestService.OrderConfirmation oc in rsClient.getAllActiveOrders())
+                {
+                    orderConfirmations.Add((OrderConfirmation)oc);
+                    orderOverViewList.Items.Add(new ListViewItem(new[]
+                    {oc.OrderNumber + " " + oc.OrderDate.Day + "-" + oc.OrderDate.Month + "-" + oc.OrderDate.Year,
+                    (oc.StationStatus.Station4 == "Active" || (oc.StationStatus.Station4 == "Done")? "X": " "),
+                    (oc.StationStatus.Station4 == "Done") ? "X" : " ",
+                    (oc.StationStatus.Station5 == "Active" || (oc.StationStatus.Station5 == "Done")? "X": " "),
+                    (oc.StationStatus.Station5 == "Done") ? "X" : " ",
+                    (oc.StationStatus.Station6 == "Active" || (oc.StationStatus.Station6 == "Done")? "X": " "),
+                    (oc.StationStatus.Station6 == "Done") ? "X" : " ",
+                    (oc.StationStatus.Station7 == "Active" || (oc.StationStatus.Station7 == "Done")? "X": " "),
+                    (oc.StationStatus.Station7 == "Done") ? "X" : " ",
+                    (oc.StationStatus.Station8 == "Active" || (oc.StationStatus.Station8 == "Done")? "X": " "),
+                    (oc.StationStatus.Station8 == "Done") ? "X" : " ",
+                    oc.Notes.Length + "" }));
+                }
+                //Resizes the last column to match the window.
+                int lastIndex = orderOverViewList.Columns.Count - 1;
+                orderOverViewList.Columns[lastIndex].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+        
+        private bool checkServiceUpdates()
+        {
+            FormRestService.ServiceWGetClient rsClient = new FormRestService.ServiceWGetClient();
+            int serviceUpdates = rsClient.getUpdates();
+            bool result = !(serviceUpdates == updates);
+            updates = serviceUpdates;
+            return result;
+        }
+
+        private void updateLoop()
+        {
+            while (true)
+            {
+                if (checkServiceUpdates())
+                    updateList();
+                Thread.Sleep(updateFrequency);
+            }
         }
     }
 }

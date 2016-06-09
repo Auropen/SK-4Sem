@@ -67,9 +67,9 @@ namespace WcfService.technical
                         command.Parameters["@OrderNumber"].Value = orderConfirmation.OrderNumber;
                         command.Parameters.Add(new SqlParameter("@OrderName", SqlDbType.VarChar, 64));
                         command.Parameters["@OrderName"].Value = orderConfirmation.OrderName;
-                        command.Parameters.Add(new SqlParameter("@Delivery", di));
+                        command.Parameters.Add(new SqlParameter("@Delivery", SqlDbType.VarChar, 256));
                         command.Parameters["@Delivery"].Value = di;
-                        command.Parameters.Add(new SqlParameter("@AltDelivery", adi));
+                        command.Parameters.Add(new SqlParameter("@AltDelivery", SqlDbType.VarChar, 256));
                         command.Parameters["@AltDelivery"].Value = adi;
                         command.Parameters.Add(new SqlParameter("@HousingAssociation", SqlDbType.VarChar, 64));
                         command.Parameters["@HousingAssociation"].Value = orderConfirmation.HousingAssociation;
@@ -277,13 +277,18 @@ namespace WcfService.technical
                                 }
                             }
                         }
-                        //Adds all the categories linked to this order confirmation
-                        foreach (OrderCategory category in getOrderCategories(orderNumber))
-                        {
-                            orderConfirmation.Categories.Add(category);
-                        }
                     }
                     connection.Close();
+
+                    //Adds all the categories linked to this order confirmation
+                    foreach (OrderCategory category in getOrderCategories(orderNumber))
+                    {
+                        orderConfirmation.Categories.Add(category);
+                    }
+                    foreach (OrderNote note in getNotes(orderNumber))
+                    {
+                        orderConfirmation.Notes.Add(note);
+                    }
                 }
             }
             catch (Exception ex)
@@ -352,6 +357,10 @@ namespace WcfService.technical
                             {
                                 orderConfirmation.Categories.Add(category);
                             }
+                            foreach (OrderNote note in getNotes(orderConfirmation.OrderNumber))
+                            {
+                                orderConfirmation.Notes.Add(note);
+                            }
                         }
                     }
                 }
@@ -378,7 +387,13 @@ namespace WcfService.technical
 
                         using (SqlDataReader dr = command.ExecuteReader())
                         {
-                            result.Add(new OrderNote(dr.GetString(0)));
+                            if (dr.HasRows)
+                            {
+                                while (dr.Read())
+                                {
+                                    result.Add(new OrderNote(dr.GetString(0)));
+                                }
+                            }
                         }
                     }
                     connection.Close();
@@ -393,7 +408,7 @@ namespace WcfService.technical
 
         public List<OrderCategory> getOrderCategories(string orderNumber)
         {
-            List<OrderCategory> categories = new List<OrderCategory>();
+            List<OrderCategory> result = new List<OrderCategory>();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -406,22 +421,32 @@ namespace WcfService.technical
 
                         using (SqlDataReader dr = command.ExecuteReader())
                         {
-                            OrderCategory category = new OrderCategory(dr.GetInt32(0), dr.GetString(1));
-                            categories.Add(category);
-                            foreach (OrderElement element in getOrderElements(category.ID))
+                            if (dr.HasRows)
                             {
-                                category.Elements.Add(element);
+                                while (dr.Read())
+                                {
+                                    OrderCategory category = new OrderCategory(dr.GetString(1));
+                                    result.Add(category);
+                                }
                             }
                         }
                     }
                     connection.Close();
+
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        foreach (OrderElement element in getOrderElements(i+1))
+                        {
+                            result[i].Elements.Add(element);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
-            return categories;
+            return result;
         }
 
 
@@ -444,16 +469,16 @@ namespace WcfService.technical
                             {
                                 while (dr.Read())
                                 {
-                                    OrderElement element = new OrderElement(dr.GetString(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4));
-                                    foreach (string str in dr.GetString(5).Split(';'))
+                                    OrderElement element = new OrderElement(dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5));  //(dr.GetString(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4));
+                                    foreach (string str in dr.GetString(6).Split(';'))
                                     {
                                         element.ElementInfo.Add(str);
                                     }
-                                    element.StationStatus[0] = dr.GetBoolean(6);
                                     element.StationStatus[0] = dr.GetBoolean(7);
                                     element.StationStatus[0] = dr.GetBoolean(8);
                                     element.StationStatus[0] = dr.GetBoolean(9);
                                     element.StationStatus[0] = dr.GetBoolean(10);
+                                    element.StationStatus[0] = dr.GetBoolean(11);
                                     elements.Add(element);
                                 }
                             }

@@ -61,11 +61,11 @@ namespace WcfService.domain.order
             StationStatus = new OrderStatus();
         }
 
-        public OrderCategory findCategoryByID(int id)
+        public OrderCategory findCategoryByParserID(int parserID)
         {
             foreach (OrderCategory category in Categories)
             {
-                if (category.ID == id)
+                if (category.ParserID == parserID)
                     return category;
             }
             return null;

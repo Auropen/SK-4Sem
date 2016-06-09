@@ -32,8 +32,8 @@ namespace WcfService
         [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "hasUpdates")]
-        int hasUpdates();
+            UriTemplate = "getUpdates")]
+        int getUpdates();
 
 
         [OperationContract]

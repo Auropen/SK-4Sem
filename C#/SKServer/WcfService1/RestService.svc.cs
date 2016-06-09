@@ -18,7 +18,7 @@ namespace WcfService
 {
     public class RestService : IRestService
     {
-        private static int updates = 0;
+        public static int Updates = 0;
 
         OrderConfirmation IRestService.getOrder(string fileName)
         {
@@ -57,6 +57,7 @@ namespace WcfService
             {
                 return "ERROR: File was not uploaded correctly.";
             }
+            Updates++;
             return "OK: File was successfully uploaded to the service.";
         }
 
@@ -65,9 +66,9 @@ namespace WcfService
             return DBHandler.Instance.getAllOrdersOfStatus("Active");
         }
 
-        public int hasUpdates()
+        public int getUpdates()
         {
-            return updates;
+            return Updates;
         }
 
         public bool addNote(Stream stream)
@@ -79,7 +80,7 @@ namespace WcfService
 
                 dataText = sr.ReadToEnd();
 
-                string[] data = dataText.Split("%ENDMETA%".ToArray());
+                string[] data = dataText.Split("%ENDMETA%".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 if (data.Length != 2)
                     return false;
 
@@ -89,7 +90,7 @@ namespace WcfService
             {
                 return false;
             }
-            updates++;
+            Updates++;
             return true;
         }
     }

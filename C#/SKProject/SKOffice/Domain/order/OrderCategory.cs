@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WcfService.domain.order
 {
@@ -12,16 +8,23 @@ namespace WcfService.domain.order
     {
         [DataMember]
         public string Name { get; set; }
-        [DataMember]
-        public int ID { get; set; }
+        /// <summary>
+        /// Parser ID is used to assemble the categories when reading the E02 file.
+        /// </summary>
+        public int ParserID { get; set; }
         [DataMember]
         public List<OrderElement> Elements { get; private set; }
         
-        public OrderCategory(string name, int id)
+        public OrderCategory(string name)
         {
             Elements = new List<OrderElement>();
             Name = name;
-            ID = id;
+        }
+        public OrderCategory(string name, int parserID)
+        {
+            Elements = new List<OrderElement>();
+            Name = name;
+            ParserID = parserID;
         }
     }
 }

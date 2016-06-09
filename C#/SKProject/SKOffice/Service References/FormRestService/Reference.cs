@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SKOffice.ServiceReference1 {
+namespace SKOffice.FormRestService {
     using System.Runtime.Serialization;
     using System;
     
@@ -29,7 +29,7 @@ namespace SKOffice.ServiceReference1 {
         private string AlternativeNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SKOffice.ServiceReference1.OrderCategory[] CategoriesField;
+        private SKOffice.FormRestService.OrderCategory[] CategoriesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] CompanyInfoField;
@@ -44,7 +44,7 @@ namespace SKOffice.ServiceReference1 {
         private string[] KitchenInfoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SKOffice.ServiceReference1.OrderNote[] NotesField;
+        private SKOffice.FormRestService.OrderNote[] NotesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime OrderDateField;
@@ -59,7 +59,7 @@ namespace SKOffice.ServiceReference1 {
         private System.DateTime ProducedDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SKOffice.ServiceReference1.OrderStatus StationStatusField;
+        private SKOffice.FormRestService.OrderStatus StationStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
@@ -104,7 +104,7 @@ namespace SKOffice.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SKOffice.ServiceReference1.OrderCategory[] Categories {
+        public SKOffice.FormRestService.OrderCategory[] Categories {
             get {
                 return this.CategoriesField;
             }
@@ -169,7 +169,7 @@ namespace SKOffice.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SKOffice.ServiceReference1.OrderNote[] Notes {
+        public SKOffice.FormRestService.OrderNote[] Notes {
             get {
                 return this.NotesField;
             }
@@ -234,7 +234,7 @@ namespace SKOffice.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SKOffice.ServiceReference1.OrderStatus StationStatus {
+        public SKOffice.FormRestService.OrderStatus StationStatus {
             get {
                 return this.StationStatusField;
             }
@@ -417,10 +417,7 @@ namespace SKOffice.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SKOffice.ServiceReference1.OrderElement[] ElementsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDField;
+        private SKOffice.FormRestService.OrderElement[] ElementsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -436,7 +433,7 @@ namespace SKOffice.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SKOffice.ServiceReference1.OrderElement[] Elements {
+        public SKOffice.FormRestService.OrderElement[] Elements {
             get {
                 return this.ElementsField;
             }
@@ -444,19 +441,6 @@ namespace SKOffice.ServiceReference1 {
                 if ((object.ReferenceEquals(this.ElementsField, value) != true)) {
                     this.ElementsField = value;
                     this.RaisePropertyChanged("Elements");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
                 }
             }
         }
@@ -671,23 +655,29 @@ namespace SKOffice.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IServiceWGet")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FormRestService.IServiceWGet")]
     public interface IServiceWGet {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWGet/getAllActiveOrders", ReplyAction="http://tempuri.org/IServiceWGet/getAllActiveOrdersResponse")]
-        SKOffice.ServiceReference1.OrderConfirmation[] getAllActiveOrders();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWGet/getUpdates", ReplyAction="http://tempuri.org/IServiceWGet/getUpdatesResponse")]
+        int getUpdates();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWGet/getUpdates", ReplyAction="http://tempuri.org/IServiceWGet/getUpdatesResponse")]
+        System.Threading.Tasks.Task<int> getUpdatesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWGet/getAllActiveOrders", ReplyAction="http://tempuri.org/IServiceWGet/getAllActiveOrdersResponse")]
-        System.Threading.Tasks.Task<SKOffice.ServiceReference1.OrderConfirmation[]> getAllActiveOrdersAsync();
+        SKOffice.FormRestService.OrderConfirmation[] getAllActiveOrders();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWGet/getAllActiveOrders", ReplyAction="http://tempuri.org/IServiceWGet/getAllActiveOrdersResponse")]
+        System.Threading.Tasks.Task<SKOffice.FormRestService.OrderConfirmation[]> getAllActiveOrdersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceWGetChannel : SKOffice.ServiceReference1.IServiceWGet, System.ServiceModel.IClientChannel {
+    public interface IServiceWGetChannel : SKOffice.FormRestService.IServiceWGet, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceWGetClient : System.ServiceModel.ClientBase<SKOffice.ServiceReference1.IServiceWGet>, SKOffice.ServiceReference1.IServiceWGet {
+    public partial class ServiceWGetClient : System.ServiceModel.ClientBase<SKOffice.FormRestService.IServiceWGet>, SKOffice.FormRestService.IServiceWGet {
         
         public ServiceWGetClient() {
         }
@@ -708,11 +698,19 @@ namespace SKOffice.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public SKOffice.ServiceReference1.OrderConfirmation[] getAllActiveOrders() {
+        public int getUpdates() {
+            return base.Channel.getUpdates();
+        }
+        
+        public System.Threading.Tasks.Task<int> getUpdatesAsync() {
+            return base.Channel.getUpdatesAsync();
+        }
+        
+        public SKOffice.FormRestService.OrderConfirmation[] getAllActiveOrders() {
             return base.Channel.getAllActiveOrders();
         }
         
-        public System.Threading.Tasks.Task<SKOffice.ServiceReference1.OrderConfirmation[]> getAllActiveOrdersAsync() {
+        public System.Threading.Tasks.Task<SKOffice.FormRestService.OrderConfirmation[]> getAllActiveOrdersAsync() {
             return base.Channel.getAllActiveOrdersAsync();
         }
     }

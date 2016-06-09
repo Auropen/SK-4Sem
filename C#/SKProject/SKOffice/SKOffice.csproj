@@ -78,7 +78,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ServiceReference1\Reference.cs">
+    <Compile Include="Service References\FormRestService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -107,6 +107,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\FormRestService\SKOffice.FormRestService.OrderConfirmation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RestService\RestService.wsdl" />
     <None Include="Service References\RestService\RestService.xsd">
       <SubType>Designer</SubType>
@@ -126,21 +129,18 @@
     <None Include="Service References\RestService\SKOffice.RestService.OrderConfirmation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference1\ServiceWGet.wsdl" />
-    <None Include="Service References\ServiceReference1\ServiceWGet.xsd">
+    <None Include="Service References\FormRestService\ServiceWGet.wsdl" />
+    <None Include="Service References\FormRestService\ServiceWGet.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\ServiceWGet1.xsd">
+    <None Include="Service References\FormRestService\ServiceWGet1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\ServiceWGet2.xsd">
+    <None Include="Service References\FormRestService\ServiceWGet2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\ServiceWGet3.xsd">
+    <None Include="Service References\FormRestService\ServiceWGet3.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\SKOffice.ServiceReference1.OrderConfirmation.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -151,17 +151,11 @@
     <Folder Include="technical\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\Desktop\ObjectListViewFull-2.9.1\ObjectListViewDemo\ObjectListView\ObjectListView2012.csproj">
-      <Project>{18feda0c-d147-4286-b39a-01204808106a}</Project>
-      <Name>ObjectListView2012</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\RestService\" />
-    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+    <WCFMetadataStorage Include="Service References\FormRestService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\RestService\RestService.disco" />
@@ -179,16 +173,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference1\ServiceWGet.disco" />
+    <None Include="Service References\FormRestService\ServiceWGet.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\FormRestService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\FormRestService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference1\Reference.svcmap">
+    <None Include="Service References\FormRestService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Web.Hosting;
+using WcfService;
 using WcfService.domain.data;
 using WcfService.domain.order;
 using WcfService.technical;
@@ -19,6 +20,11 @@ namespace WcfService1
         public List<OrderConfirmation> getAllActiveOrders()
         {
             return DBHandler.Instance.getAllOrdersOfStatus("Active");
+        }
+
+        public int getUpdates()
+        {
+            return RestService.Updates;
         }
     }
 }

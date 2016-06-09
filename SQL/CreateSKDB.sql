@@ -24,8 +24,8 @@ CREATE TABLE TblCompany       (fldID int IDENTITY(1,1) PRIMARY KEY,
 
 CREATE TABLE TblOrder		  (fldOrderNumber VARCHAR(64) PRIMARY KEY,
 							   fldOrderName VARCHAR(64),
-							   fldDelivery VARCHAR(64),
-							   fldAltDelivery VARCHAR(64),
+							   fldDelivery VARCHAR(256),
+							   fldAltDelivery VARCHAR(256),
 							   fldHousingAssociation VARCHAR(64),
 							   fldStartDate date NOT NULL,
 							   fldDeliveryDate date NOT NULL,
@@ -36,8 +36,8 @@ CREATE TABLE TblOrder		  (fldOrderNumber VARCHAR(64) PRIMARY KEY,
 							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldID))
 
 CREATE TABLE TblNotes		  (fldNoteID int IDENTITY(1,1) PRIMARY KEY,
-							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber),
-							   fldComment VARCHAR(1024))
+							   fldComment VARCHAR(1024),
+							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber))
 
 CREATE TABLE TblOrderCategory (fldCategoryID int IDENTITY(1,1) PRIMARY KEY,
                                fldCategoryName VARCHAR(64) NOT NULL,
@@ -128,8 +128,8 @@ GO
 
 CREATE PROCEDURE createOrder  (@OrderNumber VARCHAR(64),
 							   @OrderName VARCHAR(64),
-							   @Delivery VARCHAR(64),
-							   @AltDelivery VARCHAR(64),
+							   @Delivery VARCHAR(256),
+							   @AltDelivery VARCHAR(256),
 							   @HousingAssociation VARCHAR(64),
 							   @StartDate DATE,
 							   @DeliveryDate DATE,

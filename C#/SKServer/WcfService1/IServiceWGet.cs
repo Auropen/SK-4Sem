@@ -16,6 +16,13 @@ namespace WcfService1
     {
         [OperationContract]
         [WebInvoke(Method = "GET",
+        ResponseFormat = WebMessageFormat.Json,
+        BodyStyle = WebMessageBodyStyle.Wrapped,
+        UriTemplate = "getUpdates")]
+        int getUpdates();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
              ResponseFormat = WebMessageFormat.Json,
              BodyStyle = WebMessageBodyStyle.Wrapped,
              UriTemplate = "getAllActiveOrders")]

@@ -420,9 +420,6 @@ namespace SKOffice.RestService {
         private SKOffice.RestService.OrderElement[] ElementsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -444,19 +441,6 @@ namespace SKOffice.RestService {
                 if ((object.ReferenceEquals(this.ElementsField, value) != true)) {
                     this.ElementsField = value;
                     this.RaisePropertyChanged("Elements");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
                 }
             }
         }
@@ -686,11 +670,11 @@ namespace SKOffice.RestService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/getAllActiveOrders", ReplyAction="http://tempuri.org/IRestService/getAllActiveOrdersResponse")]
         System.Threading.Tasks.Task<SKOffice.RestService.OrderConfirmation[]> getAllActiveOrdersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/hasUpdates", ReplyAction="http://tempuri.org/IRestService/hasUpdatesResponse")]
-        int hasUpdates();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/getUpdates", ReplyAction="http://tempuri.org/IRestService/getUpdatesResponse")]
+        int getUpdates();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/hasUpdates", ReplyAction="http://tempuri.org/IRestService/hasUpdatesResponse")]
-        System.Threading.Tasks.Task<int> hasUpdatesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/getUpdates", ReplyAction="http://tempuri.org/IRestService/getUpdatesResponse")]
+        System.Threading.Tasks.Task<int> getUpdatesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRestService/addOrderConfirmation", ReplyAction="http://tempuri.org/IRestService/addOrderConfirmationResponse")]
         string addOrderConfirmation(string[] fileContent);
@@ -748,12 +732,12 @@ namespace SKOffice.RestService {
             return base.Channel.getAllActiveOrdersAsync();
         }
         
-        public int hasUpdates() {
-            return base.Channel.hasUpdates();
+        public int getUpdates() {
+            return base.Channel.getUpdates();
         }
         
-        public System.Threading.Tasks.Task<int> hasUpdatesAsync() {
-            return base.Channel.hasUpdatesAsync();
+        public System.Threading.Tasks.Task<int> getUpdatesAsync() {
+            return base.Channel.getUpdatesAsync();
         }
         
         public string addOrderConfirmation(string[] fileContent) {

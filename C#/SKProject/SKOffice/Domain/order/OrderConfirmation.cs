@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
-using SKOffice.ServiceReference1;
 
 namespace WcfService.domain.order
 {
@@ -62,35 +61,38 @@ namespace WcfService.domain.order
             StationStatus = new OrderStatus();
         }
 
-        public OrderCategory findCategoryByID(int id)
+        public OrderCategory findCategoryByParserID(int parserID)
         {
             foreach (OrderCategory category in Categories)
             {
-                if (category.ID == id)
+                if (category.ParserID == parserID)
                     return category;
             }
             return null;
         }
 
-        public static explicit operator OrderConfirmation(SKOffice.ServiceReference1.OrderConfirmation otherOC)
+        public static explicit operator OrderConfirmation(SKOffice.FormRestService.OrderConfirmation otherOC)
         {
             OrderConfirmation oc = new OrderConfirmation();
             oc.AltDeliveryInfo = convertArrayToList<string>(otherOC.AltDeliveryInfo);
             oc.AlternativeNumber = otherOC.AlternativeNumber;
-            foreach (SKOffice.ServiceReference1.OrderCategory otherCategory in otherOC.Categories)
-            {
-                OrderCategory category = new OrderCategory(otherCategory.Name, otherCategory.ID);
 
-                foreach (SKOffice.ServiceReference1.OrderElement otherElement in otherCategory.Elements)
+            foreach (SKOffice.FormRestService.OrderCategory otherCategory in otherOC.Categories)
+            {
+                OrderCategory category = new OrderCategory(otherCategory.Name);
+
+                foreach (SKOffice.FormRestService.OrderElement otherElement in otherCategory.Elements)
                 {
                     category.Elements.Add(new OrderElement(otherElement.Position, otherElement.Hinge, otherElement.Finish, otherElement.Amount, otherElement.Unit));
                 }
 
                 oc.Categories.Add(category);
             }
+
             oc.CompanyInfo = convertArrayToList<string>(otherOC.CompanyInfo);
             oc.DeliveryInfo = convertArrayToList<string>(otherOC.DeliveryInfo);
-            foreach (SKOffice.ServiceReference1.OrderNote otherNote in otherOC.Notes)
+
+            foreach (SKOffice.FormRestService.OrderNote otherNote in otherOC.Notes)
             {
                 OrderNote note = new OrderNote(otherNote.Text);
                 oc.Notes.Add(note);
@@ -100,11 +102,11 @@ namespace WcfService.domain.order
             oc.OrderNumber = otherOC.OrderNumber;
             oc.ProducedDate = otherOC.ProducedDate;
             OrderStatus status = new OrderStatus(
-                otherOC.StationStatus.Station4, 
-                otherOC.StationStatus.Station5, 
-                otherOC.StationStatus.Station6, 
-                otherOC.StationStatus.Station7, 
-                otherOC.StationStatus.Station8, 
+                otherOC.StationStatus.Station4,
+                otherOC.StationStatus.Station5,
+                otherOC.StationStatus.Station6,
+                otherOC.StationStatus.Station7,
+                otherOC.StationStatus.Station8,
                 otherOC.StationStatus.Finished);
             oc.StationStatus = status;
             oc.Status = otherOC.Status;

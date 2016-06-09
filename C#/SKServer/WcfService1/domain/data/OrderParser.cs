@@ -149,7 +149,7 @@ namespace WcfService.domain.data
                             result.KitchenInfo.Add(lineSplit[4]); // Description
                             break;
                         case "430": // Order Category Info
-                            result.Categories.Add(new OrderCategory(ConversionUtil.stringToInt(lineSplit[1]), lineSplit[2]));
+                            result.Categories.Add(new OrderCategory(lineSplit[2],ConversionUtil.stringToInt(lineSplit[1])));
                             break;
                         case "500": // Order Element
                             lastElement = new OrderElement(lineSplit[1], "", "", lineSplit[9], lineSplit[10]);
@@ -160,7 +160,7 @@ namespace WcfService.domain.data
 
                             lastElement.ElementInfo.Add(lineSplit[3]);
                             lastElement.ElementInfo.Add(lineSplit[8]);
-                            result.findCategoryByID(ConversionUtil.stringToInt(lineSplit[12])).Elements.Add(lastElement);
+                            result.findCategoryByParserID(ConversionUtil.stringToInt(lineSplit[12])).Elements.Add(lastElement);
                             break;
                         case "501": // Order Element - Hinge + Finish
                             Console.WriteLine(line);
