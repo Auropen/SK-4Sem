@@ -76,15 +76,14 @@ namespace WcfService
             string dataText = "";
             try
             {
-                StreamReader sr = new StreamReader(stream);
+                StreamReader sr = new StreamReader(stream, Encoding.UTF8);
 
-                dataText = sr.ReadToEnd();
+                dataText = sr.ReadToEnd().Replace("\"", "");
+                int index = dataText.IndexOf(';');
+                string orderNumber = dataText.Substring(0, index).Trim();
+                string value = dataText.Substring(index + 1).Trim();
 
-                string[] data = dataText.Split("%ENDMETA%".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                if (data.Length != 2)
-                    return false;
-
-                DBHandler.Instance.createNotes(data[0], new OrderNote(data[1]));
+                DBHandler.Instance.createNotes(orderNumber, new OrderNote(value));
             }
             catch (Exception)
             {

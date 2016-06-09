@@ -155,7 +155,7 @@ namespace SKOffice
                 //Creates the items in the list
                 foreach (FormRestService.OrderConfirmation oc in rsClient.getAllActiveOrders())
                 {
-                    orderConfirmations.Add((OrderConfirmation)oc);
+                    orderConfirmations.Add((OrderConfirmation) oc);
                     orderOverViewList.Items.Add(new ListViewItem(new[]
                     {oc.OrderNumber + " " + oc.OrderDate.Day + "-" + oc.OrderDate.Month + "-" + oc.OrderDate.Year,
                     (oc.StationStatus.Station4 == "Active" || (oc.StationStatus.Station4 == "Done")? "X": " "),
