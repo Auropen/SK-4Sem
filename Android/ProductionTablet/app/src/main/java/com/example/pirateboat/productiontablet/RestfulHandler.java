@@ -19,8 +19,9 @@ import java.nio.charset.Charset;
 
 /**
  * Created by Swodah on 25-05-2016.
+ * Class is used to create and use connections to the restful webservice
  */
-public class RestfulHandler extends AsyncTask<Void, Void, Void> {
+public class RestfulHandler {
     InputStreamReader reader;
     private static final String TAG = "Production tablet";
     private URL url;
@@ -31,23 +32,16 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
     int attemptcounter;
     String baseurl = "http://10.176.160.175:8080";
     public int updatepoint = -1;
-
+    /**
+     * Constructer sets up the main url to be used, though it can be outsourced to the classes using it.
+     */
     public RestfulHandler() throws MalformedURLException {
         Log.i(TAG, "resthandler created");
 
         if (url == null) {
-            //url = new URL("http://keddebock.dk:8080/RestService.svc/getOrder/w0000520");
-            //url = new URL("http://10.176.160.151:8080/RestService.svc/getOrder/w0000520");
-
             url = new URL(baseurl + "/RestService.svc/getAllActiveOrders");
         }
 
-    }
-
-    @Override
-    protected Void doInBackground(Void... params) {
-
-        return null;
     }
 
 
@@ -63,7 +57,11 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
         }
     }
 
-
+    /**
+     *
+     * @returns OrderResult after connecting to webservice and confirming if there are updates,
+     * if no new updates have been made it returns null.
+     */
     public OrderResult readStream() {
         InputStream is = null;
         OrderResult o = null;
@@ -119,7 +117,11 @@ public class RestfulHandler extends AsyncTask<Void, Void, Void> {
 
     }
 
-
+    /**
+     *
+     * @param output
+     * Writes a String to the webservice, which is based on a JSON string, which is created based on a string
+     */
     public void writeStream(String output) {
 
         try {

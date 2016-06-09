@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,6 +28,11 @@ public class NotesView extends Activity {
     ArrayList<String> comments = new ArrayList<String>();
     ArrayList<String> newcomments = new ArrayList<String>();
 
+    /**
+     * Method used when the activity is created, contains the functions for retrieving or and
+     * building table call
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +72,9 @@ public class NotesView extends Activity {
 //        new update3().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
     }
-
+/**
+ * not yet implemented update function which is almost ready, needs to be changed to fit newer code
+ */
 //    class update3 extends AsyncTask<Void, Void, Void> {
 //
 //
@@ -105,7 +113,10 @@ public class NotesView extends Activity {
 //
 //    }
 
-
+    /**
+     * takes the array of comments and adds it to the listview
+     * @param comments
+     */
     public void updateComments(ArrayList<String> comments) {
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, comments);
@@ -113,6 +124,11 @@ public class NotesView extends Activity {
 
     }
 
+    /**
+     * takes the comment from the textfield and adds it to the outgoing comment list and the
+     * update comment list after which update and upload comments are called
+     * @param text
+     */
     public void postComment(String text) {
         newcomments.add(text);
         comments.add(text);
@@ -122,10 +138,15 @@ public class NotesView extends Activity {
 
     }
 
+    /**
+     * uses the resthandler to contact the service and post the comments from the list, then
+     * clears the list of newcomments
+     */
     public void uploadComments() {
         rfh.setUrl("/RestService.svc/addNote");
         for (int i = 0; i < newcomments.size(); i++) {
-            rfh.writeStream(order.OrderNumber + "%ENDMETA%" + newcomments.get(i));
+            Log.i("Notes",order.OrderNumber + ";" + newcomments.get(i));
+            rfh.writeStream(order.OrderNumber + ";" + newcomments.get(i));
         }
         newcomments.clear();
 

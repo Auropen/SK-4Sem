@@ -28,6 +28,11 @@ public class OrderConfirmation extends Activity {
     RestfulHandler rfh2;
     ArrayList<Integer> hidelist = new ArrayList<Integer>();
 
+    /**
+     *
+     * @param savedInstanceState
+     * Start up function for the OrderConfirmation Activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,10 @@ public class OrderConfirmation extends Activity {
         new update2().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
+    /**
+     * background run thread that updates the table, if the returned object is null it will do
+     * not and just call itself when the timer runs out for the next update
+     */
     class update2 extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -93,6 +102,10 @@ public class OrderConfirmation extends Activity {
         // AsyncTask over
     }
 
+    /**
+     * Clears the table on the ui, has to be outside the background thread and set to runonUIthread
+     * or it can't affect the UI
+     */
     public void ClearTable() {
         runOnUiThread(new Runnable() {
             @Override
@@ -102,6 +115,11 @@ public class OrderConfirmation extends Activity {
         });
     }
 
+    /**
+     * adds a row to the table on the UI, has to be outside the background thread and set
+     * to runonUIthread or it can't affect the UI
+     * @param add
+     */
     public void addRow(TableRow add) {
         final TableRow row = add;
         runOnUiThread(new Runnable() {
@@ -112,6 +130,14 @@ public class OrderConfirmation extends Activity {
         });
     }
 
+    /**
+     *
+     * @param button
+     * add a clicklistener to the selected button returning the clicklistener for the button when
+     * it is created, the clicklistener is used to hide all other types of buttons, has to be
+     * outside the background thread and set to runonUIthread or it can't affect the UI
+     * @return clicklistener
+     */
     View.OnClickListener toggleColumns(final Button button) {
         return new View.OnClickListener() {
             public void onClick(View v) {
@@ -138,6 +164,15 @@ public class OrderConfirmation extends Activity {
         };
     }
 
+    /**
+     *
+     * @param button
+     * @param ordername
+     * adds a clicklistener to the selected button with the selected ordername, which is the order
+     * currently active in the orderconfirmation, has to be outside the background thread and set
+     * to runonUIthread or it can't affect the UI
+     * @return clicklistener
+     */
     View.OnClickListener noteclicker(final Button button, final String ordername) {
         return new View.OnClickListener() {
             public void onClick(View v) {
@@ -148,20 +183,37 @@ public class OrderConfirmation extends Activity {
         };
     }
 
-
+    /**
+     *
+     * @param button
+     * @param category
+     * @param element
+     * @param number
+     * adds a clicklistener to the button to change the value of a station status to the inverted
+     * of the current value, has to be outside the background thread and set to runonUIthread
+     * or it can't affect the UI, it is currently disabled from doing anything as it is lacking
+     * serviceside implementation
+     * @return clicklistener
+     */
     View.OnClickListener updateStation(final Button button, final int category, final int element, final int number) {
         return new View.OnClickListener() {
             public void onClick(View v) {
+                /*
                 if (order.Categories.get(category).Elements.get(element).StationStatus[number] == true) {
                     order.Categories.get(category).Elements.get(element).StationStatus[number] = false;
                 } else {
                     order.Categories.get(category).Elements.get(element).StationStatus[number] = true;
                 }
                 //send or to webserver
+                */
             }
         };
     }
 
+    /**
+     * builds the table depending on the order that is selected and fed to the method
+     * @param data
+     */
     private void BuildTable(Order data) {
         ClearTable();
         for (int k = 0; k < data.Categories.size(); k++) {

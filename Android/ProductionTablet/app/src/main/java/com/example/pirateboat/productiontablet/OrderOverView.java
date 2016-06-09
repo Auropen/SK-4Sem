@@ -23,6 +23,11 @@ public class OrderOverView extends Activity {
     OrderResult or;
     OrderResult storedOR;
     RestfulHandler rfh;
+
+    /**
+     * start up method for when the activity is started
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +43,10 @@ public class OrderOverView extends Activity {
         ;
 
     }
-
+    /**
+     * background run thread that updates the table, if the returned object is null it will do
+     * not and just call itself when the timer runs out for the next update
+     */
     class update extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -78,7 +86,10 @@ public class OrderOverView extends Activity {
         }
         // AsyncTask over
     }
-
+    /**
+     * Clears the table on the ui, has to be outside the background thread and set to runonUIthread
+     * or it can't affect the UI
+     */
     public void ClearTable() {
         runOnUiThread(new Runnable() {
             @Override
@@ -87,7 +98,11 @@ public class OrderOverView extends Activity {
             }
         });
     }
-
+    /**
+     * adds a row to the table on the UI, has to be outside the background thread and set
+     * to runonUIthread or it can't affect the UI
+     * @param add
+     */
     public void addRow(TableRow add) {
         final TableRow row = add;
         runOnUiThread(new Runnable() {
@@ -97,7 +112,15 @@ public class OrderOverView extends Activity {
             }
         });
     }
-
+    /**
+     *
+     * @param button
+     * @param ordername
+     * adds a clicklistener to the selected button with the selected ordername, which is the order
+     * currently active in the orderconfirmation, has to be outside the background thread and set
+     * to runonUIthread or it can't affect the UI
+     * @return clicklistener
+     */
     View.OnClickListener noteclicker(final Button button, final String ordername) {
         return new View.OnClickListener() {
             public void onClick(View v) {
@@ -107,7 +130,14 @@ public class OrderOverView extends Activity {
             }
         };
     }
-
+    /**
+     *
+     * @param button
+     * adds a clicklistener to the selected button with the selected ordername, which is the order
+     * currently set to be the text on the button, has to be outside the background thread and set
+     * to runonUIthread or it can't affect the UI
+     * @return clicklistener
+     */
     View.OnClickListener confirmationclicker(final Button button) {
         return new View.OnClickListener() {
             public void onClick(View v) {
@@ -117,7 +147,10 @@ public class OrderOverView extends Activity {
             }
         };
     }
-
+    /**
+     * builds the table depending on the order that is selected and fed to the method
+     * @param data
+     */
     private void BuildTable(int rows, final OrderResult data) {
         ClearTable();
         int cols = 13;
