@@ -57,31 +57,12 @@ namespace WcfService
             {
                 return "ERROR: File was not uploaded correctly.";
             }
-            return "OK: File was successfully uplaoded to the service.";
+            return "OK: File was successfully uploaded to the service.";
         }
 
         public List<OrderConfirmation> getAllActiveOrders()
         {
-            List<OrderConfirmation> list = new List<OrderConfirmation>();
-            string fileExtension = "e02";
-            FileInfo fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/w0000520/"), "w0000520." + fileExtension));
-            list.Add(OrderParser.Instance.readOrder(fileInfo.FullName));
-            fileInfo = new FileInfo(Path.Combine(HostingEnvironment.MapPath("~/Order/w0000524/"), "w0000524." + fileExtension));
-            list.Add(OrderParser.Instance.readOrder(fileInfo.FullName));
-            list[0].StationStatus.Station4 = "Active";
-            list[0].StationStatus.Station6 = "Done";
-            list[0].StationStatus.Station7 = "Active";
-
-            list[0].Notes.Add(new OrderNote("This is a good order!.. NOOOT"));
-            list[0].Notes.Add(new OrderNote("This is a very long teeeeeeeeeeeeeeeeeeeeeeeeext text text text text text text text text text text text text..."));
-
-            list[1].StationStatus.Station5 = "Done";
-            list[1].StationStatus.Station7 = "Done";
-            list[1].StationStatus.Station8 = "Active";
-
-            list[1].Notes.Add(new OrderNote("Small"));
-            list[1].Notes.Add(new OrderNote("L\nA\nR\nG\nE because of new lines.. :)"));
-            return list; // DBHandler.Instance.
+            return DBHandler.Instance.getAllOrdersOfStatus("Active");
         }
 
         public int hasUpdates()
@@ -102,7 +83,7 @@ namespace WcfService
                 if (data.Length != 2)
                     return false;
 
-                DBHandler.Instance.createNotes(data[0], data[1]);
+                DBHandler.Instance.createNotes(data[0], new OrderNote(data[1]));
             }
             catch (Exception)
             {

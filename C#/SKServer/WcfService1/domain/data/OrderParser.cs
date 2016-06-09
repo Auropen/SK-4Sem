@@ -188,8 +188,9 @@ namespace WcfService.domain.data
                 catch (NullReferenceException)
                 { }
             }
-            
 
+            //Instantiate the order as Active
+            result.Status = "Active";
             return result;
         }
     }

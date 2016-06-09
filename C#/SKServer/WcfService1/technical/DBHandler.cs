@@ -63,21 +63,38 @@ namespace WcfService.technical
                             adi += str + ";";
                         adi.Substring(0, adi.Length - 1);
 
-                        command.Parameters.Add(new SqlParameter("@OrderNumber", orderConfirmation.OrderNumber));
-                        command.Parameters.Add(new SqlParameter("@OrderName", orderConfirmation.OrderName));
+                        command.Parameters.Add(new SqlParameter("@OrderNumber", SqlDbType.VarChar, 64));
+                        command.Parameters["@OrderNumber"].Value = orderConfirmation.OrderNumber;
+                        command.Parameters.Add(new SqlParameter("@OrderName", SqlDbType.VarChar, 64));
+                        command.Parameters["@OrderName"].Value = orderConfirmation.OrderName;
                         command.Parameters.Add(new SqlParameter("@Delivery", di));
+                        command.Parameters["@Delivery"].Value = di;
                         command.Parameters.Add(new SqlParameter("@AltDelivery", adi));
-                        command.Parameters.Add(new SqlParameter("@HousingAssociation", orderConfirmation.HousingAssociation));
-                        command.Parameters.Add(new SqlParameter("@StartDate", orderConfirmation.ProducedDate.ToString("yyyy-MM-dd")));
-                        command.Parameters.Add(new SqlParameter("@DeliveryDate", orderConfirmation.OrderDate.ToString("yyyy-MM-dd")));
-                        command.Parameters.Add(new SqlParameter("@DeliveryWeek", orderConfirmation.Week));
-                        command.Parameters.Add(new SqlParameter("@BluePrintLink", ""));
-                        command.Parameters.Add(new SqlParameter("@RequisitionLink", ""));
-                        command.Parameters.Add(new SqlParameter("@ProgressStatus", orderConfirmation.Status));
-                        command.Parameters.Add(new SqlParameter("@CompanyID", 1));
+                        command.Parameters["@AltDelivery"].Value = adi;
+                        command.Parameters.Add(new SqlParameter("@HousingAssociation", SqlDbType.VarChar, 64));
+                        command.Parameters["@HousingAssociation"].Value = orderConfirmation.HousingAssociation;
+                        command.Parameters.Add(new SqlParameter("@StartDate", SqlDbType.Date));
+                        command.Parameters["@StartDate"].Value = orderConfirmation.ProducedDate.ToString("yyyy-MM-dd");
+                        command.Parameters.Add(new SqlParameter("@DeliveryDate", SqlDbType.Date));
+                        command.Parameters["@DeliveryDate"].Value = orderConfirmation.OrderDate.ToString("yyyy-MM-dd");
+                        command.Parameters.Add(new SqlParameter("@DeliveryWeek", SqlDbType.VarChar, 32));
+                        command.Parameters["@DeliveryWeek"].Value = orderConfirmation.Week;
+                        command.Parameters.Add(new SqlParameter("@BluePrintLink", SqlDbType.VarChar, 256));
+                        command.Parameters["@BluePrintLink"].Value = "";
+                        command.Parameters.Add(new SqlParameter("@RequisitionLink", SqlDbType.VarChar, 256));
+                        command.Parameters["@RequisitionLink"].Value = "";
+                        command.Parameters.Add(new SqlParameter("@ProgressStatus", SqlDbType.VarChar, 16));
+                        command.Parameters["@ProgressStatus"].Value = orderConfirmation.Status;
+                        command.Parameters.Add(new SqlParameter("@CompanyID", SqlDbType.Int));
+                        command.Parameters["@CompanyID"].Value = 1;
                         command.ExecuteNonQuery();
                     }
                     connection.Close();
+
+                    foreach (OrderCategory category in orderConfirmation.Categories)
+                    {
+                        createOrderCategory(orderConfirmation.OrderNumber, category);
+                    }
                 }
             }
             catch (SqlException ex)
@@ -90,7 +107,7 @@ namespace WcfService.technical
         }
 
 
-        public List<OrderNote> createNotes(string orderNummer, string content)
+        public List<OrderNote> createNotes(string orderNumber, OrderNote note)
         {
             List<OrderNote> result = new List<OrderNote>();
             try
@@ -98,9 +115,14 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("createNotes('{0}', '{1}')", orderNummer, content);
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                        Console.WriteLine("Added " + command.ExecuteNonQuery() + " Notes");
+                    using (SqlCommand command = new SqlCommand("createNotes", connection) { CommandType = CommandType.StoredProcedure })
+                    {
+                        command.Parameters.Add(new SqlParameter("@OrderNumber", SqlDbType.VarChar, 64));
+                        command.Parameters["@OrderNumber"].Value = orderNumber;
+                        command.Parameters.Add(new SqlParameter("@Content", SqlDbType.VarChar, 1024));
+                        command.Parameters["@Content"].Value = note.Text;
+                        command.ExecuteNonQuery();
+                    }
                     connection.Close();
                 }
             }
@@ -119,11 +141,29 @@ namespace WcfService.technical
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
+                    int categoryID = -1;
                     connection.Open();
-                    string sql = String.Format("createOrderCategory({0}, '{1}', '{2}')", category.ID, orderNumber, category.Name);
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                        Console.WriteLine("Added " + command.ExecuteNonQuery() + " OrderCategory");
+                    using (SqlCommand command = new SqlCommand("createOrderCategory", connection) { CommandType = CommandType.StoredProcedure })
+                    {
+                        command.Parameters.Add(new SqlParameter("@OrderNumber", SqlDbType.VarChar, 64));
+                        command.Parameters["@OrderNumber"].Value = orderNumber;
+                        command.Parameters.Add(new SqlParameter("@CategoryName", SqlDbType.VarChar, 64));
+                        command.Parameters["@CategoryName"].Value = category.Name;
+                        //command.Parameters.Add(new SqlParameter("@new_id", SqlDbType.Int, 0, "fldCategoryID").Direction = ParameterDirection.Output);
+                        command.ExecuteNonQuery();
+
+                        //categoryID = Convert.ToInt32(command.Parameters["@new_id"].Value);
+                    }
                     connection.Close();
+
+                    //Gets the last ID created, in this case the id for this Category
+                    categoryID = getLastID("dbo.TblOrderCategory");
+
+                    //Creates all the elements for the category
+                    foreach (OrderElement element in category.Elements)
+                    {
+                        createOrderElements(element, categoryID);
+                    }
                 }
             }
             catch (SqlException ex)
@@ -133,34 +173,49 @@ namespace WcfService.technical
             return result;
         }
         
-        public void createOrderElements(OrderElement element, int catagoryId)
+        public void createOrderElements(OrderElement element, int categoryId)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
-                    string info = "";
-                    foreach (string str in element.ElementInfo)
+                    using (SqlCommand command = new SqlCommand("createOrderElements", connection) { CommandType = CommandType.StoredProcedure })
                     {
-                        info += str + ";";
-                    }
+                        command.Parameters.Add(new SqlParameter("@Pos", SqlDbType.VarChar, 32));
+                        command.Parameters["@Pos"].Value = element.Position;
+                        command.Parameters.Add(new SqlParameter("@Hinge", SqlDbType.VarChar, 64));
+                        command.Parameters["@Hinge"].Value = element.Hinge;
+                        command.Parameters.Add(new SqlParameter("@Finish", SqlDbType.VarChar, 64));
+                        command.Parameters["@Finish"].Value = element.Finish;
+                        command.Parameters.Add(new SqlParameter("@Amount", SqlDbType.VarChar, 32));
+                        command.Parameters["@Amount"].Value = element.Amount;
+                        command.Parameters.Add(new SqlParameter("@Unit", SqlDbType.VarChar, 32));
+                        command.Parameters["@Unit"].Value = element.Unit;
 
-                    string sql = String.Format("createOrderCategory('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}')", 
-                        element.Position, 
-                        element.Hinge, 
-                        element.Finish, 
-                        element.Amount, 
-                        element.Unit, 
-                        info, 
-                        element.StationStatus[0], 
-                        element.StationStatus[1],
-                        element.StationStatus[2],
-                        element.StationStatus[3],
-                        element.StationStatus[4]);
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                        Console.WriteLine("Added " + command.ExecuteNonQuery() + " OrderCategory");
+                        string info = "";
+                        foreach (string str in element.ElementInfo)
+                        {
+                            info += str + ";";
+                        }
+
+                        command.Parameters.Add(new SqlParameter("@Text", SqlDbType.VarChar, 256));
+                        command.Parameters["@Text"].Value = info;
+                        command.Parameters.Add(new SqlParameter("@Station4Status", SqlDbType.Bit));
+                        command.Parameters["@Station4Status"].Value = element.StationStatus[0];
+                        command.Parameters.Add(new SqlParameter("@Station5Status", SqlDbType.Bit));
+                        command.Parameters["@Station5Status"].Value = element.StationStatus[1];
+                        command.Parameters.Add(new SqlParameter("@Station6Status", SqlDbType.Bit));
+                        command.Parameters["@Station6Status"].Value = element.StationStatus[2];
+                        command.Parameters.Add(new SqlParameter("@Station7Status", SqlDbType.Bit));
+                        command.Parameters["@Station7Status"].Value = element.StationStatus[3];
+                        command.Parameters.Add(new SqlParameter("@Station8Status", SqlDbType.Bit));
+                        command.Parameters["@Station8Status"].Value = element.StationStatus[4];
+                        command.Parameters.Add(new SqlParameter("@CategoryID", SqlDbType.Int));
+                        command.Parameters["@CategoryID"].Value = categoryId;
+
+                        command.ExecuteNonQuery();
+                    }
                     connection.Close();
                 }
             }
@@ -180,10 +235,11 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("getOrder('{0}')", orderNumber);
-                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    using (SqlCommand command = new SqlCommand("getOrder", connection) { CommandType = CommandType.StoredProcedure })
                     {
-                        connection.Open();
+                        command.Parameters.Add(new SqlParameter("@OrderNumber", SqlDbType.VarChar, 64));
+                        command.Parameters["@OrderNumber"].Value = orderNumber;
+
                         using (SqlDataReader dr = command.ExecuteReader())
                         {
                             if (dr.HasRows)
@@ -221,12 +277,11 @@ namespace WcfService.technical
                                 }
                             }
                         }
-
+                        //Adds all the categories linked to this order confirmation
                         foreach (OrderCategory category in getOrderCategories(orderNumber))
                         {
                             orderConfirmation.Categories.Add(category);
-                        } 
-
+                        }
                     }
                     connection.Close();
                 }
@@ -238,6 +293,75 @@ namespace WcfService.technical
             return orderConfirmation;
         }
 
+        public List<OrderConfirmation> getAllOrdersOfStatus(string status)
+        {
+            List<OrderConfirmation> result = new List<OrderConfirmation>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand("getAllOrdersOfStatus", connection) { CommandType = CommandType.StoredProcedure })
+                    {
+                        command.Parameters.Add(new SqlParameter("@ProgressStatus", SqlDbType.VarChar, 64));
+                        command.Parameters["@ProgressStatus"].Value = status;
+
+                        using (SqlDataReader dr = command.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                while (dr.Read())
+                                {
+                                    OrderConfirmation orderConfirmation = new OrderConfirmation();
+                                    orderConfirmation.OrderNumber = dr.GetString(0);        //Order Number
+                                    orderConfirmation.OrderName = dr.GetString(1);          //Order Name
+
+                                    string[] splitName = orderConfirmation.OrderName.Split('/');
+                                    orderConfirmation.AlternativeNumber =                   //Alternative Number
+                                        splitName[0] + " " +
+                                        orderConfirmation.OrderNumber + " " +
+                                        splitName[1];
+
+                                    orderConfirmation.ProducedDate = dr.GetDateTime(2);     //Start date/produced date
+                                    orderConfirmation.OrderDate = dr.GetDateTime(3);        //Delivery date/order date
+                                    orderConfirmation.Week = dr.GetString(4);               //Delivery week
+                                    foreach (string line in dr.GetString(5).Split(';'))     //Delivery info
+                                        orderConfirmation.DeliveryInfo.Add(line);
+                                    foreach (string line in dr.GetString(6).Split(';'))     //Alt delivery info
+                                        orderConfirmation.AltDeliveryInfo.Add(line);
+                                    orderConfirmation.HousingAssociation = dr.GetString(7); //Housing Association
+                                    orderConfirmation.Status = dr.GetString(10);             //Status
+
+                                    //Company info:
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(11));    //Name
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(12));    //Address
+                                    orderConfirmation.CompanyInfo.Add(dr.GetInt32(13) + "");    //ZipCode
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(14));    //Phone
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(15));    //FaxPhone
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(16));    //CVR
+                                    orderConfirmation.CompanyInfo.Add(dr.GetString(17));    //Email
+                                    result.Add(orderConfirmation);
+                                }
+                            }
+                        }
+                        connection.Close();
+                        //Get all categories for all orders
+                        foreach (OrderConfirmation orderConfirmation in result)
+                        {
+                            foreach (OrderCategory category in getOrderCategories(orderConfirmation.OrderNumber))
+                            {
+                                orderConfirmation.Categories.Add(category);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+            return result;
+        }
 
         public List<OrderNote> getNotes(string orderNumber)
         {
@@ -247,16 +371,14 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("getNotes('{0}')", orderNumber);
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    using (SqlDataReader dr = command.ExecuteReader())
+                    using (SqlCommand command = new SqlCommand("getNotes", connection) { CommandType = CommandType.StoredProcedure })
                     {
-                        if (dr.HasRows)
+                        command.Parameters.Add(new SqlParameter("@OrderNumber", SqlDbType.VarChar, 64));
+                        command.Parameters["@OrderNumber"].Value = orderNumber;
+
+                        using (SqlDataReader dr = command.ExecuteReader())
                         {
-                            while (dr.Read())
-                            {
-                                result.Add(new OrderNote(dr.GetString(0)));
-                            }
+                            result.Add(new OrderNote(dr.GetString(0)));
                         }
                     }
                     connection.Close();
@@ -277,20 +399,18 @@ namespace WcfService.technical
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("getCategories('{0}')", orderNumber);
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    using (SqlDataReader dr = command.ExecuteReader())
+                    using (SqlCommand command = new SqlCommand("getCategories", connection) { CommandType = CommandType.StoredProcedure })
                     {
-                        if (dr.HasRows)
+                        command.Parameters.Add(new SqlParameter("@OrderNumber", SqlDbType.VarChar, 64));
+                        command.Parameters["@OrderNumber"].Value = orderNumber;
+
+                        using (SqlDataReader dr = command.ExecuteReader())
                         {
-                            while (dr.Read())
+                            OrderCategory category = new OrderCategory(dr.GetInt32(0), dr.GetString(1));
+                            categories.Add(category);
+                            foreach (OrderElement element in getOrderElements(category.ID))
                             {
-                                OrderCategory category = new OrderCategory(dr.GetInt32(0), dr.GetString(1));
-                                categories.Add(category);
-                                foreach (OrderElement element in getOrderElements(category.ID))
-                                {
-                                    category.Elements.Add(element);
-                                }
+                                category.Elements.Add(element);
                             }
                         }
                     }
@@ -307,17 +427,17 @@ namespace WcfService.technical
 
         public List<OrderElement> getOrderElements(int categoryID)
         {
-
             List<OrderElement> elements = new List<OrderElement>();
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = String.Format("getOrderElements({0})", categoryID);
-                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    using (SqlCommand command = new SqlCommand("getOrderElements", connection) { CommandType = CommandType.StoredProcedure })
                     {
+                        command.Parameters.Add(new SqlParameter("@CategoryID", SqlDbType.VarChar, 64));
+                        command.Parameters["@CategoryID"].Value = categoryID;
+
                         using (SqlDataReader dr = command.ExecuteReader())
                         {
                             if (dr.HasRows)
@@ -348,6 +468,24 @@ namespace WcfService.technical
             }
             return elements;
         }
-
+        public int getLastID(string tableName)
+        {
+            int id = -1;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(String.Format("SELECT IDENT_CURRENT('{0}') AS ID", tableName), connection))
+                        id = Convert.ToInt32(command.ExecuteScalar());
+                    connection.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return id;
+        }
     }
 }

@@ -30,7 +30,7 @@ CREATE TABLE TblOrder		  (fldOrderNumber VARCHAR(64) PRIMARY KEY,
 							   fldStartDate date NOT NULL,
 							   fldDeliveryDate date NOT NULL,
 							   fldDeliveryWeek VARCHAR(32) NOT NULL,
-							   fldBluePrintLink VARCHAR(256),
+							   fldBlueprintLink VARCHAR(256),
 							   fldRequisitionLink VARCHAR(256),
 							   fldProgressStatus VARCHAR(16) NOT NULL,
 							   fldCompanyID INT FOREIGN KEY REFERENCES TblCompany(fldID))
@@ -39,7 +39,7 @@ CREATE TABLE TblNotes		  (fldNoteID int IDENTITY(1,1) PRIMARY KEY,
 							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber),
 							   fldComment VARCHAR(1024))
 
-CREATE TABLE TblOrderCategory (fldCategoryID int PRIMARY KEY,
+CREATE TABLE TblOrderCategory (fldCategoryID int IDENTITY(1,1) PRIMARY KEY,
                                fldCategoryName VARCHAR(64) NOT NULL,
 							   fldOrderNumber VARCHAR(64) FOREIGN KEY REFERENCES TblOrder(fldOrderNumber))
 
@@ -134,7 +134,7 @@ CREATE PROCEDURE createOrder  (@OrderNumber VARCHAR(64),
 							   @StartDate DATE,
 							   @DeliveryDate DATE,
 							   @DeliveryWeek VARCHAR(32),
-							   @BluePrintLink VARCHAR(256),
+							   @BlueprintLink VARCHAR(256),
 							   @RequisitionLink VARCHAR(256),
 							   @ProgressStatus VARCHAR(16),
 							   @CompanyID int)
@@ -151,7 +151,7 @@ AS
 			fldHousingAssociation,
 			fldDeliveryDate,
 			fldDeliveryWeek,
-			fldBluePrintLink,
+			fldBlueprintLink,
 			fldRequisitionLink,
 			fldProgressStatus,
 			fldCompanyID
@@ -166,7 +166,7 @@ AS
 			@StartDate,
 			@DeliveryDate,
 			@DeliveryWeek,
-			@BluePrintLink,
+			@BlueprintLink,
 			@RequisitionLink,
 			@ProgressStatus,
 			@CompanyID
@@ -193,8 +193,7 @@ END
 GO
 
 CREATE PROCEDURE createOrderCategory(@OrderNumber VARCHAR(64), 
-								     @CategoryName VARCHAR(64),
-								     @new_id INT OUTPUT)
+								     @CategoryName VARCHAR(64))
 
 AS
 	BEGIN
@@ -208,7 +207,6 @@ AS
 			@CategoryName,
 			@OrderNumber
 		)
-		SET @new_id = SCOPE_IDENTITY()
 END
 GO
 
@@ -274,7 +272,7 @@ CREATE PROCEDURE getOrder (@OrderNumber VARCHAR(64))
 	   [Delivery],
 	   [AlternativeDelivery],
 	   [HousingAssociation],
-	   [BlueprinkLink],
+	   [BlueprintLink],
 	   [RequisitionLink],
 	   [ProgressStatus],
        [CompanyName],
@@ -294,15 +292,16 @@ CREATE PROCEDURE getAllOrdersOfStatus(@ProgressStatus VARCHAR(16))
 	BEGIN
 	SELECT
 	   [OrderNumber],
+	   [OrderName],
 	   [StartDate],
 	   [DeliveryDate],	  
 	   [DeliveryWeek],
 	   [Delivery],
 	   [AlternativeDelivery],
 	   [HousingAssociation],
-	   [BlueprinkLink],
+	   [BlueprintLink],
 	   [RequisitionLink],
-	   [ProgessStatus],
+	   [ProgressStatus],
        [CompanyName],
        [CompanyAddress],
        [CompanyZipCode],
@@ -348,7 +347,7 @@ CREATE VIEW OrderView AS
 	ord.fldDelivery Delivery,
 	ord.fldAltDelivery AlternativeDelivery,
 	ord.fldHousingAssociation HousingAssociation,
-	ord.fldBluePrintLink BlueprintLink, 
+	ord.fldBlueprintLink BlueprintLink, 
 	ord.fldRequisitionLink RequisitionLink, 
 	ord.fldProgressStatus ProgressStatus,
 	comp.fldName CompanyName,

@@ -135,7 +135,11 @@ namespace SKOffice
             string msg = rsClient.addOrderConfirmation(fileContent.ToArray());
             //Tries to add the order confirmation on the service
             if (msg.StartsWith("OK"))
+            {
                 feedbackE02.BackColor = System.Drawing.Color.Green; //Feedback: success
+                tb_e02.Clear();
+                paths[0] = "";
+            }
             else
                 feedbackE02.BackColor = System.Drawing.Color.Red; //Feedback: failed
             MessageBox.Show(msg , "Service Response");

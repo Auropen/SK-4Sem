@@ -15,7 +15,8 @@ namespace WcfService
     public interface IRestService
     {
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, 
+        [WebInvoke(Method = "GET", 
+            ResponseFormat = WebMessageFormat.Json, 
             BodyStyle = WebMessageBodyStyle.Wrapped, 
             UriTemplate = "getOrder/{fileName}")]
         OrderConfirmation getOrder(string fileName);
