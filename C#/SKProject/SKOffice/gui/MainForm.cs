@@ -15,9 +15,12 @@ namespace SKOffice
         private int updates;
         private Thread updateThread;
         private int updateFrequency;
-        
-        //Creating the viewList, the thread that will invoke the main thread
-        //saving the paths for the: e02 file, drawings and requisition
+
+        /// <summary>
+        /// Instantiates the listview including the columns.
+        /// Creating and starting the thread that will auto update the list
+        /// Instantiating variables
+        /// </summary>
         public MainForm()
         {
             updates = 0;
@@ -52,14 +55,23 @@ namespace SKOffice
         private void MainForm_Load(object sender, EventArgs e)
         {
         }
-        
-        //Updates the viewList
+
+        /// <summary>
+        /// When the tappage are clicked on, the list is updated
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabPage1_Click(object sender, EventArgs e)
         {
             updateList();
         }
 
-        //Office user browse in the Documentation for the e02 file, show the path in the textbox and upload.
+
+        /// <summary>
+        /// When one of the browse buttons are clicked the user are prompted to browse for the e02 file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void browse_Click(object sender, EventArgs e)
         {
             ofd = new OpenFileDialog();
@@ -98,8 +110,12 @@ namespace SKOffice
             }
         }
 
-        //Takes the path from the textbox and checks if the file exists if it doesn't a msg will open telling the file is sent.
-        //A box will show the status for the upload, if its uploaded Green and failed Red, idle is Blue 
+        /// <summary>
+        /// Takes the path from the textbox and checks if the file exists if it doesn't a msg will open telling the file is sent.
+        /// A box will show the status for the upload, if its uploaded Green and failed Red, idle is Blue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uploadBtn_Click(object sender, EventArgs e)
         {
             feedbackE02.BackColor = System.Drawing.Color.RoyalBlue; //Feedback: idle
@@ -127,7 +143,11 @@ namespace SKOffice
             MessageBox.Show(msg , "Service Response");
         }
 
-        //Open an onder in the orderOverview so that you can read the notes
+        /// <summary>
+        /// Open an onder in the orderOverview so that you can read the notes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void clickedOrder(object sender, MouseEventArgs e)
         {
             int y = 24;
@@ -148,8 +168,11 @@ namespace SKOffice
 
         private delegate void UniversalVoidDelegate();
 
-
-        //Recieves a call from the main and allows the listview to be updated from another thread.
+        /// <summary>
+        /// Recieves a call from the main and allows the listview to be updated from another thread.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="function"></param>
         public static void controlInvoke(Control control, Action function)
         {
             if (control.IsDisposed || control.Disposing)
@@ -163,7 +186,9 @@ namespace SKOffice
             function();
         }
 
-        //fills the listvies with orders from the database containing station status and notes
+        /// <summary>
+        /// fills the listvies with orders from the database containing station status and notes
+        /// </summary>
         private void updateList()
         {
             FormRestService.ServiceWGetClient rsClient = new FormRestService.ServiceWGetClient();
@@ -201,8 +226,11 @@ namespace SKOffice
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
-        
-        //Checks if the database has been updatet.
+
+        /// <summary>
+        /// Checks if the database has been updated.
+        /// </summary>
+        /// <returns></returns>
         private bool checkServiceUpdates()
         {
             FormRestService.ServiceWGetClient rsClient = new FormRestService.ServiceWGetClient();
@@ -212,7 +240,9 @@ namespace SKOffice
             return result;
         }
 
-        //Checks if the current listviw is containing the newest information from the Database
+        /// <summary>
+        /// Checks if the current listviw is containing the newest information from the Database
+        /// </summary>
         private void updateLoop()
         {
             while (true)
