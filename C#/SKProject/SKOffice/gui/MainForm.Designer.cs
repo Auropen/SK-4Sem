@@ -34,9 +34,9 @@
             this.feedbackRequisition = new System.Windows.Forms.Label();
             this.feedbackBlueprint = new System.Windows.Forms.Label();
             this.feedbackE02 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.requisitionPDFlbl = new System.Windows.Forms.Label();
+            this.blueprintPDFlbl = new System.Windows.Forms.Label();
+            this.winnertoolFilelbl = new System.Windows.Forms.Label();
             this.browseRequisitionBtn = new System.Windows.Forms.Button();
             this.browseBlueprintBtn = new System.Windows.Forms.Button();
             this.tb_Requisition = new System.Windows.Forms.TextBox();
@@ -79,9 +79,9 @@
             this.groupBox1.Controls.Add(this.feedbackRequisition);
             this.groupBox1.Controls.Add(this.feedbackBlueprint);
             this.groupBox1.Controls.Add(this.feedbackE02);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.requisitionPDFlbl);
+            this.groupBox1.Controls.Add(this.blueprintPDFlbl);
+            this.groupBox1.Controls.Add(this.winnertoolFilelbl);
             this.groupBox1.Controls.Add(this.browseRequisitionBtn);
             this.groupBox1.Controls.Add(this.browseBlueprintBtn);
             this.groupBox1.Controls.Add(this.tb_Requisition);
@@ -129,32 +129,32 @@
             this.feedbackE02.TabIndex = 10;
             this.feedbackE02.Text = "  ";
             // 
-            // label3
+            // requisitionPDFlbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(160, 207);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Requisition (*.pdf)";
+            this.requisitionPDFlbl.AutoSize = true;
+            this.requisitionPDFlbl.Location = new System.Drawing.Point(160, 207);
+            this.requisitionPDFlbl.Name = "requisitionPDFlbl";
+            this.requisitionPDFlbl.Size = new System.Drawing.Size(90, 13);
+            this.requisitionPDFlbl.TabIndex = 9;
+            this.requisitionPDFlbl.Text = "Requisition (*.pdf)";
             // 
-            // label2
+            // blueprintPDFlbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(160, 151);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Blueprints (*.pdf)";
+            this.blueprintPDFlbl.AutoSize = true;
+            this.blueprintPDFlbl.Location = new System.Drawing.Point(160, 151);
+            this.blueprintPDFlbl.Name = "blueprintPDFlbl";
+            this.blueprintPDFlbl.Size = new System.Drawing.Size(84, 13);
+            this.blueprintPDFlbl.TabIndex = 8;
+            this.blueprintPDFlbl.Text = "Blueprints (*.pdf)";
             // 
-            // label1
+            // winnertoolFilelbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(160, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Winner Tool file (*.e02)";
+            this.winnertoolFilelbl.AutoSize = true;
+            this.winnertoolFilelbl.Location = new System.Drawing.Point(160, 96);
+            this.winnertoolFilelbl.Name = "winnertoolFilelbl";
+            this.winnertoolFilelbl.Size = new System.Drawing.Size(115, 13);
+            this.winnertoolFilelbl.TabIndex = 7;
+            this.winnertoolFilelbl.Text = "Winner Tool file (*.e02)";
             // 
             // browseRequisitionBtn
             // 
@@ -362,9 +362,9 @@
         private System.Windows.Forms.TabControl tpBox;
         private System.Windows.Forms.TabPage tpOrderFiles;
         private System.Windows.Forms.TabPage tpOverview;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label requisitionPDFlbl;
+        private System.Windows.Forms.Label blueprintPDFlbl;
+        private System.Windows.Forms.Label winnertoolFilelbl;
         private System.Windows.Forms.Button browseRequisitionBtn;
         private System.Windows.Forms.Button browseBlueprintBtn;
         private System.Windows.Forms.TextBox tb_Requisition;
