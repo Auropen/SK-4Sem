@@ -434,7 +434,7 @@ namespace WcfService.technical
                             {
                                 while (dr.Read())
                                 {
-                                    result.Add(new OrderNote(dr.GetString(2)));
+                                    result.Add(new OrderNote(dr.GetString(1)));
                                 }
                             }
                         }
